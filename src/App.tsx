@@ -1,53 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './assets/css/styles.css'
-import HeroBg from './components/HeroBg'
+import HeroBg from './components/Hero/HeroBg'
 import Portfolio from './components/Portfolio/Portfolio'
-import UberMich from './components/UberMich'
-import Navbar from './components/Navbar'
+import UberMich from './components/About/UberMich'
+import Social from './components/Kontakt/Social'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header'
+import { ScrollProvider } from './context/SectionContext'
+import { ThemeProvider } from './context/ThemeContext'
+import ThemeToggler from './components/Widgets/ThemeToggler'
+
+export type TThemeContext = {
+  theme: string,
+  setTheme: boolean;
+}
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar />
-      <div className="navbar">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <HeroBg />
-      <Portfolio />
-      <UberMich />
-      <div className="social">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Anzahl  {count} ist!
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <div className="kontakt">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Anzahl  {count} ist!
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <div className="footer">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Anzahl  {count} ist!
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      <ScrollProvider>
+          <ThemeProvider>
+
+              <ThemeToggler/>
+              <Header />
+              <main>
+                <HeroBg />      
+                <Portfolio />
+                <UberMich />
+                <Social />
+                <Footer />
+              </main>
+          </ThemeProvider>
+      </ScrollProvider>
+      
     </>
   )
 }

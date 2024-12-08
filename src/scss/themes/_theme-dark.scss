@@ -1,0 +1,40 @@
+$theme-dark: (
+    hover-link-color: $secondary,
+    nav-toggler: (
+        bg: $light
+    ),
+    nav-content: (
+        bg: $dark2,
+        bg-section: $dark3
+    ),
+    section: (
+        bg: $dark,
+        color: $light
+    ),
+    section-2: (
+        bg: $dark2,
+        color: $light
+    ),
+    projekt-karte: (
+        bg: $dark,
+        color: $light,
+        border: solid 0.5rem $dark2,
+        box-shadow:  0px 0px 10px 5px $dark3,
+        box-shadow-hover:  0px 0px 10px 5px $secondary,
+        gradient-before: linear-gradient(transparent, $dark2),
+        gradient-after: linear-gradient($dark2, transparent)
+    ),
+    kontakt-form: (
+        active-color: $secondary,
+        shade-color: shade-color($secondary, 15%),
+        outline: solid 0.15rem $secondary,
+        border: solid 0.15rem $secondary
+    ),
+    footer: (
+        display: block,
+        bg: $dark,
+        bg-content: $dark2,
+        color: $light,
+        border: solid 0.1rem $secondary
+    )
+);

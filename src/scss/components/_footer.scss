@@ -1,0 +1,30 @@
+.section[data-section='footer'] {
+    padding: 2.5rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .footer-content {
+        margin-bottom: 3rem;
+        ul {
+            list-style: none;
+            margin-top: 2rem;
+            padding: 0;
+            width: 100%;
+            li {
+                padding: 0.5rem 1.6rem;
+                font-weight: bold;
+                border-left: solid 1px;
+            }
+        }
+    }
+    .footer-bottom {
+        width: 80%;
+        max-width: 35rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 3rem 1.6rem;
+        padding-bottom: 0;
+    }
+}

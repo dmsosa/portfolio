@@ -1,0 +1,43 @@
+//Fonts
+@font-face {
+    font-family: ubuntu;
+    src: url('../assets/fonts/Ubuntu-Regular.ttf');
+};
+@font-face {
+    font-family: ubuntu-bold;
+    src: url('../assets/fonts/Ubuntu-Bold.ttf');
+};
+@font-face {
+    font-family: ubuntu-medium;
+    src: url('../assets/fonts/Ubuntu-Medium.ttf');
+};
+@font-face {
+    font-family: ubuntu-italic;
+    src: url('../assets/fonts/Ubuntu-Italic.ttf');
+};
+
+$navbar-padding-x: 1.5rem;
+$primary: #ff366f;
+$secondary: #36ffff;
+$success: #36ff6f;
+$danger: #ff3636;
+$warning: #fff366;
+$dark: #0d1b3d;
+$dark2: #09132b;
+$dark3: #18306c;
+$light: #f0f0f0;
+$light2: #dadada;
+$light3: #bebebe;
+
+$btn-hover-bg-tint-amount: 75%;
+$btn-active-bg-tint-amount: 20%;
+$btn-hover-bg-shade-amount: 75%;
+$btn-active-bg-shade-amount: 20%;
+
+$font-family-base: ubuntu, sans-serif;
+$h1-font-size: 3.35rem;
+$h2-font-size: 3rem;
+$h3-font-size: 2rem;
+$h4-font-size: 1.7rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;

@@ -1,0 +1,134 @@
+@mixin themable($theme-name, $theme-map) {
+    @if ($theme-name == "theme-light") {
+        .#{$theme-name} {
+            background-color: $light;
+            color: $dark;
+        }
+    } @else {
+        .#{$theme-name} {
+            background-color: $dark;
+            color: $light;
+        }
+    }
+    .#{$theme-name} {
+        margin: 0;
+        padding: 0;
+        a:not([type='button']), .social-links a {
+            &:hover {
+                color: map-get($theme-map, hover-link-color );
+            }
+        }
+        .typewriter {
+            &__cursor {
+                color: map-get($theme-map, hover-link-color);
+            }
+        }
+        footer {
+            ul.icon-ul {
+                .icon-li-link {
+                    color: inherit;
+                    transition: 0.2s;
+                    &:hover {
+                        color: map-get($theme-map, hover-link-color );
+                    }
+                    .bi {
+                        color: inherit;
+                    }
+                }
+            }
+        }
+
+    }
+    @each $selector, $map in $theme-map {
+        @if ($selector == "hover-link-color") {
+        } @else if ($selector == "kontakt-form") {
+            .#{$theme-name} .#{$selector} {
+                fieldset {
+                    &:hover {
+                        .bi {
+                            color: map-get($map, active-color);
+                        }
+                    }
+                }
+                input {
+                    border-bottom: map-get($map, border);
+                    &:active {
+                        background-color: map-get($map, active-color);
+                    }
+                    &:focus-visible {
+                        outline: map-get($map, outline);
+                    }
+                }
+                textarea {
+                    border: map-get($map, border);
+                    &:active {
+                        background-color: map-get($map, active-color);
+                    }
+                    &:focus-visible {
+                        outline: map-get($map, outline);
+                    }
+                }
+                .btn {
+                    background-color: map-get($map, active-color);
+                    &:hover {
+                        background-color: map-get($map, shade-color);
+                    }
+                    &:active {
+                        background-color: map-get($map, active-color);
+                    }
+                }
+            }
+        }@else if ($selector == "projekt-karte") {
+            .#{$theme-name} .#{$selector} {
+                background-color: map-get($map, bg);
+                color: map-get($map, color);
+                border: map-get($map, border);
+                box-shadow:  map-get($map, box-shadow);
+                transition: box-shadow 0.2s ease-in;
+                &:hover {
+                    box-shadow: map-get($map, box-shadow-hover);
+                }
+                &-img-wrap {
+                    &::before {
+                        background: map-get($map, gradient-before);
+                    }
+                    &::after {
+                        background: map-get($map, gradient-after);
+                    }
+                }
+            }
+        }@else if ($selector == "nav-toggler") {
+            .#{$theme-name} .#{$selector} {
+                &::after, &::before {
+                    background-color: map-get($map, bg );
+                }
+            }
+        } @else if($selector == "nav-content") {
+            .#{$theme-name} .#{$selector} {
+                background-color: map-get($map, bg );
+                &-section {
+                    background-color: map-get($map, bg-section );
+                }
+            }
+        } @else if ($selector == "footer") {
+            .#{$theme-name} .#{$selector} {
+                background-color: map-get($map, bg );
+                color: map-get($map, color);
+                &-content {
+                    li {
+                        background-color: map-get($map, bg-content);
+                        border-color: map-get($map, border-color);
+                    }
+                }
+                &-bottom {
+                    border-top: map-get($map, border );
+                }
+            }
+        } @else {
+            .#{$theme-name} .#{$selector} {
+                background-color: map-get($map, bg);
+                color: map-get($map, color);
+            }
+        }
+    }
+}

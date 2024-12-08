@@ -1,0 +1,138 @@
+
+.cube {
+    position: relative;
+    --size: 80px;
+    --translation: calc(var(--size) / 2);
+    height: var(--size);
+    width: var(--size);
+    transform-style: preserve-3d;
+    perspective: 10000px;
+    animation: show-each-side 15s ease-in-out 0s alternate;
+    animation-iteration-count: infinite;
+}
+.side-outer, .side-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: visible;
+}
+.side-outer {
+    border: #18306c solid 5px;
+}
+.side-inner {
+
+    &.front {
+        background-color: #ff366f;
+        animation: jump-fr 4s ease-in 0s infinite;
+        &:hover {
+            background-color: tint-color(#ff366f, 35%);
+        }
+    }
+    &.back {
+        background-color: #36ffff;
+        animation: jump-ba 4s ease-in 0s infinite;
+        &:hover {
+            background-color: tint-color(#36ffff, 35%);
+        }
+    }
+    &.left {
+        background-color: #fff366;
+        animation: jump-l 4s ease-in 0s infinite;
+        &:hover {
+            background-color: tint-color(#fff366, 35%);
+        }
+    }
+    &.right {
+        background-color: #7236ff;
+        animation: jump-r 4s ease-in 0s infinite;
+        &:hover {
+            background-color: tint-color(#7236ff, 35%);
+        }
+    }
+    &.top {
+        background-color: #ff366f;
+        animation: jump-t 4s ease-in 0s infinite;
+        &:hover {
+            background-color: tint-color(#ff366f, 35%);
+        }
+    }
+    &.bot {
+        background-color: #36ffff;
+        animation: jump-b 4s ease-in 0s infinite;
+        &:hover {
+            background-color: tint-color(#36ffff, 35%);
+        }
+    }
+}
+.front {
+    transform: translateZ(var(--translation));
+}
+.back {
+    transform: translateZ(calc(-1 * var(--translation)));
+}
+.right {
+    transform: translateX(var(--translation)) rotateY(-90deg);
+}
+.left {
+    transform: translateX(calc(-1 * var(--translation))) rotateY(90deg);
+}
+.top {
+    transform: translateY(calc(-1 * var(--translation))) rotateX(90deg);
+}
+.bot {
+    transform: translateY(var(--translation)) rotateX(-90deg);
+}
+
+@keyframes show-each-side {
+
+    20% {
+        transform: rotate3d(0.25, 2, 0, 90deg);
+    }
+    40% {
+        transform: rotate3d(2, 2.25, 0, 90deg);
+
+    }
+    60% {
+        transform: rotate3d(-2, 0, 2.25, 90deg);
+    }
+    80% {
+        transform: rotate3d(-2, .25, .25, 90deg);
+    }
+    100% {
+        transform: rotate3d(-2, 0, -2.25, 90deg);
+    }
+
+    
+}
+
+@keyframes jump-fr {
+    50% {
+        transform: translateZ(var(--size));
+    }
+}
+@keyframes jump-ba {
+    50% {
+        transform: translateZ(calc( -1 * var(--size)));
+    }
+}
+@keyframes jump-l {
+    50% {
+        transform: translateX(calc(-1 * var(--translation))) rotateY(90deg) translateZ(calc( -1 * var(--size)));
+    }
+}
+@keyframes jump-r {
+    50% {
+        transform: translateX(var(--translation)) rotateY(-90deg) translateZ(calc( -1 * var(--size)));
+
+    }
+}
+@keyframes jump-t {
+    50% {
+        transform: translateY(calc(-1 * var(--translation))) rotateX(90deg) translateZ(var(--size));
+    }
+}
+@keyframes jump-b {
+    50% {
+        transform: translateY(var(--translation)) rotateX(-90deg) translateZ(var(--size));
+    }
+}

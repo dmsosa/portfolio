@@ -23,21 +23,6 @@
                 color: map-get($theme-map, hover-link-color);
             }
         }
-        footer {
-            ul.icon-ul {
-                .icon-li-link {
-                    color: inherit;
-                    transition: 0.2s;
-                    &:hover {
-                        color: map-get($theme-map, hover-link-color );
-                    }
-                    .bi {
-                        color: inherit;
-                    }
-                }
-            }
-        }
-
     }
     @each $selector, $map in $theme-map {
         @if ($selector == "hover-link-color") {
@@ -114,15 +99,6 @@
             .#{$theme-name} .#{$selector} {
                 background-color: map-get($map, bg );
                 color: map-get($map, color);
-                &-content {
-                    li {
-                        background-color: map-get($map, bg-content);
-                        border-color: map-get($map, border-color);
-                    }
-                }
-                &-bottom {
-                    border-top: map-get($map, border );
-                }
             }
         } @else {
             .#{$theme-name} .#{$selector} {

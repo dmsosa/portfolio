@@ -1,10 +1,10 @@
 
 .scrolled {
-    transform: translateY(-100%) !important;
+    transform: translateY(-90%) !important;
 }
 
-header.site-header {
-    position: absolute;
+.sticky-header {
+    position: fixed;
     top: 0;
     z-index: 1000;
     width: 100%;
@@ -13,93 +13,74 @@ header.site-header {
     justify-content: space-between;
     align-items: center;
     font-size: 1.35rem;
-    height: 6.3rem;
+    height: 3.25rem;
     transform: none;
     transition: transform 0.5s ease-in;
-    &.active {
-        position: fixed;
-        top: 0;
-        bottom: auto;
-        max-height: 8rem;
-    }
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    transform: translateY(0);
+    transition: transform 0.4s;
+}
+.progress-bar {
+    position: absolute;
+    width: 100%;
+    height: 0.125rem;
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: progress-bar linear alternate;
+    animation-timeline: scroll(y);
 }
 
-@media only screen and (min-width: 768px) {
-    header.site-header {
-        position: fixed;
-        height: 8rem;
-        max-height: 8rem;
-        background-color: transparent;
-        &.active {
-            background-color: transparent;
-        }
+@keyframes progress-bar {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
     }
 }
-
 .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
     font-weight: bold;
     width: 3rem;
-    z-index: 999;
+    font-size: 1rem;
+    transition: color 0.4s;
+    &:hover {
+        color: $primary !important;
+    }
     img {
         max-width: 100%;
     }
 }
 
-.hero-btn {
-    display: block;
-    margin: 0 auto;
-    font-size: 1.2rem;
-    max-width: 50%;
-}
-@media only screen and (min-width: 768px) {
-    .hero-btn {
-        font-size: calc(1vw * 2);
+.nav-toggler {
+    position: relative;
+    z-index: 999;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    svg {
+        width: 1rem;
+        stroke: white;
+        stroke-width: 0.125rem;
+        path {
+            transition: d 0.4s;
+        }
+    }
+    &[aria-expanded='true'] {
+        svg {
+            path {
+                d: path("M1,2 22,22 M6,6 6,6 M22,2 1,22");
+            }
+        }
     }
 }
-
-
-.nav-toggler {
-    z-index: 999;
-    position: relative;
-    display: block;
-    font-size: 1rem;
-    padding: .5rem;
-    height: 2rem;
-    width: 2rem;
-    border: none;
-    background: transparent;
-}
-.nav-toggler::after, .nav-toggler::before {
-    content: "";
-    top: 0;
-    right: 0;
-    position: absolute;
-    height: 0.2rem;
-    width: 100%;
-    transition: all 0.2s ease;
-}
-.nav-toggler::after {
-    width: 70%;
-    top: 1rem;
-    right: 0;
-}
-
-.nav-toggler.x::after {
-    top: 0;
-    width: 100%;
-    transform: rotate(-45deg);
-}
-.nav-toggler.x::before {
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: unset;
-    transform: rotate(45deg);
-}
-
 .nav-content {
     position: absolute;
     display: flex;

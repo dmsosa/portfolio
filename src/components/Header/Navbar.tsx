@@ -20,7 +20,13 @@ function Navbar() {
     }
     return (
         <>
-            <button className="nav-toggler" type="button" aria-label="Navbar toggler" aria-controls="nav-content" onClick={handleClick}></button>
+            <button className="nav-toggler" type="button" 
+            aria-expanded={show}
+            aria-label="Navbar toggler" aria-controls="nav-content" onClick={handleClick}>
+                <svg viewBox="0 0 24 24">
+                    <path d="M1,2 24,2 M1,12 24,12 M1,22 24,22"/>
+                </svg>
+            </button>
             <div id="nav-content" className={`nav-content ${show ? "open": ""}`}>
                 <div className="nav-content-section">
                     <p>Links</p>

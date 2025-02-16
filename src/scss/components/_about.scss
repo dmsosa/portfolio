@@ -1,0 +1,16 @@
+.pointer {
+    position: absolute;
+    fill: white;
+    filter: drop-shadow(0px 0px 10px #111);
+    width: 47px;
+    height: auto;
+    bottom: 0;
+    left: 70%;
+    transform: rotate(-25deg);
+    overflow: visible;
+    transition: opacity 0.4s;
+    path {
+        animation: bounce 1s linear infinite;
+    }
+    
+}

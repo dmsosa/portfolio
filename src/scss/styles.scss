@@ -39,9 +39,10 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 
 // 9. components
 @import "./components/header";
+@import "./components/sidebar";
 @import "./components/footer";
 @import "./components/portfolio";
-@import "./components/social";
+@import "./components/about";
 
 // others
 @import "./others/robot";
@@ -57,19 +58,41 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 //keyframes
 @import "./keyframes/keyframes";
 
+
+@font-face {
+    font-family: 'ShareTechMono';
+    src: url('../assets/fonts/ShareTechMono-Regular.ttf');
+}
 //Code
 html {
     font-size: 16px;
 }
 
 body {
+    font-family: "Share Tech Mono", serif;
+    font-weight: 400;
+    font-style: normal;
     box-sizing: content-box;
+    overflow-x: hidden;
+}
+main {
+    display: grid;
+    grid-template-columns: 1;
+}
+section {
+    max-width: 100vw;
+    padding-top: 3rem ;
 }
 .no-scroll {
     overflow: hidden !important;
 }
-.btn {
-    font-weight: bold;
+.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 a {
     cursor: pointer;
@@ -102,12 +125,30 @@ ul.icon-ul {
     font-size: 1.5rem;     
 }
 
-.section-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+.container-content {
+    position: relative;
+    svg:not([class='pointer']) {
+        cursor: pointer;
+        width: 80%;
+        max-width: 400px;
+        display: block;
+        margin: 0 auto;
+        filter: drop-shadow(0px 0px 15px black);
+        transition: scale 0.4s, filter 0.4s;
+        path {
+            fill: $secondary;
+        }
+        polygon {
+            fill: $warning;
+        }
+        &:hover {
+            filter: drop-shadow(0px 0px 15px $primary);
+            scale: 0.9;
+            path {
+                fill: $primary;
+            }
+        }
+    }
 }
   
 @include themable("theme-light", $theme-light);
@@ -118,32 +159,7 @@ ul.icon-ul {
     }
 }
 @media only screen and (min-width: 768px) {
-    main {
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
-        height: 100vh;
-        overflow: scroll;
-    }
-    ::-webkit-scrollbar {
-        display: none;
-    }
-    .section,.section-2 { 
-        height: 100vh;
-        scroll-snap-align: start;
-    } 
-    .footer-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 50%;
-        margin: 0 auto;
-        gap: 10vw;
-    }
-    .section-content {
-        flex-direction: column;
-        max-width: 60%;
-        margin: 0 auto;
-    }
+
 }
 
 @media only screen and (min-width: 1024px) {
@@ -192,4 +208,3 @@ ul.icon-ul {
     background-color: #333;
     border-radius: 10px;
 }
-

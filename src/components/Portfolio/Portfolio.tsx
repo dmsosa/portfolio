@@ -1,49 +1,57 @@
-import Section from "../Section";
-import dmblog from "../../assets/img/dmblog.png";
-import  jdss  from "../../assets/img/jadassa.png";
-import ProjektSection from "./ProjektSection";
+
+import { useRef } from "react";
+import { projectsArray } from "../../data/projects";
+import ProjektKarte from "./ProjektKarte";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Portfolio() {
+
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    // useGSAP(() => {
+    //     gsap.registerPlugin(ScrollTrigger);
+    //     gsap.utils.toArray(".project-card").forEach((card) => {
+    //         const target = card as Element;
+    //         gsap.to(target, {
+    //             position: "absolute",
+    //             scrollTrigger: {
+    //                 trigger: sectionRef.current,
+    //                 start: "top top",
+    //                 end: "top bottom",
+    //                 markers: true,
+    //             }
+    //         })
+    //     })
+    // }, { scope: sectionRef })
     return (
-        <>
-        <Section name="zwei">
-            <div className="section-content">
-                <h1 id="portfolio" className="fw-bold text-center text-zeigen-left clearfix" >My work</h1>
-                <span>I really enjoy with JavaScript, which makes me able to work comfortably with the most modern technologies!</span>
-                <a className="link">my projects on Github <i className="bi bi-github"></i></a>
+        <section ref={sectionRef}>
+            <h1 className="text-wrap text-center fw-bold mb-4">
+                <span>projekte</span>
+            </h1>
+            <div className="p-4">
+                {projectsArray.map((project, index) => {
+                    return (
+                        <ProjektKarte
+                        index={index + 1}
+                        repo={project.repo}
+                        title={project.title}
+                        image={project.image}
+                        description={project.description}
+                        createdAt={"2022.20.1"}
+                        updatedAt={"2022.20.1"}
+                        tools={project.tools}
+                        />
+                    )
+                })}
             </div>
-        </Section>
-        <Section name="drei">
-            <div className="section-content">
-                <ProjektSection
-                title="Realworld Blog"
-                image={dmblog}
-                body="In building Frontend applications I'm specialized with JavaScript, which makes me able to work comfortably with the most modern technologies like Next.JS, React or NodeJS,  independently of the framework, resilient solutions optimized for scale — performance and scalabilty are priorities on my projects."
-                techstack={["react", "typescript", "spring", "postgresql"]}
-                icon={"emoji-laughing-fill"}
-                link={"https://dmsosa.github.io/dmblog/"}
-                repo={"https://github.com/dmsosa/dmblog"}
-                />
-            </div>
-        </Section>
-        <Section name="vier">
-            <div className="section-content">
-                <ProjektSection
-                title="React: All in One"
-                image={jdss}
-                body="In building Frontend applications I'm specialized with JavaScript, which makes me able to work comfortably with the most modern technologies like Next.JS, React or NodeJS,  independently of the framework, resilient solutions optimized for scale — performance and scalabilty are priorities on my projects."
-                techstack={["react", "typescript", "spring", "postgresql"]}
-                icon={"robot"}
-                link={"https://dmsosa.github.io/jadassa-page/"}
-                repo={"https://github.com/dmsosa/jadassa-page"}
-                position="right"
-                />
-            </div>
-        </Section>
-        </>
+            
+            <span className="ps-3">Und es gibt mehr...</span>
+        </section>
         
 
     )
 }
 
-export default Portfolio;
+export default Portfolio; 

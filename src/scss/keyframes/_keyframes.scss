@@ -1,47 +1,29 @@
-@keyframes text-zeigen {
-    from {
-        transform: translate(150px);
-        opacity: 0;
+@keyframes bounce {
+    25% {
+        transform: translateY(-25%);
     }
-    to {
-        transform: translate(0);
-        opacity: 1;
-    }
-}
-@keyframes text-zeigen-left {
-    from {
-        transform: translate(-150px);
-        opacity: 0;
-    }
-    to {
-        transform: translate(0);
-        opacity: 1;
+
+    70% {
+        transform: translateY(25%);
     }
 }
-@keyframes text-zeigen-auf {
-    from {
-        opacity: 0;
-        transform: translateY(180px);
-    }
+@keyframes stroke-zeigen {
     to {
-        opacity: 1;
-        transform: translateY(0);
+        stroke-dashoffset: 0;
     }
 }
 
-.text-zeigen {
-    animation: text-zeigen linear both;
-    animation-timeline: view();
-    animation-range: cover 0% cover 50%;
-}
-.text-zeigen-left {
-    animation: text-zeigen linear both;
-    animation-timeline: view();
-    animation-range: cover 0% cover 50%;
-}
-.text-zeigen-auf {
-    animation: text-zeigen-auf linear;
-    animation-timeline: view();
-    animation-range: cover 0% cover 10%;
-
-}
+@keyframes pulse {
+    0% {
+       transform: scale(1);
+    }
+ 
+    30% {
+       transform: scale(1.2);
+    }
+ 
+    60% {
+       transform: scale(1);
+    }
+ }
+ 

@@ -1,17 +1,15 @@
 import './assets/css/styles.css'
-import Portfolio from './components/Portfolio/Portfolio'
-import UberMich from './components/About/UberMich'
+
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import { ThemeProvider } from './context/ThemeContext'
 import ThemeToggler from './components/Widgets/ThemeToggler'
-import Sidebar from './components/Sidebar/Sidebar'
-import ReactLenis, { useLenis } from 'lenis/react'
 import Lenis from 'lenis'
 import { useEffect, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import { Outlet } from 'react-router-dom'
 
 export type TThemeContext = {
   theme: string,
@@ -19,10 +17,7 @@ export type TThemeContext = {
 }
 
 function App() {
-  const lenis = new Lenis({autoRaf: true});
-  const raf = (timestamp: number) => {
-    lenis.raf(timestamp);
-  }
+
   const sectionRef = useRef<HTMLDivElement>(null);
   
   const animate = (target: Element) => {
@@ -63,21 +58,22 @@ function App() {
 
   }, { scope: sectionRef });
   useEffect(() => {
+    const lenis = new Lenis({autoRaf: true});
+
+    const raf = (timestamp: number) => {
+      lenis.raf(timestamp);
+    }
     requestAnimationFrame(raf);
   }, [])
   return (
     <>
       <ThemeProvider>
           <ThemeToggler/>
+          <Header />
           <main ref={sectionRef}>
-            <Header />
-            <Sidebar />
-            <div className="content">
-              <Portfolio />
-              <UberMich />
-              <Footer />
-            </div>
+            <Outlet/>
           </main>
+          <Footer />
       </ThemeProvider>      
     </>
   )

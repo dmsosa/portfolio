@@ -17525,6 +17525,22 @@ progress {
   box-shadow: 0px 0px 15px #111;
 }
 
+@media only screen and (min-width: 1024px) {
+  .sidebar--bg {
+    background-position: 0% 15%;
+  }
+}
+h1, .h1, h2, .h2, h3, .h3 {
+  overflow: hidden;
+}
+h1 span, .h1 span, h2 span, .h2 span, h3 span, .h3 span {
+  display: block;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
 footer {
   max-width: 100vw;
   padding-top: 4rem;
@@ -17533,7 +17549,7 @@ footer img {
   display: block;
   width: 70%;
   padding: 1rem 0;
-  max-width: 500px;
+  max-width: 300px;
   margin: 0 auto;
 }
 footer .icon-ul .icon-li {

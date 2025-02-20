@@ -1,0 +1,3 @@
+[submodule "portfolio-backend"]
+	path = portfolio-backend
+	url = git@github.com:dmsosa/portfolio-backend.git

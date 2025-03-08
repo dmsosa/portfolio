@@ -17767,6 +17767,50 @@ footer .icon-ul .icon-li {
   animation: bounce 1s linear infinite;
 }
 
+.artikel--wrap {
+  padding: 5rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artikel--desc {
+  padding: 0.5rem;
+  border: solid #65ff65 0.125rem;
+}
+.artikel--desc p {
+  max-width: 90%;
+  margin: 1rem auto;
+  padding-left: 1rem;
+}
+.artikel--desc .tags {
+  flex-basis: 100%;
+}
+.artikel--desc .tags ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+.artikel--desc .tags ul li {
+  background-color: #65ff65;
+  border: solid #65ff65 0.025rem;
+  padding: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: pointer;
+}
+.artikel--desc .tags ul li:not(:last-child) {
+  margin-right: 1rem;
+}
+.artikel--desc .tags ul li a {
+  color: inherit;
+  transition: color 0.4s;
+}
+
+.artikel--main {
+  background-color: red;
+}
+
 .robot-wrapper {
   position: relative;
   margin: auto;
@@ -18564,6 +18608,24 @@ ul.icon-ul {
 ::-webkit-scrollbar-thumb {
   background-color: #333;
   border-radius: 10px;
+}
+
+.benutzer--bild {
+  display: flex;
+  background-color: transparent;
+  border-radius: 100%;
+  border: solid #65ff65 0.125rem;
+  max-width: 4rem;
+  max-height: 4rem;
+  padding: 0.25rem;
+  flex-basis: 20%;
+}
+.benutzer--bild img {
+  max-width: 100%;
+}
+.benutzer--bild span {
+  padding-top: 0.25rem;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=styles.css.map */

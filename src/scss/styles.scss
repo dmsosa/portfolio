@@ -43,6 +43,8 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 @import "./components/footer";
 @import "./components/portfolio";
 @import "./components/about";
+@import "./components/artikel";
+
 
 // others
 @import "./others/robot";
@@ -207,4 +209,23 @@ ul.icon-ul {
 ::-webkit-scrollbar-thumb {
     background-color: #333;
     border-radius: 10px;
+}
+
+//Widgets
+.benutzer--bild {
+    display: flex;
+    background-color: transparent;
+    border-radius: 100%;
+    border: solid $primary 0.125rem;
+    max-width: 4rem;
+    max-height: 4rem;
+    padding: 0.25rem;
+    flex-basis: 20%;
+    img {
+        max-width: 100%;
+    }
+    span {
+        padding-top: 0.25rem;
+        font-weight: bold;
+    }
 }

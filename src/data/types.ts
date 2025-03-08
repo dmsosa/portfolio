@@ -6,8 +6,8 @@ export interface TArtikel {
     createdAt: Date;
     updatedAt: Date;
     tags: string[];
+    author: TBenutzer;
     kommentar: TKomment[];
-
 }
 export interface TKomment {
     author: TBenutzer;

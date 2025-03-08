@@ -1,0 +1,44 @@
+.artikel--wrap {
+    padding: 5rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artikel--desc {
+    padding: 0.5rem;
+    border: solid $primary 0.125rem;
+
+    
+    p {
+        max-width: 90%;
+        margin: 1rem auto;
+        padding-left: 1rem;
+    }
+    .tags {
+        flex-basis: 100%;
+        ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            li {
+                background-color: $primary;
+                border: solid $primary 0.025rem;
+                padding: 0.25rem;
+                font-weight: bold;
+                cursor: pointer;
+                color: pointer;
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+                a {
+                    color: inherit;
+                    transition: color 0.4s;
+                }
+            }
+        }
+    }
+}
+.artikel--main {
+    background-color: red;
+}

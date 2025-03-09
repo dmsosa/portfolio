@@ -18610,6 +18610,44 @@ ul.icon-ul {
   border-radius: 10px;
 }
 
+.dashboard-nav {
+  z-index: 10000;
+  position: fixed;
+  bottom: 0;
+  height: 4rem;
+  background-color: #333;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.5rem 1.6rem;
+  transition: opacity 0.4s;
+}
+.dashboard-nav:hover {
+  opacity: 0.95;
+}
+.dashboard-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+  fill: white;
+  transition: fill 0.4s, color 0.4s;
+}
+.dashboard-nav a:hover {
+  color: #65ff65 !important;
+  fill: #65ff65;
+}
+.dashboard-nav a svg {
+  fill: inherit !important;
+}
+.dashboard-nav a span {
+  color: inherit;
+}
+
 .benutzer--bild {
   display: flex;
   background-color: transparent;

@@ -1,6 +1,5 @@
 import './assets/css/styles.css'
 
-import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import { ThemeProvider } from './context/ThemeContext'
 import ThemeToggler from './components/Widgets/ThemeToggler'
@@ -10,6 +9,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import { Outlet } from 'react-router-dom'
+import DashboardNav from './components/DashboardNav/DashboardNav'
+
 
 export type TThemeContext = {
   theme: string,
@@ -73,7 +74,7 @@ function App() {
           <main ref={sectionRef}>
             <Outlet/>
           </main>
-          <Footer />
+          <DashboardNav />
       </ThemeProvider>      
     </>
   )

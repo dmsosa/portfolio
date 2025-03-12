@@ -9,7 +9,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import { Outlet } from 'react-router-dom'
-import DashboardNav from './components/DashboardNav/DashboardNav'
+import DashboardNav from './components/Dashboard/DashboardNav'
+import DashboardNavMobile from './components/Dashboard/DashboardNavMobile'
 
 
 export type TThemeContext = {
@@ -70,11 +71,14 @@ function App() {
     <>
       <ThemeProvider>
           <ThemeToggler/>
-          <Header />
           <main ref={sectionRef}>
+            <DashboardNav />
+            <div id='main-content'>
+            <Header />
             <Outlet/>
+            </div>
           </main>
-          <DashboardNav />
+          <DashboardNavMobile />
       </ThemeProvider>      
     </>
   )

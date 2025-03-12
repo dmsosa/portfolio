@@ -5,10 +5,10 @@ function BenutzerInfo({ bild, username, children } : { bild: string, username: s
 
     return (
         <div className="benutzer--bild">
-        <img src={bild} alt={`${username}'s profile image`} />
-        <span>dmsosa</span>
-        {children}
-    </div>
+            <img src={bild} alt={`${username}'s profile image`} />
+            <span>dmsosa</span>
+            {children}
+        </div>
     )
 }
 

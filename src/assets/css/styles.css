@@ -17572,36 +17572,6 @@ footer .icon-ul .icon-li {
   fill: #65ff65 !important;
 }
 
-#whatsappSvg {
-  stroke-dasharray: 132;
-  stroke-dashoffset: 132;
-}
-#whatsappSvg path {
-  fill: transparent;
-  stroke-width: 0.05rem;
-  stroke: #65ff65;
-}
-
-#emailSvg {
-  stroke-dasharray: 6193;
-  stroke-dashoffset: 6193;
-}
-#emailSvg path {
-  fill: transparent;
-  stroke-width: 0.05rem;
-  stroke: #65ff65;
-}
-
-#githubSvg {
-  stroke-dasharray: 132;
-  stroke-dashoffset: 132;
-}
-#githubSvg path {
-  fill: transparent;
-  stroke-width: 0.05rem;
-  stroke: #65ff65;
-}
-
 .project-card {
   --radius: 18px;
   max-width: 516px;
@@ -18302,8 +18272,16 @@ body {
 }
 
 main {
-  display: grid;
-  grid-template-columns: 1;
+  display: flex;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+#main-content {
+  overflow: hidden scroll;
+  overflow-y: scroll;
+  background-color: red;
 }
 
 section {
@@ -18563,11 +18541,6 @@ ul.icon-ul {
   color: #f0f0f0;
 }
 
-@media only screen and (min-width: 576px) {
-  .section-content {
-    flex-direction: row;
-  }
-}
 .theme-toggler {
   cursor: pointer;
   z-index: 1000;
@@ -18611,6 +18584,12 @@ ul.icon-ul {
 }
 
 .dashboard-nav {
+  height: 100vw;
+  width: 20rem;
+  background-color: #444;
+}
+
+.dashboard-nav-mobile {
   z-index: 10000;
   position: fixed;
   bottom: 0;
@@ -18625,10 +18604,10 @@ ul.icon-ul {
   padding: 0.5rem 1.6rem;
   transition: opacity 0.4s;
 }
-.dashboard-nav:hover {
+.dashboard-nav-mobile:hover {
   opacity: 0.95;
 }
-.dashboard-nav a {
+.dashboard-nav-mobile a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18637,14 +18616,14 @@ ul.icon-ul {
   fill: white;
   transition: fill 0.4s, color 0.4s;
 }
-.dashboard-nav a:hover {
+.dashboard-nav-mobile a:hover {
   color: #65ff65 !important;
   fill: #65ff65;
 }
-.dashboard-nav a svg {
+.dashboard-nav-mobile a svg {
   fill: inherit !important;
 }
-.dashboard-nav a span {
+.dashboard-nav-mobile a span {
   color: inherit;
 }
 
@@ -18664,6 +18643,50 @@ ul.icon-ul {
 .benutzer--bild span {
   padding-top: 0.25rem;
   font-weight: bold;
+}
+
+#whatsappSvg {
+  stroke-dasharray: 132;
+  stroke-dashoffset: 0;
+}
+#whatsappSvg path {
+  fill: transparent;
+  stroke-width: 0.05rem;
+  stroke: #65ff65;
+}
+
+#emailSvg {
+  stroke-dasharray: 6193;
+  stroke-dashoffset: 0;
+}
+#emailSvg path {
+  fill: transparent;
+  stroke-width: 0.5rem;
+  stroke: #65ff65;
+}
+
+#githubSvg {
+  stroke-dasharray: 132;
+  stroke-dashoffset: 0;
+}
+#githubSvg path {
+  fill: transparent;
+  stroke-width: 0.05rem;
+  stroke: #65ff65;
+}
+
+@media only screen and (min-width: 576px) {
+  .section-content {
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main {
+    display: flex;
+  }
+  .dashboard-nav-mobile {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

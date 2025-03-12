@@ -8,15 +8,15 @@ type TPage = {
     icon: ReactNode,
 }
 const pages: TPage[] = [
-    { title: 'Dashboard', href: '/dashboard', icon: <GiAbstract031/> },
     { title: 'Home', href: '/', icon: <FaHome />    },
-    { title: 'Artikeln', href: '/artikeln', icon: <Gi3dGlasses /> },
-    { title: 'CV', href: '/cv', icon: <FaUserTie /> },
+    { title: 'Dashboard', href: '/dashboard', icon: <GiAbstract031/> },
+    { title: 'Artikeln', href: '/dashboard/artikeln', icon: <Gi3dGlasses /> },
+    { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
 ]; 
 
-function DashboardNav() {
+function DashboardNavMobile() {
     return (
-        <nav className="dashboard-nav">
+        <nav className="dashboard-nav-mobile">
             {pages.map((page) => 
                 <a key={page.title} href={page.href}>
                     {page.icon}
@@ -26,4 +26,4 @@ function DashboardNav() {
         </nav>
     );
 }
-export default DashboardNav;
+export default DashboardNavMobile;

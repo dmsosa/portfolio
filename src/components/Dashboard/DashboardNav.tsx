@@ -1,28 +1,29 @@
+import BenutzerInfo from "../Widgets/BenutzerInfo";
+import DashboardList from "./DashboardList";
+import boy from "../../assets/img/boy.png";
+import DashboardToggler from "./DashboardToggler";
+import useDashboardContext, { TDashboardContext } from "../../context/DashboardContext";
+import { useEffect } from "react";
+
+
 function DashboardNav() {
+    const { navWidth } = useDashboardContext() as TDashboardContext;
+
+    useEffect(() => {
+        const nav = document.getElementById("nav")  as HTMLDivElement;
+        nav.style.setProperty('--nav-width', `${navWidth}px`);
+    }, [navWidth])
     return (
-        <div className="dashboard-nav">
-            <div className="brand">
-                <span>D </span>
-                <h1>titel</h1>
+        <nav id="nav" className="dashboard-nav">
+            <div className="d-flex">
+                <BenutzerInfo bild={boy} username={"dmsosa"}/>
+                <DashboardToggler hideButton={true}/>
             </div>
-            <ul>
-                <li>
-                    <a href="">home</a>
-                </li>
-                <li>
-                    <a href="">dashboard</a>
-                </li>
-                <li>
-                    <a href="">arikeln</a>
-                </li>
-                <li>
-                    <a href="">cv</a>
-                </li>
-            </ul>
+            <DashboardList/>
             <div className="div">
-                <span>Copyright</span>
-            </div>
-        </div>
+                <h2>ert</h2>
+            </div>           
+        </nav>
     );
 }
 export default DashboardNav;

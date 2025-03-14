@@ -3,12 +3,9 @@ import Portfolio from "../components/Portfolio/Portfolio";
 
 export default function Home() {
     return (
-        <>
-            <div className="content">
-              <Portfolio />
-              <UberMich />
-            </div>
-        </>
-
+        <div className="content">
+            <Portfolio />
+            <UberMich />
+        </div>
     )
 }

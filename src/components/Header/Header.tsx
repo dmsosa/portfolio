@@ -1,27 +1,16 @@
-import { useEffect, useRef } from "react";
 import Logo from "./Logo";
-import Navbar from "./Navbar";
+import DropdownBtn from "./DropdownBtn";
+import DashboardToggler from "../Dashboard/DashboardToggler";
 
 function Header() {
-    const prevScroll = useRef<number>(0);
 
-    useEffect(() => {
-        const header = document.getElementById("header");
-        window.addEventListener("scroll", () => {
-            const currentScroll = window.scrollY;
-            if (currentScroll > prevScroll.current) {
-                header?.classList.add("scrolled");
-                prevScroll.current = currentScroll;
-            } else if (currentScroll < prevScroll.current) {
-                header?.classList.remove("scrolled");
-                prevScroll.current = currentScroll;
-            }
-        })
-    }, [])
     return (
-        <header id="header" className="sticky-header">
-            <Logo />
-            <Navbar />
+        <header id="header" className="header">
+            <div className="d-flex">
+                <DashboardToggler />
+                <Logo />
+            </div>
+                <DropdownBtn />
             <div className="progress-bar"></div>
         </header>
         

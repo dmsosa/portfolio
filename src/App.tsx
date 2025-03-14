@@ -1,16 +1,16 @@
 import './assets/css/styles.css'
 
-import Header from './components/Header/Header'
-import { ThemeProvider } from './context/ThemeContext'
 import ThemeToggler from './components/Widgets/ThemeToggler'
-import Lenis from 'lenis'
-import { useEffect, useRef } from 'react'
+import {  useEffect, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
-import { Outlet } from 'react-router-dom'
 import DashboardNav from './components/Dashboard/DashboardNav'
 import DashboardNavMobile from './components/Dashboard/DashboardNavMobile'
+import { DashboardContextProvider } from './context/DashboardContext'
+import Lenis from 'lenis'
+import AppContent from './AppContent'
+import { ThemeProvider } from './context/ThemeContext'
 
 
 export type TThemeContext = {
@@ -19,7 +19,6 @@ export type TThemeContext = {
 }
 
 function App() {
-
   const sectionRef = useRef<HTMLDivElement>(null);
   
   const animate = (target: Element) => {
@@ -68,19 +67,17 @@ function App() {
     requestAnimationFrame(raf);
   }, [])
   return (
-    <>
+
+    <div className='app-inner theme-dark'>
       <ThemeProvider>
+      <DashboardContextProvider>
           <ThemeToggler/>
-          <main ref={sectionRef}>
-            <DashboardNav />
-            <div id='main-content'>
-            <Header />
-            <Outlet/>
-            </div>
-          </main>
+          <DashboardNav/>
+          <AppContent/>
           <DashboardNavMobile />
-      </ThemeProvider>      
-    </>
+      </DashboardContextProvider>      
+      </ThemeProvider>
+    </div>
   )
 }
 

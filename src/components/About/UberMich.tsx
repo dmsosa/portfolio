@@ -1,5 +1,4 @@
 
-import pointer from "../../assets/img/pointer.png"
 import Content from "./Content";
 import { ReactNode } from "react";
 
@@ -39,6 +38,7 @@ function UberMich() {
             <div className="container container-sm">
                 { contents.map((content, index) => (
                     <Content 
+                    key={content.title}
                     title={content.title}
                     description={content.description}
                     textToRight={index % 2 === 0}

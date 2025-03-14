@@ -9,8 +9,9 @@ import CV from './routes/CV.tsx';
 import DashboardCards from './components/Dashboard/DashboardCards.tsx';
 
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('app')!).render(
   <StrictMode>
+          
     <BrowserRouter>
       <Routes>
         <Route element={<App/>}>

@@ -2,9 +2,6 @@
 import { useRef } from "react";
 import { projectsArray } from "../../data/projects";
 import ProjektKarte from "./ProjektKarte";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Portfolio() {
 
@@ -34,6 +31,7 @@ function Portfolio() {
                 {projectsArray.map((project, index) => {
                     return (
                         <ProjektKarte
+                        key={project.title}
                         index={index + 1}
                         repo={project.repo}
                         title={project.title}

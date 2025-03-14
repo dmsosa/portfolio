@@ -3,10 +3,7 @@
     transform: translateY(-90%) !important;
 }
 
-.sticky-header {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+.header {
     width: 100%;
     padding: 0 1.5rem;
     display: flex;
@@ -16,10 +13,10 @@
     height: 3.25rem;
     transform: none;
     transition: transform 0.5s ease-in;
-    background-color: transparent;
-    backdrop-filter: blur(5px);
+    background-color: $dark;
     transform: translateY(0);
     transition: transform 0.4s;
+    box-shadow: 0px 0px 5px #111;
 }
 .progress-bar {
     position: absolute;
@@ -31,18 +28,9 @@
     background-color: #fff;
     transform-origin: left center;
     transform: scaleX(0);
-    animation: progress-bar linear alternate;
-    animation-timeline: scroll(y);
+    will-change: transform;
 }
 
-@keyframes progress-bar {
-    from {
-        transform: scaleX(0);
-    }
-    to {
-        transform: scaleX(1);
-    }
-}
 .logo {
     display: flex;
     align-items: center;
@@ -62,22 +50,39 @@
 .nav-toggler {
     position: relative;
     z-index: 999;
-    border: none;
-    outline: none;
     background-color: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.15rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    transition: background-color 0.2s;
+    line-height: 0rem;
+    stroke: #fff;
     svg {
-        width: 1rem;
-        stroke: white;
-        stroke-width: 0.125rem;
+        width: 100%;
+        height: 100%;
+        stroke: inherit;
+        stroke-width: 1.525rem;
         path {
+            fill: transparent;
+            stroke-linecap: round; stroke-miterlimit: 18.72; stroke-linejoin: round;
             transition: d 0.4s;
         }
     }
-    &[aria-expanded='true'] {
+    &:hover:not([class='nav-toggler-hide']), &.active {
+        background-color: #ffffff15;
         svg {
-            path {
-                d: path("M1,2 22,22 M6,6 6,6 M22,2 1,22");
+            #bar1 {
+                d: path("M 50 50 L 150 150 L 50 250");
             }
+            #bar2 {
+                d: path("M 150 50 L 250 150");
+            }
+            #bar3 {
+                d: path("M 150 250 L 250 150");
+            }
+            
         }
     }
 }

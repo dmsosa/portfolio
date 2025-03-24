@@ -1,5 +1,5 @@
 
-import DashboardList from "./DashboardList";
+import DashboardList from "../Widgets/LinkList";
 
 
 function DashboardNavMobile() {

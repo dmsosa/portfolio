@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 import DropdownBtn from "./DropdownBtn";
-import DashboardToggler from "../Dashboard/DashboardToggler";
+import DashboardToggler from "../Nav/SidebarNavToggler";
 
 function Header() {
 

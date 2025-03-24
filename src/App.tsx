@@ -1,16 +1,15 @@
 import './assets/css/styles.css'
 
 import ThemeToggler from './components/Widgets/ThemeToggler'
-import {  useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
-import DashboardNav from './components/Dashboard/DashboardNav'
-import DashboardNavMobile from './components/Dashboard/DashboardNavMobile'
-import { DashboardContextProvider } from './context/DashboardContext'
-import Lenis from 'lenis'
-import AppContent from './AppContent'
+import { SidebarContextProvider } from './context/SidebarContext'
 import { ThemeProvider } from './context/ThemeContext'
+import SidebarNav from './components/Nav/SidebarNav'
+import { Outlet } from 'react-router-dom'
+import Header from './components/Header/Header'
 
 
 export type TThemeContext = {
@@ -20,7 +19,6 @@ export type TThemeContext = {
 
 function App() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  
   const animate = (target: Element) => {
     gsap.fromTo(target, {
       transform: "translateY(100%) rotate(-10deg)",
@@ -58,26 +56,22 @@ function App() {
       })
 
   }, { scope: sectionRef });
-  useEffect(() => {
-    const lenis = new Lenis({autoRaf: true});
 
-    const raf = (timestamp: number) => {
-      lenis.raf(timestamp);
-    }
-    requestAnimationFrame(raf);
-  }, [])
   return (
-
     <div className='app-inner theme-dark'>
       <ThemeProvider>
-      <DashboardContextProvider>
+      <SidebarContextProvider>
           <ThemeToggler/>
-          <DashboardNav/>
-          <AppContent/>
-          <DashboardNavMobile />
-      </DashboardContextProvider>      
+          <SidebarNav/>
+          <div id='appContent'>
+            <Header/>
+            <main>
+            <Outlet/>
+            </main>
+        </div>
+      </SidebarContextProvider>      
       </ThemeProvider>
-    </div>
+    </div>    
   )
 }
 

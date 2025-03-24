@@ -70,19 +70,24 @@
             transition: d 0.4s;
         }
     }
-    &:hover:not([class='nav-toggler-hide']), &.active {
+    &.active, &:hover {
         background-color: #ffffff15;
-        svg {
-            #bar1 {
-                d: path("M 50 50 L 150 150 L 50 250");
+    }
+    &[aria-label='nav-toggler-open'] {
+        &:hover {
+            background-color: #ffffff15;
+            svg {
+                #bar1 {
+                    d: path("M 50 50 L 150 150 L 50 250");
+                }
+                #bar2 {
+                    d: path("M 150 50 L 250 150");
+                }
+                #bar3 {
+                    d: path("M 150 250 L 250 150");
+                }
+                
             }
-            #bar2 {
-                d: path("M 150 50 L 250 150");
-            }
-            #bar3 {
-                d: path("M 150 250 L 250 150");
-            }
-            
         }
     }
 }

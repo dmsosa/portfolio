@@ -14,13 +14,13 @@ const pages: TPage[] = [
     { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
 ]; 
 
-function DashboardList() {
+function LinkList({ expanded } : { expanded: boolean }) {
     return (
-        <ul>
+        <ul className="link-list">
             {pages.map((page) => 
                 (
                 <li key={page.title}>
-                    <a href={page.href}>
+                    <a className="link" href={page.href} aria-expanded={expanded}>
                         {page.icon}
                         <span>{page.title}</span>
                     </a>
@@ -30,4 +30,4 @@ function DashboardList() {
         </ul>
     );
 }
-export default DashboardList;
+export default LinkList;

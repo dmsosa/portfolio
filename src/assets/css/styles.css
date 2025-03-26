@@ -17792,6 +17792,11 @@ footer .icon-ul .icon-li {
   background-color: red;
 }
 
+.row {
+  min-height: 70vh;
+  background-color: green;
+}
+
 .robot-wrapper {
   position: relative;
   margin: auto;

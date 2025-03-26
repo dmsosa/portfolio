@@ -20,6 +20,9 @@ export interface TBenutzer {
     email: string;
     image: string;
     bio: string;
-    createdAt: Date;
-    updatedAt: Date;
+    isFollowing: boolean;
+    followingCount: number;
+    followersCount: number;
+    createdAt: string;
+    updatedAt: string;
 }

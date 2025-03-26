@@ -7,6 +7,7 @@ import Artikel from './routes/Artikel.tsx';
 import Dashboard from './routes/Dashboard.tsx';
 import CV from './routes/CV.tsx';
 import DashboardCards from './components/Dashboard/DashboardCards.tsx';
+import Profile from './routes/Profile.tsx';
 
 
 createRoot(document.getElementById('app')!).render(
@@ -19,6 +20,7 @@ createRoot(document.getElementById('app')!).render(
           <Route path='/dashboard' element={<Dashboard />}>
             <Route element={<DashboardCards />} index={true}></Route>
             <Route path='artikeln' element={<Artikel />}></Route>
+            <Route path='profiles' element={<Profile />}></Route>
             <Route path='cv' element={<CV/>}></Route>
           </Route>
         </Route>

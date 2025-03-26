@@ -7,7 +7,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
 import { SidebarContextProvider } from './context/SidebarContext'
 import { ThemeProvider } from './context/ThemeContext'
-import SidebarNav from './components/Nav/SidebarNav'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header/Header'
 
@@ -58,20 +57,14 @@ function App() {
   }, { scope: sectionRef });
 
   return (
-    <div className='app-inner theme-dark'>
       <ThemeProvider>
       <SidebarContextProvider>
           <ThemeToggler/>
-          <SidebarNav/>
-          <div id='appContent'>
-            <Header/>
-            <main>
-            <Outlet/>
-            </main>
-        </div>
+          <Header />
+          <Outlet />
+          {/* Footer */}
       </SidebarContextProvider>      
       </ThemeProvider>
-    </div>    
   )
 }
 

@@ -23,9 +23,10 @@ export function SidebarContextProvider({ children } : { children: ReactNode | Re
     const [navWidth, setNavWidth] = useState(viewportWidth);
 
     useEffect(() => {
-        const nav = document.getElementById("nav")  as HTMLDivElement;
+        const nav = document.getElementById("nav");
+        if (!nav) return;
         nav.style.setProperty('width', `${navWidth}px`);
-        const app = document.getElementById("appContent")  as HTMLDivElement;
+        const app = document.getElementById("dashboardContent")  as HTMLDivElement;
         if (navWidth === 0 || navWidth === viewportWidth) {
             app.style.setProperty('width', '100vw');
         } else {

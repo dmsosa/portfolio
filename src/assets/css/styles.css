@@ -17522,6 +17522,9 @@ progress {
   align-items: center;
   padding: 0.5rem;
 }
+.sidebar-nav .sidebar-content .benutzer--info {
+  max-width: 2.5rem;
+}
 
 .benutzer--wrapper {
   display: flex;
@@ -17792,9 +17795,50 @@ footer .icon-ul .icon-li {
   background-color: red;
 }
 
-.row {
+.artikel--card {
+  background-color: #09132b;
+  padding: 1rem;
+}
+.artikel--card .benutzer--info {
+  max-width: 4rem !important;
+}
+.artikel--card:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.artikel--card h3 + span, .artikel--card .h3 + span {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #dadada;
+  text-align: left;
+  font-weight: 300;
+}
+
+.main-bg {
+  position: relative;
   min-height: 70vh;
   background-color: green;
+  display: flex;
+}
+.main-bg::after {
+  content: "";
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  background: linear-gradient(to top, #111, transparent);
+  bottom: 0;
+}
+
+.main-bg div {
+  z-index: 1;
+}
+
+.main-bg .benutzer--info {
+  width: 5rem;
+}
+
+.benutzer--text {
+  padding: 1rem 2.5rem;
 }
 
 .robot-wrapper {
@@ -18292,14 +18336,8 @@ body, #app {
   color: #f0f0f0;
 }
 
-#app-content {
-  overflow: hidden;
-  height: 100%;
-  width: var(--app-content-width);
-}
-
 main {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   overflow: hidden scroll;
 }
@@ -18641,24 +18679,31 @@ ul.icon-ul {
 
 .benutzer--info {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.benutzer--info a {
+  display: flex;
+  gap: 0.5rem;
   background-color: transparent;
   border-radius: 100%;
   border: solid #18306c 0.125rem;
-  max-width: 2.2rem;
   padding: 0.15rem;
   text-decoration: none;
   transition: all 0.4s ease;
 }
-.benutzer--info:hover {
-  color: #65ff65;
+.benutzer--info a:hover {
+  color: #65ff65 !important;
   background-color: #555;
 }
 .benutzer--info img {
   max-width: 100%;
 }
 .benutzer--info span {
-  padding-top: 0.25rem;
+  color: inherit;
   font-weight: bold;
+  align-self: center;
 }
 
 .link-list {
@@ -18731,6 +18776,14 @@ ul.icon-ul {
   fill: transparent;
   stroke-width: 0.05rem;
   stroke: #65ff65;
+}
+
+.ul-tag {
+  display: flex;
+  list-style: none;
+}
+.ul-tag li:not(:last-child) {
+  margin-right: 0.5rem;
 }
 
 @media only screen and (min-width: 576px) {

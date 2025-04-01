@@ -14,7 +14,7 @@ export default function Artikel() {
                     </div>
                     <hr></hr>
                     <div className="artikel--desc">
-                        <BenutzerInfo bild={boy} username={"dmsosa"}>
+                        <BenutzerInfo bild={boy} username={"dmsosa"} expanded>
                             <BenutzerKnopf/>
                         </BenutzerInfo>
                         <p>{artikel.description}</p>
@@ -45,7 +45,7 @@ export default function Artikel() {
                             {artikel.kommentar.map((komm) => (
                                 <div className="container">
                                     <div className="row">
-                                        <BenutzerInfo bild={boy} username={komm.author.username}>
+                                        <BenutzerInfo bild={boy} username={komm.author.username} expanded>
                                             <BenutzerKnopf/>
                                         </BenutzerInfo>       
                                         <div className="ms-5">

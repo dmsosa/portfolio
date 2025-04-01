@@ -26,11 +26,11 @@ export function SidebarContextProvider({ children } : { children: ReactNode | Re
         const nav = document.getElementById("nav");
         if (!nav) return;
         nav.style.setProperty('width', `${navWidth}px`);
-        const app = document.getElementById("dashboardContent")  as HTMLDivElement;
+        const main = document.querySelector("main")  as HTMLDivElement;
         if (navWidth === 0 || navWidth === viewportWidth) {
-            app.style.setProperty('width', '100vw');
+            main.style.setProperty('width', '100vw');
         } else {
-            app.style.setProperty('width', `calc( 100vw - ${navWidth}px)`);
+            main.style.setProperty('width', `calc( 100vw - ${navWidth}px)`);
         }
     }, [ navWidth ])
     return  (

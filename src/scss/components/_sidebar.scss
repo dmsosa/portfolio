@@ -17,7 +17,9 @@
         justify-content: center;
         align-items: center;
         padding: 0.5rem;
-
+        .benutzer--info {
+            max-width: 2.5rem;
+        }
     }
     // &.active {
     //     .sidebar-content {

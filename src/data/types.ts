@@ -3,11 +3,12 @@ export interface TArtikel {
     title: string;
     body: string;
     description: string;
-    createdAt: Date;
-    updatedAt: Date;
     tags: string[];
     author: TBenutzer;
+    isFavorite: boolean;
     kommentar: TKomment[];
+    createdAt: Date;
+    updatedAt: Date;
 }
 export interface TKomment {
     author: TBenutzer;
@@ -17,12 +18,21 @@ export interface TKomment {
 }
 export interface TBenutzer {
     username: string;
-    email: string;
     image: string;
     bio: string;
     isFollowing: boolean;
     followingCount: number;
     followersCount: number;
+    createdAt: string;
+    updatedAt: string;
+}
+export interface TLoggedBenutzer {
+    username: string;
+    email: string;
+    image?: string;
+    bio?: string;
+    token: string;
+    role: 'BENUTZER' | 'ADMIN';
     createdAt: string;
     updatedAt: string;
 }

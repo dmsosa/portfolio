@@ -42,3 +42,22 @@
 .artikel--main {
     background-color: red;
 }
+
+.artikel--card {
+    .benutzer--info {
+        max-width: 4rem !important;
+    }
+    background-color: $dark2;
+    padding: 1rem;
+    &:not(:last-child) {
+        margin-bottom: 0.5rem;
+    }
+    h3+span {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: $light2;
+        text-align: left;
+        font-weight: 300;
+    }
+}

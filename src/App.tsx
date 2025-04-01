@@ -9,6 +9,7 @@ import { SidebarContextProvider } from './context/SidebarContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header/Header'
+import { EndpunktContextProvider } from './context/EndpunktContext'
 
 
 export type TThemeContext = {
@@ -57,14 +58,17 @@ function App() {
   }, { scope: sectionRef });
 
   return (
-      <ThemeProvider>
-      <SidebarContextProvider>
-          <ThemeToggler/>
-          <Header />
-          <Outlet />
-          {/* Footer */}
-      </SidebarContextProvider>      
-      </ThemeProvider>
+    <EndpunktContextProvider>
+    <ThemeProvider>
+    <SidebarContextProvider>
+      <ThemeToggler/>
+      <Header />
+      <Outlet />
+      {/* Footer */}
+    </SidebarContextProvider>      
+    </ThemeProvider>
+    </EndpunktContextProvider>
+      
   )
 }
 

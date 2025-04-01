@@ -1,10 +1,10 @@
-import { Outlet } from "react-router-dom";
 import SidebarNav from "../components/Nav/SidebarNav";
 import useArtikeln from "../hooks/useArtikeln";
 import ArtikelListe from "../components/Widgets/ArtikelListe";
 import TagToggler from "../components/Widgets/TagToggler";
 import { useState } from "react";
 import ArtikelPagination from "../components/Widgets/ArtikelPagination";
+import EndpunktToggler from "../components/Widgets/EndpunktToggler";
 // const cards = [
 //     {title: 'Total Artikeln', value: 18}, //get funcs
 //     {title: 'Total Benutzer', value: 25},
@@ -37,7 +37,7 @@ export default function Dashboard() {
             <>
                 <SidebarNav/>
                 <main>
-                    <Outlet/>
+                    <EndpunktToggler endpunkte={['global', 'favorite']}/>
                     <div className="row pb-5">
                     <h1 className="mt-5">{title}</h1>
                     <h2>{artikelnAnzahl}</h2>

@@ -6,7 +6,6 @@ import Home from './routes/Home.tsx';
 import Artikel from './routes/Artikel.tsx';
 import Dashboard from './routes/Dashboard.tsx';
 import CV from './routes/CV.tsx';
-import DashboardCards from './components/Dashboard/DashboardCards.tsx';
 import Profile from './routes/Profile.tsx';
 
 
@@ -16,13 +15,11 @@ createRoot(document.getElementById('app')!).render(
     <BrowserRouter>
       <Routes>
         <Route element={<App/>}>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/dashboard' element={<Dashboard />}>
-            <Route element={<DashboardCards />} index={true}></Route>
-            <Route path='artikeln' element={<Artikel />}></Route>
-            <Route path='profiles' element={<Profile />}></Route>
-            <Route path='cv' element={<CV/>}></Route>
-          </Route>
+          <Route path='/' element={<Home />} index={true}></Route>
+          <Route path='/dashboard' element={<Dashboard />}></Route>
+          <Route path='/artikel' element={<Artikel />}></Route>
+          <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/cv' element={<CV/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

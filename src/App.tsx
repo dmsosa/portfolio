@@ -10,6 +10,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header/Header'
 import { EndpunktContextProvider } from './context/EndpunktContext'
+import { AuthContextProvider } from './context/AuthContext'
 
 
 export type TThemeContext = {
@@ -58,6 +59,7 @@ function App() {
   }, { scope: sectionRef });
 
   return (
+    <AuthContextProvider>
     <EndpunktContextProvider>
     <ThemeProvider>
     <SidebarContextProvider>
@@ -68,6 +70,8 @@ function App() {
     </SidebarContextProvider>      
     </ThemeProvider>
     </EndpunktContextProvider>
+    </AuthContextProvider>
+    
       
   )
 }

@@ -1,10 +1,10 @@
-import { TArtikel, TBenutzer } from "../../data/types";
-import { TArtikelnDatei } from "../../hooks/useArtikeln";
+import { TArtikel, TBenutzer } from "../../../data/types";
 import ArtikelInfo from "./ArtikelInfo";
-import EditKnopf from "./Knopfen/EditKnopf";
-import FavoriteKnopf from "./Knopfen/FavoriteKnopf";
-import FollowKnopf from "./Knopfen/FollowKnopf";
-import RemoveKnopf from "./Knopfen/RemoveKnopf";
+import EditKnopf from "../Knopfen/EditKnopf";
+import FavoriteKnopf from "../Knopfen/FavoriteKnopf";
+import FollowKnopf from "../Knopfen/FollowKnopf";
+import RemoveKnopf from "../Knopfen/RemoveKnopf";
+import { TArtikelnDatei } from "../../../hooks/useArtikeln";
 
 export default function ArtikelListe({ loading, artikelnArray, setArtikelnDatei }: { loading: boolean, artikelnArray: TArtikel[], setArtikelnDatei: React.Dispatch<React.SetStateAction<TArtikelnDatei>>}) {
     //Karte mit Knopf

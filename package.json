@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "vite": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "node-sass": "sass -w src/scss/:src/assets/css/"
+    "node-sass": "sass -w src/scss/:src/assets/css/",
+    "dev": "concurrently \"vite\" \"sass -w src/scss/:src/assets/css/\""
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -28,6 +29,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",
     "bootstrap": "^5.3.3",
+    "concurrently": "^9.1.2",
     "eslint": "^9.11.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",

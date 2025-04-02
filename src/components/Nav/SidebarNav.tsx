@@ -1,4 +1,4 @@
-import BenutzerInfo from "../Widgets/BenutzerInfo";
+import BenutzerInfo from "../Widgets/Benutzer/BenutzerInfo";
 import boy from "../../assets/img/boy.png";
 import DashboardToggler from "./SidebarNavToggler";
 import { IoSettings } from "react-icons/io5";

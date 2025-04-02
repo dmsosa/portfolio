@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { TBenutzer } from "../data/types";
 import boy from "../assets/img/boy.png";
-import BenutzerInfo from "../components/Widgets/BenutzerInfo";
+import BenutzerInfo from "../components/Widgets/Benutzer/BenutzerInfo";
 
 const user: TBenutzer = {
     username: 'benutzer1',

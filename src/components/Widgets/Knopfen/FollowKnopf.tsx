@@ -5,6 +5,8 @@ import { toggleFollow } from "../../../services/benutzer.services";
 export default function FollowKnopf({ isFollowing, username, updateParentData } : { isFollowing:boolean, username: string, updateParentData: (author: TBenutzer) => void }) {
     const [ loading, setLoading ] = useState(false);
     const handleClick = () => {
+
+        
         setLoading(true);
         toggleFollow({ headers: {}, isFollowing, username })
         .then((benutzer) => {

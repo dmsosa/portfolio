@@ -1,10 +1,12 @@
 import SidebarNav from "../components/Nav/SidebarNav";
 import useArtikeln from "../hooks/useArtikeln";
-import ArtikelListe from "../components/Widgets/ArtikelListe";
 import TagToggler from "../components/Widgets/TagToggler";
 import { useState } from "react";
-import ArtikelPagination from "../components/Widgets/ArtikelPagination";
+import ArtikelPagination from "../components/Widgets/ListePagination";
 import EndpunktToggler from "../components/Widgets/EndpunktToggler";
+import Forms from "../components/Forms/Forms";
+import ArtikelListe from "../components/Widgets/Artikel/ArtikelListe";
+import { useAuth } from "../context/AuthContext";
 // const cards = [
 //     {title: 'Total Artikeln', value: 18}, //get funcs
 //     {title: 'Total Benutzer', value: 25},
@@ -19,6 +21,7 @@ export default function Dashboard() {
     const currentLocation = href[href.length - 1];
     const [ selectedTags, setSelectedTags ] = useState<string>("");
     const [ offset, setOffset ] = useState<number>(2);
+    const { isAuth, loggedUser } = useAuth();
     let title = 'Alle Artikeln';
     switch (currentLocation) {
         case 'artikeln': { 
@@ -37,6 +40,7 @@ export default function Dashboard() {
             <>
                 <SidebarNav/>
                 <main>
+                    { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <Forms/>}
                     <EndpunktToggler endpunkte={['global', 'favorite']}/>
                     <div className="row pb-5">
                     <h1 className="mt-5">{title}</h1>

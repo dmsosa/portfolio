@@ -1,7 +1,6 @@
 import artikelArray from "../data/articles"
 import boy from "../assets/img/boy.png";
-import BenutzerInfo from "../components/Widgets/BenutzerInfo";
-import BenutzerKnopf from "../components/Widgets/BenutzerKnopf";
+import BenutzerInfo from "../components/Widgets/Benutzer/BenutzerInfo";
 
 export default function Artikel() {
     const artikel = artikelArray[0];
@@ -15,7 +14,7 @@ export default function Artikel() {
                     <hr></hr>
                     <div className="artikel--desc">
                         <BenutzerInfo bild={boy} username={"dmsosa"} expanded>
-                            <BenutzerKnopf/>
+                            <button>Folg</button>
                         </BenutzerInfo>
                         <p>{artikel.description}</p>
                         <div className="tags">
@@ -46,7 +45,7 @@ export default function Artikel() {
                                 <div className="container">
                                     <div className="row">
                                         <BenutzerInfo bild={boy} username={komm.author.username} expanded>
-                                            <BenutzerKnopf/>
+                                            <button>Folg</button>
                                         </BenutzerInfo>       
                                         <div className="ms-5">
                                             <span>{'25-2025'}</span>

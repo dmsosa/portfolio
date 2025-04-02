@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { TArtikel } from "../../data/types";
-import BenutzerInfo from "./BenutzerInfo";
-import boy from "../../assets/img/boy.png";
+import boy from "../../../assets/img/boy.png";
 import { ReactNode } from "react";
+import BenutzerInfo from "../Benutzer/BenutzerInfo";
+import { TArtikel } from "../../../data/types";
 
 export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel, children: ReactNode }) {
 //if author, remove und edit knopf

@@ -1,9 +1,8 @@
 import ReactPaginate from "react-paginate";
 
-export default function ArtikelPagination({ loading, pageCount, setOffset }: { loading: boolean, pageCount: number, setOffset: React.Dispatch<React.SetStateAction<number>> }) {
+export default function ArrayPagination({ loading, pageAnzahl, setOffset }: { loading: boolean, pageAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>> }) {
     const handlePageChange = (selectedItem: { selected: number }) => {
         setOffset(selectedItem.selected);
-        console.log(selectedItem.selected)
     }
     return loading ? 
     (
@@ -12,7 +11,7 @@ export default function ArtikelPagination({ loading, pageCount, setOffset }: { l
     :
     (
         <ReactPaginate
-        pageCount={pageCount}
+        pageCount={pageAnzahl}
         onPageChange={handlePageChange}
         previousLabel={"<"}
         nextLabel={">"}

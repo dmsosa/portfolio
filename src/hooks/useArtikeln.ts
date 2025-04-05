@@ -6,27 +6,29 @@ export type TArtikelnDatei = {
     artikelnAnzahl: number,
     artikeln: TArtikel[],
 }
-export default function useArtikeln({ endpoint, username, tags, limit=3, offset=0 } : {
-    endpoint: 'global' | 'feed' | 'favoriter' | 'author',
+export default function useArtikeln({ headers, endpunkt, username, tags } : {
+    headers: Record<string, string>,
+    endpunkt: 'global' | 'feed' | 'favoriter' | 'author',
     username?: string | undefined, 
     tags?: string | undefined,
-    limit?: number | undefined,
-    offset?: number | undefined,
     oldest?: boolean | undefined,
 }) {
 
     const [ artikelnDatei, setArtikelnDatei ] = useState<TArtikelnDatei>({ artikelnAnzahl: 0, artikeln: []});
-    const [ loading, setLoading ] = useState< boolean >(false);
+    const [ loadingArtikeln, setLoading ] = useState< boolean >(false);
+    const [ offset, setOffsetArtikeln ] = useState<number>(0); 
+    const limit = 3;
     const { artikelnAnzahl, artikeln } = artikelnDatei;
     useEffect(() => {
         setLoading(true);
+        console.log("e")
         //headers greifen
-        getArtikeln({headers: {}, endpoint, username, tags, limit, offset })
+        getArtikeln({headers: headers, endpunkt, username, tags, limit, offset })
         .then((artikelnDatei) => setArtikelnDatei(artikelnDatei))
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
 
-    }, [endpoint, username, tags, limit, offset]);
+    }, [endpunkt, username, tags, limit, offset]);
 
-    return  { loading, artikelnAnzahl, artikeln, setArtikelnDatei }
+    return  { loadingArtikeln, artikelnAnzahl, artikeln, setArtikelnDatei, setOffsetArtikeln }
 }

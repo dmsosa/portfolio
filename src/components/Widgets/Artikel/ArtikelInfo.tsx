@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import boy from "../../../assets/img/boy.png";
 import { ReactNode } from "react";
-import BenutzerInfo from "../Benutzer/BenutzerInfo";
 import { TArtikel } from "../../../data/types";
+import Avatar from "../Avatar";
 
 export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel, children: ReactNode }) {
 //if author, remove und edit knopf
@@ -10,7 +10,7 @@ export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel,
 //slug
     return (<div className="artikel--card">
             <div className="d-flex justify-content-between align-items-center">
-                <BenutzerInfo bild={boy} username={artikel.author.username} expanded />
+                <Avatar bild={boy} username={artikel.author.username} expanded />
                 { children }
             </div>
             <Link to={artikel.slug} className="text-decoration-none">

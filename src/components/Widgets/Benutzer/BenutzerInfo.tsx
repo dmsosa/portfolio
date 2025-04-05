@@ -1,17 +1,17 @@
 import { ReactNode } from "react";
+import Avatar from "../Avatar";
+import { TBenutzer } from "../../../data/types";
 
-function BenutzerInfo({ bild, username, expanded, children } : { bild: string, username: string, expanded: boolean, children?: ReactNode }) {
+function BenutzerInfo({ benutzer, children } : { benutzer: TBenutzer, children?: ReactNode }) {
 
+    const { bio, followersCount, image } = benutzer;
 
     return (
-        <div className="benutzer--info">
-            <a href={`/profiles/${username}`}>
-                <img src={bild} alt={`${username}'s profile image`} />
-                <span className={expanded ? 'd-inline':'d-none'}>dmsosa</span>
-            </a>
+        <div>
+            <Avatar bild={benutzer.image} username={benutzer.username} expanded={true} state={{ bio, followersCount, image }}/>
+            <p>{benutzer.bio}</p>
             {children}
         </div>
-
     )
 }
 

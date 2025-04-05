@@ -59,18 +59,23 @@ function App() {
   }, { scope: sectionRef });
 
   return (
+    <div id="app-wrapper">
     <AuthContextProvider>
     <EndpunktContextProvider>
     <ThemeProvider>
     <SidebarContextProvider>
       <ThemeToggler/>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       {/* Footer */}
     </SidebarContextProvider>      
     </ThemeProvider>
     </EndpunktContextProvider>
     </AuthContextProvider>
+    </div>
+    
     
       
   )

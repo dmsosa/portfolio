@@ -1,12 +1,11 @@
-import SidebarNav from "../components/Nav/SidebarNav";
 import useArtikeln from "../hooks/useArtikeln";
-import TagToggler from "../components/Widgets/TagToggler";
-import { useState } from "react";
-import ArtikelPagination from "../components/Widgets/ListePagination";
 import EndpunktToggler from "../components/Widgets/EndpunktToggler";
 import Forms from "../components/Forms/Forms";
-import ArtikelListe from "../components/Widgets/Artikel/ArtikelListe";
 import { useAuth } from "../context/AuthContext";
+import { useEndpunkt } from "../context/EndpunktContext";
+import ArtikelListe from "../components/Widgets/Artikel/ArtikelListe";
+import useBenutzer from "../hooks/useBenutzer";
+import BenutzerArray from "../components/Widgets/Benutzer/BenutzerArray";
 // const cards = [
 //     {title: 'Total Artikeln', value: 18}, //get funcs
 //     {title: 'Total Benutzer', value: 25},
@@ -19,9 +18,7 @@ import { useAuth } from "../context/AuthContext";
 export default function Dashboard() {
     const href = window.location.href.split('/');
     const currentLocation = href[href.length - 1];
-    const [ selectedTags, setSelectedTags ] = useState<string>("");
-    const [ offset, setOffset ] = useState<number>(2);
-    const { isAuth, loggedUser } = useAuth();
+    const { headers, isAuth, loggedUser } = useAuth();
     let title = 'Alle Artikeln';
     switch (currentLocation) {
         case 'artikeln': { 
@@ -34,22 +31,24 @@ export default function Dashboard() {
         };
     }
     
+    const { entity } = useEndpunkt();
     // const [currentPage, setCurrentPage ] = useState(0);
-    const { loading, artikelnAnzahl, artikeln, setArtikelnDatei }  = useArtikeln({ endpoint: 'global', offset: offset });
+    const {  loadingArtikeln, artikelnAnzahl, artikeln, setArtikelnDatei, setOffsetArtikeln }  = useArtikeln({headers: headers ? headers : {}, endpunkt: 'global' });
+    
+    const {  loadingBenutzer, benutzerAnzahl, benutzerArray, setBenutzerDatei, setOffsetBenutzer }  = useBenutzer({headers: headers ? headers : {}, endpunkt: 'global' });
+
     return (
-            <>
-                <SidebarNav/>
-                <main>
-                    { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <Forms/>}
-                    <EndpunktToggler endpunkte={['global', 'favorite']}/>
-                    <div className="row pb-5">
-                    <h1 className="mt-5">{title}</h1>
-                    <h2>{artikelnAnzahl}</h2>
-                    </div>
-                    <TagToggler selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                    <ArtikelListe loading={loading} artikelnArray={artikeln} setArtikelnDatei={setArtikelnDatei}/>
-                    <ArtikelPagination loading={loading} pageCount={8} setOffset={setOffset}/>
-                </main>
-            </>
+            <div className="container">
+                { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <Forms/>}
+                <EndpunktToggler endpunkte={['global', 'favorite']}/>
+                <div className="row pb-5">
+                <h1 className="mt-5">{title}</h1>
+                <h2>{artikelnAnzahl}</h2>
+                </div>
+                { entity === 'artikel' ? 
+                <ArtikelListe loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />
+                : 
+                <BenutzerArray loading={loadingBenutzer} array={benutzerArray} setArrayData={setBenutzerDatei} benutzerAnzahl={benutzerAnzahl} setOffset={setOffsetBenutzer} />}
+            </div>
     )
 }

@@ -39,7 +39,7 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 
 // 9. components
 @import "./components/header";
-@import "./components/sidebar";
+@import "./components/nav";
 @import "./components/footer";
 @import "./components/portfolio";
 @import "./components/about";
@@ -63,6 +63,9 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 
 
 //Code
+:root {
+    --nav-width: 0vw;
+}
 html {
     font-size: 16px;
 }
@@ -73,9 +76,14 @@ body, #app {
     position: relative;
     font-family: sans-serif;
 }
-.app-inner {
-    display: flex;
+.app-wrapper {
+    display: grid;
     height: 100%;
+    grid-template-columns: 250px 1fr;
+    transition: grid-template-columns 0.4s;
+    &.contract  {
+        grid-template-columns: 80px 1fr;
+    }
 }
 .theme-dark {
     background-color: $dark;
@@ -83,8 +91,8 @@ body, #app {
 }
 main {
     height: 100vh;
-    width: 100%;
     overflow: hidden scroll;
+    border: red solid 1px;
 }
 section {
     max-width: 100vw;

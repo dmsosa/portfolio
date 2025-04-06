@@ -11,6 +11,8 @@ import { Outlet } from 'react-router-dom'
 import Header from './components/Header/Header'
 import { EndpunktContextProvider } from './context/EndpunktContext'
 import { AuthContextProvider } from './context/AuthContext'
+import SidebarNav from './components/Nav/SidebarNav'
+import NavMobile from './components/Nav/NavMobile'
 
 
 export type TThemeContext = {
@@ -58,18 +60,22 @@ function App() {
 
   }, { scope: sectionRef });
 
+ 
+
   return (
-    <div id="app-wrapper">
+    <div id="app-wrapper" className="app-wrapper">
     <AuthContextProvider>
     <EndpunktContextProvider>
     <ThemeProvider>
     <SidebarContextProvider>
       <ThemeToggler/>
-      <Header />
+      <SidebarNav/>
+      <NavMobile />
       <main>
+        <Header />
         <Outlet />
+        {/* Footer */}
       </main>
-      {/* Footer */}
     </SidebarContextProvider>      
     </ThemeProvider>
     </EndpunktContextProvider>

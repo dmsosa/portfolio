@@ -17502,6 +17502,15 @@ progress {
   }
 }
 .sidebar-nav {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.4s;
+}
+.sidebar-nav.dragging {
+  background-color: red;
+}
+
+.nav-mobile {
   z-index: 1000;
   position: fixed;
   bottom: 0;
@@ -17512,30 +17521,18 @@ progress {
   background-color: rgba(17, 17, 17, 0.3960784314);
   transition: background-color 0.4s ease-in-out;
 }
-.sidebar-nav:hover {
+.nav-mobile:hover {
   background-color: #111;
 }
-.sidebar-nav .sidebar-content {
+.nav-mobile .sidebar-content {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  height: 100%;
 }
-.sidebar-nav .sidebar-content .benutzer--info {
-  max-width: 2.5rem;
-}
-
-.benutzer--wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 1.25rem;
-  order: 2;
-}
-
-.sidebar-footer {
-  display: none;
+.nav-mobile .sidebar-content ul {
+  gap: 1rem;
 }
 
 @media only screen and (min-width: 576px) {
@@ -18315,6 +18312,10 @@ footer .icon-ul .icon-li {
     transform: scale(1);
   }
 }
+:root {
+  --nav-width: 0vw;
+}
+
 html {
   font-size: 16px;
 }
@@ -18326,9 +18327,14 @@ body, #app {
   font-family: sans-serif;
 }
 
-.app-inner {
-  display: flex;
+.app-wrapper {
+  display: grid;
   height: 100%;
+  grid-template-columns: 250px 1fr;
+  transition: grid-template-columns 0.4s;
+}
+.app-wrapper.contract {
+  grid-template-columns: 80px 1fr;
 }
 
 .theme-dark {
@@ -18338,8 +18344,8 @@ body, #app {
 
 main {
   height: 100vh;
-  width: 100%;
   overflow: hidden scroll;
+  border: red solid 1px;
 }
 
 section {

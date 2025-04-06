@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 export type TSidebarContext = {
     expanded: boolean,
@@ -22,17 +22,17 @@ export function SidebarContextProvider({ children } : { children: ReactNode | Re
     const [expanded, setExpanded] = useState(false);
     const [navWidth, setNavWidth] = useState(viewportWidth);
 
-    useEffect(() => {
-        const nav = document.getElementById("nav");
-        if (!nav) return;
-        nav.style.setProperty('width', `${navWidth}px`);
-        const main = document.querySelector("main")  as HTMLDivElement;
-        if (navWidth === 0 || navWidth === viewportWidth) {
-            main.style.setProperty('width', '100vw');
-        } else {
-            main.style.setProperty('width', `calc( 100vw - ${navWidth}px)`);
-        }
-    }, [ navWidth ])
+    // useEffect(() => {
+    //     const nav = document.getElementById("sidebar-nav");
+    //     if (!nav) return;
+    //     nav.style.setProperty('width', `${navWidth}px`);
+    //     const main = document.querySelector("main")  as HTMLDivElement;
+    //     if (navWidth === 0 || navWidth === viewportWidth) {
+    //         main.style.setProperty('width', '100vw');
+    //     } else {
+    //         main.style.setProperty('width', `calc( 100vw - ${navWidth}px)`);
+    //     }
+    // }, [ navWidth ])
     return  (
     <SidebarContext.Provider value={{ expanded, setExpanded, navWidth, setNavWidth }}>
         {children}

@@ -1,4 +1,12 @@
 .sidebar-nav {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.4s;
+    &.dragging {
+        background-color: red;
+    }
+}
+.nav-mobile {
     z-index: 1000;
     position: fixed;
     bottom: 0;
@@ -16,9 +24,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0.5rem;
-        .benutzer--info {
-            max-width: 2.5rem;
+        height: 100%;
+        ul {
+            gap: 1rem;
         }
     }
     // &.active {
@@ -29,16 +37,6 @@
     //         border-radius: 0;
     //     }
     // }
-}
-.benutzer--wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 1.25rem;
-    order: 2;
-}
-.sidebar-footer {
-    display: none;
 }
 //desktop
 // .sidebar-nav {

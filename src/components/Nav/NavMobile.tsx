@@ -1,12 +1,14 @@
+import LinkList from "../Widgets/LinkList";
 
-import DashboardList from "../Widgets/LinkList";
 
 
-function DashboardNavMobile() {
+function NavMobile() {
     return (
-        <nav className="dashboard-nav-mobile">
-            <DashboardList/>
+        <nav className="nav-mobile d-block d-md-none">
+            <div className="sidebar-content">
+                <LinkList expanded={false}/>
+            </div>
         </nav>
     );
 }
-export default DashboardNavMobile;
+export default NavMobile;

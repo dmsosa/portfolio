@@ -1,10 +1,106 @@
 .sidebar-nav {
-    cursor: pointer;
-    user-select: none;
+    position: relative;
+    height: 100%;
+    width: var(--nav-width);
+    transition: width 0.4s;
+}
+.sidebar-content {
+    overflow: hidden;
+}
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sidebar-toggler {
+    display: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 0;
+    padding: 0.25rem;
+    background-color: transparent;
     transition: background-color 0.4s;
-    &.dragging {
-        background-color: red;
+    border: none;
+    border-radius: 15px;
+    align-self: center;
+    &:hover {
+        background-color: #33333375;
     }
+    svg {
+        stroke: #fff;
+        stroke-width: 1.45rem;
+        transition: stroke 0.4s;
+        path {
+            fill: transparent;
+            stroke-linecap: round;
+            transition: d 0.4s;
+        }
+        #bar1 {
+            d: path('M 50 50 L 150 50 L 250 50');
+        }
+        #bar2 {
+            d: path('M 50 150 L 220.415 150');
+
+        }
+        #bar3 {
+            d: path('M 188.678 250 L 119.339 250 L 50 250');
+
+        }
+        &:hover {
+            stroke: #ddd;
+            #bar1 {
+                d: path('M 200 100 L 250 150 L 200 200');
+
+            }
+            #bar2 {
+                d: path('M 50 150 L 125.205 150');
+            }
+            #bar3 {
+                d: path('M 150 100 L 200 150 L 150 200');
+
+            }
+        }
+    }
+}
+.sidebar-toggler[data-role='closer'] {
+    svg {
+        stroke: #fff;
+        stroke-width: 1.45rem;
+        transition: stroke 0.4s;
+        path {
+            fill: transparent;
+            stroke-linecap: round;
+            transition: d 0.4s;
+        }
+        #bar1 {
+            d: path('M 150 200 L 100 150 L 150 100');
+        }
+        #bar2 {
+            d: path('M 174.812 150 L 250 150');
+
+        }
+        #bar3 {
+            d: path('M 100 200 L 50 150 L 100 100');
+
+        }
+        &:hover {
+            stroke: #ddd;
+            #bar1 {
+                d: path('M 159.232 180.381 L 100 150 L 158.655 117.311');
+
+            }
+            #bar2 {
+                d: path('M 168.465 150 L 250 150');
+            }
+            #bar3 {
+                d: path('M 115.58 220.773 L 50 150 L 122.504 84.997');
+
+            }
+        }
+    }
+}
+.sidebar-toggler[data-hidden='true'] {
+    display: none;
 }
 .nav-mobile {
     z-index: 1000;
@@ -71,9 +167,8 @@
 //     }
 // }
 
-@media only screen and (min-width: 576px) {
-    .benutzer--wrapper {
-        margin-left: 0;
-        order: 0;
+@media only screen and (min-width: 768px) {
+    .sidebar-toggler {
+        display: block;
     }
 }

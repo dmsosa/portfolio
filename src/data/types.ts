@@ -29,7 +29,7 @@ export interface TBenutzer {
 export interface TLoggedBenutzer {
     username: string;
     email: string;
-    image?: string;
+    image: string;
     bio?: string;
     token: string;
     role: 'BENUTZER' | 'ADMIN';

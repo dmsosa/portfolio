@@ -1,13 +1,13 @@
 import Logo from "./Logo";
 import DropdownBtn from "./DropdownBtn";
-import DashboardToggler from "../Nav/SidebarNavToggler";
+import SidebarToggler from "../Nav/SidebarToggler";
 
 function Header() {
 
     return (
         <header id="header" className="header">
             <div className="d-flex">
-                <DashboardToggler />
+                <SidebarToggler role='opener' />
                 <Logo />
             </div>
                 <DropdownBtn />

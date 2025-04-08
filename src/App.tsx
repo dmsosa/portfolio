@@ -73,7 +73,11 @@ function App() {
       <NavMobile />
       <main>
         <Header />
-        <Outlet />
+        <div className="main-content"> {/*Displayed als grid*/}
+          <div className="content">
+            <Outlet />
+          </div>
+        </div>
         {/* Footer */}
       </main>
     </SidebarContextProvider>      

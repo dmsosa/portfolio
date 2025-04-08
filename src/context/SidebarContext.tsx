@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 export type TSidebarContext = {
     expanded: boolean,
@@ -19,20 +19,33 @@ export function useSidebarContext() {
 }
 export function SidebarContextProvider({ children } : { children: ReactNode | ReactNode[] }) {
     const viewportWidth = window.innerWidth;
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(true);
     const [navWidth, setNavWidth] = useState(viewportWidth);
 
-    // useEffect(() => {
-    //     const nav = document.getElementById("sidebar-nav");
-    //     if (!nav) return;
-    //     nav.style.setProperty('width', `${navWidth}px`);
-    //     const main = document.querySelector("main")  as HTMLDivElement;
-    //     if (navWidth === 0 || navWidth === viewportWidth) {
-    //         main.style.setProperty('width', '100vw');
-    //     } else {
-    //         main.style.setProperty('width', `calc( 100vw - ${navWidth}px)`);
-    //     }
-    // }, [ navWidth ])
+    useEffect(() => {
+        const nav = document.getElementById("sidebar-nav");
+        const header = document.querySelector("header")  as HTMLDivElement;
+        const main = document.querySelector("main")  as HTMLDivElement;
+        const mainContent = document.querySelector(".main-content") as HTMLDivElement;
+
+        if (!nav) return;
+        if (!expanded) {
+            nav.style.setProperty('--nav-width', '0px');
+            header.style.setProperty('--main-width', 'calc(100vw)');
+            main.style.setProperty('--main-width', 'calc(100vw)');
+            mainContent.style.setProperty('--margin-left', '255px');
+            mainContent.style.setProperty('--margin-right', '55px');
+            mainContent.style.setProperty('--main-content-width', '1fr');
+        } else {
+            nav.style.setProperty('--nav-width', '255px');
+            header.style.setProperty('--main-width', 'calc(100vw - 255px)');
+            main.style.setProperty('--main-width', 'calc(100vw - 255px)');
+            mainContent.style.setProperty('--margin-left', '55px');
+            mainContent.style.setProperty('--margin-right', '55px');
+            mainContent.style.setProperty('--main-content-width', '1fr');
+        }
+
+    }, [ expanded ])
     return  (
     <SidebarContext.Provider value={{ expanded, setExpanded, navWidth, setNavWidth }}>
         {children}

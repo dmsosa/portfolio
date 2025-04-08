@@ -5,9 +5,9 @@ function Avatar({ bild, username, state, expanded=false, vertical=false  } : { b
 
 
     return (
-        <Link className={vertical ? 'avatar':'avatar avatar--vertical'} to={`/profiles/${username}`} state={state}>
+        <Link className={vertical ? 'link avatar avatar--vertical':'link avatar'} to={`/profiles/${username}`} state={state}>
             <img src={bild} alt={`${username}'s profile image`} />
-            <span className={expanded ? 'd-inline':'d-none'}>dmsosa</span>
+            {expanded && <span>dmsosa</span>}
         </Link>
     )
 }

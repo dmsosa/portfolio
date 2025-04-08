@@ -64,7 +64,11 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 
 //Code
 :root {
-    --nav-width: 0vw;
+    --nav-width: 255px;
+    --main-width: calc(100vw - var(--nav-width));
+    --margin-left: 55px;
+    --margin-right: 55px;
+    --main-content-width: calc(100% - var(--margin-left) - var(--margin-right));
 }
 html {
     font-size: 16px;
@@ -77,26 +81,27 @@ body, #app {
     font-family: sans-serif;
 }
 .app-wrapper {
-    display: grid;
-    height: 100%;
-    grid-template-columns: 250px 1fr;
-    transition: grid-template-columns 0.4s;
-    &.contract  {
-        grid-template-columns: 80px 1fr;
-    }
+    display: flex;
+    height: 100vh;
 }
 .theme-dark {
     background-color: $dark;
     color: $light;
 }
 main {
-    height: 100vh;
+    height: 100%;
     overflow: hidden scroll;
-    border: red solid 1px;
+    width: var(--main-width);
+    transition: width 0.4s;
 }
-section {
-    max-width: 100vw;
-    padding-top: 3rem ;
+.main-content {
+    display: grid;
+    grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
+    transition: grid-template-columns 0.4s;
+}
+.main-content .content {
+    grid-column: 2 / 3;
+    padding: 0.5rem;
 }
 .no-scroll {
     overflow: hidden !important;
@@ -369,7 +374,38 @@ ul.icon-ul {
         }
     }
 }
-
+.link {
+    text-decoration: none;
+    transition: color 0.4s;
+    &:hover {
+        color: $primary !important;
+    }
+}
+.avatar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    max-width: 4rem;
+    text-decoration: none;
+    font-weight: bold;
+    span {
+        margin-left: 0.35rem;
+    }
+    img {
+        border: 0.15rem $primary solid;
+        border-radius: 50%;
+        padding: 0.35rem;
+        width: 100%;
+        transition: background-color 0.4s;
+        &:hover {
+            background-color: #555;
+        }
+    }
+    &--vertical {
+        flex-direction: column !important;
+        justify-content: center;
+    }
+}
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
 @media only screen and (min-width: 576px) {
     .section-content {

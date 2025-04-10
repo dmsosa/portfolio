@@ -4,6 +4,6 @@ import { FaEdit } from "react-icons/fa";
 
 function EditKnopf({ to, state } : { to: string, state?: Partial<TBenutzer> | Partial<TArtikel> }) {
     
-    return <Link to={to} state={state}><FaEdit/></Link>
+    return <Link className='link' to={to} state={state}><FaEdit/></Link>
 }
 export default EditKnopf;

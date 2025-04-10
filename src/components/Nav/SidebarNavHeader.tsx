@@ -16,8 +16,10 @@ function SidebarNavHeader() {
             :
             <div className="sidebar-header">
                 <Avatar bild={boy} username={'guest'} expanded={true}/>
-                <EditKnopf to={`profiles/guest`}/>
-                <SidebarToggler role="closer"/>
+                <div className="d-flex justify-content-center align-items-center gap-2">
+                    <EditKnopf to={`profiles/guest`}/>
+                    <SidebarToggler role="closer"/>
+                </div>
             </div>
 }
 export default SidebarNavHeader;

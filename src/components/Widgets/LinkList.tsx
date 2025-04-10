@@ -1,28 +1,22 @@
 import { ReactNode } from "react";
-import { FaHome, FaUserTie } from "react-icons/fa";
-import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
 
-type TPage = {
+
+export type TLinkObject = {
     title: string,
     href: string,
     icon: ReactNode,
 }
-const pages: TPage[] = [
-    { title: 'Home', href: '/', icon: <FaHome />    },
-    { title: 'Dashboard', href: '/dashboard', icon: <GiAbstract031/> },
-    { title: 'Artikeln', href: '/dashboard/artikeln', icon: <Gi3dGlasses /> },
-    { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
-]; 
 
-function LinkList({ expanded } : { expanded: boolean }) {
+
+function LinkList({ links, expanded=false, column=false } : { links: TLinkObject[], expanded?: boolean, column?: boolean }) {
     return (
-        <ul className="link-list">
-            {pages.map((page) => 
+        <ul className={`link-list px-2 ${column ? 'flex-column gap-1':'flex-row gap-2'}`}>
+            {links.map((link) => 
                 (
-                <li key={page.title}>
-                    <a className="link" href={page.href} aria-expanded={expanded}>
-                        {page.icon}
-                        <span>{page.title}</span>
+                <li key={link.title}>
+                    <a className={`link ${column ? 'justify-content-start':'justify-content-center'}`} href={link.href} aria-expanded={expanded}>
+                        {link.icon}
+                        <span>{link.title}</span>
                     </a>
                 </li>
                 )

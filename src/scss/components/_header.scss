@@ -18,6 +18,7 @@
     transform: translateY(0);
     transition: transform 0.4s;
     box-shadow: 10px 0px 5px #111;
+    z-index: 3;
 }
 .progress-bar {
     position: absolute;

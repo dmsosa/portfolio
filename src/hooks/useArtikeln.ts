@@ -7,8 +7,8 @@ export type TArtikelnDatei = {
     artikeln: TArtikel[],
 }
 export default function useArtikeln({ headers, endpunkt, username, tags } : {
-    headers: Record<string, string>,
-    endpunkt: 'global' | 'feed' | 'favoriter' | 'author',
+    headers?: Record<string, string>,
+    endpunkt: 'global' | 'feed' | 'favorite' | 'author' | 'followers',
     username?: string | undefined, 
     tags?: string | undefined,
     oldest?: boolean | undefined,

@@ -17269,7 +17269,7 @@ progress {
 }
 
 .header {
-  width: var(--main-width);
+  width: 100%;
   padding: 0 1.5rem;
   position: fixed;
   display: flex;
@@ -17449,12 +17449,8 @@ progress {
 }
 
 @media only screen and (min-width: 768px) {
-  .typewriter {
-    max-width: 450px;
-    margin: 0 auto;
-  }
-  .typewriter span {
-    font-size: 3.6vw;
+  .header {
+    width: var(--main-width);
   }
 }
 .hero-bilder {
@@ -17978,6 +17974,14 @@ footer .icon-ul .icon-li {
   gap: 0.7rem;
 }
 
+.gap-3 {
+  gap: 1.5rem;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .robot-wrapper {
   position: relative;
   margin: auto;
@@ -18455,9 +18459,9 @@ footer .icon-ul .icon-li {
 :root {
   --nav-width: 255px;
   --main-width: calc(100vw - var(--nav-width));
-  --margin-left: 55px;
-  --margin-right: 55px;
-  --main-content-width: calc(100% - var(--margin-left) - var(--margin-right));
+  --margin-left: 1fr;
+  --margin-right: 1fr;
+  --main-content-width: 1fr;
 }
 
 html {
@@ -18472,7 +18476,7 @@ body, #app {
 }
 
 .app-wrapper {
-  display: flex;
+  display: block;
   height: 100vh;
 }
 
@@ -18484,19 +18488,13 @@ body, #app {
 main {
   height: 100%;
   overflow: hidden scroll;
-  width: var(--main-width);
+  width: 100%;
   transition: width 0.4s;
 }
 
 .main-content {
-  display: grid;
-  grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
+  display: block;
   transition: grid-template-columns 0.4s;
-}
-
-.main-content .content {
-  grid-column: 2/3;
-  padding: 0.5rem;
 }
 
 .no-scroll {
@@ -18976,8 +18974,20 @@ ul.icon-ul {
   }
 }
 @media only screen and (min-width: 768px) {
-  .dashboard-nav-mobile {
-    display: none;
+  .app-wrapper {
+    display: flex;
+  }
+  main {
+    width: var(--main-width);
+  }
+  .main-content {
+    display: grid;
+    grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
+    transition: grid-template-columns 0.4s;
+  }
+  .main-content .content {
+    grid-column: 2/3;
+    padding: 0.5rem;
   }
 }
 

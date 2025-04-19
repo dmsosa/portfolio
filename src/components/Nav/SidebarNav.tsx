@@ -9,7 +9,7 @@ import { useSidebarContext } from "../../context/SidebarContext";
 const mainLinks: TLinkObject[] = [
     { title: 'Home', href: '/', icon: <FaHome />    },
     { title: 'Dashboard', href: '/dashboard', icon: <GiAbstract031/> },
-    { title: 'Artikeln', href: '/dashboard/artikeln', icon: <Gi3dGlasses /> },
+    { title: 'Artikeln', href: '/dashboard/artikel', icon: <Gi3dGlasses /> },
     { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
 ]; 
 

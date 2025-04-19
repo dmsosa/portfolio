@@ -4,13 +4,19 @@ import { TBenutzer } from "../../../data/types";
 
 function BenutzerInfo({ benutzer, children } : { benutzer: TBenutzer, children?: ReactNode }) {
 
-    const { bio, followersCount, image } = benutzer;
+    const { bio, followersCount, followingCount, image } = benutzer;
 
     return (
         <div>
-            <Avatar bild={benutzer.image} username={benutzer.username} expanded={true} state={{ bio, followersCount, image }}/>
+            <div className="d-flex justify-content-between align-items-center">
+                <Avatar bild={benutzer.image} username={benutzer.username} expanded={true} state={{ bio, followersCount, image }}/>
+                {children}
+            </div>
             <p>{benutzer.bio}</p>
-            {children}
+            <div className="d-flex justify-content-start align-items-center w-100 flex-wrap">
+                <span>Follow: {followersCount}</span>
+                <span className="ms-3">Following: {followingCount}</span>
+            </div>
         </div>
     )
 }

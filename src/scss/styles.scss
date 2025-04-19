@@ -67,9 +67,9 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 :root {
     --nav-width: 255px;
     --main-width: calc(100vw - var(--nav-width));
-    --margin-left: 55px;
-    --margin-right: 55px;
-    --main-content-width: calc(100% - var(--margin-left) - var(--margin-right));
+    --margin-left: 1fr;
+    --margin-right: 1fr;
+    --main-content-width: 1fr;
 }
 html {
     font-size: 16px;
@@ -82,7 +82,7 @@ body, #app {
     font-family: sans-serif;
 }
 .app-wrapper {
-    display: flex;
+    display: block;
     height: 100vh;
 }
 .theme-dark {
@@ -92,17 +92,13 @@ body, #app {
 main {
     height: 100%;
     overflow: hidden scroll;
-    width: var(--main-width);
+    width: 100%;
     transition: width 0.4s;
 }
+
 .main-content {
-    display: grid;
-    grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
+    display: block;
     transition: grid-template-columns 0.4s;
-}
-.main-content .content {
-    grid-column: 2 / 3;
-    padding: 0.5rem;
 }
 .no-scroll {
     overflow: hidden !important;
@@ -414,11 +410,19 @@ ul.icon-ul {
     }
 }
 @media only screen and (min-width: 768px) {
-    .dashboard-nav-mobile {
-        display: none;
+    .app-wrapper {
+        display: flex;
     }
-}
-
-@media only screen and (min-width: 1024px) {
-
+    main {
+        width: var(--main-width);
+    }
+    .main-content {
+        display: grid;
+        grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
+        transition: grid-template-columns 0.4s;
+    }
+    .main-content .content {
+        grid-column: 2 / 3;
+        padding: 0.5rem;
+    }
 }

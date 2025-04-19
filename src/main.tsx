@@ -7,6 +7,7 @@ import Artikel from './routes/Artikel.tsx';
 import Dashboard from './routes/Dashboard.tsx';
 import CV from './routes/CV.tsx';
 import Profile from './routes/Profile.tsx';
+import NotFound from './routes/NotFound.tsx';
 
 
 createRoot(document.getElementById('app')!).render(
@@ -17,10 +18,11 @@ createRoot(document.getElementById('app')!).render(
         <Route element={<App/>}>
           <Route path='/' element={<Home />} index={true}></Route>
           <Route path='/dashboard' element={<Dashboard />}></Route>
-          <Route path='/artikel' element={<Artikel />}></Route>
-          <Route path='/profile' element={<Profile />}></Route>
-          <Route path='/cv' element={<CV/>}></Route>
+          <Route path='/dashboard/artikel/:slug' element={<Artikel />}></Route>
+          <Route path='/dashboard/profile/:username' element={<Profile />}></Route>
+          <Route path='/dashboard/cv' element={<CV/>}></Route>
         </Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

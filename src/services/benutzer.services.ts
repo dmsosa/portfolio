@@ -45,7 +45,7 @@ export async function loginBenutzer({ email, password } : { email: string, passw
         throw error;
     }
 }
-export async function getAllBenutzer({ headers, endpunkt, username, limit, offset } : { headers?: Record<string, string>, endpunkt: 'global' | 'feed' | 'followers', username?: string,  limit: number, offset: number }): Promise<TBenutzerDatei> {
+export async function getAllBenutzer({ headers, endpunkt, username, limit, offset } : { headers?: Record<string, string>, endpunkt: 'global' | 'feed' | 'author' | 'favorite' | 'followers',  username?: string,  limit: number, offset: number }): Promise<TBenutzerDatei> {
     try {
         const searchParams = new URLSearchParams();
         searchParams.append('limit', limit.toString());
@@ -61,9 +61,23 @@ export async function getAllBenutzer({ headers, endpunkt, username, limit, offse
         const url = 'http://localhost:3000/api/profiles' + '?' + searchParams;
         const res = await fetch(url, {
             method: 'GET',
-            headers: headers,
+            headers: headers? headers : {},
         });
         const benutzerData: TBenutzerDatei = await res.json();
+        return benutzerData;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+export async function getProfile({headers, username } : { headers?: Record<string, string>, username: string }): Promise<TBenutzer> {
+    try {
+        const url = `http://localhost:3000/api/profiles/${username}`;
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: headers ? headers: {},
+        });
+        const benutzerData: TBenutzer = await res.json();
         return benutzerData;
     } catch (error) {
         console.log(error);

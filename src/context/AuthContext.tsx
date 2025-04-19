@@ -3,12 +3,12 @@ import {  TLoggedBenutzer } from "../data/types";
 import { getCurrentBenutzer } from "../services/benutzer.services";
 
 export type TAuthStatus = {
-    headers: Record<string, string> | null,
+    headers: Record<string, string> | undefined,
     loggedUser: TLoggedBenutzer | null,
     isAuth: boolean,
 }
 export type TAuthContext = {
-    headers: Record<string, string> | null,
+    headers: Record<string, string> | undefined,
     loggedUser: TLoggedBenutzer | null,
     isAuth: boolean,
     setAuthStatus: React.Dispatch<SetStateAction<TAuthStatus>>

@@ -2,7 +2,7 @@ import { MouseEvent } from "react";
 import { TEndpunktContext, useEndpunkt } from "../../context/EndpunktContext";
 
 const entities = ['artikel', 'profile'];
-type TEndpunkt = 'global' | 'feed' | 'author' | 'favorite';
+type TEndpunkt = 'global' | 'feed' | 'author' | 'favorite' | 'followers';
 
 export default function EndpunktToggler({ endpunkte=[ 'global', 'feed' ] } : { endpunkte?: TEndpunkt[] }) {
 

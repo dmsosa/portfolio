@@ -1,7 +1,18 @@
 import artikelArray from "../data/articles"
 import boy from "../assets/img/boy.png";
 import BenutzerInfo from "../components/Widgets/Benutzer/BenutzerInfo";
+import { TBenutzer } from "../data/types";
 
+const sampleBenutzer: TBenutzer = {
+    username: 'string',
+    image: boy,
+    bio: 'Ich nutze das Dmblog!',
+    isFollowing: false,
+    followingCount: 33,
+    followersCount: 2,
+    createdAt: '23-35-2025:23:34:34T',
+    updatedAt: '22-03-0333',
+}
 export default function Artikel() {
     const artikel = artikelArray[0];
     return (
@@ -13,7 +24,7 @@ export default function Artikel() {
                     </div>
                     <hr></hr>
                     <div className="artikel--desc">
-                        <BenutzerInfo bild={boy} username={"dmsosa"} expanded>
+                        <BenutzerInfo benutzer={sampleBenutzer}>
                             <button>Folg</button>
                         </BenutzerInfo>
                         <p>{artikel.description}</p>
@@ -44,7 +55,7 @@ export default function Artikel() {
                             {artikel.kommentar.map((komm) => (
                                 <div className="container">
                                     <div className="row">
-                                        <BenutzerInfo bild={boy} username={komm.author.username} expanded>
+                                        <BenutzerInfo benutzer={sampleBenutzer}>
                                             <button>Folg</button>
                                         </BenutzerInfo>       
                                         <div className="ms-5">

@@ -2,11 +2,11 @@ import { createContext, ReactNode, SetStateAction, useContext, useEffect, useSta
 
 export type TEndpunktStatus = {
     entity: 'artikel' | 'benutzer';
-    endpunkt: 'global' | 'feed' | 'author' | 'favorite';
+    endpunkt: 'global' | 'feed' | 'author' | 'favorite' | 'followers';
 } 
 export type TEndpunktContext = {
     entity: 'artikel' | 'benutzer';
-    endpunkt: 'global' | 'feed' | 'author' | 'favorite';
+    endpunkt: 'global' | 'feed' | 'author' | 'favorite' | 'followers';
     setEndpunktStatus: React.Dispatch<SetStateAction<TEndpunktStatus>>;
 } 
 

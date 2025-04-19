@@ -2,8 +2,8 @@ import { TArtikel } from "../data/types";
 
 export async function getArtikeln({ headers, endpunkt, username, tags, offset, limit=3 } : 
     { 
-        headers: Record<string, string>,
-        endpunkt: 'global' | 'feed' | 'favoriter' | 'author',
+        headers?: Record<string, string>,
+        endpunkt: 'global' | 'feed' | 'favorite' | 'author' | 'followers',
         username?: string | undefined, 
         tags?: string,
         offset: number,
@@ -17,14 +17,14 @@ export async function getArtikeln({ headers, endpunkt, username, tags, offset, l
         if (endpunkt === 'author' && username) {
             searchParams.append('author', username);
         }
-        if (endpunkt === 'favoriter' && username) {
+        if (endpunkt === 'favorite' && username) {
             searchParams.append('favoriter', username);
         }
         if (tags) {
             searchParams.append('tags', tags);
         }
         const url = endpunkt === 'feed' ? 'http://localhost:3000/api/artikel/feed' : 'http://localhost:3000/api/artikel';
-        const res = await fetch(url + '?' + searchParams, { headers: headers });
+        const res = await fetch(url + '?' + searchParams, { headers: headers ? headers : {} });
         const articleData = await res.json();
         return articleData;
     } catch (error) {

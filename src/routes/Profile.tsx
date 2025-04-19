@@ -1,45 +1,50 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { TBenutzer } from "../data/types";
-import boy from "../assets/img/boy.png";
+// import { TBenutzer } from "../data/types";
+// import boy from "../assets/img/boy.png";
 import BenutzerInfo from "../components/Widgets/Benutzer/BenutzerInfo";
+import ArtikelListe from "../components/Widgets/Artikel/ArtikelListe";
+import useArtikeln from "../hooks/useArtikeln";
+import { useAuth } from "../context/AuthContext";
+import useProfile from "../hooks/useProfile";
+import EndpunktToggler from "../components/Widgets/EndpunktToggler";
+import { useEndpunkt } from "../context/EndpunktContext";
+import BenutzerArray from "../components/Widgets/Benutzer/BenutzerArray";
+import useBenutzer from "../hooks/useBenutzer";
 
-const user: TBenutzer = {
-    username: 'benutzer1',
-    email: 'string@string.com',
-    image: boy,
-    bio: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English',
-    isFollowing: false,
-    followingCount: 34,
-    followersCount: 22,
-    createdAt: '05-03-2025',
-    updatedAt: '15-03-2025',
-}
 export default function Profile() {
     const { username } = useParams();
-    useEffect(() => {
-        console.log('fetch user ' + username + user);
-    })
-    return (
+    const { headers } = useAuth();
+    const { entity, endpunkt } = useEndpunkt();
+
+    const { loadingArtikeln, artikeln, artikelnAnzahl, setArtikelnDatei, setOffsetArtikeln } = useArtikeln({ headers, endpunkt });
+    const { loadingBenutzer, benutzerArray, benutzerAnzahl, setBenutzerDatei, setOffsetBenutzer } = useBenutzer( { headers, endpunkt });
+    const { loading, profile } = useProfile({ headers, username });
+    return loading ?
+        <div>Loading</div> 
+        :
+        profile ?
         <>
             <div className="main-bg">
-                <div className="d-flex justify-content-between align-self-end w-100 px-5 py-3">
-                    <BenutzerInfo bild={user.image} username={user.username} expanded={true}/>
-                    <div className="d-flex justify-content-center align-items-center">
-                        <button className="btn btn-primary me-3">Follow</button>
-                        <a href={`mailto:${user.email}`}>Email</a>
+                <div className="align-self-end w-100 px-5 py-3">
+                    <div className="row d-flex justify-content-between w-100">
+                        <BenutzerInfo benutzer={profile}>
+                            <div className="d-flex justify-content-center align-items-center">
+                                <button className="btn btn-primary me-3">Follow</button>
+                            </div>
+                        </BenutzerInfo>
                     </div>
                 </div>
             </div>
-            <div className="benutzer--text">
-                <h2>{user.username}</h2>
-                <p>{user.bio}</p>
-                <div className="d-flex justify-content-start align-items-center">
-                    <span>Follow: {user.followersCount}</span>
-                    <span className="ms-3">Following: {user.followingCount}</span>
-                </div>
+            <EndpunktToggler endpunkte={entity === 'artikel' ? ['author', 'favorite'] : ['feed', 'followers']}/>
+            <div>
+                { entity === 'artikel' ?
+                <ArtikelListe loading={loadingArtikeln} array={artikeln} artikelAnzahl={artikelnAnzahl} setArrayData={setArtikelnDatei} setOffset={setOffsetArtikeln} />
+                    :
+                <BenutzerArray loading={loadingBenutzer} array={benutzerArray} benutzerAnzahl={benutzerAnzahl} setArrayData={setBenutzerDatei} setOffset={setOffsetBenutzer}/>
+            }
             </div>
-
         </>
-    )
+        :
+        <div>kein nutzer</div>
+    
 }

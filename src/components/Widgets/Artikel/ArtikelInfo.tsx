@@ -13,12 +13,12 @@ export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel,
                 <Avatar bild={boy} username={artikel.author.username} expanded />
                 { children }
             </div>
-            <Link to={artikel.slug} className="text-decoration-none">
+            <Link  to={artikel.slug} className="text-decoration-none link">
                 <h3>{artikel.title}</h3>
-                <span>{artikel.description}</span>
-                <p>{artikel.body.slice(0, 151)}</p>
+                <span>{artikel.description.slice(0, 100)}</span>
+                <p>{artikel.body.slice(0, 300)}</p>
             </Link>
-            <ul className="ul-tag">{artikel.tags.map((tag) => <li key={tag}><a href="">{tag}</a></li>)}</ul>
+            <ul className="link-list">{artikel.tags.map((tag) => <li key={tag}><a className='link' href="">{tag}</a></li>)}</ul>
             </div>)
     
 }

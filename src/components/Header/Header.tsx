@@ -1,6 +1,6 @@
-import Logo from "./Logo";
 import DropdownBtn from "./DropdownBtn";
 import SidebarToggler from "../Nav/SidebarToggler";
+import Breadcrumbs from "./Breadcrumbs";
 
 function Header() {
 
@@ -8,7 +8,7 @@ function Header() {
         <header id="header" className="header">
             <div className="d-flex">
                 <SidebarToggler role='opener' />
-                <Logo />
+                <Breadcrumbs />
             </div>
                 <DropdownBtn />
             <div className="progress-bar"></div>

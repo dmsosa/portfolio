@@ -8,8 +8,8 @@ export type TBenutzerDatei = {
 }
 
 export default function useBenutzer({ headers, endpunkt, username } : {
-    headers: Record<string, string>,
-    endpunkt: 'global' | 'feed' | 'followers',
+    headers?: Record<string, string>,
+    endpunkt: 'global' | 'feed' | 'author' | 'favorite' | 'followers';
     username?: string | undefined, 
 }) {
     const [ benutzerDatei, setBenutzerDatei ] = useState<TBenutzerDatei>({ benutzerAnzahl: 0, benutzerArray: []});

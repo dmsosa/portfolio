@@ -3,7 +3,7 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import FormWrapper from "./FormWrapper";
 
-export default function Forms() {
+export default function BenutzerForms() {
     const [ showForm, setShowForm ] = useState<'login'|'sign-up'>('login');
     return (
         <div>

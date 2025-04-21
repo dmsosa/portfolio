@@ -1,6 +1,6 @@
 import useArtikeln from "../hooks/useArtikeln";
 import EndpunktToggler from "../components/Widgets/EndpunktToggler";
-import Forms from "../components/Forms/Forms";
+import BenutzerForms from "../components/Forms/BenutzerForms";
 import { useAuth } from "../context/AuthContext";
 import { useEndpunkt } from "../context/EndpunktContext";
 import ArtikelListe from "../components/Artikel/ArtikelListe";
@@ -18,7 +18,7 @@ export default function Dashboard() {
     const {  loadingBenutzer, benutzerAnzahl, benutzerArray, setBenutzerDatei, setOffsetBenutzer }  = useBenutzer({headers: headers ? headers : {}, endpunkt: 'global' });
 
     return <>
-    { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <Forms/>}
+    { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <BenutzerForms/>}
                 <EndpunktToggler endpunkte={['global', 'feed']}/>
                 <div className="row pb-5">
                     <div className="d-flex justify-content-center align-items-center flex-wrap w-100 gap-3">

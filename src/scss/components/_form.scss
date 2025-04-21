@@ -1,0 +1,31 @@
+.form {
+    background-color: $dark2;
+    border-radius: 15px;
+    padding: 0.75rem 1.5rem;
+    fieldset {
+        position: relative;
+        :not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            color: inherit;
+            background-color: inherit;
+        }
+        input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            background-color: $dark3;
+            color: $light2;
+            border: none;
+            font-size: 1rem;
+        
+            &:focus,&:active,&:hover {
+                box-shadow: 0 0 0 2px $primary;
+            }
+        }
+    }
+}

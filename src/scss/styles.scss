@@ -45,6 +45,8 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 @import "./components/about";
 @import "./components/artikel";
 @import "./components/profile";
+@import "./components/form";
+
 
 
 // others

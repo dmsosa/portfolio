@@ -1,11 +1,11 @@
-import { TArtikel, TBenutzer } from "../../../data/types";
-import ArtikelInfo from "./ArtikelInfo";
-import FavoriteKnopf from "../Knopfen/FavoriteKnopf";
-import FollowKnopf from "../Knopfen/FollowKnopf";
-import RemoveKnopf from "../Knopfen/RemoveKnopf";
-import { TArtikelnDatei } from "../../../hooks/useArtikeln";
+import { TArtikel, TBenutzer } from "../../data/types";
+import FavoriteKnopf from "../Widgets/Knopfen/FavoriteKnopf";
+import FollowKnopf from "../Widgets/Knopfen/FollowKnopf";
+import RemoveKnopf from "../Widgets/Knopfen/RemoveKnopf";
+import { TArtikelnDatei } from "../../hooks/useArtikeln";
 import { Link } from "react-router-dom";
-import ArrayPagination from "../ArrayPagination";
+import ArrayPagination from "../Widgets/ArrayPagination";
+import ArtikelInfo from "./ArtikelInfo";
 
 export default function ArtikelListe({ loading, array, setArrayData, artikelAnzahl, setOffset }: { loading: boolean, array: TArtikel[], setArrayData: React.Dispatch<React.SetStateAction<TArtikelnDatei>>, artikelAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
 

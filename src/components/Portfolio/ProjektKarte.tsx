@@ -1,6 +1,5 @@
 import { MouseEvent, ReactNode } from "react";
 import { TTool } from "../../data/projects";
-import Heart from "./Heart";
 import Click from "./Click";
 
 

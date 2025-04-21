@@ -17536,6 +17536,7 @@ progress {
   max-height: 100%;
   transform: translate(0%);
   opacity: 1;
+  width: 100%;
 }
 .sidebar-content.show {
   transform: translate(0%);

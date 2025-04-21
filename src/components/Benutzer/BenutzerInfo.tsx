@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import Avatar from "../Avatar";
-import { TBenutzer } from "../../../data/types";
+import Avatar from "../Widgets/Avatar";
+import { TBenutzer } from "../../data/types";
 
 function BenutzerInfo({ benutzer, children } : { benutzer: TBenutzer, children?: ReactNode }) {
 

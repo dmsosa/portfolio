@@ -29,16 +29,16 @@ export function createStrictContext<ContextType>(options: CreateContextOptions =
 
 
 //Cookies
-export function setCookie(cname: string, cvalue: any, exdays: number ){ 
+export function setCookie(cname: string, cvalue: unknown, exdays: number ){ 
     const d = new Date();
     d.setDate(d.getTime() + (exdays*24*60*60*1000));
-    let expires = "expires=" + d.toUTCString();
+    const expires = "expires=" + d.toUTCString();
     document.cookie = `${cname}=${cvalue}; ${expires}; path=/`
 } 
 export function getCookie(cname: string){ 
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let cookies = decodedCookie.split(';');
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookies = decodedCookie.split(';');
     for (let i = 0; i < cookies.length; i++) {
         let c = cookies[i];
         while (c.charAt(0) == ' ') {
@@ -49,4 +49,9 @@ export function getCookie(cname: string){
         }
     }
     return ""; 
+}
+
+export function dateToString(date: Date) {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' } as const;
+    return new Intl.DateTimeFormat('de-DE', options).format(new Date(date));
 }

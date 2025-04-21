@@ -3,9 +3,9 @@ import EndpunktToggler from "../components/Widgets/EndpunktToggler";
 import Forms from "../components/Forms/Forms";
 import { useAuth } from "../context/AuthContext";
 import { useEndpunkt } from "../context/EndpunktContext";
-import ArtikelListe from "../components/Widgets/Artikel/ArtikelListe";
+import ArtikelListe from "../components/Artikel/ArtikelListe";
 import useBenutzer from "../hooks/useBenutzer";
-import BenutzerArray from "../components/Widgets/Benutzer/BenutzerArray";
+import BenutzerArray from "../components/Benutzer/BenutzerArray";
 import Card from "../components/Dashboard/Card";
 
 

@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 // import { TBenutzer } from "../data/types";
 // import boy from "../assets/img/boy.png";
-import BenutzerInfo from "../components/Widgets/Benutzer/BenutzerInfo";
-import ArtikelListe from "../components/Widgets/Artikel/ArtikelListe";
+import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
+import ArtikelListe from "../components/Artikel/ArtikelListe";
 import useArtikeln from "../hooks/useArtikeln";
 import { useAuth } from "../context/AuthContext";
 import useProfile from "../hooks/useProfile";
 import EndpunktToggler from "../components/Widgets/EndpunktToggler";
 import { useEndpunkt } from "../context/EndpunktContext";
-import BenutzerArray from "../components/Widgets/Benutzer/BenutzerArray";
+import BenutzerArray from "../components/Benutzer/BenutzerArray";
 import useBenutzer from "../hooks/useBenutzer";
 
 export default function Profile() {

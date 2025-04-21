@@ -1,4 +1,5 @@
 import { TArtikel } from "../data/types";
+import { TKommentDatei } from "../hooks/useKomment";
 
 export async function getArtikeln({ headers, endpunkt, username, tags, offset, limit=3 } : 
     { 
@@ -27,11 +28,44 @@ export async function getArtikeln({ headers, endpunkt, username, tags, offset, l
         const res = await fetch(url + '?' + searchParams, { headers: headers ? headers : {} });
         const articleData = await res.json();
         return articleData;
-    } catch (error) {
+    } catch (error) {   
         console.log(error);
     }
 }
-
+export async function getArtikel({ headers, slug } : { 
+    headers?: Record<string, string>,
+    slug: string,
+}) : Promise<TArtikel> {
+    try {
+        const url = `http://localhost:3000/api/artikel/${slug}`;
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: headers ? headers : {}
+        });
+        const artikel: TArtikel = await res.json();
+        return artikel;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+} 
+export async function getArtikelKommentar({ headers, slug } : { 
+    headers?: Record<string, string>,
+    slug: string,
+}) : Promise<TKommentDatei> {
+    try {
+        const url = `http://localhost:3000/api/artikel/komment/${slug}`;
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: headers ? headers : {}
+        });
+        const kommentDatei = await res.json();
+        return kommentDatei;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+} 
 export async function toggleFavorite({ headers, isFavorite, slug } : { 
     headers: Record<string, string>,
     isFavorite: boolean,

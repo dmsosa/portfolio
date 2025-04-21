@@ -1,10 +1,10 @@
-import { TBenutzer } from "../../../data/types";
-import FollowKnopf from "../Knopfen/FollowKnopf";
-import { TBenutzerDatei } from "../../../hooks/useBenutzer";
+import { TBenutzer } from "../../data/types";
+import FollowKnopf from "../Widgets/Knopfen/FollowKnopf";
+import { TBenutzerDatei } from "../../hooks/useBenutzer";
 import BenutzerInfo from "./BenutzerInfo";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import ArrayPagination from "../ArrayPagination";
+import ArrayPagination from "../Widgets/ArrayPagination";
 
 export default function BenutzerArray({ loading, array, setArrayData, benutzerAnzahl, setOffset }: { loading: boolean, array: TBenutzer[], setArrayData: React.Dispatch<React.SetStateAction<TBenutzerDatei>>, benutzerAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
     

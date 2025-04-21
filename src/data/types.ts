@@ -23,8 +23,8 @@ export interface TBenutzer {
     isFollowing: boolean;
     followingCount: number;
     followersCount: number;
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 export interface TLoggedBenutzer {
     username: string;
@@ -33,6 +33,6 @@ export interface TLoggedBenutzer {
     bio?: string;
     token: string;
     role: 'BENUTZER' | 'ADMIN';
-    createdAt: string;
-    updatedAt: string;
+    createdAt: Date;
+    updatedAt: Date;
 }

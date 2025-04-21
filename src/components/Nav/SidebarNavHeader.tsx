@@ -10,14 +10,14 @@ function SidebarNavHeader() {
     return isAuth && loggedUser ?
             <div className="sidebar-header">
                 <Avatar bild={loggedUser.image} username={loggedUser.username} expanded={true}/>
-                <EditKnopf to={`profiles/${loggedUser.username}`}/>
+                <EditKnopf to={`/dashboard/profile/${loggedUser.username}`}/>
                 <SidebarToggler role="closer"/>
             </div>
             :
             <div className="sidebar-header">
                 <Avatar bild={boy} username={'guest'} expanded={true}/>
                 <div className="d-flex justify-content-center align-items-center gap-2">
-                    <EditKnopf to={`profiles/guest`}/>
+                    <EditKnopf to={`/dashboard/sign-up`}/>
                     <SidebarToggler role="closer"/>
                 </div>
             </div>

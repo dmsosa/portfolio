@@ -2,30 +2,76 @@
     background-color: $dark2;
     border-radius: 15px;
     padding: 0.75rem 1.5rem;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     fieldset {
         position: relative;
-        :not(:last-child) {
-            margin-bottom: 1.5rem;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 1.8rem;
+        &:last-child {
+            margin-bottom: 0;
         }
+
         label {
             position: absolute;
-            top: 1rem;
-            left: 1.5rem;
+            top: 0.5rem;
+            left: 1rem;
             color: inherit;
-            background-color: inherit;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+            font-size: 1rem;
+            cursor: text;
         }
         input {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: .5rem .75rem;
             border-radius: 10px;
-            background-color: $dark3;
+            background-color: transparent;
             color: $light2;
+            outline: solid 0.25rem gray;
             border: none;
             font-size: 1rem;
-        
-            &:focus,&:active,&:hover {
-                box-shadow: 0 0 0 2px $primary;
+            transition: all 0.2s ease-in-out;
+            &:focus,&:active,&:hover,&:autofill, &:-webkit-autofill {
+                border: none;
+                outline: none;
+                outline: solid 0.25rem $primary;
             }
+            &:focus + label,
+            &:active + label,
+            &:not(:placeholder-shown) + label {
+                top: -1rem;
+                left: 0.85rem;
+                font-size: 0.85rem;
+                background-color: $dark2;
+                padding: 0.1rem 0.5rem;
+                border-radius: 5px;
+            }
+        }
+        .input--eye {
+            position: absolute;
+            right: 1rem;
+            top: 0.5rem;
+
+        }
+    }
+    .link {
+        align-self: end;
+        &:hover {
+            text-decoration: underline;
         }
     }
 }

@@ -3,10 +3,10 @@ import EndpunktToggler from "../components/Widgets/EndpunktToggler";
 import BenutzerForms from "../components/Forms/BenutzerForms";
 import { useAuth } from "../context/AuthContext";
 import { useEndpunkt } from "../context/EndpunktContext";
-import ArtikelListe from "../components/Artikel/ArtikelListe";
 import useBenutzer from "../hooks/useBenutzer";
 import BenutzerArray from "../components/Benutzer/BenutzerArray";
 import Card from "../components/Dashboard/Card";
+import ArtikelArray from "../components/Artikel/ArtikelArray";
 
 
 export default function Dashboard() {
@@ -29,7 +29,13 @@ export default function Dashboard() {
                 </div>
                 <div className="row">
                 { entity === 'artikel' ? 
-                <ArtikelListe loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />
+                loadingArtikeln ?
+                <div>Loading</div> 
+                :
+                <ArtikelArray loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />
+                :
+                loadingBenutzer ?
+                <div>Loading</div>
                 : 
                 <BenutzerArray loading={loadingBenutzer} array={benutzerArray} setArrayData={setBenutzerDatei} benutzerAnzahl={benutzerAnzahl} setOffset={setOffsetBenutzer} />}
                 </div>

@@ -6,7 +6,7 @@ type TEndpunkt = 'global' | 'feed' | 'author' | 'favorite' | 'followers';
 
 export default function EndpunktToggler({ endpunkte=[ 'global', 'feed' ] } : { endpunkte?: TEndpunkt[] }) {
 
-    const { setEndpunktStatus } = useEndpunkt() as TEndpunktContext;
+    const { entity, endpunkt, setEndpunktStatus } = useEndpunkt() as TEndpunktContext;
 
     const handleChange = (e: MouseEvent<HTMLAnchorElement>) => {
         const name = e.currentTarget.classList[0].replace('-change', '');
@@ -14,15 +14,15 @@ export default function EndpunktToggler({ endpunkte=[ 'global', 'feed' ] } : { e
         setEndpunktStatus((prev) => ({ ...prev, [name]:value }));
     }
     return (
-        <div className="d-flex justify-content-center align-items-center flex-column">
-            <ul className="ul-item">
+        <div className="d-flex justify-content-start align-items-start flex-column">
+            <ul className="ul-item mb-2">
                 {entities.map((value) => 
-                <li className="li-primary" key={value}><a className="entity-change" onClick={handleChange}>{value}</a></li>
+                <li className={`li-primary ${entity === value && 'active'}`} key={value}><a className="entity-change" onClick={handleChange}>{value}</a></li>
                 )}
             </ul>
-            <ul className="ul-item">
+            <ul className="ul-item mb-4">
                 {endpunkte.map((value) => 
-                <li className="li-secondary" key={value}><a className="endpunkt-change" onClick={handleChange}>{value}</a></li>
+                <li className={`li-secondary ${endpunkt === value && 'active'}`} key={value}><a className="endpunkt-change" onClick={handleChange}>{value}</a></li>
                 )}
             </ul>
         </div>

@@ -17,7 +17,7 @@ export default function BenutzerForms() {
                 titel="Welcome Back!"
                 untertitel="pick up where you left off!"
                 onClick={() => setShowForm('sign-up')}
-                linkMessage="new user? create new account!"
+                linkMessage="New user? create new account!"
                 >
                     <LoginForm />
                 </FormWrapper>
@@ -26,7 +26,7 @@ export default function BenutzerForms() {
                 titel="Get started"
                 untertitel="it's fun and free"
                 onClick={() => setShowForm('login')}
-                linkMessage="have an account? log in!"
+                linkMessage="Already have an account? log in!"
                 >
                     <SignUpForm />
                 </FormWrapper>

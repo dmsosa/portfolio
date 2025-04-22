@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 // import { TBenutzer } from "../data/types";
 // import boy from "../assets/img/boy.png";
 import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
-import ArtikelListe from "../components/Artikel/ArtikelListe";
+import ArtikelListe from "../components/Artikel/ArtikelArray";
 import useArtikeln from "../hooks/useArtikeln";
 import { useAuth } from "../context/AuthContext";
 import useProfile from "../hooks/useProfile";

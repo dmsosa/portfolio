@@ -27,6 +27,11 @@ export default function BenutzerArray({ loading, array, setArrayData, benutzerAn
         <div>Loading</div>
     )
     :
+    array.length === 0 ?
+    <div className="text-center">
+        Kein benutzer gefunden
+    </div>
+    :
     (
         <div>
             {

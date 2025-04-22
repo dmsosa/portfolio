@@ -75,26 +75,26 @@ export default function SignUpForm() {
         <form onSubmit={handleSubmit}>
             <p className={`form-error ${apiError.length > 1 && 'visible'}`}>{apiError}</p>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
+                <input id="username" type="text" name="username" placeholder="" value={username} onChange={handleChange}/>
                 <label htmlFor="username">Username</label>
-                <input id="username" type="text" name="username" value={username} onChange={handleChange}/>
                 {usernameErrors.map((error) => <p className="fieldset-error">{error}</p>)}
             </fieldset>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
+                <input id="email" type="email" name="email" placeholder="" value={email} onChange={handleChange}/>
                 <label htmlFor="email">Email</label>
-                <input id="email" type="email" name="email" value={email} onChange={handleChange}/>
                 {emailErrors.map((error) => <p className="fieldset-error">{error}</p>)}
             </fieldset>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <label htmlFor="password">Password</label>
                 <div className="position-relative">
-                    <input id="password" type={viewPassword ? 'text':'password'} name="password" value={password} onChange={handleChange}/>
-                    <a className="eye" onMouseDown={() => setViewPassword(true)} onMouseUp={() => setViewPassword(false)}>
+                    <input id="password" type={viewPassword ? 'text':'password'} name="password" placeholder="" value={password} onChange={handleChange}/>
+                    <label htmlFor="password">Password</label>
+                    <a className="input--eye" onMouseDown={() => setViewPassword(true)} onMouseUp={() => setViewPassword(false)}>
                         {viewPassword ? <FaEye/>:<FaEyeSlash/>}
                     </a>
                 </div>
                 {passwordErrors.map((error) => <p className="fieldset-error">{error}</p>)}
             </fieldset>
-            <button type="submit" className="btn btn-primary">Login</button>
+            <button type="submit" className="btn btn-primary d-block align-self-start">Login</button>
         </form>
     )
 };

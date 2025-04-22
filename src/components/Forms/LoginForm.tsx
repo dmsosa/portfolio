@@ -35,17 +35,22 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit}>
             <p className={`form-error ${errorMessage.length > 1 && 'visible'}`}>{errorMessage}</p>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <label htmlFor="email">Gib dein Email an</label>
-                <input id="email" type="email" name="email" required value={email} onChange={handleChange}/>
+                <input id="email" type="email" name="email" 
+                placeholder=""
+                required value={email} onChange={handleChange}/>
+                <label htmlFor="email">dein Email</label>
             </fieldset>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <label htmlFor="password">Gib dein Passwort an</label>
-                <input id="password" type={viewPassword ? 'text':'password'} name="password" required value={password} onChange={handleChange}/>
-                <a onMouseDown={() => setViewPassword(true)} onMouseUp={() => setViewPassword(false)}>
+                <input id="password" type={viewPassword ? 'text':'password'} name="password" 
+                placeholder=""
+                required 
+                value={password} onChange={handleChange}/>
+                <label htmlFor="password">dein Passwort</label>
+                <a className="input--eye" onMouseDown={() => setViewPassword(true)} onMouseUp={() => setViewPassword(false)}>
                     {viewPassword ? <FaEye/>:<FaEyeSlash/>}
                 </a>
             </fieldset>
-            <button type="submit" className="btn btn-primary">Login</button>
+            <button type="submit" className="btn btn-primary align-self-start">Login</button>
         </form>
     )
 };

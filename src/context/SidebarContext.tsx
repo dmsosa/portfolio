@@ -40,8 +40,8 @@ export function SidebarContextProvider({ children } : { children: ReactNode | Re
             nav.style.setProperty('--nav-width', '255px');
             header.style.setProperty('--main-width', 'calc(100vw - 255px)');
             main.style.setProperty('--main-width', 'calc(100vw - 255px)');
-            mainContent.style.setProperty('--margin-left', '1fr');
-            mainContent.style.setProperty('--margin-right', '1fr');
+            mainContent.style.setProperty('--margin-left', '55px');
+            mainContent.style.setProperty('--margin-right', '55px');
             mainContent.style.setProperty('--main-content-width', '1fr');
         }
 

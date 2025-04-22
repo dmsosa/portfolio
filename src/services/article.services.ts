@@ -30,6 +30,7 @@ export async function getArtikeln({ headers, endpunkt, username, tags, offset, l
         return articleData;
     } catch (error) {   
         console.log(error);
+        throw error;
     }
 }
 export async function getArtikel({ headers, slug } : { 

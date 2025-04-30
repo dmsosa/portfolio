@@ -7,6 +7,12 @@ export default function KommentArray({ slug } : { slug?: string }) {
     return loading ?
         <div>Loading</div>
         :
+        kommentArray.length === 0 ?
+        <div className="container">
+            <h5>Es gibt noch keine Kommentare</h5>
+            <p>Sei der Erste, der einen Kommentar hinterlässt</p>
+        </div>
+        :
         <div className="container">
             {
                 kommentArray.map((komment: TKomment) => 

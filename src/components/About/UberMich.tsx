@@ -34,7 +34,7 @@ const contents: TDivContent[] = [
 ];
 function UberMich() {
     return (
-        <section>
+        <div className="content pt-6">
             <div className="container container-sm">
                 { contents.map((content, index) => (
                     <Content 
@@ -60,7 +60,7 @@ function UberMich() {
                     </Content>
                 ))}
             </div>
-        </section>
+        </div>
     )
 }
 

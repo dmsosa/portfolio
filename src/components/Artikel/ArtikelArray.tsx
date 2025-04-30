@@ -5,7 +5,7 @@ import RemoveKnopf from "../Widgets/Knopfen/RemoveKnopf";
 import { TArtikelnDatei } from "../../hooks/useArtikeln";
 import { Link } from "react-router-dom";
 import ArrayPagination from "../Widgets/ArrayPagination";
-import ArtikelInfo from "./ArtikelInfo";
+import ArtikelInfo, { ArtikelArrayPhampton, KeinArtikel } from "./ArtikelInfo";
 
 export default function ArtikelArray({ loading, array, setArrayData, artikelAnzahl, setOffset }: { loading: boolean, array: TArtikel[], setArrayData: React.Dispatch<React.SetStateAction<TArtikelnDatei>>, artikelAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
 
@@ -46,14 +46,14 @@ export default function ArtikelArray({ loading, array, setArrayData, artikelAnza
     }
     return loading ? 
     (
-        <div>Loading</div>
+        <ArtikelArrayPhampton/>
     )
     :
     array.length === 0 ?
-    <div><h1>KEIN ARTIKELN </h1></div>
+        <KeinArtikel/>
     :
     (
-        <div>
+        <div className="container px-4">
             {array.map((art) => 
                         <ArtikelInfo artikel={art} key={art.slug}>
                             { art.author.username === '' ?

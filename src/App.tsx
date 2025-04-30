@@ -13,6 +13,7 @@ import { EndpunktContextProvider } from './context/EndpunktContext'
 import { AuthContextProvider } from './context/AuthContext'
 import SidebarNav from './components/Nav/SidebarNav'
 import NavMobile from './components/Nav/NavMobile'
+import Footer from './components/Footer/Footer'
 
 
 export type TThemeContext = {
@@ -74,11 +75,9 @@ function App() {
       <main>
         <Header />
         <div className="main-content"> {/*Displayed als grid*/}
-          <div className="content">
             <Outlet />
-          </div>
         </div>
-        {/* Footer */}
+        <Footer />
       </main>
     </SidebarContextProvider>      
     </ThemeProvider>

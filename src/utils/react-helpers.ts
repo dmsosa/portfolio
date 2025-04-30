@@ -27,6 +27,18 @@ export function createStrictContext<ContextType>(options: CreateContextOptions =
     return [Context.Provider, useCreatedContext] as CreateContextReturn<ContextType>;
 }
 
+export class TApiError extends Error {
+    status?: number;
+    message: string;
+    name: string;
+    constructor(error: Error) {
+        super(error.message);
+        this.name = error.name;
+        this.status = 500;
+        this.message = error.message;
+    }
+
+}
 
 //Cookies
 export function setCookie(cname: string, cvalue: unknown, exdays: number ){ 

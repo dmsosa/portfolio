@@ -29,7 +29,7 @@ export async function getArtikeln({ headers, endpunkt, username, tags, offset, l
         const articleData = await res.json();
         return articleData;
     } catch (error) {   
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }
@@ -46,10 +46,11 @@ export async function getArtikel({ headers, slug } : {
         const artikel: TArtikel = await res.json();
         return artikel;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 } 
+
 export async function getArtikelKommentar({ headers, slug } : { 
     headers?: Record<string, string>,
     slug: string,
@@ -63,7 +64,7 @@ export async function getArtikelKommentar({ headers, slug } : {
         const kommentDatei = await res.json();
         return kommentDatei;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 } 
@@ -81,7 +82,7 @@ export async function toggleFavorite({ headers, isFavorite, slug } : {
         const artikel: TArtikel = await res.json();
         return artikel;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }
@@ -99,7 +100,7 @@ export async function removeArtikel({ headers, slug } : {
         const artikel: TArtikel = await res.json();
         return artikel;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 } 

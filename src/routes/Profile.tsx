@@ -4,21 +4,20 @@ import { useParams } from "react-router-dom";
 import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
 import ArtikelListe from "../components/Artikel/ArtikelArray";
 import useArtikeln from "../hooks/useArtikeln";
-import { useAuth } from "../context/AuthContext";
 import useProfile from "../hooks/useProfile";
 import EndpunktToggler from "../components/Widgets/EndpunktToggler";
 import { useEndpunkt } from "../context/EndpunktContext";
 import BenutzerArray from "../components/Benutzer/BenutzerArray";
 import useBenutzer from "../hooks/useBenutzer";
 
+
 export default function Profile() {
     const { username } = useParams();
-    const { headers } = useAuth();
     const { entity, endpunkt } = useEndpunkt();
 
-    const { loadingArtikeln, artikeln, artikelnAnzahl, setArtikelnDatei, setOffsetArtikeln } = useArtikeln({ headers, endpunkt });
-    const { loadingBenutzer, benutzerArray, benutzerAnzahl, setBenutzerDatei, setOffsetBenutzer } = useBenutzer( { headers, endpunkt });
-    const { loading, profile } = useProfile({ headers, username });
+    const { loadingArtikeln, artikeln, artikelnAnzahl, setArtikelnDatei, setOffsetArtikeln } = useArtikeln({ endpunkt });
+    const { loadingBenutzer, benutzerArray, benutzerAnzahl, setBenutzerDatei, setOffsetBenutzer } = useBenutzer( { endpunkt });
+    const { loading, profile } = useProfile({  username });
     return loading ?
         <div>Loading</div> 
         :

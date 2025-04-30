@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 import { TBenutzer } from "../data/types";
 import { getProfile } from "../services/benutzer.services";
+import { useAuth } from "../context/AuthContext";
 
 export type TBenutzerDatei = {
     benutzerAnzahl: number,
     benutzerArray: TBenutzer[],
 }
 
-export default function useProfile({ headers,
-    username } : {
-    headers?: Record<string, string>,
+
+const defaultBenutzer: TBenutzer = {
+    username: 'benutzername',
+    bio: 'bio',          
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnSA1zygA3rubv-VK0DrVcQ02Po79kJhXo_A&s',
+    isFollowing: false,
+    followersCount: 21,
+    followingCount: 32,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+}
+
+export default function useProfile({ username } : {
     username?: string, 
 }) {
-    const [ profile, setProfile ] = useState<TBenutzer | undefined>(undefined);
+    const [ profile, setProfile ] = useState<TBenutzer | undefined>(defaultBenutzer);
     const [ loading, setLoading ] = useState< boolean >(false);
-
+    const { headers } = useAuth();
     useEffect(() => {
         if (!username) return;
         getProfile({ headers, username })

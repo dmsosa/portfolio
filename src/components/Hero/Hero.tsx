@@ -1,32 +1,33 @@
-import hero from "../../assets/img/fot.png";
 import { useRef } from "react";
-import Portfolio from "../Portfolio/Portfolio";
 
 
-function HeroBg() {
+function Hero() {
 
     const sectionRef = useRef<HTMLDivElement>(null);
 
 
     return (
-        <section ref={sectionRef} className="hero">
-                <div className="slide">
-                    <div className="hero-content">
-                        <div className="images">
-                            <img src={hero} alt="" />
-                        </div>
-                        <div className="text">
-                            <h1>Front + End</h1>
-                            <p>That's what I do</p>
-                            <button></button>
-                        </div>
-                    </div>
+        <div ref={sectionRef} className="content hero">
+                <div className="hero-bg">
                 </div>
-                <div className="slide">
-                    <Portfolio/>
+                <div className="hero-text">
+                        <h1 className="h1 text-epic fw-bold">
+                            <span className="split d-flex">
+                                <span className="line">Front</span>
+                                <span className="line ms-2">+</span>
+                                <span className="line ms-2">End</span>
+                            </span>
+                        </h1>
+                        <p className="p">
+                            <span className="split">
+                                <span className="line">That's what I do</span>
+                                <span className="line">.</span>
+                            </span>
+                        </p>
+                        <button className="btn btn-primary">Get started</button>
                 </div>
-        </section>
+        </div>
     )
 }
 
-export default HeroBg;
+export default Hero;

@@ -1,10 +1,38 @@
+.nav-mobile {
+    z-index: 1000;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3.3rem;
+    width: 100%;
+    background-color: #11111165;
+    transition: background-color 0.4s ease-in-out;
+    &:hover {
+        background-color: #111;
+    }
+    .sidebar-content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        ul {
+            gap: 1rem;
+        }
+    }
+}
 .sidebar-nav {
     position: relative;
+    display: none;
+    order: 1;
     height: 100%;
     width: var(--nav-width);
     transition: width 0.4s;
     z-index: 3;
 }
+
 .nav-listener {
     position: absolute;
     opacity: 1;
@@ -134,73 +162,15 @@
 .sidebar-toggler[data-hidden='true'] {
     display: none;
 }
-.nav-mobile {
-    z-index: 1000;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3.3rem;
-    width: 100%;
-    background-color: #11111165;
-    transition: background-color 0.4s ease-in-out;
-    &:hover {
-        background-color: #111;
-    }
-    .sidebar-content {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        ul {
-            gap: 1rem;
-        }
-    }
-    // &.active {
-    //     .sidebar-content {
-    //         height: 55%;
-    //         top: 30%;
-    //         transform: translateX(0%);
-    //         border-radius: 0;
-    //     }
-    // }
-}
-//desktop
-// .sidebar-nav {
-//     position: relative;
-//     height: 100vh;
-//     width: var(--nav-width);
-//     overflow: hidden;
-//     background-color: #444;
-//     transition: width 0.4s ease;
-//     .sidebar-content {
-//         z-index: 1;
-//         position: absolute;
-//         width: 100%;
-//         top: 20%;
-//         height: 55%;
-//         transform: translateX(-80%);
-//         border-top-right-radius: 15px;
-//         border-bottom-right-radius: 15px;
-//         border: solid 0.15rem;
-//         border-color: $dark;
-//         box-shadow: inset -1px 0px $dark, 0px 0px 4px #111;
-//         transition: top 0.4s ease, height 0.4s ease, border-radius 0.4s ease, transform 0.6s ease;
-//         padding: 0.5rem;
-//     }
-//     &.active {
-//         .sidebar-content {
-//             height: 55%;
-//             top: 30%;
-//             transform: translateX(0%);
-//             border-radius: 0;
-//         }
-//     }
-// }
 
-@media only screen and (min-width: 768px) {
-    .sidebar-toggler {
+
+
+
+@media only screen and (min-width: 576px) {
+    .nav-mobile {
+        display: none;
+    }
+    .sidebar-nav, .sidebar-right, .sidebar-toggler {
         display: block;
     }
 }

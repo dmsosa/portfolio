@@ -23,10 +23,10 @@ function Portfolio() {
     //     })
     // }, { scope: sectionRef })
     return (
-        <section ref={sectionRef}>
-            <h1 className="text-wrap text-center fw-bold mb-4">
-                <span>projekte</span>
-            </h1>
+        <div ref={sectionRef} className="content pt-5">
+            <h2 className="h2 text-center text-uppercase">
+                <div className="line">Projekte</div>
+            </h2>
             <div className="p-4">
                 {projectsArray.map((project, index) => {
                     return (
@@ -46,7 +46,7 @@ function Portfolio() {
             </div>
             
             <span className="ps-3">Und es gibt mehr...</span>
-        </section>
+        </div>
         
 
     )

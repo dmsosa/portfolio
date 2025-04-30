@@ -44,11 +44,10 @@
 }
 
 .artikel--card {
-    .benutzer--info {
-        max-width: 4rem !important;
-    }
-    background-color: $dark2;
-    padding: 1rem;
+    overflow: hidden;
+    padding: 1rem 1.6rem;
+    background-color: #000;
+    border: solid $light 0.125rem;
     &:not(:last-child) {
         margin-bottom: 0.5rem;
     }

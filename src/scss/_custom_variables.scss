@@ -22,10 +22,10 @@ $secondary: #dbdbdb;
 $success: #00ffdd;
 $danger: #ff3636;
 $warning: #fff366;
-$dark: #0d1b3d;
+$dark: #000;
 $dark2: #09132b;
 $dark3: #18306c;
-$light: #f0f0f0;
+$light: #fff;
 $light2: #dadada;
 $light3: #bebebe;
 
@@ -43,3 +43,7 @@ $h5-font-size: 1.25rem;
 $h6-font-size: 1rem;
 
 $link-hover-color-rgb: '255, 255, 255';
+$btn-font-weight: bold;
+$btn-padding-x: .5rem;
+$btn-padding-y: 0.25rem;
+$btn-font-size: 0.75rem;

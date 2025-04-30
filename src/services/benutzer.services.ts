@@ -12,7 +12,7 @@ export async function toggleFollow({ headers, isFollowing, username }: { headers
         const benutzer: TBenutzer = await res.json();
         return benutzer;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }
@@ -26,7 +26,7 @@ export async function getCurrentBenutzer(headers: Record<string, string> ): Prom
         const loggedBenutzer: TLoggedBenutzer = await res.json();
         return loggedBenutzer;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }
@@ -41,7 +41,7 @@ export async function loginBenutzer({ email, password } : { email: string, passw
         const loggedStatus = { headers: { 'Authorization':loggedBenutzer.token }, loggedUser: loggedBenutzer, isAuth: true };
         return loggedStatus;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }
@@ -66,7 +66,7 @@ export async function getAllBenutzer({ headers, endpunkt, username, limit, offse
         const benutzerData: TBenutzerDatei = await res.json();
         return benutzerData;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }
@@ -80,7 +80,7 @@ export async function getProfile({headers, username } : { headers?: Record<strin
         const benutzerData: TBenutzer = await res.json();
         return benutzerData;
     } catch (error) {
-        console.log(error);
+          console.error(error);
         throw error;
     }
 }

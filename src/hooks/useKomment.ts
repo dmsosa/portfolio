@@ -21,7 +21,6 @@ export default function useKomment({ slug } : { slug?: string }) {
         .then((kommentDatei: TKommentDatei) => {
             setKommentDatei(kommentDatei);
         })
-        .catch(console.error)
         .finally(() => setLoading(false));
     }, [slug, offset]);
     

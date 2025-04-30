@@ -24,7 +24,7 @@ export default function BenutzerForms() {
                 :
                 <FormWrapper
                 titel="Get started"
-                untertitel="it's fun and free"
+                untertitel="it's fun, and free"
                 onClick={() => setShowForm('login')}
                 linkMessage="Already have an account? log in!"
                 >

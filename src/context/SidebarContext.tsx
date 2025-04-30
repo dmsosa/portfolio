@@ -1,10 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 export type TSidebarContext = {
-    expanded: boolean,
-    setExpanded: React.Dispatch<React.SetStateAction<boolean>>,
-    navWidth: number,
-    setNavWidth: React.Dispatch<React.SetStateAction<number>>
+    expandedLeft: boolean,
+    setExpandedLeft: React.Dispatch<React.SetStateAction<boolean>>, 
 }
 const SidebarContext = createContext<TSidebarContext | null >(null);
 
@@ -18,36 +16,34 @@ export function useSidebarContext() {
 
 }
 export function SidebarContextProvider({ children } : { children: ReactNode | ReactNode[] }) {
-    const viewportWidth = window.innerWidth;
-    const [expanded, setExpanded] = useState(true);
-    const [navWidth, setNavWidth] = useState(viewportWidth);
+    const [expandedLeft, setExpandedLeft] = useState(false);
 
     useEffect(() => {
         const nav = document.getElementById("sidebar-nav");
         const header = document.querySelector("header")  as HTMLDivElement;
         const main = document.querySelector("main")  as HTMLDivElement;
         const mainContent = document.querySelector(".main-content") as HTMLDivElement;
-
+        //setMain Width zu 100% - sidebar-left + sidebar-right
         if (!nav) return;
-        if (!expanded) {
+        if (!expandedLeft) {
             nav.style.setProperty('--nav-width', '0px');
-            header.style.setProperty('--main-width', 'calc(100vw)');
-            main.style.setProperty('--main-width', 'calc(100vw)');
+            header.style.setProperty('--main-width', '100vw');
+            main.style.setProperty('--main-width', '100vw');
             mainContent.style.setProperty('--margin-left', '255px');
-            mainContent.style.setProperty('--margin-right', '55px');
-            mainContent.style.setProperty('--main-content-width', '1fr');
+            mainContent.style.setProperty('--margin-right', '15px');
+            mainContent.style.setProperty('--main-content-width', 'calc(100% - var(--margin-left) - var(--margin-right))');
         } else {
-            nav.style.setProperty('--nav-width', '255px');
-            header.style.setProperty('--main-width', 'calc(100vw - 255px)');
-            main.style.setProperty('--main-width', 'calc(100vw - 255px)');
-            mainContent.style.setProperty('--margin-left', '55px');
-            mainContent.style.setProperty('--margin-right', '55px');
-            mainContent.style.setProperty('--main-content-width', '1fr');
+            nav.style.setProperty('--nav-width', '250px');
+            header.style.setProperty('--main-width', 'calc(100vw - var(--nav-width))');
+            main.style.setProperty('--main-width', 'calc(100vw - var(--nav-width))');
+            mainContent.style.setProperty('--margin-left', '15px');
+            mainContent.style.setProperty('--margin-right', '15px');
+            mainContent.style.setProperty('--main-content-width', 'calc(100% - var(--margin-left) - var(--margin-right))');
         }
 
-    }, [ expanded ])
+    }, [expandedLeft]);
     return  (
-    <SidebarContext.Provider value={{ expanded, setExpanded, navWidth, setNavWidth }}>
+    <SidebarContext.Provider value={{ expandedLeft, setExpandedLeft }}>
         {children}
     </SidebarContext.Provider>)
 };

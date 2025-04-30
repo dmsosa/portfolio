@@ -17,7 +17,7 @@ const footerLinks: TLinkObject[] = [
     { title: 'YouTube', href: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
 ]; 
 function SidebarNav() {
-    const { expanded } = useSidebarContext();
+    const { expandedLeft } = useSidebarContext();
     const { isAuth, loggedUser } = useAuth();
     const [ links, setLinks ] = useState<TLinkObject[]>([]);
     const handleEnter = () => {
@@ -56,9 +56,9 @@ function SidebarNav() {
         }
     }, [isAuth, loggedUser]);
     return (
-        <nav id="sidebar-nav" className="sidebar-nav active d-none d-md-block">
+        <nav id="sidebar-nav" className="sidebar-nav">
             <div className="nav-listener" onMouseEnter={handleEnter} onMouseLeave={handleLeave}></div>
-            <div className="sidebar-content" aria-expanded={expanded} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+            <div className="sidebar-content" aria-expanded={expandedLeft} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
                 <SidebarNavHeader/>
                 <hr className="w-100"></hr>
                 <div className="d-flex justify-content-start align-items-center flex-column mh-60">

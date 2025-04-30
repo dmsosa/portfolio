@@ -10,12 +10,12 @@ import ArtikelArray from "../components/Artikel/ArtikelArray";
 
 
 export default function Dashboard() {
-    const { headers, isAuth, loggedUser } = useAuth();
+    const { isAuth, loggedUser } = useAuth();
     const { entity } = useEndpunkt();
     // const [currentPage, setCurrentPage ] = useState(0);
-    const {  loadingArtikeln, artikelnAnzahl, artikeln, setArtikelnDatei, setOffsetArtikeln }  = useArtikeln({headers: headers ? headers : {}, endpunkt: 'global' });
+    const {  loadingArtikeln, artikelnAnzahl, artikeln, setArtikelnDatei, setOffsetArtikeln }  = useArtikeln({endpunkt: 'global' });
     
-    const {  loadingBenutzer, benutzerAnzahl, benutzerArray, setBenutzerDatei, setOffsetBenutzer }  = useBenutzer({headers: headers ? headers : {}, endpunkt: 'global' });
+    const {  loadingBenutzer, benutzerAnzahl, benutzerArray, setBenutzerDatei, setOffsetBenutzer }  = useBenutzer({ endpunkt: 'global' });
 
     return <>
     { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <BenutzerForms/>}
@@ -29,14 +29,8 @@ export default function Dashboard() {
                 </div>
                 <div className="row">
                 { entity === 'artikel' ? 
-                loadingArtikeln ?
-                <div>Loading</div> 
-                :
                 <ArtikelArray loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />
                 :
-                loadingBenutzer ?
-                <div>Loading</div>
-                : 
                 <BenutzerArray loading={loadingBenutzer} array={benutzerArray} setArrayData={setBenutzerDatei} benutzerAnzahl={benutzerAnzahl} setOffset={setOffsetBenutzer} />}
                 </div>
                 

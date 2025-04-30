@@ -11,7 +11,7 @@ const mainLinks: TLinkObject[] = [
 
 function NavMobile() {
     return (
-        <nav className="nav-mobile d-block d-md-none">
+        <nav className="nav-mobile">
             <div className="sidebar-content">
                 <LinkList links={mainLinks} expanded={false}/>
             </div>

@@ -1,11 +1,11 @@
 import { useSidebarContext } from "../../context/SidebarContext";
 
 function SidebarToggler( { role } : { role: 'opener' | 'closer' }) {
-    const { expanded, setExpanded } = useSidebarContext();
-    const hideButton = role === 'opener' && expanded || role === 'closer' && !expanded;
+    const { expandedLeft, setExpandedLeft } = useSidebarContext();
+    const hideButton = role === 'opener' && expandedLeft || role === 'closer' && !expandedLeft;
     const handleClick = () => {
-        console.log(expanded)
-        setExpanded(!expanded);
+        console.log(expandedLeft)
+        setExpandedLeft(!expandedLeft);
     }
     return  (<button onClick={handleClick} className="sidebar-toggler" data-role={role} data-hidden={hideButton}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">

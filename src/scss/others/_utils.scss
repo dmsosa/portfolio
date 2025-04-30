@@ -1,3 +1,28 @@
+.h1 {
+    font-size: 3.15rem;
+    line-height: 0.8;
+}
+.h2 {
+    font-size: 2.85rem;
+    line-height: 0.8;
+}
+.p {
+    font-size: 1.5rem;
+    line-height: 0.9;
+}
+.split {
+    display: block;
+    overflow: hidden;
+}
+.line {
+    display: inline;
+    transform: translateY(0) rotate(0deg);
+    transition: transform 0.4s ease;
+}
+.text-epic {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .mh-60 {
     max-height: 60%;
 }
@@ -15,4 +40,7 @@
 }
 .flex-wrap {
     flex-wrap: wrap;
+}
+.border-container {
+    border: solid $light 0.125rem;
 }

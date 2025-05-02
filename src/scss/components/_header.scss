@@ -1,6 +1,6 @@
 
 .scrolled {
-    transform: translateY(-90%) !important;
+    transform: translateY(-2.780rem) !important;
 }
 
 .header {
@@ -9,7 +9,7 @@
     position: fixed;
     display: flex;
     font-size: 1.35rem;
-    height: 3.25rem;
+    height: 3rem;
     transform: none;
     transition: transform 0.5s ease-in;
     transform: translateY(0);
@@ -21,7 +21,7 @@
 .progress-bar {
     position: absolute;
     width: 100%;
-    height: 0.125rem;
+    height: 0.225rem;
     max-width: 100%;
     bottom: 0;
     left: 0;

@@ -18,12 +18,10 @@ function Hero() {
                                 <span className="line ms-2">End</span>
                             </span>
                         </h1>
-                        <p className="p">
-                            <span className="split">
-                                <span className="line">That's what I do</span>
-                                <span className="line">.</span>
-                            </span>
-                        </p>
+                        <h5 className="h5 text-epic fw-bold">
+                            <span className="line">That's what I do</span>
+                            <span className="line">.</span>
+                        </h5>
                         <button className="btn btn-primary">Get started</button>
                 </div>
         </div>

@@ -17265,7 +17265,7 @@ progress {
 }
 
 .scrolled {
-  transform: translateY(-90%) !important;
+  transform: translateY(-2.78rem) !important;
 }
 
 .header {
@@ -17274,7 +17274,7 @@ progress {
   position: fixed;
   display: flex;
   font-size: 1.35rem;
-  height: 3.25rem;
+  height: 3rem;
   transform: none;
   transition: transform 0.5s ease-in;
   transform: translateY(0);
@@ -17287,7 +17287,7 @@ progress {
 .progress-bar {
   position: absolute;
   width: 100%;
-  height: 0.125rem;
+  height: 0.225rem;
   max-width: 100%;
   bottom: 0;
   left: 0;
@@ -17584,6 +17584,21 @@ footer {
     width: 30%;
     background: linear-gradient(to right, transparent 10%, black 30%);
     right: 0%;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .hero-bg {
+    background-size: 70%;
+    background-position: 0% -3.25rem;
+  }
+  .hero-bg::before {
+    content: "";
+    z-index: 3;
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(to right, transparent 10%, black 30%);
+    right: 10%;
   }
 }
 .project-card {
@@ -17924,6 +17939,13 @@ footer {
   line-height: 0.8;
 }
 
+.h5 {
+  font-size: 1.4rem;
+  line-height: 0.8;
+  overflow: hidden;
+  border: solid red 0.125rem;
+}
+
 .p {
   font-size: 1.5rem;
   line-height: 0.9;
@@ -17932,12 +17954,6 @@ footer {
 .split {
   display: block;
   overflow: hidden;
-}
-
-.line {
-  display: inline;
-  transform: translateY(0) rotate(0deg);
-  transition: transform 0.4s ease;
 }
 
 .text-epic {
@@ -17972,6 +17988,29 @@ footer {
   border: solid #fff 0.125rem;
 }
 
+.order-0 {
+  order: 0;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+@media only screen and (min-width: 768px) {
+  .order-md-0 {
+    order: 0;
+  }
+  .order-md-1 {
+    order: 1;
+  }
+  .order-md-2 {
+    order: 2;
+  }
+}
 .robot-wrapper {
   position: relative;
   margin: auto;
@@ -18539,8 +18578,23 @@ ul.icon-ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
-  font-size: 1.5rem;
+}
+ul.icon-ul li.icon-li {
+  margin-right: 1rem;
+}
+ul.icon-ul li.icon-li:last-child {
+  margin-right: 0;
+}
+
+.icon {
+  width: 2.8rem;
+  margin: 0 auto;
+  stroke-dasharray: 132;
+  stroke-dashoffset: 0;
+}
+.icon path {
+  fill: transparent;
+  stroke: #65ff65;
 }
 
 .container-content {
@@ -18896,36 +18950,6 @@ ul.icon-ul {
   color: inherit;
 }
 
-#whatsappSvg {
-  stroke-dasharray: 132;
-  stroke-dashoffset: 0;
-}
-#whatsappSvg path {
-  fill: transparent;
-  stroke-width: 0.05rem;
-  stroke: #65ff65;
-}
-
-#emailSvg {
-  stroke-dasharray: 6193;
-  stroke-dashoffset: 0;
-}
-#emailSvg path {
-  fill: transparent;
-  stroke-width: 0.5rem;
-  stroke: #65ff65;
-}
-
-#githubSvg {
-  stroke-dasharray: 132;
-  stroke-dashoffset: 0;
-}
-#githubSvg path {
-  fill: transparent;
-  stroke-width: 0.05rem;
-  stroke: #65ff65;
-}
-
 .ul-tag {
   display: flex;
   list-style: none;
@@ -19021,6 +19045,41 @@ ul.icon-ul {
 .avatar--vertical {
   flex-direction: column !important;
   justify-content: center;
+}
+
+.input-wrap {
+  position: relative;
+  margin-top: 1.9rem;
+}
+.input-wrap label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 1rem;
+  color: #bebebe;
+  transition: color 0.4s ease, font-size 0.4s ease, top 0.4s ease, left 0.4s ease;
+}
+.input-wrap input, .input-wrap textarea {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  border-bottom: solid 0.125rem;
+  border-color: #fff;
+  transition: all 0.4s ease;
+}
+.input-wrap input:not(:placeholder-shown), .input-wrap input:focus, .input-wrap textarea:not(:placeholder-shown), .input-wrap textarea:focus {
+  outline: none;
+  background-color: #18306c;
+  border-color: #65ff65;
+}
+.input-wrap input:not(:placeholder-shown) + label, .input-wrap input:focus + label, .input-wrap textarea:not(:placeholder-shown) + label, .input-wrap textarea:focus + label {
+  top: -1rem;
+  left: 0.5rem;
+  font-size: 0.8rem;
+  color: #65ff65;
 }
 
 .phampton--wrapper {

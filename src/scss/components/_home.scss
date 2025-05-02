@@ -51,3 +51,18 @@
         }
     }
 }
+@media only screen and (min-width: 1024px) {
+    .hero-bg {
+        background-size: 70%;
+        background-position: 0% -3.25rem;
+        &::before {
+            content: "";
+            z-index: 3;
+            position: absolute;
+            height: 100%;
+            width: 30%;
+            background: linear-gradient(to right, transparent 10%, black 30%);
+            right: 10%;
+        }
+    }
+}

@@ -6,6 +6,12 @@
     font-size: 2.85rem;
     line-height: 0.8;
 }
+.h5 {
+    font-size: 1.4rem;
+    line-height: 0.8;
+    overflow: hidden;
+    border: solid red 0.125rem;
+}
 .p {
     font-size: 1.5rem;
     line-height: 0.9;
@@ -13,11 +19,6 @@
 .split {
     display: block;
     overflow: hidden;
-}
-.line {
-    display: inline;
-    transform: translateY(0) rotate(0deg);
-    transition: transform 0.4s ease;
 }
 .text-epic {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -43,4 +44,24 @@
 }
 .border-container {
     border: solid $light 0.125rem;
+}
+.order-0 {
+    order: 0;
+}
+.order-1 {
+    order: 1;
+}
+.order-2 {
+    order: 2;
+}
+@media only screen and (min-width: 768px) {
+    .order-md-0 {
+        order: 0;
+    }
+    .order-md-1 {
+        order: 1;
+    }
+    .order-md-2 {
+        order: 2;
+    }
 }

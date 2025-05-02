@@ -1,4 +1,4 @@
-import IconListe from "../components/Widgets/IconListe";
+import IconListe from "../components/Widgets/SvgListe";
 
 export default function CV() {
     return (

@@ -1,15 +1,28 @@
+import { useRef } from "react";
+import ContactForm from "../Widgets/ContactForm";
 import ET from "../Widgets/ET";
+import { useGSAP } from "@gsap/react";
 
 export default function Footer() {
+    const footerRef = useRef<HTMLDivElement >(null);
+    useGSAP(() => {
+        if (!footerRef.current) return;
+        gsap.from('.icon', {
+            transform: "translateY(100%) rotate(-10deg)",})
+    }, {scope: footerRef});
     return (
-        <footer>
-            <div className="d-flex flex-column">
-                <div>
-                    <h2 className="h2">
-                        <span className="line">Want to collaborate?</span>
-                    </h2>
-                    <ET />
-                    <p className="text-epic text-center w-80 mx-auto"><span className="line">Get in touch</span></p>
+        <footer >
+            <div className="container">
+                <div className="row row-cols-md-2">
+                    <div className="col col-12">
+                        <h2 className="h2 text-epic">
+                            Want to collaborate?
+                        </h2>
+                        <ET />
+                    </div>
+                    <div className="col col-12">
+                        <ContactForm />
+                    </div>
                 </div>
             </div>
         </footer>

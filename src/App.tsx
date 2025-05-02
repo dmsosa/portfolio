@@ -2,9 +2,6 @@ import './assets/css/styles.css'
 
 import ThemeToggler from './components/Widgets/ThemeToggler'
 import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
 import { SidebarContextProvider } from './context/SidebarContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { Outlet } from 'react-router-dom'
@@ -14,6 +11,10 @@ import { AuthContextProvider } from './context/AuthContext'
 import SidebarNav from './components/Nav/SidebarNav'
 import NavMobile from './components/Nav/NavMobile'
 import Footer from './components/Footer/Footer'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+gsap.registerPlugin(ScrollTrigger);
 
 
 export type TThemeContext = {
@@ -22,67 +23,55 @@ export type TThemeContext = {
 }
 
 function App() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const animate = (target: Element) => {
-    gsap.fromTo(target, {
-      transform: "translateY(100%) rotate(-10deg)",
-      opacity: 0,
-    }, {
-      transform: "translateY(00%) rotate(00deg)",
-      opacity: 1,
-      duration: 0.5,
-    });
-  }
+  const mainRef = useRef<HTMLDivElement>(null);
+
+
   useGSAP(() => {
-      if (!sectionRef.current) return;
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.set("h1 span", { transform: "translateY(100%) rotate(-10deg)",
-        opacity: 0, })
-      gsap.set(".description", { transform: "translateY(100%) rotate(-10deg)",
-          opacity: 0, })
-      gsap.utils.toArray("h1 span").forEach((title) => {
-        const target = title as Element;
-        ScrollTrigger.create({
-          trigger: target,
-          start: "top 60%",
-          once: true,
-          onEnter: () => {animate(target)}
-        })
-      });
-      gsap.utils.toArray(".description").forEach((p) => {
-        const target = p as Element;
-        ScrollTrigger.create({
-          trigger: target,
-          start: "top 60%",
-          once: true,
-          onEnter: () => {animate(target)}
-        })
-      })
-
-  }, { scope: sectionRef });
-
+    if (!mainRef.current) return;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.main-content',
+        start: "center bottom",
+        end: "bottom top",
+        markers: true,
+        onEnter: () => {
+          console.log("enter")
+        },
+        onUpdate: () => {
+          console.log("update")
+        }
+        
+      },
+    });
+    tl.fromTo('.progress-bar', { 
+      scaleX: 0, 
+    }, 
+    { 
+      scaleX: 1,
+    });
+  }, { scope: mainRef });
  
 
   return (
     <div id="app-wrapper" className="app-wrapper">
-    <AuthContextProvider>
-    <EndpunktContextProvider>
-    <ThemeProvider>
-    <SidebarContextProvider>
-      <ThemeToggler/>
-      <SidebarNav/>
-      <NavMobile />
-      <main>
-        <Header />
-        <div className="main-content"> {/*Displayed als grid*/}
-            <Outlet />
-        </div>
-        <Footer />
-      </main>
-    </SidebarContextProvider>      
-    </ThemeProvider>
-    </EndpunktContextProvider>
-    </AuthContextProvider>
+      <AuthContextProvider>
+      <EndpunktContextProvider>
+      <ThemeProvider>
+      <SidebarContextProvider>
+        <ThemeToggler/>
+        <SidebarNav/>
+        <NavMobile />
+        <main ref={mainRef}>
+          <Header />
+          <div className="main-content"> {/*Displayed als grid*/}
+              <Outlet />
+          </div>
+          <Footer />
+        </main>
+      </SidebarContextProvider>      
+      </ThemeProvider>
+      </EndpunktContextProvider>
+      </AuthContextProvider>
     </div>
     
     

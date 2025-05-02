@@ -34,7 +34,7 @@ const contents: TDivContent[] = [
 ];
 function UberMich() {
     return (
-        <div className="content pt-6">
+        <div className="content py-6">
             <div className="container container-sm">
                 { contents.map((content, index) => (
                     <Content 

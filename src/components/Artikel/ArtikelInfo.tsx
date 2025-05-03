@@ -28,35 +28,6 @@ export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel,
         
     }
 
-    export function ArtikelInfoPhampton() {
-        //if author, remove und edit knopf
-        //if not: follow und fav knopf
-        //slug
-            return (<div className="phampton--wrapper">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <div className="phampton-circle"></div>
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className="phampton-square phampton-square-short"></div>
-                                <div className="phampton-square phampton-square-short ms-3"></div>
-                            </div>
-                        </div>
-                        <div className="phampton-square"></div>
-                        <div className="phampton-square phampton-square-big"></div>
-                        <div className="phampton-line"></div>
-                        <div className="phampton-square"></div>
-                    </div>
-        )
-    }
-    export function ArtikelArrayPhampton() {
-        //if author, remove und edit knopf
-        //if not: follow und fav knopf
-        //slug
-            return (<div className="container px-4">
-                <ArtikelInfoPhampton/>
-                <ArtikelInfoPhampton/>
-                <ArtikelInfoPhampton/>
-            </div>)
-    }
     export function KeinArtikel() {
         //if author, remove und edit knopf
         //if not: follow und fav knopf

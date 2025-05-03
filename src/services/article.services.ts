@@ -29,7 +29,7 @@ export async function getArtikeln({ headers, endpunkt, username, tags, offset, l
         const articleData = await res.json();
         return articleData;
     } catch (error) {   
-          console.error(error);
+        console.error("Fehler beim Abrufen der Artikel:", error);
         throw error;
     }
 }

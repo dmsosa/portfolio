@@ -21,8 +21,16 @@ export default function useKomment({ slug } : { slug?: string }) {
         .then((kommentDatei: TKommentDatei) => {
             setKommentDatei(kommentDatei);
         })
+        .catch(() => {
+            setKommentDatei({ kommentAnzahl: kommentArray.length, kommentArray: kommentArray });
+        }
+        )
         .finally(() => setLoading(false));
     }, [slug, offset]);
     
     return { loading, kommentAnzahl, kommentArray, setOffset };
 }
+
+//fetch artikel bei slug
+//wenn artikel, dann artikelSetzen
+//wennn fehler, dann setze auf default

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { TArtikel, TBenutzer, TLoggedBenutzer } from "../../data/types";
 import FollowKnopf from "../Widgets/Knopfen/FollowKnopf";
 
-function ArtikelKnopfe({ author, loggedUser, updateParentData  } : { author: TBenutzer, loggedUser: TLoggedBenutzer | null, updateParentData: React.Dispatch<React.SetStateAction<TArtikel | undefined>> }) {
+function ArtikelKnopfe({ author, loggedUser, updateParentData  } : { author: TBenutzer, loggedUser: TLoggedBenutzer | null, updateParentData: React.Dispatch<React.SetStateAction<TArtikel>> }) {
     const handleFollow = (benutzer: TBenutzer) => {
-        updateParentData((prev: TArtikel | undefined) => {
+        updateParentData((prev: TArtikel) => {
             if (!prev) return prev;
             else return ({ ...prev, author: benutzer })});
     };

@@ -25,6 +25,10 @@ export default function useBenutzer({ endpunkt, username } : {
         .then((benutzerDatei) => {
             setBenutzerDatei(benutzerDatei)
         })
+        .catch(() => {
+            setBenutzerDatei({ benutzerAnzahl: benutzerArray.length, benutzerArray: benutzerArray });
+        })
+
         .finally(() => setLoading(false));
     }, [ endpunkt, username, limit, offset ])
 

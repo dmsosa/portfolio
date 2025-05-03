@@ -26,9 +26,11 @@
        transform: scale(1);
     }
  }
- @keyframes phampton {
+
+
+ @keyframes phamton {
     from {
-        left: 0
+        left: -50%;
     } 
     to {
         left: 100%;

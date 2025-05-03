@@ -1,0 +1,46 @@
+
+.phamton {
+    position: absolute;
+    overflow: hidden;
+    background-color: $dark;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, $dark2, transparent);
+        opacity: 0.5;
+        left: -50%;
+        animation: phamton 2s linear infinite;
+    }
+}
+.phamton-bg {
+    top: 0;
+    left: 0; 
+    right: 0;
+    bottom: 0;
+}
+
+.phamton--wrapper {
+    background-color: #000;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 10px #111;
+}
+.phamton-square, .phamton-line, .phamton-square-round, .phamton-circle {
+    background-color: #111;
+    width: 100%;
+    height: 2rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+}
+.phamton-line {
+    max-height: 0.25rem;
+}
+
+.phamton-circle {
+    border-radius: 100%;
+}

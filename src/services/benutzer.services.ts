@@ -66,7 +66,7 @@ export async function getAllBenutzer({ headers, endpunkt, username, limit, offse
         const benutzerData: TBenutzerDatei = await res.json();
         return benutzerData;
     } catch (error) {
-          console.error(error);
+            console.error("Fehler beim Abrufen der Benutzer:", error);
         throw error;
     }
 }

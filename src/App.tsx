@@ -13,8 +13,6 @@ import NavMobile from './components/Nav/NavMobile'
 import Footer from './components/Footer/Footer'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/all'
-gsap.registerPlugin(ScrollTrigger);
 
 
 export type TThemeContext = {

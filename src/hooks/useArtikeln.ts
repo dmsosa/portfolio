@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TArtikel } from "../data/types";
 import { getArtikeln } from "../services/article.services";
 import { useAuth } from "../context/AuthContext";
+import { artikelArray } from "../data/artikel.data";
 
 export type TArtikelnDatei = {
     artikelnAnzahl: number,
@@ -25,6 +26,9 @@ export default function useArtikeln({ endpunkt, username, tags } : {
         //headers greifen
         getArtikeln({headers: headers, endpunkt, username, tags, limit, offset })
         .then((artikelnDatei) => setArtikelnDatei(artikelnDatei))
+        .catch(() => {
+            setArtikelnDatei({ artikelnAnzahl: artikelArray.length, artikeln: artikelArray });
+        })
         .finally(() => setLoading(false));
 
     }, [endpunkt, username, tags, limit, offset]);

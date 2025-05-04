@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TArtikel } from "../../../data/types";
 import { removeArtikel } from "../../../services/article.services";
 
-export default function RemoveKnopf({ slug, updateParentData } : { slug: string, updateParentData: (artikel: TArtikel) => void }) {
+export default function RemoveKnopf({ slug, updateParentData } : { slug: string, updateParentData?: (artikel: TArtikel) => void }) {
     const [ loading, setLoading ] = useState(false);
     const handleClick = () => {
         //headers
@@ -12,7 +12,13 @@ export default function RemoveKnopf({ slug, updateParentData } : { slug: string,
 
         setLoading(true);
         removeArtikel({ headers: {}, slug })
-        .then((artikel) => updateParentData(artikel))
+        .then((artikel) => {
+            if (updateParentData) {
+                updateParentData(artikel)
+            } else {
+                window.location.href = '/';
+            }
+            })
         .catch(console.error)
         .finally(() => setLoading(false));
     }

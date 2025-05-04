@@ -6,6 +6,7 @@ export interface TArtikel {
     tags: string[];
     author: TBenutzer;
     isFavorite: boolean;
+    favoritesCount: number;
     kommentar: TKomment[];
     createdAt: Date;
     updatedAt: Date;

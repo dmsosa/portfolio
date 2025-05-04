@@ -111,6 +111,13 @@
 .right-1 {
     right: 1rem;
 }
+index-1 {
+    z-index: 1;
+}
+.index-2 {
+    z-index: 2;
+}
+
 @media only screen and (min-width: 768px) {
     .order-md-0 {
         order: 0;
@@ -121,4 +128,5 @@
     .order-md-2 {
         order: 2;
     }
+
 }

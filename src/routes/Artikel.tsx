@@ -1,53 +1,45 @@
-import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
+import mainbg from "../assets/img/mainbg.jpg"
 import { useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import ArtikelKnopfe from "../components/Artikel/ArtikelKnopfe";
-import KommentArray from "../components/Artikel/KommentArray";
 import useArtikel from "../hooks/useArtikel";
-import { ArtikelArrayPhamton, KommentArrayPhamton, PhamtonBg, PhamtonInput, PhamtonToggler } from "../components/Widgets/Phampton/Phamptons";
+import { ArtikelArrayPhamton, KommentArrayPhamton, PhamtonBg, PhamtonInput, PhamtonToggler } from "../components/Widgets/Phamton/Phamton";
+import Avatar from "../components/Widgets/Avatar";
+import ArtikelKnopf from "../components/Widgets/Knopfen/ArtikelKnopf";
 
 export default function Artikel() {
     const { slug } = useParams();
     const { loading, artikel, setArtikel } = useArtikel({ slug });
     const { loggedUser } = useAuth();
+
+
     return loading 
         ? <ArtikelPhampton />
         : 
         (
-            <div className="artikel--wrap">
-                <div className="row row-cols-md-2">
-                    <div className="col-12 col-md-8">
-                        <div className="artikel--top d-flex justify-content-start align-items-center">
-                            <h1>{artikel.title}</h1>
-                        </div>
-                        <hr></hr>
-                        <div className="artikel--desc">
-                            <BenutzerInfo benutzer={artikel.author}>
-                                <ArtikelKnopfe author={artikel.author} loggedUser={loggedUser} updateParentData={setArtikel} />
-                            </BenutzerInfo>
-                            <p>{artikel.description}</p>
-                            <div className="tags">
-                                <ul>
-                                    {artikel.tags.map((tag) => (<li key={tag}><a>{tag}</a></li>))}
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="artikel--main">
-                            <p>{artikel.body}</p>
-                        </div>
-
-                    </div>
-                    <KommentArray slug={slug} />
-                    <div className="col col-md-4">
-                        <ul>
-                            <li>more articles</li>
-                            <li>my cv</li>
-                            <li>email</li>
-                        </ul>
+            <>
+            <div className="content entity-content">
+                <div className="main-bg index-1">
+                    <img src={mainbg} alt={`artikeln Hintergrund`} />
+                </div>
+                <div className="d-flex justify-content-start align-items-center pb-2 px-3 index-2 align-self-md-end w-100 ms-6">
+                    <Avatar expanded={true} username={artikel.author.username} bild={artikel.author.image}/>
+                    <div className="d-flex justify-content-center align-items-center ms-3">
+                        <ArtikelKnopf loggedUser={loggedUser} artikel={artikel} updateParentData={setArtikel}/>
                     </div>
                 </div>
-                
             </div>
+            <div className="content py-6">
+                <div >
+                    <h1 className="text-center">{artikel.title}</h1>
+                    <p className="text-center">{artikel.description}</p>
+                    <p className="text-center">{artikel.body}</p>
+                </div>
+                <div>
+                    <h1>Read more</h1>
+                    <KommentArrayPhamton/>
+                </div>
+            </div>
+            </>
         )
 }
 

@@ -111,6 +111,9 @@ main {
 .entity-content {
     position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
     min-height: 400px;
 }
 .no-scroll {
@@ -448,11 +451,11 @@ ul.icon-ul {
 .avatar {
     display: flex;
     justify-content: start;
-    align-items: center;
-    max-width: 2.5rem;
+    align-items:start;
     text-decoration: none;
     font-weight: bold;
     span {
+        padding-top: 0.2rem;
         font-size: 0.8rem;
         margin-left: 0.35rem;
     }
@@ -462,6 +465,8 @@ ul.icon-ul {
         padding: 0.05rem;
         width: 100%;
         transition: background-color 0.4s;
+        max-width: 2.5rem;
+
         &:hover {
             background-color: #555;
         }
@@ -506,6 +511,34 @@ ul.icon-ul {
     }
 }
 
+.main-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    img {
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        /* object-position: center; */
+        transform: translate(-50%);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        height: 20%;
+        width: 100%;
+        background: linear-gradient(to top, #111, transparent);
+        bottom: 0;
+    }
+}
+
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
@@ -535,9 +568,9 @@ ul.icon-ul {
         grid-column: 1 / 4;
     }
     .main-content .entity-content.content {
-        position: relative;
         grid-column: 1 / 4;
         height: 70vh;
         width: 100%;
+        justify-content: start;
     }
 }

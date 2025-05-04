@@ -6,7 +6,7 @@ import { TArtikelnDatei } from "../../hooks/useArtikeln";
 import { Link } from "react-router-dom";
 import ArrayPagination from "../Widgets/ArrayPagination";
 import ArtikelInfo, {  KeinArtikel } from "./ArtikelInfo";
-import { ArtikelArrayPhamton } from "../Widgets/Phampton/Phamptons";
+import { ArtikelArrayPhamton } from "../Widgets/Phamton/Phamton";
 
 export default function ArtikelArray({ loading, array, setArrayData, artikelAnzahl, setOffset }: { loading: boolean, array: TArtikel[], setArrayData: React.Dispatch<React.SetStateAction<TArtikelnDatei>>, artikelAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
 

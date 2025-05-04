@@ -21,7 +21,7 @@ export default function useArtikel({ slug } : {
             console.error('Error fetching profile data');
             setArtikel(artikelArray[0]);
         })
-        .finally(() => setLoading(true));
+        .finally(() => setLoading(false));
     }, [ slug ])
 
     return { loading, artikel, setArtikel }

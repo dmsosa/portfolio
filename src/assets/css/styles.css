@@ -17828,33 +17828,6 @@ footer {
   font-weight: 300;
 }
 
-.main-bg {
-  position: relative;
-  min-height: 70vh;
-  background-color: green;
-  display: flex;
-}
-.main-bg::after {
-  content: "";
-  position: absolute;
-  height: 20%;
-  width: 100%;
-  background: linear-gradient(to top, #111, transparent);
-  bottom: 0;
-}
-
-.main-bg div {
-  z-index: 1;
-}
-
-.main-bg .benutzer--info {
-  width: 5rem;
-}
-
-.benutzer--text {
-  padding: 1rem 2.5rem;
-}
-
 .form {
   background-color: #09132b;
   border-radius: 15px;
@@ -18123,6 +18096,14 @@ footer {
 
 .right-1 {
   right: 1rem;
+}
+
+index-1 {
+  z-index: 1;
+}
+
+.index-2 {
+  z-index: 2;
 }
 
 @media only screen and (min-width: 768px) {
@@ -18664,6 +18645,9 @@ main {
 .entity-content {
   position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
   min-height: 400px;
 }
 
@@ -19154,12 +19138,12 @@ ul.icon-ul li.icon-li:last-child {
 .avatar {
   display: flex;
   justify-content: start;
-  align-items: center;
-  max-width: 2.5rem;
+  align-items: start;
   text-decoration: none;
   font-weight: bold;
 }
 .avatar span {
+  padding-top: 0.2rem;
   font-size: 0.8rem;
   margin-left: 0.35rem;
 }
@@ -19169,6 +19153,7 @@ ul.icon-ul li.icon-li:last-child {
   padding: 0.05rem;
   width: 100%;
   transition: background-color 0.4s;
+  max-width: 2.5rem;
 }
 .avatar img:hover {
   background-color: #555;
@@ -19213,6 +19198,34 @@ ul.icon-ul li.icon-li:last-child {
   color: #65ff65;
 }
 
+.main-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.main-bg img {
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  /* object-position: center; */
+  transform: translate(-50%);
+}
+.main-bg::after {
+  content: "";
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  background: linear-gradient(to top, #111, transparent);
+  bottom: 0;
+}
+
 @media only screen and (min-width: 576px) {
   .app-wrapper {
     display: flex;
@@ -19234,10 +19247,10 @@ ul.icon-ul li.icon-li:last-child {
     grid-column: 1/4;
   }
   .main-content .entity-content.content {
-    position: relative;
     grid-column: 1/4;
     height: 70vh;
     width: 100%;
+    justify-content: start;
   }
 }
 

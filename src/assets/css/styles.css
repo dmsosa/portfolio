@@ -18106,6 +18106,10 @@ index-1 {
   z-index: 2;
 }
 
+.w-80 {
+  width: 80%;
+}
+
 @media only screen and (min-width: 768px) {
   .order-md-0 {
     order: 0;
@@ -19251,6 +19255,9 @@ ul.icon-ul li.icon-li:last-child {
     height: 70vh;
     width: 100%;
     justify-content: start;
+  }
+  .content-full-width {
+    grid-column: 1/4;
   }
 }
 

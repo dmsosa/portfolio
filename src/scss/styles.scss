@@ -573,4 +573,7 @@ ul.icon-ul {
         width: 100%;
         justify-content: start;
     }
+    .content-full-width {
+        grid-column: 1 / 4;
+    }
 }

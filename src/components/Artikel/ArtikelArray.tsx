@@ -65,7 +65,7 @@ export default function ArtikelArray({ loading, array, setArrayData, artikelAnza
                             :
                                 <div className="d-flex justify-content-between align-items-center">
                                     <FollowKnopf isFollowing={art.author.isFollowing} username={art.author.username} updateParentData={handleFollow}/>
-                                    <FavoriteKnopf isFavorite={art.isFavorite} slug={art.slug} updateParentData={handleFav}/>
+                                    <FavoriteKnopf favoritesCount={art.favoritesCount} isFavorite={art.isFavorite} slug={art.slug} updateParentData={handleFav}/>
                                 </div>
                             }
                         </ArtikelInfo>

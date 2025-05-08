@@ -13,16 +13,16 @@ export default function useArtikel({ slug } : {
     const { headers } = useAuth();
     useEffect(() => {
         if (!slug) return;
-        getArtikel({ headers, slug })
+        setLoading(true);
+        getArtikel({ headers: headers || {}, slug })
         .then((artikelData) => {
             setArtikel(artikelData);
         })
-        .catch(() => {
-            console.error('Error fetching profile data');
-            setArtikel(artikelArray[0]);
+        .catch((error) => {
+            console.error('Error fetching artikel data', error);
         })
         .finally(() => setLoading(false));
-    }, [ slug ])
+    }, [ slug, artikel])
 
-    return { loading, artikel, setArtikel }
+    return { loading, artikel: artikel, setArtikel }
 }

@@ -2,33 +2,36 @@ import { useEffect, useState } from "react";
 import { TKomment } from "../data/types";
 import { getArtikelKommentar } from "../services/article.services";
 import { useAuth } from "../context/AuthContext";
+import { kommentSampleArray } from "../data/artikel.data";
 
 export type TKommentDatei = {
     kommentAnzahl: number; 
     kommentArray: TKomment[];
 }
 
+
 export default function useKomment({ slug } : { slug?: string }) {
     const [ loading, setLoading ] = useState(true);
-    const [ { kommentAnzahl, kommentArray }, setKommentDatei ] = useState<TKommentDatei>({ kommentAnzahl: 0, kommentArray: [] });
+    const [ { kommentAnzahl, kommentArray }, setKommentDatei ] = useState<TKommentDatei>({ kommentAnzahl: kommentSampleArray.length, kommentArray: kommentSampleArray });
     const [ offset, setOffset ] = useState(0);
     const { headers } = useAuth();
-
     useEffect(() => {
         if (!slug) return;
         setLoading(true);
-        getArtikelKommentar({ headers, slug })
+        const kommentArraySlice = Math.floor(Math.random() * (kommentArray.length - 6))
+        getArtikelKommentar({ headers: headers || {}, slug, limit: 5, offset })
         .then((kommentDatei: TKommentDatei) => {
             setKommentDatei(kommentDatei);
         })
-        .catch(() => {
-            setKommentDatei({ kommentAnzahl: kommentArray.length, kommentArray: kommentArray });
+        .catch((error) => {
+            console.log('Fehler bei Abrufen den Kommentar:', error);
+            setKommentDatei({ kommentAnzahl: kommentSampleArray.length, kommentArray: kommentSampleArray.slice(kommentArraySlice, kommentArraySlice + 5) });
         }
         )
         .finally(() => setLoading(false));
     }, [slug, offset]);
     
-    return { loading, kommentAnzahl, kommentArray, setOffset };
+    return { loading, kommentAnzahl, kommentArray, setKommentDatei, setOffset };
 }
 
 //fetch artikel bei slug

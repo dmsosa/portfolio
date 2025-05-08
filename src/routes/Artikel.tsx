@@ -1,17 +1,35 @@
 import mainbg from "../assets/img/mainbg.jpg"
 import { useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import useArtikel from "../hooks/useArtikel";
 import { ArtikelArrayPhamton, KommentArrayPhamton, PhamtonBg, PhamtonInput, PhamtonToggler } from "../components/Widgets/Phamton/Phamton";
 import Avatar from "../components/Widgets/Avatar";
 import ArtikelKnopf from "../components/Widgets/Knopfen/ArtikelKnopf";
+import KommentSection from "../components/Komment/KommentSection";
+import { useEffect, useState } from "react";
+import { TArtikel } from "../data/types";
+import { artikelArray } from "../data/artikel.data";
+
 
 export default function Artikel() {
     const { slug } = useParams();
-    const { loading, artikel, setArtikel } = useArtikel({ slug });
-    const { loggedUser } = useAuth();
+    const { headers, loggedUser } = useAuth();
 
+    const [ artikel, setArtikel ] = useState<TArtikel>(artikelArray[0]);
+    const [ loading, setLoading ] = useState< boolean >(false);
 
+    useEffect(() => {
+        console.log("call", headers)
+        if (!slug) return;
+        setLoading(false);
+        // getArtikel({ headers: headers || {}, slug })
+        // .then((artikelData) => {
+        //     setArtikel(artikelData);
+        // })
+        // .catch((error) => {
+        //     console.error('Error fetching artikel data', error);
+        // })
+        // .finally(() => setLoading(false));
+    }, [ slug ])
     return loading 
         ? <ArtikelPhampton />
         : 
@@ -22,7 +40,7 @@ export default function Artikel() {
                     <img src={mainbg} alt={`artikeln Hintergrund`} />
                 </div>
                 <div className="d-flex justify-content-start align-items-center pb-2 px-3 index-2 align-self-md-end w-100 ms-6">
-                    <Avatar expanded={true} username={artikel.author.username} bild={artikel.author.image}/>
+                    <Avatar expanded={true} username={'author.username'} bild={'author.image'}/>
                     <div className="d-flex justify-content-center align-items-center ms-3">
                         <ArtikelKnopf loggedUser={loggedUser} artikel={artikel} updateParentData={setArtikel}/>
                     </div>
@@ -34,6 +52,7 @@ export default function Artikel() {
                     <p className="text-center">{artikel.description}</p>
                     <p className="text-center">{artikel.body}</p>
                 </div>
+                <KommentSection />
                 <div>
                     <h1>Read more</h1>
                     <KommentArrayPhamton/>
@@ -41,6 +60,7 @@ export default function Artikel() {
             </div>
             </>
         )
+        
 }
 
 function ArtikelPhampton() {

@@ -12,6 +12,7 @@ export interface TArtikel {
     updatedAt: Date;
 }
 export interface TKomment {
+    id: string;
     author: TBenutzer;
     body: string;
     createdAt: Date;

@@ -5,7 +5,7 @@ import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
 import ArtikelListe from "../components/Artikel/ArtikelArray";
 import useArtikeln from "../hooks/useArtikeln";
 import useProfile from "../hooks/useProfile";
-import EndpunktToggler from "../components/Widgets/EndpunktToggler";
+import EndpunktToggler from "../components/Widgets/Toggler/EndpunktToggler";
 import { useEndpunkt } from "../context/EndpunktContext";
 import BenutzerArray from "../components/Benutzer/BenutzerArray";
 import useBenutzer from "../hooks/useBenutzer";

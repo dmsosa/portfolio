@@ -1,5 +1,5 @@
 import useArtikeln from "../hooks/useArtikeln";
-import EndpunktToggler from "../components/Widgets/EndpunktToggler";
+import EndpunktToggler from "../components/Widgets/Toggler/EndpunktToggler";
 import BenutzerForms from "../components/Forms/BenutzerForms";
 import { useAuth } from "../context/AuthContext";
 import { useEndpunkt } from "../context/EndpunktContext";

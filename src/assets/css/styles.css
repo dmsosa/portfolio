@@ -17283,6 +17283,17 @@ progress {
   z-index: 10;
   backdrop-filter: blur(0.5rem);
 }
+.header .brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 2.4rem;
+  height: 100%;
+  display: block;
+}
+.header .brand-logo img {
+  max-width: 100%;
+}
 
 .progress-bar {
   position: absolute;
@@ -17516,9 +17527,9 @@ footer {
   margin: 0 auto;
 }
 #et path {
-  fill: transparent;
+  fill: #65ff65;
   stroke-dasharray: 5777px;
-  stroke-dashoffset: 5777px;
+  stroke-dashoffset: 0;
   transition: fill 0.2s ease;
 }
 #et:hover {
@@ -17526,7 +17537,7 @@ footer {
 }
 #et:hover path {
   fill: #65ff65;
-  stroke-dashoffset: 0px;
+  stroke-dashoffset: 5777px;
 }
 
 .content.hero {
@@ -17965,7 +17976,6 @@ footer {
   font-size: 1.4rem;
   line-height: 0.8;
   overflow: hidden;
-  border: solid red 0.125rem;
 }
 
 .p {

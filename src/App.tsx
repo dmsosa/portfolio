@@ -1,6 +1,6 @@
 import './assets/css/styles.css'
 
-import ThemeToggler from './components/Widgets/ThemeToggler'
+import ThemeToggler from './components/Widgets/Toggler/ThemeToggler'
 import { useRef } from 'react'
 import { SidebarContextProvider } from './context/SidebarContext'
 import { ThemeProvider } from './context/ThemeContext'
@@ -13,6 +13,7 @@ import NavMobile from './components/Nav/NavMobile'
 import Footer from './components/Footer/Footer'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { FormContextProvider } from './context/FormContext'
 
 
 export type TThemeContext = {
@@ -53,9 +54,10 @@ function App() {
   return (
     <div id="app-wrapper" className="app-wrapper">
       <AuthContextProvider>
-      <EndpunktContextProvider>
       <ThemeProvider>
+      <EndpunktContextProvider>
       <SidebarContextProvider>
+      <FormContextProvider>
         <ThemeToggler/>
         <SidebarNav/>
         <NavMobile />
@@ -66,9 +68,10 @@ function App() {
           </div>
           <Footer />
         </main>
+      </FormContextProvider>
       </SidebarContextProvider>      
-      </ThemeProvider>
       </EndpunktContextProvider>
+      </ThemeProvider>
       </AuthContextProvider>
     </div>
     

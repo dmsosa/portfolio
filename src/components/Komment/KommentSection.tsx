@@ -31,11 +31,9 @@ export default function KommentSection() {
                     <div className="d-flex justify-content-center align-items-center flex-column w-80 mx-auto">
                         <h1 className="text-center">Du bist nicht gelogt</h1>
                         <FaUserSlash className="fs-1 mb-1"/>
-                        <div className="d-flex justify-content-center align-items-center flex-column">
-                            <p className="text-center w-80 mx-auto">Melden sich an, um kommentar zu teilen!</p>
-                        </div>
-
+                        <p className="text-center w-80 mx-auto">Melden sich an, um kommentar zu teilen!</p>
                     </div>
+                    
                 </>
                 } 
             </div>

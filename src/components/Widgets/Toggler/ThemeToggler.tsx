@@ -1,4 +1,4 @@
-import { useThemeContext } from "../../context/ThemeContext";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 function ThemeToggler() {
     const { theme, setTheme } = useThemeContext();

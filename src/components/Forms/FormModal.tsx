@@ -1,6 +1,6 @@
 import useFormContext from "../../context/FormContext";
 
-function FormToggler() {
+function FormModal() {
     const { visible, flipped } = useFormContext();
 
     const visibility = visible ? 'visible' : '';
@@ -14,4 +14,4 @@ function FormToggler() {
     )
 }
 
-export default FormToggler;
+export default FormModal;

@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import { TEndpunktContext, useEndpunkt } from "../../context/EndpunktContext";
+import { TEndpunktContext, useEndpunkt } from "../../../context/EndpunktContext";
 
 const entities = ['artikel', 'profile'];
 type TEndpunkt = 'global' | 'feed' | 'author' | 'favorite' | 'followers';

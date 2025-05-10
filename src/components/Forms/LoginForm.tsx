@@ -32,7 +32,7 @@ export default function LoginForm() {
 
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form modal-form-front">
             <p className={`form-error ${errorMessage.length > 1 && 'visible'}`}>{errorMessage}</p>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
                 <input id="email" type="email" name="email" 

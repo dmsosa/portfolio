@@ -16,7 +16,7 @@ export function useSidebarContext() {
 
 }
 export function SidebarContextProvider({ children } : { children: ReactNode | ReactNode[] }) {
-    const [expandedLeft, setExpandedLeft] = useState(false);
+    const [expandedLeft, setExpandedLeft] = useState( window.innerWidth >= 576 );
 
     useEffect(() => {
         const nav = document.getElementById("sidebar-nav");

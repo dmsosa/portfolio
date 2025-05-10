@@ -106,7 +106,9 @@ main {
     transition: grid-template-columns 0.4s;
 }
 .content {
-    display: block;
+    grid-column: 2 / 3;
+    max-width: 576px;
+    margin: 0 auto;
 }
 .entity-content {
     position: relative;
@@ -378,51 +380,39 @@ ul.icon-ul {
 }
 
 
-.ul-tag {
-    display: flex;
-    list-style: none;
-    li {
-        &:not(:last-child) {
-            margin-right: 0.5rem;
-        }
-    }
-}
 .ul-item {
     list-style: none;
     width: fit-content;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     align-items: center;
     margin: 0;
     padding: 0;
     li {
-        padding: 0.15rem 0.35rem;
-        border-radius: 5px;
-        transition: background-color 0.2s ease;
-        &:not(:last-child) {
-            margin-right: 0.5rem;
+        padding: 0.25rem;
+        cursor: pointer;
+        border: solid 0.125rem;
+        border-color: $light;
+        background-color: transparent;
+        transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, ;
+        &:not(:first-child) {
+            margin-left: 0.7rem;
         }
+        &.active, &:hover, &:focus {
+            background-color: $primary;
+            border-color: $secondary;
+            color: $dark;
+        }
+
         &.li-primary {
-            border: solid $primary 0.125rem;
-            &.active {
-                background-color: $primary;
-                color: $dark;
-            }
-            &:hover {
-                background-color: $primary;
-                color: $dark;
-            }
+            background-color: $primary;
+            border-color: $primary;
+            color: $dark;
+
         }
         &.li-secondary {
-            border: solid $secondary 0.125rem;
-            &.active {
-                background-color: $secondary;
-                color: $dark;
-            }
-            &:hover {
-                background-color: $secondary;
-                color: $dark;
-            }
+            border: solid $primary 0.125rem;
         }
         a {
             text-decoration: none;
@@ -539,6 +529,30 @@ ul.icon-ul {
     }
 }
 
+ul.pagination {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    li {
+        
+        padding: 0.5rem;
+        cursor: pointer;
+        border: solid 0.125rem;
+        border-color: $light;
+        background-color: transparent;
+        transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, ;
+        &:not(:first-child) {
+            margin-left: 0.7rem;
+        }
+        &.active, &:hover {
+            background-color: $primary;
+            border-color: $secondary;
+            color: $dark;
+        }
+    }
+}
+
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
 // MEDIA QUERYS MEDIA QUERYSMEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS MEDIA QUERYS
@@ -558,11 +572,6 @@ ul.icon-ul {
         display: grid;
         grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
         transition: grid-template-columns 0.4s;
-    }
-    .main-content .content {
-        display: grid;
-        grid-column: 2 / 3;
-        padding: 0.5rem;
     }
     .main-content .hero.content {
         grid-column: 1 / 4;

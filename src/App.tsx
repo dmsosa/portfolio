@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { FormContextProvider } from './context/FormContext'
+import FormModal from './components/Forms/FormModal'
 
 
 export type TThemeContext = {
@@ -49,7 +50,8 @@ function App() {
       scaleX: 1,
     });
   }, { scope: mainRef });
- 
+ //form modal machen
+ //es hat ein inner
 
   return (
     <div id="app-wrapper" className="app-wrapper">
@@ -61,6 +63,7 @@ function App() {
         <ThemeToggler/>
         <SidebarNav/>
         <NavMobile />
+        <FormModal />
         <main ref={mainRef}>
           <Header />
           <div className="main-content"> {/*Displayed als grid*/}

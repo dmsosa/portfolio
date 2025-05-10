@@ -54,7 +54,7 @@ export default function ArtikelArray({ loading, array, setArrayData, artikelAnza
         <KeinArtikel/>
     :
     (
-        <div className="container px-4">
+        <div>
             {array.map((art) => 
                         <ArtikelInfo artikel={art} key={art.slug}>
                             { art.author.username === '' ?

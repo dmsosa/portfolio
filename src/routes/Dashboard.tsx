@@ -17,8 +17,8 @@ export default function Dashboard() {
     
     const {  loadingBenutzer, benutzerAnzahl, benutzerArray, setBenutzerDatei, setOffsetBenutzer }  = useBenutzer({ endpunkt: 'global' });
 
-    return <>
-    { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <BenutzerForms/>}
+    return <div className="content">
+                { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <BenutzerForms/>}
                 <EndpunktToggler endpunkte={['global', 'feed']}/>
                 <div className="row pb-5">
                     <div className="d-flex justify-content-center align-items-center flex-wrap w-100 gap-3">
@@ -32,7 +32,6 @@ export default function Dashboard() {
                 <ArtikelArray loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />
                 :
                 <BenutzerArray loading={loadingBenutzer} array={benutzerArray} setArrayData={setBenutzerDatei} benutzerAnzahl={benutzerAnzahl} setOffset={setOffsetBenutzer} />}
-                </div>
-                
-    </>
+                </div>  
+            </div>
 }

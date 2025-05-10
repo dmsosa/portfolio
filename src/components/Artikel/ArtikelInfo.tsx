@@ -8,22 +8,25 @@ import { FaRegCommentDots } from "react-icons/fa";
 
 export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel, children: ReactNode }) {
 
-        return (<div className="artikel--card">
-                <div className="position-relative">
-                    <Avatar bild={artikel.author.image} username={artikel.author.username} expanded />
-                </div>
-                <Link  to={`/dashboard/artikel/${artikel.slug}`} className="text-decoration-none link">
-                    <h3>{artikel.title}</h3>
-                    <p>{artikel.body.slice(0, 300)}</p>
-                </Link>
-                <ul className="ul-item">{artikel.tags.map((tag) => <li key={tag}><a className='link' href="">{tag}</a></li>)}</ul>
-                <hr></hr>
-                <div className="d-flex justify-content-between align-items-center">
-                    {children}
-                    <Link to={`/dashboard/artikel/${artikel.slug}`}><FaRegCommentDots className="me-2"/>32</Link>
+        return (<div className="p-2 mb-3 border-container bg-second">
+                    <div className="position-relative">
+                        <Avatar bild={artikel.author.image} username={artikel.author.username} expanded />
+                    </div>
+                    <Link  to={`/dashboard/artikel/${artikel.slug}`} className="text-decoration-none link">
+                        <h3>{artikel.title}</h3>
+                        <p>{artikel.body.slice(0, 300)}</p>
+                    </Link>
+                    <ul className="ul-item">
+                        {artikel.tags.slice(0, 4).map((tag) => <li className="li-primary" key={tag}><a href="">{tag}</a></li>)}
+                        <span>and {artikel.tags.length - 4} more...</span>
+                    </ul>
+                    <hr></hr>
+                    <div className="d-flex justify-content-between align-items-center">
+                        {children}
+                        <Link to={`/dashboard/artikel/${artikel.slug}`}><FaRegCommentDots className="me-2"/>32</Link>
 
-                    <Link to={`/dashboard/artikel/${artikel.slug}`}><AiOutlineRead/></Link>
-                </div>
+                        <Link to={`/dashboard/artikel/${artikel.slug}`}><AiOutlineRead/></Link>
+                    </div>
                 </div>)
         
     }

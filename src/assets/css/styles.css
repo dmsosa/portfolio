@@ -17777,81 +17777,47 @@ footer {
   animation: bounce 1s linear infinite;
 }
 
-.artikel--wrap {
-  padding: 5rem 0.5rem;
+.form-modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  display: none;
 }
 
-.artikel--desc {
-  padding: 0.5rem;
-  border: solid #65ff65 0.125rem;
-}
-.artikel--desc p {
-  max-width: 90%;
-  margin: 1rem auto;
-  padding-left: 1rem;
-}
-.artikel--desc .tags {
-  flex-basis: 100%;
-}
-.artikel--desc .tags ul {
+.form-wrapper {
+  max-width: 80%;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  list-style: none;
-}
-.artikel--desc .tags ul li {
-  background-color: #65ff65;
-  border: solid #65ff65 0.025rem;
-  padding: 0.25rem;
-  font-weight: bold;
-  cursor: pointer;
-  color: pointer;
-}
-.artikel--desc .tags ul li:not(:last-child) {
-  margin-right: 1rem;
-}
-.artikel--desc .tags ul li a {
-  color: inherit;
-  transition: color 0.4s;
-}
-
-.artikel--main {
-  background-color: red;
-}
-
-.artikel--card {
-  overflow: hidden;
-  padding: 1rem 1.6rem;
-  background-color: #000;
-  border: solid #fff 0.125rem;
-}
-.artikel--card:not(:last-child) {
-  margin-bottom: 0.5rem;
-}
-.artikel--card h3 + span, .artikel--card .h3 + span {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  display: block;
-  color: #dadada;
-  text-align: left;
-  font-weight: 300;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #09132b;
+  border: solid 0.125rem;
+  border-color: #fff;
+  padding: 1.2rem 0.75rem;
 }
 
 .form {
   background-color: #09132b;
-  border-radius: 15px;
-  padding: 0.75rem 1.5rem;
-  max-width: 80%;
+  padding: 0.75rem 1.2rem;
   margin: 0 auto;
-  margin-bottom: 1.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .form form {
+  background-color: #09132b;
+  border-radius: 15px;
+  padding: 0.75rem 1.5rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -18653,7 +18619,9 @@ main {
 }
 
 .content {
-  display: block;
+  grid-column: 2/3;
+  max-width: 576px;
+  margin: 0 auto;
 }
 
 .entity-content {
@@ -19079,52 +19047,39 @@ ul.icon-ul li.icon-li:last-child {
   color: inherit;
 }
 
-.ul-tag {
-  display: flex;
-  list-style: none;
-}
-.ul-tag li:not(:last-child) {
-  margin-right: 0.5rem;
-}
-
 .ul-item {
   list-style: none;
   width: fit-content;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   align-items: center;
   margin: 0;
   padding: 0;
 }
 .ul-item li {
-  padding: 0.15rem 0.35rem;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
+  padding: 0.25rem;
+  cursor: pointer;
+  border: solid 0.125rem;
+  border-color: #fff;
+  background-color: transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
-.ul-item li:not(:last-child) {
-  margin-right: 0.5rem;
+.ul-item li:not(:first-child) {
+  margin-left: 0.7rem;
 }
-.ul-item li.li-primary {
-  border: solid #65ff65 0.125rem;
-}
-.ul-item li.li-primary.active {
+.ul-item li.active, .ul-item li:hover, .ul-item li:focus {
   background-color: #65ff65;
+  border-color: #dbdbdb;
   color: #000;
 }
-.ul-item li.li-primary:hover {
+.ul-item li.li-primary {
   background-color: #65ff65;
+  border-color: #65ff65;
   color: #000;
 }
 .ul-item li.li-secondary {
-  border: solid #dbdbdb 0.125rem;
-}
-.ul-item li.li-secondary.active {
-  background-color: #dbdbdb;
-  color: #000;
-}
-.ul-item li.li-secondary:hover {
-  background-color: #dbdbdb;
-  color: #000;
+  border: solid #65ff65 0.125rem;
 }
 .ul-item li a {
   text-decoration: none;
@@ -19240,6 +19195,29 @@ ul.icon-ul li.icon-li:last-child {
   bottom: 0;
 }
 
+ul.pagination {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ul.pagination li {
+  padding: 0.5rem;
+  cursor: pointer;
+  border: solid 0.125rem;
+  border-color: #fff;
+  background-color: transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+ul.pagination li:not(:first-child) {
+  margin-left: 0.7rem;
+}
+ul.pagination li.active, ul.pagination li:hover {
+  background-color: #65ff65;
+  border-color: #dbdbdb;
+  color: #000;
+}
+
 @media only screen and (min-width: 576px) {
   .app-wrapper {
     display: flex;
@@ -19251,11 +19229,6 @@ ul.icon-ul li.icon-li:last-child {
     display: grid;
     grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
     transition: grid-template-columns 0.4s;
-  }
-  .main-content .content {
-    display: grid;
-    grid-column: 2/3;
-    padding: 0.5rem;
   }
   .main-content .hero.content {
     grid-column: 1/4;

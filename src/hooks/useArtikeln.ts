@@ -24,7 +24,7 @@ export default function useArtikeln({ endpunkt, username, tags } : {
     useEffect(() => {
         setLoading(true);
         //headers greifen
-        getArtikeln({headers: headers, endpunkt, username, tags, limit, offset })
+        getArtikeln({headers: headers || {}, endpunkt, username, tags, limit, offset })
         .then((artikelnDatei) => setArtikelnDatei(artikelnDatei))
         .catch(() => {
             setArtikelnDatei({ artikelnAnzahl: artikelArray.length, artikeln: artikelArray });

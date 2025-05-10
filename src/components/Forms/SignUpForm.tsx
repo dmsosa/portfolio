@@ -72,7 +72,7 @@ export default function SignUpForm() {
 
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form modal-form-front">
             <p className={`form-error ${apiError.length > 1 && 'visible'}`}>{apiError}</p>
             <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
                 <input id="username" type="text" name="username" placeholder="" value={username} onChange={handleChange}/>

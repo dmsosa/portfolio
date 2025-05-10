@@ -5,14 +5,7 @@ import FormWrapper from "./FormWrapper";
 
 export default function BenutzerForms() {
     const [ showForm, setShowForm ] = useState<'login'|'sign-up'>('login');
-    return (
-        <div>
-            <ul>
-                <li><a onClick={() => setShowForm('login')}>Login</a></li>
-                <li><a onClick={() => setShowForm('sign-up')}>Sign Up</a></li>
-            </ul>
-
-            {showForm === 'login' ?
+    return showForm === 'login' ?
                 <FormWrapper
                 titel="Welcome Back!"
                 untertitel="pick up where you left off!"
@@ -30,8 +23,6 @@ export default function BenutzerForms() {
                 >
                     <SignUpForm />
                 </FormWrapper>
-            }
-        </div>
+            
 
-    )
 }

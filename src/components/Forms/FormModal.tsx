@@ -1,4 +1,6 @@
 import useFormContext from "../../context/FormContext";
+import BenutzerForms from "./BenutzerForms";
+
 
 function FormModal() {
     const { visible, flipped } = useFormContext();
@@ -7,8 +9,10 @@ function FormModal() {
     const flip = flipped ? 'flipped' : '';
 
     return (
-        <div className={`form-modal ${visibility} ${flip}`}>
-            
+        <div className={`form-modal ${visibility}`}>
+            <div className={`form-modal-inner ${flip}`}>
+                <BenutzerForms/>
+            </div>
         </div>
         
     )

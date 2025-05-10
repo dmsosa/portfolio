@@ -3,13 +3,12 @@ import { useSidebarContext, TSidebarContext } from "../../context/SidebarContext
 function DashboardToggler({ hideButton = false } : { 
     hideButton?: boolean }) {
     
-    const { expanded, setExpanded, setNavWidth } = useSidebarContext() as TSidebarContext;
+    const { expandedLeft, setExpandedLeft } = useSidebarContext() as TSidebarContext;
 
 
     const showDashboard = () => {
         const nav = document.getElementById("nav")  as HTMLDivElement;
-        setExpanded(true);
-        setNavWidth(200);
+        setExpandedLeft(true);
         if (!nav.classList.contains('active')) {
             console.log('hey')
             nav.classList.add('active');
@@ -17,8 +16,7 @@ function DashboardToggler({ hideButton = false } : {
     }
 
     const hideDashboard = () => {
-        setExpanded(false);
-        setNavWidth(0);
+        setExpandedLeft(false);
         const nav = document.getElementById("nav")  as HTMLDivElement;
         if (nav.classList.contains('active')) {
             console.log('now')
@@ -33,7 +31,7 @@ function DashboardToggler({ hideButton = false } : {
             showDashboard();
         }
     }
-    return (<button className='nav-toggler d-sm-block d-none' type="button" aria-expanded={expanded} aria-label={`${hideButton ? 'nav-toggler-hide' : 'nav-toggler-open'}`} aria-controls="dashboard-nav" onClick={handleClick}>
+    return (<button className='nav-toggler d-sm-block d-none' type="button" aria-expanded={expandedLeft} aria-label={`${hideButton ? 'nav-toggler-hide' : 'nav-toggler-open'}`} aria-controls="dashboard-nav" onClick={handleClick}>
             { hideButton ? 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="50px" height="50px">
                     <path d="M 150 250 L 50 150 L 150 50" id="bar1"/>

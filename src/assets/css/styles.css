@@ -1,19 +1,19 @@
 @charset "UTF-8";
 @font-face {
-  font-family: ubuntu;
-  src: url("../assets/fonts/Ubuntu-Regular.ttf");
+  font-family: "HerculesPixel";
+  src: url("/fonts/PixelifySans-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: ubuntu-bold;
-  src: url("../assets/fonts/Ubuntu-Bold.ttf");
+  font-family: pixel-bold;
+  src: url("../assets/fonts/PixelifySans-Bold.ttf");
 }
 @font-face {
-  font-family: ubuntu-medium;
-  src: url("../assets/fonts/Ubuntu-Medium.ttf");
+  font-family: pixel-medium;
+  src: url("../assets/fonts/PixelifySans-Medium.ttf");
 }
 @font-face {
-  font-family: ubuntu-italic;
-  src: url("../assets/fonts/Ubuntu-Italic.ttf");
+  font-family: pixel-semibold;
+  src: url("../assets/fonts/PixelifySans-SemiBold.ttf");
 }
 :root,
 [data-bs-theme=light] {
@@ -17578,9 +17578,6 @@ footer {
   margin: 0 auto;
   padding: 1rem 1.65rem;
 }
-.hero-text .btn-primary {
-  font-size: 1.2rem;
-}
 
 @media only screen and (min-width: 768px) {
   .hero-bg {
@@ -17761,6 +17758,39 @@ footer {
   --index: 4;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card:not(:last-child) {
+  border-right: 0.125rem solid;
+  border-color: #fff;
+}
+.card div svg {
+  max-width: 100%;
+}
+.card p {
+  max-width: 80%;
+  text-align: center;
+}
+
+.card-wrapper {
+  border: solid 0.125rem #fff;
+  background-color: #09132b;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+@media only screen and (min-width: 786px) {
+  .card-wrapper {
+    flex-direction: row;
+  }
+}
 .pointer {
   position: absolute;
   fill: white;
@@ -17984,6 +18014,10 @@ footer {
 
 .border-container {
   border: solid #fff 0.125rem;
+}
+
+.is-bottom {
+  margin-bottom: -3.5rem;
 }
 
 .order-0 {
@@ -18597,12 +18631,17 @@ body, #app {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  font-family: sans-serif;
+  font-family: "HerculesPixel", sans-serif;
 }
 
 .app-wrapper {
   display: block;
   height: 100vh;
+}
+
+p {
+  font-weight: 300;
+  font-size: 0.8rem;
 }
 
 main {
@@ -19237,10 +19276,10 @@ ul.pagination li.active, ul.pagination li:hover {
     grid-column: 1/4;
     height: 70vh;
     width: 100%;
-    justify-content: start;
   }
   .content-full-width {
     grid-column: 1/4;
+    max-width: none;
   }
 }
 

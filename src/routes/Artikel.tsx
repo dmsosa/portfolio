@@ -35,12 +35,12 @@ export default function Artikel() {
         : 
         (
             <>
-            <div className="content entity-content">
+            <div className="content entity-content content-full-width">
                 <div className="main-bg index-1">
                     <img src={mainbg} alt={`artikeln Hintergrund`} />
                 </div>
-                <div className="d-flex justify-content-start align-items-center pb-2 px-3 index-2 align-self-md-end w-100 ms-6">
-                    <Avatar expanded={true} username={'author.username'} bild={'author.image'}/>
+                <div className="d-flex justify-content-start align-items-center pb-2 px-3 index-2 align-self-md-end w-100">
+                    <Avatar expanded={true} username={artikel.author.username} bild={artikel.author.image}/>
                     <div className="d-flex justify-content-center align-items-center ms-3">
                         <ArtikelKnopf loggedUser={loggedUser} artikel={artikel} updateParentData={setArtikel}/>
                     </div>

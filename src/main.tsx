@@ -20,7 +20,7 @@ createRoot(document.getElementById('app')!).render(
           <Route path='/dashboard' element={<Dashboard />}></Route>
           <Route path='/dashboard/artikel/:slug' element={<Artikel />}></Route>
           <Route path='/dashboard/profile/:username' element={<Profile />}></Route>
-          <Route path='/dashboard/cv' element={<CV/>}></Route>
+          <Route path='/dashboard/cv' element={<CV />}></Route>
         </Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>

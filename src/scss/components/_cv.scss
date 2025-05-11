@@ -1,0 +1,34 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:not(:last-child) {
+        border-right: 0.125rem solid;
+        border-color: $light;
+    }
+    div {
+        svg {
+            max-width: 100%;
+        }
+    }
+    p {
+        max-width: 80%;
+        text-align: center;
+    }
+}
+.card-wrapper {
+    border: solid 0.125rem $light;
+    background-color: $dark2;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+@media only screen and (min-width: 786px) {
+    .card-wrapper {
+        flex-direction: row;
+    }
+}

@@ -1,19 +1,19 @@
 //Fonts
 @font-face {
-    font-family: ubuntu;
-    src: url('../assets/fonts/Ubuntu-Regular.ttf');
+    font-family: 'HerculesPixel';
+    src: url('/fonts/PixelifySans-Regular.ttf') format('truetype');
 };
 @font-face {
-    font-family: ubuntu-bold;
-    src: url('../assets/fonts/Ubuntu-Bold.ttf');
+    font-family: pixel-bold;
+    src: url('../assets/fonts/PixelifySans-Bold.ttf');
 };
 @font-face {
-    font-family: ubuntu-medium;
-    src: url('../assets/fonts/Ubuntu-Medium.ttf');
+    font-family: pixel-medium;
+    src: url('../assets/fonts/PixelifySans-Medium.ttf');
 };
 @font-face {
-    font-family: ubuntu-italic;
-    src: url('../assets/fonts/Ubuntu-Italic.ttf');
+    font-family: pixel-semibold;
+    src: url('../assets/fonts/PixelifySans-SemiBold.ttf');
 };
 
 $navbar-padding-x: 1.5rem;

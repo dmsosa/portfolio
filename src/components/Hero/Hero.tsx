@@ -11,14 +11,14 @@ function Hero() {
                 <div className="hero-bg">
                 </div>
                 <div className="hero-text">
-                        <h1 className="h1 text-epic fw-bold">
+                        <h1 className="h1 fw-bold">
                             <span className="split d-flex">
                                 <span className="line">Front</span>
                                 <span className="line ms-2">+</span>
                                 <span className="line ms-2">End</span>
                             </span>
                         </h1>
-                        <h5 className="h5 text-epic fw-bold">
+                        <h5 className="h5 fw-bold">
                             <span className="line">That's what I do</span>
                             <span className="line">.</span>
                         </h5>

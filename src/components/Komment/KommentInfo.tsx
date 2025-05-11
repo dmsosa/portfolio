@@ -34,36 +34,35 @@ export default function KommentInfo({ id, username, bild, updatedAt, body, komme
     }
 
     return ( 
-        <div>
+        <div className="border-container p-2 mb-3 bg-second">
             <div className="d-flex justify-content-center align-items-center position-relative">
                 <Avatar username={username} bild={bild} expanded={true}>
                     <span>verified {updatedAt.toISOString()}</span>
                 </Avatar>
+                <span className="position-absolute top-1 right-1">updated at</span>
+                { edit ? 
+                <KommentInput kommentId={id} slug={slug} author={username} body={body} setParentData={handleEdit}/> 
+                : 
+                <div>
+                    <p>{body}</p>
+                </div>
+                }
                 <div className="d-flex justify-content-center align-items-center ">
                 { loggedUser?.username === username ? 
                     <>
                         <button className="btn btn-info" onClick={() => setEdit(true)}>Edit</button>
+                        <button className="btn btn-secondary" onClick={handleFollow}>View</button>
                         <button className="btn btn-danger" onClick={handleRemove}>Remove</button>
-                        <button className="btn btn-danger" onClick={handleFollow}>Remove</button>
 
                     </>
                     :
                     <>
                         <button className="btn btn-info" onClick={() => setEdit(true)}>Edit</button>
-                        <button className="btn btn-danger" onClick={handleLike}>Remove</button>
+                        <button className="btn btn-danger" onClick={handleLike}>Like</button>
                     </>
                 }
                 </div>
-                <span className="position-absolute top-1 right-1">updated at</span>
             </div>
-            { edit ? 
-            <KommentInput kommentId={id} slug={slug} author={username} body={body} setParentData={handleEdit}/> 
-            : 
-            <div>
-                <p>{body}</p>
-            </div>
-            }
-
         </div>
     )
 }

@@ -43,6 +43,7 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 @import "./components/footer";
 @import "./components/home";
 @import "./components/portfolio";
+@import "./components/cv";
 @import "./components/about";
 @import "./components/artikel";
 @import "./components/profile";
@@ -86,13 +87,17 @@ body, #app {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    font-family: sans-serif;
+    font-family: 'HerculesPixel', sans-serif;
 }
 .app-wrapper {
     display: block;
     height: 100vh;
 }
 
+p {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
 main {
     order: 2;
     height: 100%;
@@ -580,9 +585,9 @@ ul.pagination {
         grid-column: 1 / 4;
         height: 70vh;
         width: 100%;
-        justify-content: start;
     }
     .content-full-width {
         grid-column: 1 / 4;
+        max-width: none;
     }
 }

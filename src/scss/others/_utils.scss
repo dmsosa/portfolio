@@ -122,6 +122,15 @@ index-1 {
 .w-80 {
     width: 80%;
 }
+.basis-50 {
+    flex-basis: 50%;
+}
+.grow-1 {
+    flex-grow: 1;
+}
+.shrink-1 {
+    flex-shrink: 1;
+}
 
 @media only screen and (min-width: 768px) {
     .order-md-0 {

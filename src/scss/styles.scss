@@ -98,6 +98,14 @@ p {
     font-weight: 300;
     font-size: 0.8rem;
 }
+.btn-outline {
+    background-color: transparent !important;
+    border-width: 0.225rem;
+    color: $primary;
+    &:hover {
+        background-color: tint-color($primary, 30) !important;
+    }
+}
 main {
     order: 2;
     height: 100%;

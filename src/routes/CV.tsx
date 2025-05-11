@@ -1,11 +1,17 @@
 import hp from "../assets/img/hp.png";
 import data from "../assets/img/data.png";
 import Card from "../components/CV/Card";
+import CardView from "../components/CV/CardView";
 
 type TCard = {
     svg: string;
     title: string;
     text: string;
+}
+type TCardView = {
+    title: string;
+    text: string;
+    href: string;
 }
 const cards: TCard[] = [
     {
@@ -23,6 +29,28 @@ const cards: TCard[] = [
         title: 'Front End',
         text: 'Since beginning my journey as a freelance designer 12 years ago, I\'ve done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use. I\'m quietly confident, naturally curious, and perpetually working on improving my chops.',
     }
+]
+const cardsViews: TCardView[] = [
+    {
+        title: 'The Chosen',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'
+    },
+    {
+        title: 'React AIO',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'
+    },
+    {
+        title: 'Realworld Blog',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'    
+    },
+    {
+        title: 'Quinta El Renacer',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'    
+    },
 ]
 
 
@@ -51,6 +79,12 @@ export default function CV() {
                     <div className="py-6">
                         <div className="card-wrapper">
                             {cards.map((card) => <Card svg={card.svg} title={card.title} text={card.text}/>)}
+                        </div>
+                        <div className="my-3">
+                            <div className="d-flex justify-content-center align-items-center flex-wrap ">
+                                {cardsViews.map((cardView, index) => <CardView title={cardView.title} text={cardView.text} href={cardView.href}
+                                index={index + 1} />)}
+                            </div>
                         </div>
                     </div>
                 </div>

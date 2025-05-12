@@ -45,7 +45,7 @@
     border: solid $light 0.125rem;
 }
 .is-bottom {
-    margin-bottom: -3.5rem;
+    margin-bottom: -1rem;
 }
 .order-0 {
     order: 0;
@@ -130,6 +130,12 @@ index-1 {
 }
 .shrink-1 {
     flex-shrink: 1;
+}
+.text-shadow-1 {
+    text-shadow: 0px 0px 15px $dark, 0px 0px 10px $dark, 0px 0px 5px $dark;
+}
+.drop-shadow-1 {
+    filter: drop-shadow(0px 0px 8px $dark) drop-shadow(0px 0px 5px $dark);
 }
 
 @media only screen and (min-width: 768px) {

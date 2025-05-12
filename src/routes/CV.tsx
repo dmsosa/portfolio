@@ -1,12 +1,13 @@
-import hp from "../assets/img/hp.png";
-import data from "../assets/img/data.png";
-import Card from "../components/CV/Card";
+
+import Card, { TCardParagraph } from "../components/CV/Card";
 import CardView from "../components/CV/CardView";
+import CVHero from "../components/CV/CVHero";
 
 type TCard = {
     svg: string;
     title: string;
     text: string;
+    paragraphs: TCardParagraph[];
 }
 type TCardView = {
     title: string;
@@ -16,18 +17,30 @@ type TCardView = {
 const cards: TCard[] = [
     {
         svg: 'moon',
-        title: 'Front End',
-        text: 'Since beginning my journey as a freelance designer 12 years ago, I\'ve done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use. I\'m quietly confident, naturally curious, and perpetually working on improving my chops.',
+        title: 'Designer',
+        text: 'I value simple content structure, clean design patterns, and thoughtful interactions.',
+        paragraphs: [{
+            subtitle: 'Tools I use:',
+            content: 'Figma, Canva, Adobe Photoshop, Illustrator'
+        }]
     },
         {
         svg: 'moon',
-        title: 'Front End',
-        text: 'Since beginning my journey as a freelance designer 12 years ago, I\'ve done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use. I\'m quietly confident, naturally curious, and perpetually working on improving my chops.',
+        title: 'Frontend Developer',
+        text: 'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
+        paragraphs: [{
+            subtitle: 'Tools I use:',
+            content: 'Figma, Canva, Adobe Photoshop, Illustrator'
+        }]
     }
     ,     {
         svg: 'moon',
-        title: 'Front End',
-        text: 'Since beginning my journey as a freelance designer 12 years ago, I\'ve done remote work for agencies, consulted for startups, and collaborated with talented people to create digital products for both business and consumer use. I\'m quietly confident, naturally curious, and perpetually working on improving my chops.',
+        title: 'Learner',
+        text: 'I genuinely care about people, and enjoy helping them work on their craft.',
+        paragraphs: [{
+            subtitle: 'Tools I use:',
+            content: 'Figma, Canva, Adobe Photoshop, Illustrator'
+        }]
     }
 ]
 const cardsViews: TCardView[] = [
@@ -57,30 +70,15 @@ const cardsViews: TCardView[] = [
 export default function CV() {
 
     return <div className="content">
-                <div className="d-flex justify-content-center align-items-center flex-column">
-                    <div className="cv-logo bg-secondary">
-                        <img src={hp} alt="Duvi's logo" />
-                        <h1 className="h1">
-                            <span className="split">
-                                <span className="line">Hallo, ich bin Duvi</span>
-                            </span>
-                        </h1>
-                        <p>
-                            <span className="split">
-                                <span className="line">code & development</span>
-                            </span>   
-                            <span className="split">
-                                <span className="line">made easy</span>
-                            </span>   
-                        </p>
-                    </div>
-                    <button className="btn btn-primary">Watch CV</button>
-                    <div className="w-80 mx-auto"><img src={data} alt="Dev icon" className="w-100 is-bottom"/></div>
-                    <div className="py-6">
+                <div className="py-6">
+                    <CVHero/>
+                    <div className="pb-6 pt-3 bg-second">
                         <div className="card-wrapper">
-                            {cards.map((card) => <Card svg={card.svg} title={card.title} text={card.text}/>)}
+                            {cards.map((card) => <Card svg={card.svg} title={card.title} text={card.text} paragraphs={card.paragraphs}/>)}
                         </div>
-                        <div className="my-3">
+                        <div className="pt-6">
+                            <h3 className="h3 text-center mb-3">My lastest work</h3>
+                            <p className="text-center">some projects I have been working on</p>
                             <div className="d-flex justify-content-center align-items-center flex-wrap ">
                                 {cardsViews.map((cardView, index) => <CardView title={cardView.title} text={cardView.text} href={cardView.href}
                                 index={index + 1} />)}

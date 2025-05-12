@@ -66,7 +66,17 @@
     align-items: center;
     a {
         display: block ;
-        width: 100%;
+        flex: 50% 1 1;
+        text-align: center;
+        transition: color 0.4s ease, background-color 0.4s ease;
+        &:first-child {
+            border-right: solid 0.125rem;
+            border-color: $light;
+        }
+        &:hover {
+            color: $primary !important;
+            background-color: $dark2;
+        }
     }
 }
 

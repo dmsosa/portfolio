@@ -1,5 +1,9 @@
 import { ReactNode } from "react"
 
+export type TCardParagraph = {
+    subtitle: string;
+    content: string;
+}
 const svgs: { [key:string]: ReactNode } = {
     'moon': <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -11,12 +15,20 @@ const svgs: { [key:string]: ReactNode } = {
                         </svg>
 }
 
-export default function Card({ svg, title, text}: { svg: string, title: string, text: string}) {
+export default function Card({ svg, title, text, paragraphs }: { svg: string, title: string, text: string, paragraphs: TCardParagraph[]}) {
     return <div className="card">
-                    <div className="mb-2">
+                    <div>
                         {svgs[svg]}
-                        <h3>{title}</h3>
                     </div>
-                    <p>{text}</p>
+                    <h3 className="text-center">{title}</h3>
+                    <p className="text-center">{text}</p>
+                    {paragraphs.map((paragraph) => {
+                        return (
+                            <>
+                                <span className="mt-3 text-primary d-block fw-bold w-100 text-center">{paragraph.subtitle}</span>
+                                <p className="text-center">{paragraph.content}</p>
+                            </>
+                        )
+                    })}
                 </div>
 }

@@ -17334,7 +17334,17 @@ progress {
 }
 .endpunkt-header-toggler a {
   display: block;
-  width: 100%;
+  flex: 50% 1 1;
+  text-align: center;
+  transition: color 0.4s ease, background-color 0.4s ease;
+}
+.endpunkt-header-toggler a:first-child {
+  border-right: solid 0.125rem;
+  border-color: #fff;
+}
+.endpunkt-header-toggler a:hover {
+  color: #65ff65 !important;
+  background-color: #09132b;
 }
 
 .hero-bilder {
@@ -17517,9 +17527,25 @@ progress {
   }
 }
 footer {
+  position: relative;
   background-color: #09132b;
   width: 100%;
   padding: 2.6rem 1.85rem;
+}
+
+.footer-nav {
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  right: 0;
+  padding: 0 1rem;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
 }
 
 #et {
@@ -17758,28 +17784,54 @@ footer {
   --index: 4;
 }
 
-.card {
+.cv-logo {
+  max-width: 45%;
+  border-radius: 100%;
+  background-color: #65ff65;
+  margin: auto;
+  padding: 2.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0px 0px 15px #000, 0px 0px 10px #000, 0px 0px 5px #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+.cv-logo img {
+  max-width: 100%;
+}
+
+.card {
+  display: block;
+  padding: 0.75rem;
+  flex: 100% 1 1;
+  min-height: 450px;
+}
+.card:last-child {
+  border-bottom: none;
+}
 .card:not(:last-child) {
-  border-right: 0.125rem solid;
+  border-bottom: 0.125rem solid;
   border-color: #fff;
 }
-.card div svg {
+.card div:first-child {
+  max-width: 60%;
+  border-radius: 100%;
+  background-color: #65ff65;
+  margin: auto;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.card div:first-child svg {
   max-width: 100%;
 }
 .card p {
-  max-width: 80%;
-  text-align: center;
+  letter-spacing: 0.095rem;
 }
 
 .card-wrapper {
   border: solid 0.125rem #fff;
   background-color: #09132b;
-  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17794,10 +17846,12 @@ footer {
   background-size: cover;
   background-position: 50% 0;
   padding: 2.5rem;
+  overflow: hidden;
   transition: background-size 0.1s ease;
 }
 .card-view h3, .card-view .h3 {
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 0;
   right: 0;
@@ -17805,39 +17859,68 @@ footer {
   margin: auto;
   text-shadow: 0px 0px 15px #000, 0px 0px 10px #000, 0px 0px 5px #000;
 }
+.card-view-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-size: cover;
+  transform: scale(1);
+  transition: all 0.4s ease-in;
+}
 .card-view-inner {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 3;
   background-color: #09132b;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.2s ease;
 }
 .card-view:hover .card-view-inner {
   opacity: 1;
 }
-.card-view--1 {
+.card-view:hover .card-view-bg {
+  transform: scale(1.5);
+}
+.card-view--1 .card-view-bg {
+  background-image: url("../../assets/img/project/chosen.png");
+  background-position: 50%;
+}
+.card-view--2 .card-view-bg {
+  background-color: salmon;
   background-image: url("../../assets/img/project/flower.png");
 }
-.card-view--2 {
-  background-image: url("../../assets/img/project/flower.png");
+.card-view--3 .card-view-bg {
+  background-image: url("../../assets/img/project/dmblog.png");
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: #09132b;
 }
-.card-view--3 {
-  background-image: url("../../assets/img/project/flower.png");
-}
-.card-view--4 {
-  background-image: url("../../assets/img/project/flower.png");
+.card-view--4 .card-view-bg {
+  background-image: url("../../assets/img/project/quinta.png");
+  background-position: 50%;
 }
 
 @media only screen and (min-width: 786px) {
   .card-wrapper {
     flex-direction: row;
+  }
+  .card:not(:last-child) {
+    border-right: 0.125rem solid;
+    border-bottom: none;
+  }
+  .card:last-child {
+    border-right: none;
   }
 }
 .pointer {
@@ -18066,7 +18149,7 @@ footer {
 }
 
 .is-bottom {
-  margin-bottom: -3.5rem;
+  margin-bottom: -1rem;
 }
 
 .order-0 {
@@ -18179,6 +18262,14 @@ index-1 {
 
 .shrink-1 {
   flex-shrink: 1;
+}
+
+.text-shadow-1 {
+  text-shadow: 0px 0px 15px #000, 0px 0px 10px #000, 0px 0px 5px #000;
+}
+
+.drop-shadow-1 {
+  filter: drop-shadow(0px 0px 8px #000) drop-shadow(0px 0px 5px #000);
 }
 
 @media only screen and (min-width: 768px) {
@@ -19310,7 +19401,8 @@ ul.pagination {
   align-items: center;
   justify-content: center;
 }
-ul.pagination li {
+
+.page-item {
   padding: 0.5rem;
   cursor: pointer;
   border: solid 0.125rem;
@@ -19318,10 +19410,10 @@ ul.pagination li {
   background-color: transparent;
   transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
-ul.pagination li:not(:first-child) {
+.page-item:not(:first-child) {
   margin-left: 0.7rem;
 }
-ul.pagination li.active, ul.pagination li:hover {
+.page-item.active, .page-item:hover {
   background-color: #65ff65;
   border-color: #dbdbdb;
   color: #000;
@@ -19339,15 +19431,7 @@ ul.pagination li.active, ul.pagination li:hover {
     grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
     transition: grid-template-columns 0.4s;
   }
-  .main-content .hero.content {
-    grid-column: 1/4;
-  }
-  .main-content .entity-content.content {
-    grid-column: 1/4;
-    height: 70vh;
-    width: 100%;
-  }
-  .content-full-width {
+  .main-content .hero.content, .content-full-width, .main-content .entity-content.content {
     grid-column: 1/4;
     max-width: none;
   }

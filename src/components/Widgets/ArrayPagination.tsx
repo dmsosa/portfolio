@@ -17,6 +17,9 @@ export default function ArrayPagination({ loading, pageAnzahl, setOffset }: { lo
         nextLabel={">"}
         activeClassName={"active"}
         containerClassName={"pagination"}
+        pageClassName={"page-item"}
+        previousClassName={"page-item"}
+        nextClassName={"page-item"}
         />
     )
 }

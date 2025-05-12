@@ -2,16 +2,21 @@ import { useRef } from "react";
 import ContactForm from "../Widgets/ContactForm";
 import ET from "../Widgets/ET";
 import { useGSAP } from "@gsap/react";
+import FooterNav from "./FooterNav";
 
 export default function Footer() {
+
     const footerRef = useRef<HTMLDivElement >(null);
     useGSAP(() => {
         if (!footerRef.current) return;
         gsap.from('.icon', {
             transform: "translateY(100%) rotate(-10deg)",})
     }, {scope: footerRef});
+
+
     return (
         <footer >
+            <FooterNav/>
             <div className="container">
                 <div className="row row-cols-md-2">
                     <div className="col col-12">

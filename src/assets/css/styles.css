@@ -17976,26 +17976,28 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.form form {
-  background-color: #09132b;
-  border-radius: 15px;
-  padding: 0.75rem 1.5rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.form fieldset {
+.form .fieldset {
   position: relative;
   width: 100%;
   margin: 0 auto;
   margin-bottom: 1.8rem;
 }
-.form fieldset:last-child {
+.form .fieldset:last-child {
   margin-bottom: 0;
 }
-.form fieldset label {
+.form .fieldset.fieldset-error {
+  outline-color: #ff3636;
+  color: #ff3636;
+}
+.form .fieldset.fieldset-valid {
+  outline-color: #65ff65;
+  color: #65ff65;
+}
+.form .fieldset .error-message {
+  display: block;
+  margin-top: 0.25rem;
+}
+.form .fieldset label {
   position: absolute;
   top: 0.5rem;
   left: 1rem;
@@ -18005,23 +18007,24 @@ footer {
   font-size: 1rem;
   cursor: text;
 }
-.form fieldset input {
+.form .fieldset input {
   width: 100%;
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
   background-color: transparent;
-  color: #dadada;
-  outline: solid 0.25rem gray;
+  color: inherit;
+  outline: solid 0.25rem;
+  outline-color: inherit;
   border: none;
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
 }
-.form fieldset input:focus, .form fieldset input:active, .form fieldset input:hover, .form fieldset input:autofill, .form fieldset input:-webkit-autofill {
+.form .fieldset input:focus, .form .fieldset input:active, .form .fieldset input:hover, .form .fieldset input:autofill, .form .fieldset input:-webkit-autofill {
   border: none;
   outline: none;
-  outline: solid 0.25rem #65ff65;
+  outline: solid 0.25rem;
 }
-.form fieldset input:focus + label, .form fieldset input:active + label, .form fieldset input:not(:placeholder-shown) + label {
+.form .fieldset input:focus + label, .form .fieldset input:active + label, .form .fieldset input:not(:placeholder-shown) + label {
   top: -1rem;
   left: 0.85rem;
   font-size: 0.85rem;
@@ -18029,7 +18032,7 @@ footer {
   padding: 0.1rem 0.5rem;
   border-radius: 5px;
 }
-.form fieldset .input--eye {
+.form .fieldset .input--eye {
   position: absolute;
   right: 1rem;
   top: 0.5rem;

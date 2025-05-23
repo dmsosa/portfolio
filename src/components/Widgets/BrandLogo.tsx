@@ -1,5 +1,5 @@
 
-import whiteLogo from "../../assets/img/logo.png"
+import whiteLogo from "../../assets/img/logo.png";
 function BrandLogo() {
     
     return (

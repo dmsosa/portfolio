@@ -8,6 +8,7 @@ import Dashboard from './routes/Dashboard.tsx';
 import CV from './routes/CV.tsx';
 import Profile from './routes/Profile.tsx';
 import NotFound from './routes/NotFound.tsx';
+import ArtikelEditor from './routes/ArtikelEditor.tsx';
 
 
 createRoot(document.getElementById('app')!).render(
@@ -21,6 +22,7 @@ createRoot(document.getElementById('app')!).render(
           <Route path='/dashboard/artikel/:slug' element={<Artikel />}></Route>
           <Route path='/dashboard/profile/:username' element={<Profile />}></Route>
           <Route path='/dashboard/cv' element={<CV />}></Route>
+          <Route path='/dashboard/editor' element={<ArtikelEditor />}></Route>
         </Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>

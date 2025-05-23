@@ -55,7 +55,47 @@ export async function getArtikel({ headers, slug } : {
         throw (error);
     }
 } 
-
+export async function postArtikel({ headers, title, description, body, tags } : { 
+    headers: Record<string, string>,
+    title: string, 
+    description: string, 
+    body: string, 
+    tags: string[]
+ }): Promise<TArtikel> {
+    try {
+        const res = await instance.request({
+            url: "/artikel",
+            headers: headers,
+            method: 'POST',
+            data: { title, description, body, tags }
+        });
+        return res.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    } 
+}
+export async function putArtikel({ headers, slug, title, description, body, tags } : { 
+    headers: Record<string, string>,
+    slug: string,
+    title: string, 
+    description: string, 
+    body: string, 
+    tags: string[]
+ }): Promise<TArtikel> {
+    try {
+        const res = await instance.request({
+            url: `/artikel/${slug}`,
+            headers: headers,
+            method: 'PUT',
+            data: { title, description, body, tags }
+        });
+        return res.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    } 
+}
 export async function getArtikelKommentar({ headers, slug, limit, offset } : { 
     headers: Record<string, string>,
     slug: string,

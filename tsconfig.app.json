@@ -18,7 +18,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": ["node", "vitest/globals", "@testing-library/react", "@testing-library/jest-dom", "jsdom"]
   },
-  "include": ["src"]
+  "include": ["src", "src/__tests__", "setup.ts"]
 }

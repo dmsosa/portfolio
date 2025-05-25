@@ -2,9 +2,8 @@ import axios from "axios";
 import { TArtikel } from "../data/types";
 import { TKommentDatei } from "../hooks/useKomment";
 const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: 'http://localhost:3000/api',
     timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar', 'DEVELOPED-BEI':'Duvi', 'App-Name': import.meta.env.VITE_APP_TITLE }
   });
 export async function getArtikeln({ headers, endpunkt, username, tags, offset, limit=3 } : 
     { 
@@ -199,6 +198,20 @@ export async function deleteKomment({ headers, kommentId, slug } : {
             headers: headers,
         })
         return komment.data; 
+    } catch (error) {
+        console.error(error);
+      throw error;
+  }
+}
+export async function getArtikelKommentAnzahl({ slug } : { slug: string }) : Promise<number> {
+    try {
+        const url = `/artikel/komment/${slug}`;
+        const komment = await instance.request({
+            url: url,
+            method: 'GET',
+        })
+        const data = komment.data as TKommentDatei;
+        return data.kommentAnzahl; 
     } catch (error) {
         console.error(error);
       throw error;

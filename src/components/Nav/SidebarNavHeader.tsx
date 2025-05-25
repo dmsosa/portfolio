@@ -1,23 +1,26 @@
+import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Avatar from "../Widgets/Avatar";
-import boy from "../../assets/img/boy.png"
-import EditKnopf from "../Widgets/Knopfen/EditKnopf";
 import SidebarToggler from "./SidebarToggler";
+import { MdOutlineMarkUnreadChatAlt } from "react-icons/md";
 
 
 function SidebarNavHeader() {
-    const { isAuth, loggedUser } = useAuth();
-    return isAuth && loggedUser ?
-            <div className="sidebar-header">
-                <Avatar bild={loggedUser.image} username={loggedUser.username} expanded={true}/>
-                <EditKnopf to={`/dashboard/profile/${loggedUser.username}`}/>
-                <SidebarToggler role="closer"/>
-            </div>
-            :
-            <div className="sidebar-header">
-                <Avatar bild={boy} username={'guest'} expanded={true}/>
+    const { loggedUser } = useAuth();
+    return  loggedUser?.role === 'ADMIN' ? <div className="sidebar-header">
+                <Avatar bild={loggedUser?.image} username={loggedUser?.username} expanded={true}/>
                 <div className="d-flex justify-content-center align-items-center gap-2">
-                    <EditKnopf to={`/dashboard/sign-up`}/>
+                    <Link to={`/editor/`}/>
+                    <SidebarToggler role="closer"/>
+                </div>
+            </div>
+            : 
+            <div className="sidebar-header">
+                <Avatar bild={loggedUser!.image} username={loggedUser!.username} expanded={true}/>
+                <div className="d-flex justify-content-center align-items-center gap-2">
+                    <Link to={`/dashboard/`}>
+                        <MdOutlineMarkUnreadChatAlt />
+                    </Link>
                     <SidebarToggler role="closer"/>
                 </div>
             </div>

@@ -16,14 +16,19 @@ export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel,
                         <h3>{artikel.title}</h3>
                         <p>{artikel.body.slice(0, 300)}</p>
                     </Link>
-                    <ul className="ul-item">
-                        {artikel.tags.slice(0, 4).map((tag) => <li className="li-primary" key={tag}><a href="">{tag}</a></li>)}
+                    <ul className="ul-item fs-7">
+                        {
+                        artikel.tags.length > 4 ? artikel.tags.slice(0, 4).map((tag) => <li className="li-primary ms-0" key={tag}><a href="">{tag}</a></li>) 
+                        : artikel.tags.map((tag) => <li className="li-primary ms-0" key={tag}><a href="">{tag}</a></li>)
+                        }
                         <span>and {artikel.tags.length - 4} more...</span>
                     </ul>
                     <hr></hr>
                     <div className="d-flex justify-content-between align-items-center">
                         {children}
-                        <Link to={`/dashboard/artikel/${artikel.slug}`}><FaRegCommentDots className="me-2"/>32</Link>
+                        <Link to={`/dashboard/artikel/${artikel.slug}`}><FaRegCommentDots className="me-2"/>
+                        {artikel.commentsCount}
+                        </Link>
 
                         <Link to={`/dashboard/artikel/${artikel.slug}`}><AiOutlineRead/></Link>
                     </div>

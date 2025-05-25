@@ -1,6 +1,7 @@
 import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 import {  TLoggedBenutzer } from "../data/types";
 import { getCurrentBenutzer } from "../services/benutzer.services";
+import { defaultBenutzer } from "../data/artikel.data";
 
 export type TAuthStatus = {
     headers: Record<string, string> | undefined,
@@ -16,7 +17,7 @@ export type TAuthContext = {
 const AuthContext = createContext<TAuthContext | null>(null);
 
 const loggedStatus = localStorage.getItem('loggedStatus');
-const initStatus = loggedStatus ? JSON.parse(loggedStatus) : { headers: null, loggedUser: null, isAuth: false};
+const initStatus = loggedStatus ? JSON.parse(loggedStatus) : { headers: null, loggedUser: defaultBenutzer, isAuth: false};
 
 
 export function useAuth() {

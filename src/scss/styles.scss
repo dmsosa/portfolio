@@ -45,8 +45,6 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 @import "./components/portfolio";
 @import "./components/cv";
 @import "./components/about";
-@import "./components/artikel";
-@import "./components/profile";
 @import "./components/form";
 @import "./components/phamton";
 
@@ -122,6 +120,7 @@ main {
     grid-column: 2 / 3;
     max-width: 576px;
     margin: 0 auto;
+    padding: 3rem 0;
 }
 .entity-content {
     position: relative;

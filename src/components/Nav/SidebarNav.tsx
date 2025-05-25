@@ -2,12 +2,9 @@ import SidebarNavHeader from "./SidebarNavHeader";
 import { FaGithub, FaHome, FaLinkedin, FaStar, FaUserAstronaut, FaUserTie, FaVoicemail, FaYoutube } from "react-icons/fa";
 import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
 import LinkList, { TLinkObject } from "../Widgets/LinkList";
-import CreateKnopf from "../Widgets/Knopfen/CreateKnopf";
-import SettingsKnopf from "../Widgets/Knopfen/SettingsKnopf";
 import { useSidebarContext } from "../../context/SidebarContext";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 
 const footerLinks: TLinkObject[] = [
@@ -62,17 +59,6 @@ function SidebarNav() {
                 <SidebarNavHeader/>
                 <hr className="w-100"></hr>
                 <div className="d-flex justify-content-start align-items-center flex-column mh-60">
-                    <div className="d-flex justify-content-center align-items-center gap-2 mb-3">
-                        { isAuth  && loggedUser ?
-                            <>
-                            <CreateKnopf/>
-                            <SettingsKnopf username={loggedUser.username} state={{...loggedUser}}/>
-                            </>
-                            :
-                            <Link role="button" to="/dashboard/sign-up" className="btn btn-primary"><FaStar/><span className="ms-3">Get Started</span></Link> 
-                        }
-
-                    </div>
                     <LinkList links={links} expanded column/>
                 </div>
                 <hr className="w-100"></hr>

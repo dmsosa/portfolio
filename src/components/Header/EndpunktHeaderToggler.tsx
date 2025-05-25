@@ -1,7 +1,7 @@
 import React from "react";
 import { useEndpunkt } from "../../context/EndpunktContext";
 
-type TEndpunkt = 'global' | 'feed' | 'author' | 'favorite' | 'followers';
+type TEndpunkt = 'artikel' | 'benutzer';
 
 
 function EndpunktHeaderToggler({ endpunkte=[] } : { endpunkte?: TEndpunkt[] }) {
@@ -9,16 +9,18 @@ function EndpunktHeaderToggler({ endpunkte=[] } : { endpunkte?: TEndpunkt[] }) {
 
    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const value = e.currentTarget.innerText as TEndpunkt;
-    setEndpunktStatus((prev) => ({ ...prev, endpunkt: value as TEndpunkt }));
+    setEndpunktStatus((prev) => ({ ...prev, entity: value as TEndpunkt }));
 }
     return (
-        <div className="endpunkt-header-toggler">
+        <ul className="endpunkt-header-toggler">
             {endpunkte.map((endpunkt) => 
-            <a key={endpunkt} onClick={handleClick}>
+            <li>
+                <a key={endpunkt} onClick={handleClick}>
                 {endpunkt}
             </a>
+            </li>
             )}
-        </div>
+        </ul>
     )
 }
 

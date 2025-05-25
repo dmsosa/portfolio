@@ -4,7 +4,7 @@ import { TBenutzerDatei } from "../hooks/useBenutzer";
 
 export async function toggleFollow({ headers, isFollowing, username }: { headers: Record<string, string>, isFollowing: boolean, username: string }): Promise<TBenutzer> {
     try {
-        const url = `http://localhost:3000/api/profiles/follow/${username}`;
+        const url = `http://localhost:3000/api/profiles/${username}/follow`;
         const res = await fetch(url, {
             method: isFollowing ? 'POST' : 'DELETE',
             headers: headers

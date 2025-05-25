@@ -16,7 +16,7 @@ function Header() {
     return (
         <header id="header" className="header" ref={headerRef}>
             <SidebarToggler role='opener' />
-            {isDashboard ? <EndpunktHeaderToggler endpunkte={['global', 'feed']}/> : <BrandLogo />}
+            {isDashboard ? <EndpunktHeaderToggler endpunkte={['artikel', 'benutzer']}/> : <BrandLogo />}
             <div className="progress-bar"></div>
         </header>
         

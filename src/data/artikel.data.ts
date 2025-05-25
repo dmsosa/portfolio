@@ -1,5 +1,17 @@
 import { TArtikel, TBenutzer, TKomment } from "./types";
+import avatar1 from "../assets/img/avatar/avatar-1.png"
 
+
+export const defaultBenutzer: TBenutzer = {
+    username: "guest#421189114",
+    bio:  "Hey du! ✌️ Ich bin gerade zufällig ins DMblog von Durian reingestolpert – und was soll ich sagen? Es ist wie ein Blogurlaub für mein Gehirn! 🧠🌴 Bleib neugierig & scroll weiter 🎉",
+    image: avatar1,
+    followingCount: 10,
+    followersCount: 5,
+    isFollowing: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+}
 export const benutzerArray: TBenutzer[] = [
 	{
 		username: "dmsosa",
@@ -242,7 +254,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -255,7 +267,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "2arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -268,7 +280,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -281,7 +293,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -294,7 +306,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu e2t pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -307,7 +319,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -320,7 +332,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -333,7 +345,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -346,7 +358,7 @@ export const artikelArray: TArtikel[]  = [
         createdAt: new Date(),
         updatedAt: new Date(),
         author: benutzerArray[0],
-        kommentar: kommentSampleArray,
+        commentsCount: kommentSampleArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -354,3 +366,19 @@ export const artikelArray: TArtikel[]  = [
 		tags: ["Research and Development"," Advertising"," Legal Department"," Public Relations"," Customer Service"," Finances"]
     },
 ]
+
+export const artikelObject: { [key: string]: TArtikel } = {
+    "arcu-et-pede-nunc-sed": 	{
+        slug:  "arcu-et-pede-nunc-sed",
+        isFavorite: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        author: benutzerArray[0],
+        commentsCount: kommentSampleArray.length,
+        favoritesCount: 32,
+		title: "arcu et pede. Nunc sed",
+		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
+		body: "et netus et malesuada fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio. Phasellus at augue id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut, sem. Nulla interdum. Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae",
+		tags: ["Research and Development"," Advertising"," Legal Department"," Public Relations"," Customer Service"," Finances"]
+    }
+}

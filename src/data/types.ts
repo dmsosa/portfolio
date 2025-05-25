@@ -7,7 +7,7 @@ export interface TArtikel {
     author: TBenutzer;
     isFavorite: boolean;
     favoritesCount: number;
-    kommentar: TKomment[];
+    commentsCount: number;
     createdAt: Date;
     updatedAt: Date;
 }

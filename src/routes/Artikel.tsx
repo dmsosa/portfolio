@@ -6,30 +6,39 @@ import Avatar from "../components/Widgets/Avatar";
 import ArtikelKnopf from "../components/Widgets/Knopfen/ArtikelKnopf";
 import KommentSection from "../components/Komment/KommentSection";
 import { useEffect, useState } from "react";
-import { TArtikel } from "../data/types";
-import { artikelArray } from "../data/artikel.data";
+import { TArtikel, TBenutzer } from "../data/types";
+import { artikelObject } from "../data/artikel.data";
+import { getArtikel } from "../services/article.services";
 
 
 export default function Artikel() {
+    //Artikel Daten
     const { slug } = useParams();
-    const { headers, loggedUser } = useAuth();
-
-    const [ artikel, setArtikel ] = useState<TArtikel>(artikelArray[0]);
-    const [ loading, setLoading ] = useState< boolean >(false);
-
+    const [ artikel, setArtikel ] = useState<TArtikel>(artikelObject['arcu-et-pede-nunc-sed']);
+    const [ loading, setLoading ] = useState<boolean>(false);
+    const { headers } = useAuth();
     useEffect(() => {
-        console.log("call", headers)
         if (!slug) return;
-        setLoading(false);
-        // getArtikel({ headers: headers || {}, slug })
-        // .then((artikelData) => {
-        //     setArtikel(artikelData);
-        // })
-        // .catch((error) => {
-        //     console.error('Error fetching artikel data', error);
-        // })
-        // .finally(() => setLoading(false));
-    }, [ slug ])
+        setLoading(true);
+        getArtikel({ headers: headers || {}, slug })
+        .then((artikelData) => {
+            setArtikel(artikelData);
+        })
+        .catch((error) => {
+            console.error('Error fetching artikel data', error);
+        })
+        .finally(() => setLoading(false));
+    }, [ slug, artikel])
+
+    //Artikel Handling
+    const handleFollow = (benutzer: TBenutzer) => {
+        setArtikel((prev) => ({...prev, author: benutzer}));
+    }
+    const handleFav = (artikel: TArtikel) => {
+        setArtikel(artikel);
+    }
+    // Artikeln und Benutzer Array
+
     return loading 
         ? <ArtikelPhampton />
         : 
@@ -42,7 +51,7 @@ export default function Artikel() {
                 <div className="d-flex justify-content-start align-items-center pb-2 px-3 index-2 align-self-md-end w-100">
                     <Avatar expanded={true} username={artikel.author.username} bild={artikel.author.image}/>
                     <div className="d-flex justify-content-center align-items-center ms-3">
-                        <ArtikelKnopf loggedUser={loggedUser} artikel={artikel} updateParentData={setArtikel}/>
+                        <ArtikelKnopf artikel={artikel} handleFav={handleFav} handleFollow={handleFollow}/>
                     </div>
                 </div>
             </div>

@@ -1,17 +1,19 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { loginBenutzer } from "../../services/benutzer.services";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import FieldsetForm from "./FieldsetForm";
 
 type TLoginForm = {
     email: string,
     password: string,
 }
-
 export default function LoginForm() {
 
     const [ { email, password}, setForm ] = useState<TLoginForm>({ email: "", password: ""});
     const [ errorMessage, setErrorMessage ] = useState<string>('');
     const [ viewPassword, setViewPassword ] = useState<boolean>(false);
+
+
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
         const name = e.target.name;
@@ -19,7 +21,7 @@ export default function LoginForm() {
         setForm((prev) => ({ ...prev, [name]:val }))
     }
     const handleSubmit = (e: MouseEvent<HTMLFormElement> ) => {
-        e.preventDefault()
+        e.preventDefault();
         loginBenutzer({ email, password })
         .then((loggedStatus) => {
             localStorage.setItem('loggedStatus', JSON.stringify(loggedStatus));
@@ -32,24 +34,28 @@ export default function LoginForm() {
 
     }
     return (
-        <form onSubmit={handleSubmit} className="form modal-form-front">
+        <form onSubmit={handleSubmit} className="form">
             <p className={`form-error ${errorMessage.length > 1 && 'visible'}`}>{errorMessage}</p>
-            <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <input id="email" type="email" name="email" 
-                placeholder=""
-                required value={email} onChange={handleChange}/>
-                <label htmlFor="email">dein Email</label>
-            </fieldset>
-            <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <input id="password" type={viewPassword ? 'text':'password'} name="password" 
-                placeholder=""
-                required 
-                value={password} onChange={handleChange}/>
-                <label htmlFor="password">dein Passwort</label>
+            <FieldsetForm
+                name="email"
+                labelText="Email-Addresse"
+                type="email"
+                onChange={handleChange}
+                value={email}
+                errorMessages={[]}
+            ></FieldsetForm>
+            <FieldsetForm
+                name="Passwort"
+                labelText="Passwort"
+                type="password"
+                onChange={handleChange}
+                value={password}
+                errorMessages={[]}
+            >
                 <a className="input--eye" onMouseDown={() => setViewPassword(true)} onMouseUp={() => setViewPassword(false)}>
                     {viewPassword ? <FaEye/>:<FaEyeSlash/>}
                 </a>
-            </fieldset>
+            </FieldsetForm>
             <button type="submit" className="btn btn-primary align-self-start">Login</button>
         </form>
     )

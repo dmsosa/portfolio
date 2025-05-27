@@ -1,4 +1,4 @@
-import useFormContext from "../../../context/FormContext";
+import useFormContext from "../../../context/AuthFormContext";
 
 function FormToggler() {
     const { setFormContext } = useFormContext();

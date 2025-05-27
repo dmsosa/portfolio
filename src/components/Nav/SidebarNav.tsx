@@ -1,5 +1,5 @@
 import SidebarNavHeader from "./SidebarNavHeader";
-import { FaGithub, FaHome, FaLinkedin, FaStar, FaUserAstronaut, FaUserTie, FaVoicemail, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaHome, FaLinkedin, FaUserAstronaut, FaUserTie, FaVoicemail, FaYoutube } from "react-icons/fa";
 import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
 import LinkList, { TLinkObject } from "../Widgets/LinkList";
 import { useSidebarContext } from "../../context/SidebarContext";
@@ -8,10 +8,11 @@ import { useEffect, useState } from "react";
 
 
 const footerLinks: TLinkObject[] = [
-    { title: 'Email', href: 'mailto:dmsosa21@outlook.com', icon: <FaVoicemail />    },
-    { title: 'GitHub', href: 'https://github.com/dmsosa/', icon: <FaGithub/> },
-    { title: 'LinkedIn', href: 'https://www.linkedin.com/in/durian-sosa-807147241/', icon: <FaLinkedin /> },
-    { title: 'YouTube', href: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
+    { title: 'Email', to: 'mailto:dmsosa21@outlook.com', icon: <FaVoicemail />    },
+    { title: 'GitHub', to: 'https://github.com/dmsosa/', icon: <FaGithub/> },
+    { title: 'LinkedIn', to: 'https://www.linkedin.com/in/durian-sosa-807147241/', icon: <FaLinkedin /> },
+    { title: 'YouTube', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
+    { title: 'Home', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
 ]; 
 function SidebarNav() {
     const { expandedLeft } = useSidebarContext();
@@ -34,19 +35,19 @@ function SidebarNav() {
     useEffect(() => {
         if (isAuth) {
             const loggedInLinks = [
-                { title: 'Home', href: '/', icon: <FaHome />    },
-                { title: 'Dashboard', href: '/dashboard/', icon: <GiAbstract031/> },
-                { title: 'Artikeln', href: '/dashboard/editor', icon: <Gi3dGlasses /> },
-                { title: 'Profile', href: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
-                { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
+                { title: 'Home', to: '/', icon: <FaHome />    },
+                { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
+                { title: 'Artikeln', to: '/dashboard/editor', icon: <Gi3dGlasses /> },
+                { title: 'Profile', to: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
+                { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
             ]; 
             setLinks(loggedInLinks);
         }
         else {
             const notLoggedLinks: TLinkObject[] = [
-                { title: 'Home', href: '/', icon: <FaHome />    },
-                { title: 'Dashboard', href: '/dashboard/', icon: <GiAbstract031/> },
-                { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
+                { title: 'Home', to: '/', icon: <FaHome />    },
+                { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
+                { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
             ]; 
 
             setLinks(notLoggedLinks);
@@ -60,6 +61,7 @@ function SidebarNav() {
                 <hr className="w-100"></hr>
                 <div className="d-flex justify-content-start align-items-center flex-column mh-60">
                     <LinkList links={links} expanded column/>
+                    <button className="btn btn-primary">Sign In</button>
                 </div>
                 <hr className="w-100"></hr>
                 <div className="sidebar-footer">

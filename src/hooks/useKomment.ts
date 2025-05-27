@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { TKomment } from "../data/types";
 import { getArtikelKommentar } from "../services/article.services";
 import { useAuth } from "../context/AuthContext";
-import { kommentSampleArray } from "../data/artikel.data";
+import { kommentStaticArray } from "../data/artikel.data";
 
 export type TKommentDatei = {
     kommentAnzahl: number; 
@@ -12,7 +12,7 @@ export type TKommentDatei = {
 
 export default function useKomment({ slug } : { slug?: string }) {
     const [ loading, setLoading ] = useState(true);
-    const [ { kommentAnzahl, kommentArray }, setKommentDatei ] = useState<TKommentDatei>({ kommentAnzahl: kommentSampleArray.length, kommentArray: kommentSampleArray });
+    const [ { kommentAnzahl, kommentArray }, setKommentDatei ] = useState<TKommentDatei>({ kommentAnzahl: 0, kommentArray: [] });
     const [ offset, setOffset ] = useState(0);
     const { headers } = useAuth();
     useEffect(() => {
@@ -25,7 +25,7 @@ export default function useKomment({ slug } : { slug?: string }) {
         })
         .catch((error) => {
             console.log('Fehler bei Abrufen den Kommentar:', error);
-            setKommentDatei({ kommentAnzahl: kommentSampleArray.length, kommentArray: kommentSampleArray.slice(kommentArraySlice, kommentArraySlice + 5) });
+            setKommentDatei({ kommentAnzahl: kommentStaticArray.length, kommentArray: kommentStaticArray.slice(kommentArraySlice, kommentArraySlice + 5) });
         }
         )
         .finally(() => setLoading(false));

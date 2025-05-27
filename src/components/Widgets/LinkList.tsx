@@ -1,10 +1,12 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 
 export type TLinkObject = {
     title: string,
-    href: string,
+    to: string,
     icon: ReactNode,
+    state?: object,
 }
 
 
@@ -14,10 +16,10 @@ function LinkList({ links, expanded=false, column=false } : { links: TLinkObject
             {links.map((link) => 
                 (
                 <li key={link.title}>
-                    <a className={`link ${column ? 'justify-content-start':'justify-content-center'}`} href={link.href} aria-expanded={expanded}>
+                    <Link className={`link ${column ? 'justify-content-start':'justify-content-center'}`} to={link.to} state={link.state ? link.state : null} aria-expanded={expanded}>
                         {link.icon}
                         <span>{link.title}</span>
-                    </a>
+                    </Link>
                 </li>
                 )
             )}

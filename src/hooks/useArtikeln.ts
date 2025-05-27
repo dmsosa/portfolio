@@ -15,18 +15,18 @@ export default function useArtikeln({ endpunkt, username, tags } : {
     oldest?: boolean | undefined,
 }) {
 
-    const [ artikelnDatei, setArtikelnDatei ] = useState<TArtikelnDatei>({ artikelnAnzahl: 0, artikeln: []});
+    const [  { artikelnAnzahl, artikeln } , setArtikelnDatei ] = useState<TArtikelnDatei>({ artikelnAnzahl: 0, artikeln: []});
     const [ loadingArtikeln, setLoading ] = useState< boolean >(false);
     const [ offset, setOffsetArtikeln ] = useState<number>(0); 
     const { headers } = useAuth();
     const limit = 3;
-    const { artikelnAnzahl, artikeln } = artikelnDatei;
     useEffect(() => {
         setLoading(true);
         //headers greifen
         getArtikeln({headers: headers || {}, endpunkt, username, tags, limit, offset })
         .then((artikelnDatei) => setArtikelnDatei(artikelnDatei))
-        .catch(() => {
+        .catch((error) => {
+            console.log('Fehler bei Abrufen den Artikeln:', error);
             setArtikelnDatei({ artikelnAnzahl: artikelArray.length, artikeln: artikelArray });
         })
         .finally(() => setLoading(false));

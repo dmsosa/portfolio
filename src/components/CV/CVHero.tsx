@@ -2,7 +2,7 @@ import hp from "../../assets/img/hp.png";
 import data from "../../assets/img/svg/hero-devices.svg";
 
 export default function CVHero() {
-    return <div>
+    return <>
                 <div className="d-flex justify-content-center align-items-center flex-column">
                     <div className="cv-logo">
                         <img src={hp} alt="Duvi's logo" />
@@ -23,5 +23,5 @@ export default function CVHero() {
                 </div>
                 <button className="btn btn-primary d-block mx-auto">Watch CV</button>
                 <div className="w-80 mx-auto mt-5 is-bottom"><img src={data} alt="Dev icon" className="w-100"/></div>
-            </div>
+            </>
 }

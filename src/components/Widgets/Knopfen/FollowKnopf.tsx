@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TBenutzer } from "../../../data/types";
 import { toggleFollow } from "../../../services/benutzer.services";
 import { useAuth } from "../../../context/AuthContext";
+import { IsFollowingSvg, IsNotFollowingSvg } from "../FollowKnopfSvg";
 
 export default function FollowKnopf({ isFollowing, username, handleFollow } : { isFollowing:boolean, username: string, handleFollow: (author: TBenutzer) => void }) {
     const [ loading, setLoading ] = useState(false);
@@ -24,8 +25,7 @@ export default function FollowKnopf({ isFollowing, username, handleFollow } : { 
     return loading ? 
     <div>is Loading</div>
     :
-    isFollowing ? 
-    <button className="btn btn-info" onClick={handleClick}>Unfollow</button> 
-    :
-    <button className="btn btn-primary" onClick={handleClick}>Follow</button>
+    <button className={isFollowing ? 'btn' : 'btn'} onClick={handleClick}>
+        { isFollowing ? <IsFollowingSvg /> : <IsNotFollowingSvg /> }
+    </button>
 }

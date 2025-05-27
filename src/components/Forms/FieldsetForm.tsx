@@ -1,12 +1,13 @@
-import { ChangeEvent, HTMLInputTypeAttribute } from "react"
+import { ChangeEvent, HTMLInputTypeAttribute, ReactNode } from "react"
 
-export default function FieldsetForm({ name, type, labelText, value, onChange, errorMessages } : { 
+export default function FieldsetForm({ name, type, labelText, value, onChange, errorMessages, children } : { 
     name: string, 
     type: HTMLInputTypeAttribute,
     labelText: string,
     value: string | number | readonly string[] | undefined,
     onChange: (e: ChangeEvent<HTMLInputElement>) => void,
-    errorMessages: string[]
+    errorMessages: string[],
+    children?: ReactNode
  }) {
     return (
         <fieldset className={`fieldset ${errorMessages.length > 0 && 'fieldset-error'} ${value && errorMessages.length < 1 && 'fieldset-valid'}`}>
@@ -19,6 +20,7 @@ export default function FieldsetForm({ name, type, labelText, value, onChange, e
             }}/>
             <label htmlFor={'editor-' + name}>{labelText}</label>
             {errorMessages.map((error) => <span className="error-message">{'| ' + error}</span>)}
+            { children }
         </fieldset>
     )
 }

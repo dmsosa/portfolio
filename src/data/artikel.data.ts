@@ -12,7 +12,7 @@ export const defaultBenutzer: TBenutzer = {
     createdAt: new Date(),
     updatedAt: new Date(),
 }
-export const benutzerArray: TBenutzer[] = [
+export const benutzerStaticArray: TBenutzer[] = [
 	{
 		username: "dmsosa",
 		bio:  "Hey now, you're an all-star, get your game on, go play. Hey now, you're a rock star, get the show on, get paid. And all that glitters is gold. Only shooting stars break the mold.",
@@ -175,73 +175,73 @@ export const benutzerArray: TBenutzer[] = [
 	}
 ]	
 
-export const kommentSampleArray: TKomment[] = [
+export const kommentStaticArray: TKomment[] = [
     {
         id: "1",
-        author: benutzerArray[1],
+        author: benutzerStaticArray[1],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "2",
-        author: benutzerArray[2],
+        author: benutzerStaticArray[2],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "3",
-        author: benutzerArray[6],
+        author: benutzerStaticArray[6],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "4",
-        author: benutzerArray[1],
+        author: benutzerStaticArray[1],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "5",
-        author: benutzerArray[1],
+        author: benutzerStaticArray[1],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "6",
-        author: benutzerArray[2],
+        author: benutzerStaticArray[2],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "7",
-        author: benutzerArray[5],
+        author: benutzerStaticArray[5],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "8",
-        author: benutzerArray[4],
+        author: benutzerStaticArray[4],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "9",
-        author: benutzerArray[3],
+        author: benutzerStaticArray[3],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
 	},
     {
         id: "10",
-        author: benutzerArray[2],
+        author: benutzerStaticArray[2],
         createdAt: new Date(),
         updatedAt: new Date(),
 		body: "et, rutrum eu, ultrices sit amet, risus. Donec nibh enim,"
@@ -253,8 +253,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -266,8 +266,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "2arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -279,8 +279,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -292,8 +292,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -305,8 +305,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu e2t pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -318,8 +318,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -331,8 +331,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -344,8 +344,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -357,8 +357,8 @@ export const artikelArray: TArtikel[]  = [
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",
@@ -373,8 +373,8 @@ export const artikelObject: { [key: string]: TArtikel } = {
         isFavorite: true,
         createdAt: new Date(),
         updatedAt: new Date(),
-        author: benutzerArray[0],
-        commentsCount: kommentSampleArray.length,
+        author: benutzerStaticArray[0],
+        commentsCount: kommentStaticArray.length,
         favoritesCount: 32,
 		title: "arcu et pede. Nunc sed",
 		description: "Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent interdum ligula eu enim. Etiam imperdiet dictum magna. Ut tincidunt orci quis lectus.",

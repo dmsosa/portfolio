@@ -14,7 +14,7 @@ function EndpunktHeaderToggler({ endpunkte=[] } : { endpunkte?: TEndpunkt[] }) {
     return (
         <ul className="endpunkt-header-toggler">
             {endpunkte.map((endpunkt) => 
-            <li>
+            <li key={endpunkt}>
                 <a key={endpunkt} onClick={handleClick}>
                 {endpunkt}
             </a>

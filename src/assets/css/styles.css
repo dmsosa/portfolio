@@ -17696,7 +17696,6 @@ footer {
   grid-column: 1/4;
   width: 100%;
   height: 80vh;
-  background-color: #0dcaf0;
 }
 .content.hero::after {
   content: "";
@@ -18219,203 +18218,6 @@ footer {
   border-radius: 100%;
 }
 
-.h1 {
-  font-size: 3.15rem;
-  line-height: 0.8;
-}
-
-.h2 {
-  font-size: 2.85rem;
-  line-height: 0.8;
-}
-
-.h5 {
-  font-size: 1.4rem;
-  line-height: 0.8;
-  overflow: hidden;
-}
-
-.p {
-  font-size: 1.5rem;
-  line-height: 0.9;
-}
-
-.split {
-  display: block;
-  overflow: hidden;
-}
-
-.text-epic {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.mh-60 {
-  max-height: 60%;
-}
-
-.h-60 {
-  height: 60%;
-}
-
-.gap-1 {
-  gap: 0.25rem;
-}
-
-.gap-2 {
-  gap: 0.7rem;
-}
-
-.gap-3 {
-  gap: 1.5rem;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.border-container {
-  border: solid #fff 0.125rem;
-}
-
-.is-bottom {
-  margin-bottom: -1rem;
-}
-
-.order-0 {
-  order: 0;
-}
-
-.order-1 {
-  order: 1;
-}
-
-.order-2 {
-  order: 2;
-}
-
-.h-1 {
-  height: 1rem;
-}
-
-.h-2 {
-  height: 2rem;
-}
-
-.h-3 {
-  height: 3rem;
-}
-
-.h-4 {
-  height: 4rem;
-}
-
-.h-5 {
-  height: 5rem;
-}
-
-.h-6 {
-  height: 6rem;
-}
-
-.w-1 {
-  width: 1rem;
-}
-
-.w-2 {
-  width: 2rem;
-}
-
-.w-3 {
-  width: 3rem;
-}
-
-.w-4 {
-  width: 4rem;
-}
-
-.w-5 {
-  width: 5rem;
-}
-
-.w-6 {
-  width: 6rem;
-}
-
-.h-150 {
-  height: 150px;
-}
-
-.h-500 {
-  height: 500px;
-}
-
-.top-0 {
-  top: 0;
-}
-
-.top-1 {
-  top: 5%;
-}
-
-.top-2 {
-  top: 20%;
-}
-
-.right-0 {
-  right: 0;
-}
-
-.right-1 {
-  right: 1rem;
-}
-
-index-1 {
-  z-index: 1;
-}
-
-.index-2 {
-  z-index: 2;
-}
-
-.w-80 {
-  width: 80%;
-}
-
-.basis-50 {
-  flex-basis: 50%;
-}
-
-.grow-1 {
-  flex-grow: 1;
-}
-
-.shrink-1 {
-  flex-shrink: 1;
-}
-
-.text-shadow-1 {
-  text-shadow: 0px 0px 15px #000, 0px 0px 10px #000, 0px 0px 5px #000;
-}
-
-.drop-shadow-1 {
-  filter: drop-shadow(0px 0px 8px #000) drop-shadow(0px 0px 5px #000);
-}
-
-.fs-7 {
-  font-size: 0.75rem !important;
-}
-
-@media only screen and (min-width: 768px) {
-  .order-md-0 {
-    order: 0;
-  }
-  .order-md-1 {
-    order: 1;
-  }
-  .order-md-2 {
-    order: 2;
-  }
-}
 .robot-wrapper {
   position: relative;
   margin: auto;
@@ -18866,6 +18668,207 @@ index-1 {
     transform: translateY(var(--translation)) rotateX(-90deg) translateZ(var(--size));
   }
 }
+.h1 {
+  font-size: 3.15rem;
+  line-height: 0.8;
+}
+
+.h2 {
+  font-size: 2.85rem;
+  line-height: 0.8;
+}
+
+.h5 {
+  font-size: 1.4rem;
+  line-height: 0.8;
+  overflow: hidden;
+}
+
+.p {
+  font-size: 1.5rem;
+  line-height: 0.9;
+}
+
+.split {
+  display: block;
+  overflow: hidden;
+}
+
+.text-epic {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.mh-60 {
+  max-height: 60%;
+}
+
+.h-60 {
+  height: 60%;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.7rem;
+}
+
+.gap-3 {
+  gap: 1.5rem;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.border-container {
+  border: solid #fff 0.125rem;
+}
+
+.is-bottom {
+  margin-bottom: -1rem;
+}
+
+.order-0 {
+  order: 0;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.h-1 {
+  height: 1rem;
+}
+
+.h-2 {
+  height: 2rem;
+}
+
+.h-3 {
+  height: 3rem;
+}
+
+.h-4 {
+  height: 4rem;
+}
+
+.h-5 {
+  height: 5rem;
+}
+
+.h-6 {
+  height: 6rem;
+}
+
+.w-1 {
+  width: 1rem;
+}
+
+.w-2 {
+  width: 2rem;
+}
+
+.w-3 {
+  width: 3rem;
+}
+
+.w-4 {
+  width: 4rem;
+}
+
+.w-5 {
+  width: 5rem;
+}
+
+.w-6 {
+  width: 6rem;
+}
+
+.h-150 {
+  height: 150px;
+}
+
+.h-500 {
+  height: 500px;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.top-1 {
+  top: 5%;
+}
+
+.top-2 {
+  top: 20%;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.right-1 {
+  right: 1rem;
+}
+
+index-1 {
+  z-index: 1;
+}
+
+.index-2 {
+  z-index: 2;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.basis-50 {
+  flex-basis: 50%;
+}
+
+.grow-1 {
+  flex-grow: 1;
+}
+
+.shrink-1 {
+  flex-shrink: 1;
+}
+
+.text-shadow-1 {
+  text-shadow: 0px 0px 15px #000, 0px 0px 10px #000, 0px 0px 5px #000;
+}
+
+.drop-shadow-1 {
+  filter: drop-shadow(0px 0px 8px #000) drop-shadow(0px 0px 5px #000);
+}
+
+.fs-7 {
+  font-size: 0.75rem !important;
+}
+
+.h-70vw {
+  height: 70vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .order-md-0 {
+    order: 0;
+  }
+  .order-md-1 {
+    order: 1;
+  }
+  .order-md-2 {
+    order: 2;
+  }
+}
 @keyframes bounce {
   25% {
     transform: translateY(-25%);
@@ -18955,7 +18958,12 @@ main {
   grid-column: 2/3;
   max-width: 576px;
   margin: 0 auto;
-  padding: 3rem 0;
+}
+.content:first-child {
+  padding-top: 6rem;
+}
+.content:last-child {
+  padding-bottom: 5rem;
 }
 
 .entity-content {
@@ -19026,6 +19034,47 @@ ul.icon-ul li.icon-li:last-child {
 .icon path {
   fill: transparent;
   stroke: #65ff65;
+}
+
+#is-following-svg, #is-not-following-svg {
+  width: 100%;
+  max-width: 2rem;
+}
+#is-following-svg circle, #is-following-svg path, #is-not-following-svg circle, #is-not-following-svg path {
+  stroke: white;
+  fill: transparent;
+  transition: all 0.2s ease;
+}
+#is-following-svg path#follow-body, #is-not-following-svg path#follow-body {
+  d: path("M250 250H150v150h50v-50z");
+}
+
+#is-following-svg path#line1 {
+  d: path("M 362.748 257.649 L 288.584 357.649");
+}
+#is-following-svg path#line2 {
+  d: path("M 250.812 317.451 L 300.767 357.649");
+}
+#is-following-svg:hover circle, #is-following-svg:hover path {
+  stroke: #ff3636;
+  fill: #ff3636;
+}
+#is-following-svg:hover path#line1 {
+  d: path("M 336 275 L 262 375");
+}
+#is-following-svg:hover path#line2 {
+  d: path("M 252 277 L 344 369");
+}
+
+#is-not-following-svg path#line1 {
+  d: path("M 312.748 257.649 L 312.748 357.649");
+}
+#is-not-following-svg path#line2 {
+  d: path("M 262.748 307.649 L 362.748 307.649");
+}
+#is-not-following-svg:hover circle, #is-not-following-svg:hover path {
+  stroke: #65ff65;
+  fill: #65ff65;
 }
 
 .container-content {
@@ -19565,7 +19614,7 @@ ul.pagination {
     grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
     transition: grid-template-columns 0.4s;
   }
-  .main-content .hero.content, .content-full-width, .main-content .entity-content.content {
+  .main-content .content.hero, .content-full-width, .main-content {
     grid-column: 1/4;
     max-width: none;
   }

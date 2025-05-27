@@ -13,7 +13,7 @@ import NavMobile from './components/Nav/NavMobile'
 import Footer from './components/Footer/Footer'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { FormContextProvider } from './context/FormContext'
+import { FormContextProvider } from './context/AuthFormContext'
 import FormModal from './components/Forms/FormModal'
 
 

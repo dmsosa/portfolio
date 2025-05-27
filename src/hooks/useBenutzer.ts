@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TBenutzer } from "../data/types";
 import { getAllBenutzer } from "../services/benutzer.services";
 import { useAuth } from "../context/AuthContext";
+import { benutzerStaticArray } from "../data/artikel.data";
 
 export type TBenutzerDatei = {
     benutzerAnzahl: number,
@@ -12,21 +13,19 @@ export default function useBenutzer({ endpunkt, username } : {
     endpunkt: 'global' | 'feed' | 'author' | 'favorite' | 'followers';
     username?: string | undefined, 
 }) {
-    const [ benutzerDatei, setBenutzerDatei ] = useState<TBenutzerDatei>({ benutzerAnzahl: 0, benutzerArray: []});
+    const [ { benutzerAnzahl, benutzerArray }, setBenutzerDatei ] = useState<TBenutzerDatei>({ benutzerAnzahl: 0, benutzerArray: []});
     const [ loadingBenutzer, setLoading ] = useState< boolean >(false);
     const [ offset, setOffsetBenutzer ] = useState<number>(0);
     const { headers } = useAuth();
-    
     const limit = 3;
-    const { benutzerAnzahl, benutzerArray } = benutzerDatei;
-
     useEffect(() => {
         getAllBenutzer({ headers, endpunkt, username, limit, offset})
         .then((benutzerDatei) => {
             setBenutzerDatei(benutzerDatei)
         })
-        .catch(() => {
-            setBenutzerDatei({ benutzerAnzahl: benutzerArray.length, benutzerArray: benutzerArray });
+        .catch((error) => {
+            console.log('Fehler bei Abrufen den Benutzer:', error);
+            setBenutzerDatei({ benutzerAnzahl:  benutzerStaticArray.length, benutzerArray: benutzerStaticArray });
         })
 
         .finally(() => setLoading(false));

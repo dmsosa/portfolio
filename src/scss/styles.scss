@@ -52,7 +52,6 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 
 
 // others
-@import "./others/utils";
 @import "./others/robot";
 @import "./others/cube";
 
@@ -63,6 +62,8 @@ $spacers: map-merge((6: $spacer * 6, 15: $spacer * 15), $spacers);
 //mixins
 @import "./mixins/mixins";
 
+//utils 
+@import "./utils";
 //keyframes
 @import "./keyframes/keyframes";
 
@@ -120,7 +121,12 @@ main {
     grid-column: 2 / 3;
     max-width: 576px;
     margin: 0 auto;
-    padding: 3rem 0;
+    &:first-child {
+        padding-top: 6rem;
+    }
+    &:last-child {
+        padding-bottom: 5rem;
+    }
 }
 .entity-content {
     position: relative;
@@ -197,6 +203,52 @@ ul.icon-ul {
 //     stroke-dasharray: 132;
 //     stroke-dashoffset: 0;
 // }
+#is-following-svg, #is-not-following-svg  {
+    width: 100%;
+    max-width: 2rem;    
+    circle, path {
+        stroke: white;
+        fill: transparent;
+        transition: all 0.2s ease;
+    }
+    path#follow-body {
+        d: path('M250 250H150v150h50v-50z');
+    }
+}
+#is-following-svg {
+    path#line1 {
+        d: path('M 362.748 257.649 L 288.584 357.649');
+    }
+    path#line2 {
+        d: path('M 250.812 317.451 L 300.767 357.649');
+    }
+    &:hover {
+        circle, path {
+            stroke: $danger;
+            fill: $danger;
+        }
+        path#line1 {
+            d: path('M 336 275 L 262 375');
+        }
+        path#line2 {
+            d: path('M 252 277 L 344 369');
+        }
+    }
+}
+#is-not-following-svg {
+    path#line1 {
+        d: path('M 312.748 257.649 L 312.748 357.649');
+    }
+    path#line2 {
+        d: path('M 262.748 307.649 L 362.748 307.649');
+    }
+    &:hover {
+        circle, path {
+            stroke: $primary;
+            fill: $primary;
+        }
+    }
+}
 
 .container-content {
     position: relative;
@@ -583,7 +635,7 @@ ul.pagination {
         grid-template-columns: var(--margin-left) var(--main-content-width) var(--margin-right);
         transition: grid-template-columns 0.4s;
     }
-    .main-content .hero.content, .content-full-width, .main-content .entity-content.content {
+    .main-content .content.hero, .content-full-width, .main-content {
         grid-column: 1 / 4;
         max-width: none;
     }

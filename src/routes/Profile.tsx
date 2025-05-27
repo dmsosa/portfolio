@@ -12,7 +12,7 @@ import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { TBenutzer } from "../data/types";
 import { getProfile } from "../services/benutzer.services";
-import { defaultBenutzer } from "../data/artikel.data";
+import { benutzerStaticArray, defaultBenutzer } from "../data/artikel.data";
 import BenutzerKnopf from "../components/Widgets/Knopfen/BenutzerKnopf";
 
 
@@ -22,7 +22,7 @@ export default function Profile() {
 
     //Profile Daten
 
-    const [ profile, setProfile ] = useState<TBenutzer | undefined>(defaultBenutzer);
+    const [ profile, setProfile ] = useState<TBenutzer>(defaultBenutzer);
     const [ loading, setLoading ] = useState< boolean >(false);
     const { headers } = useAuth();
     
@@ -35,7 +35,7 @@ export default function Profile() {
         })
         .catch(() => {
             console.error('Error fetching profile data');
-            setProfile(benutzerArray[0]);
+            setProfile(benutzerStaticArray[0]);
         })
         .finally(() => setLoading(false));
     }, [ username ])
@@ -54,9 +54,8 @@ export default function Profile() {
     return loading ?
         <div>Loading</div> 
         :
-        profile ?
         <>
-            <div className="hero content">
+            <div className="content content-full-width position-relative h-70vw bg-dark2">
                 <div className="main-bg"></div>
                 <div className="h-100 px-3 pb-5 d-flex justify-content-start align-items-end w-100">
                     <BenutzerInfo benutzer={profile} border={false}>
@@ -64,19 +63,19 @@ export default function Profile() {
                     </BenutzerInfo>
                 </div>
             </div>
-            <div className="content">
-            <EndpunktToggler endpunkte={entity === 'artikel' ? ['author', 'favorite'] : ['feed', 'followers']}/>
-            <div>
-                { entity === 'artikel' ?
-                <ArtikelListe loading={loadingArtikeln} array={artikeln} artikelAnzahl={artikelnAnzahl} setArrayData={setArtikelnDatei} setOffset={setOffsetArtikeln} />
-                    :
-                <BenutzerArray loading={loadingBenutzer} array={benutzerArray} benutzerAnzahl={benutzerAnzahl} setArrayData={setBenutzerDatei} setOffset={setOffsetBenutzer}/>
-            }
-            </div>
+            <div className="content pt-4 pb-6">
+                <EndpunktToggler endpunkte={entity === 'artikel' ? ['author', 'favorite'] : ['feed', 'followers']} text={entity === 'artikel' ? [`${profile.username}'s articles`, `favorites`] : ['feed', 'followers']}/>
+                <div>
+                    <h2 className="h2">
+                        <span className="line">Keep reading!</span>
+                    </h2>
+                    { entity === 'artikel' ?
+                    <ArtikelListe loading={loadingArtikeln} array={artikeln} artikelAnzahl={artikelnAnzahl} setArrayData={setArtikelnDatei} setOffset={setOffsetArtikeln} />
+                        :
+                    <BenutzerArray loading={loadingBenutzer} array={benutzerArray} benutzerAnzahl={benutzerAnzahl} setArrayData={setBenutzerDatei} setOffset={setOffsetBenutzer}/>
+                }
+                </div>
             </div>
         </>
-        
-        :
-        <div>kein nutzer</div>
     
 }

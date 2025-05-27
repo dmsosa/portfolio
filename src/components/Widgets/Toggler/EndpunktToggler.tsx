@@ -3,7 +3,7 @@ import { TEndpunktContext, useEndpunkt } from "../../../context/EndpunktContext"
 
 type TEndpunkt = 'global' | 'feed' | 'author' | 'favorite' | 'followers';
 
-export default function EndpunktToggler({ endpunkte=[ 'global', 'feed' ] } : { endpunkte?: TEndpunkt[] }) {
+export default function EndpunktToggler({ endpunkte=[ 'global', 'feed' ], text=['global', 'feed'] } : { endpunkte?: TEndpunkt[], text?: string[] }) {
 
     const { endpunkt, setEndpunktStatus } = useEndpunkt() as TEndpunktContext;
 
@@ -15,8 +15,8 @@ export default function EndpunktToggler({ endpunkte=[ 'global', 'feed' ] } : { e
     return (
         <div className="d-flex justify-content-start align-items-start flex-column">
             <ul className="ul-item mb-4">
-                {endpunkte.map((value) => 
-                <li className={`li-secondary ${endpunkt === value && 'active'}`} key={value}><a className="endpunkt-change" onClick={handleChange}>{value}</a></li>
+                {endpunkte.map((value, index) => 
+                <li className={`li-secondary ${endpunkt === value && 'active'}`} key={value}><a className="endpunkt-change" onClick={handleChange}>{text[index]}</a></li>
                 )}
             </ul>
         </div>

@@ -1,3 +1,31 @@
+export type TCardView = {
+    title: string;
+    text: string;
+    href: string;
+}
+export const cardsViews: TCardView[] = [
+    {
+        title: 'The Chosen',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'
+    },
+    {
+        title: 'React AIO',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'
+    },
+    {
+        title: 'Realworld Blog',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'    
+    },
+    {
+        title: 'Quinta El Renacer',
+        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
+        href: 'https://dmsosa.github.io/jadassa-page'    
+    },
+]
+
 export default function CardView({  title, text, href, index }: { title: string, text: string, href: string, index: number }) {
 
     const handleClick = () => {

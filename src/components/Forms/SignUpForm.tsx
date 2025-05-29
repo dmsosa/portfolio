@@ -1,100 +1,74 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { loginBenutzer } from "../../services/benutzer.services";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { emailValidator, passwordValidator, usernameValidator } from "../../utils/form-helpers";
+import { useNavigate } from "react-router-dom";
+import FieldsetForm from "./FieldsetForm";
 
 
+const noErrors: {[key:string]: string[]} = { username: [], email: [], password: [], }
 
 export default function SignUpForm() {
 
     const [ { username, email, password}, setForm ] = useState({ username: "", email: "", password: ""});
     const [ viewPassword, setViewPassword ] = useState<boolean>(false);
-
+    const  navigate  = useNavigate();
     //Errors
-    const [ apiError, setApiError ] = useState<string>('');
-    const [ usernameErrors, setUsernameErrors ] = useState<string[]>([]);
-    const [ emailErrors, setEmailErrors ] = useState<string[]>([]);
-    const [ passwordErrors, setPasswordErrors ] = useState<string[]>([]);
-
-    const validateFields = () => {
-        usernameValidator.isValid(username);
-        emailValidator.isValid(email);
-        passwordValidator.isValid(password);
-        if (usernameValidator.errors.length > 0) {
-            setUsernameErrors(usernameValidator.errors);
-        }
-        if (emailValidator.errors.length > 0) {
-            setEmailErrors(emailValidator.errors);
-        }
-        if (passwordValidator.errors.length > 0) {
-            setPasswordErrors(passwordValidator.errors);
-        }
-        if (usernameValidator.errors.length > 0 || emailValidator.errors.length > 0 || passwordValidator.errors.length > 0) {
-            return false;
-        } else return true;
-    }
-
-    const cleanErrors = (field: string) => {
-        switch (field) {
-            case "username": {
-                setUsernameErrors([]);
-                break;
-            }
-            case "email": {
-                setEmailErrors([]);
-                break;
-            }
-            case "password": {
-                setPasswordErrors([]);
-                break;
-            }
-        }
-    }
+    const [ errorMessageForm, setErrorMessageForm ] = useState<string>('');
+    const [ fieldErrorMessages, setFieldErrorMessages ] = useState<{[key:string]: string[]}>(noErrors);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
         const name = e.target.name;
-        cleanErrors(name);
         const val = e.target.value;
         setForm((prev) => ({ ...prev, [name]:val }))
     }
     const handleSubmit = (e: MouseEvent<HTMLFormElement> ) => {
         e.preventDefault();
-        if (!validateFields()) return;
         loginBenutzer({ email, password })
         .then((loggedStatus) => {
             localStorage.setItem('loggedStatus', JSON.stringify(loggedStatus));
-            // window.location.reload();
+            navigate('/dashboard');
         })
         .catch((error: Error) => {
             console.log(error);
-            setApiError(error.message);
+            setErrorMessageForm(error.message);
         });
 
     }
     return (
         <form onSubmit={handleSubmit} className="form modal-form-front">
-            <p className={`form-error ${apiError.length > 1 && 'visible'}`}>{apiError}</p>
-            <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <input id="username" type="text" name="username" placeholder="" value={username} onChange={handleChange}/>
-                <label htmlFor="username">Username</label>
-                {usernameErrors.map((error) => <p className="fieldset-error">{error}</p>)}
-            </fieldset>
-            <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <input id="email" type="email" name="email" placeholder="" value={email} onChange={handleChange}/>
-                <label htmlFor="email">Email</label>
-                {emailErrors.map((error) => <p className="fieldset-error">{error}</p>)}
-            </fieldset>
-            <fieldset className={`fielset ${email.length < 1 && 'error'}`}>
-                <div className="position-relative">
-                    <input id="password" type={viewPassword ? 'text':'password'} name="password" placeholder="" value={password} onChange={handleChange}/>
-                    <label htmlFor="password">Password</label>
+            <p className={`form-error ${errorMessageForm.length > 1 && 'visible'}`}>{errorMessageForm}</p>
+            <FieldsetForm
+            type="text"
+            name="username"
+            labelText="Username"
+            required
+            value={username}
+            onChange={handleChange}
+            errorMessages={fieldErrorMessages['username']}
+            ></FieldsetForm>
+            <FieldsetForm
+            type="email"
+            name="email"
+            labelText="Email Addresse"
+            required
+            value={email}
+            onChange={handleChange}
+            errorMessages={fieldErrorMessages['email']}
+            ></FieldsetForm>
+            <FieldsetForm
+            type="password"
+            name="password"
+            labelText="Passwort"
+            required
+            value={password}
+            onChange={handleChange}
+            errorMessages={fieldErrorMessages['password']}
+            >
                     <a className="input--eye" onMouseDown={() => setViewPassword(true)} onMouseUp={() => setViewPassword(false)}>
-                        {viewPassword ? <FaEye/>:<FaEyeSlash/>}
-                    </a>
-                </div>
-                {passwordErrors.map((error) => <p className="fieldset-error">{error}</p>)}
-            </fieldset>
-            <button type="submit" className="btn btn-primary d-block align-self-start">Login</button>
+                    {viewPassword ? <FaEye/>:<FaEyeSlash/>}
+                </a>
+            </FieldsetForm>
+            <button type="submit" className="btn btn-primary d-block align-self-start">Sign In</button>
         </form>
     )
 };

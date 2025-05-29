@@ -1,24 +1,17 @@
 .project-card {
-    --radius: 18px;
-    max-width: 516px;
+    flex-basis: 45%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 400px;
+    min-height: 355px;
     cursor: pointer;
     background-color: $dark;
-    border-radius: var(--radius);
-    border: solid $dark 0.5rem;
-    margin-bottom: 2rem;
     position: relative;
-    top: calc(var(--gap) * var(--index));
-    left: 0;
-    right: 0;
-    margin: auto;
-    margin-bottom: 1rem;
-    box-shadow: 0px 0px 5px $light;
     transition: all 0.4s;
     &:hover {
         z-index: 1;
         scale: 1.1;
         box-shadow: 0px 0px 10px $primary;
-
     }
     &--header {
         position: relative;
@@ -28,11 +21,7 @@
         flex-direction: column;
         border-top-left-radius: calc(var(--radius) - 10px);
         border-top-right-radius:  calc(var(--radius) - 10px);
-        padding: 1.6rem 2rem;
-        h3 {
-            text-align: center;
-            font-weight: bold;
-        }
+        padding: 1rem 0.5rem;
     }
     &--heart {
         position: absolute;
@@ -89,7 +78,7 @@
     }
     ul {
         margin: 0 auto;
-        padding: 1rem 0;
+        padding: 0;
         list-style: none;
         display: flex;
         justify-content: center;

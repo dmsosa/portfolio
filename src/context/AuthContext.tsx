@@ -5,12 +5,12 @@ import { defaultBenutzer } from "../data/artikel.data";
 
 export type TAuthStatus = {
     headers: Record<string, string> | undefined,
-    loggedUser: TLoggedBenutzer | null,
+    loggedUser: TLoggedBenutzer,
     isAuth: boolean,
 }
 export type TAuthContext = {
     headers: Record<string, string> | undefined,
-    loggedUser: TLoggedBenutzer | null,
+    loggedUser: TLoggedBenutzer,
     isAuth: boolean,
     setAuthStatus: React.Dispatch<SetStateAction<TAuthStatus>>
 }

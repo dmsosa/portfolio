@@ -13,7 +13,7 @@ import NavMobile from './components/Nav/NavMobile'
 import Footer from './components/Footer/Footer'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { FormContextProvider } from './context/AuthFormContext'
+import { AuthFormContextProvider } from './context/AuthFormContext'
 import FormModal from './components/Forms/FormModal'
 
 
@@ -59,7 +59,7 @@ function App() {
       <ThemeProvider>
       <EndpunktContextProvider>
       <SidebarContextProvider>
-      <FormContextProvider>
+      <AuthFormContextProvider>
         <ThemeToggler/>
         <SidebarNav/>
         <NavMobile />
@@ -71,7 +71,7 @@ function App() {
           </div>
           <Footer />
         </main>
-      </FormContextProvider>
+      </AuthFormContextProvider>
       </SidebarContextProvider>      
       </EndpunktContextProvider>
       </ThemeProvider>

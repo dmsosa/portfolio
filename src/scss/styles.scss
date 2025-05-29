@@ -125,7 +125,7 @@ main {
         padding-top: 6rem;
     }
     &:last-child {
-        padding-bottom: 5rem;
+        padding-bottom: 8rem;
     }
 }
 .entity-content {
@@ -249,29 +249,20 @@ ul.icon-ul {
         }
     }
 }
-
-.container-content {
-    position: relative;
-    svg:not([class='pointer']) {
-        cursor: pointer;
-        width: 80%;
-        max-width: 400px;
-        display: block;
-        margin: 0 auto;
-        filter: drop-shadow(0px 0px 15px black);
-        transition: scale 0.4s, filter 0.4s;
+.svg-content {
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    filter: drop-shadow(0px 0px 15px black);
+    transition: scale 0.2s, filter 0.2s;
+    path {
+        fill: $secondary;
+    }
+    &:hover {
+        filter: drop-shadow(0px 0px 15px $primary);
+        scale: 0.9;
         path {
-            fill: $secondary;
-        }
-        polygon {
-            fill: $warning;
-        }
-        &:hover {
-            filter: drop-shadow(0px 0px 15px $primary);
-            scale: 0.9;
-            path {
-                fill: $primary;
-            }
+            fill: $primary;
         }
     }
 }

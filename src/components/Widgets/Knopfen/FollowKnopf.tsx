@@ -2,14 +2,16 @@ import { useState } from "react";
 import { TBenutzer } from "../../../data/types";
 import { toggleFollow } from "../../../services/benutzer.services";
 import { useAuth } from "../../../context/AuthContext";
-import { IsFollowingSvg, IsNotFollowingSvg } from "../FollowKnopfSvg";
+import { IsFollowingSvg, IsNotFollowingSvg } from "../Svg/ContentSvg";
+import useAuthFormContext from "../../../context/AuthFormContext";
 
 export default function FollowKnopf({ isFollowing, username, handleFollow } : { isFollowing:boolean, username: string, handleFollow: (author: TBenutzer) => void }) {
     const [ loading, setLoading ] = useState(false);
     const { headers, isAuth } = useAuth();
+    const { setAuthFormContext } = useAuthFormContext();
     const handleClick = () => {
         if (!isAuth) {
-            alert('Du musst angemeldet sein, um Follow setzen zu konnen!');
+            setAuthFormContext((prev) => ({...prev, visible: true }));
             return;
         }
         setLoading(true);

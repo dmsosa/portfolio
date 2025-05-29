@@ -1,4 +1,4 @@
-import { TArtikel, TBenutzer, TKomment } from "./types";
+import { TArtikel, TBenutzer, TKomment, TLoggedBenutzer } from "./types";
 import avatar1 from "../assets/img/avatar/avatar-1.png"
 
 
@@ -9,6 +9,16 @@ export const defaultBenutzer: TBenutzer = {
     followingCount: 10,
     followersCount: 5,
     isFollowing: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+}
+
+export const defaultLoggedBenutzer: TLoggedBenutzer = {
+    username: "guest#421189114",
+    email: "guest@dmsosa.com",
+    bio:  "Hey du! ✌️ Ich bin gerade zufällig ins DMblog von Durian reingestolpert – und was soll ich sagen? Es ist wie ein Blogurlaub für mein Gehirn! 🧠🌴 Bleib neugierig & scroll weiter 🎉",
+    image: avatar1,
+    role: 'BENUTZER',
     createdAt: new Date(),
     updatedAt: new Date(),
 }

@@ -62,6 +62,7 @@ export async function postArtikel({ headers, title, description, body, tags } : 
     tags: string[]
  }): Promise<TArtikel> {
     try {
+        console.log({ headers, title, description, body, tags })
         const res = await instance.request({
             url: "/artikel",
             headers: headers,

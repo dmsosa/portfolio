@@ -1,4 +1,4 @@
-import SvgListe from "./SvgListe";
+import SvgListe from "./Svg/SvgListe";
 
 export default function ContactForm() {
     return (

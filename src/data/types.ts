@@ -33,7 +33,7 @@ export interface TLoggedBenutzer {
     email: string;
     image: string;
     bio?: string;
-    token: string;
+    token?: string | undefined;
     role: 'BENUTZER' | 'ADMIN';
     createdAt: Date;
     updatedAt: Date;

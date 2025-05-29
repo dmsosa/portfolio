@@ -2,6 +2,7 @@ import { ChangeEvent, MouseEvent, useState } from "react";
 import { loginBenutzer } from "../../services/benutzer.services";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FieldsetForm from "./FieldsetForm";
+import { useNavigate } from "react-router-dom";
 
 type TLoginForm = {
     email: string,
@@ -9,6 +10,7 @@ type TLoginForm = {
 }
 export default function LoginForm() {
 
+    const navigate = useNavigate();
     const [ { email, password}, setForm ] = useState<TLoginForm>({ email: "", password: ""});
     const [ errorMessage, setErrorMessage ] = useState<string>('');
     const [ viewPassword, setViewPassword ] = useState<boolean>(false);
@@ -25,7 +27,8 @@ export default function LoginForm() {
         loginBenutzer({ email, password })
         .then((loggedStatus) => {
             localStorage.setItem('loggedStatus', JSON.stringify(loggedStatus));
-            // window.location.reload();
+            console.log(loggedStatus);
+            navigate('/');
         })
         .catch((error: Error) => {
             console.log(error);
@@ -40,14 +43,16 @@ export default function LoginForm() {
                 name="email"
                 labelText="Email-Addresse"
                 type="email"
+                required
                 onChange={handleChange}
                 value={email}
                 errorMessages={[]}
             ></FieldsetForm>
             <FieldsetForm
-                name="Passwort"
+                name="password"
                 labelText="Passwort"
-                type="password"
+                required
+                type={viewPassword ? 'text':'password'}
                 onChange={handleChange}
                 value={password}
                 errorMessages={[]}

@@ -8,7 +8,38 @@
     justify-content: center;
     visibility: hidden;
     opacity: 0;
-    display: none;
+    display: block;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.form-modal-inner {
+    position: absolute;
+    top: -10%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 350px;
+    max-height: 500px;
+    width: 60%;
+    transform: rotate3d(0, 1, 0, 0deg);
+    transition: transform 0.5s ease, top 0.5s ease;
+    transform-style: preserve-3d;
+    &.flipped {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    .front-face, .back-face {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        transition: transform 0.4s;
+        transform: rotate3d(0, 1, 0, 0deg);
+        backface-visibility: hidden;
+    }
+    .back-face {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
 }
 .form-wrapper {
     max-width: 80%;
@@ -23,9 +54,6 @@
     padding: 1.2rem 0.75rem;
 }
 .form {
-    background-color: $dark2;
-    padding: 0.75rem 1.2rem;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;

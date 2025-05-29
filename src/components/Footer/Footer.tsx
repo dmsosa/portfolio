@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import ContactForm from "../Widgets/ContactForm";
-import ET from "../Widgets/ET";
+import {ET} from "../Widgets/Svg/ContentSvg";
 import { useGSAP } from "@gsap/react";
 import FooterNav from "./FooterNav";
 

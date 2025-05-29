@@ -2,13 +2,16 @@ import { useState } from "react";
 import { TArtikel } from "../../../data/types";
 import { toggleFavorite } from "../../../services/article.services";
 import { useAuth } from "../../../context/AuthContext";
+import useAuthFormContext from "../../../context/AuthFormContext";
 
 export default function FavoriteKnopf({ isFavorite, favoritesCount, slug, handleFav } : { isFavorite:boolean, favoritesCount: number, slug: string, handleFav: (artikel: TArtikel) => void }) {
     const [ loading, setLoading ] = useState(false);
     const { headers, isAuth } = useAuth();
+    const { setAuthFormContext } = useAuthFormContext();
+
     const handleClick = () => {
         if (!isAuth) {
-            alert('Du musst angemeldet sein, um Fav setzen zu konnen!');
+            setAuthFormContext((prev) => ({...prev, visible: true }));
             return;
         }
         setLoading(true);

@@ -43,49 +43,70 @@ export const artikelValidators: {[key: string]: TFieldValidator} = {
             isValid: true,
         },
         'description': {
-            name: 'description',
-            isRequired: true,
-            minLength: 10,
-            maxLength: 5000,
-            errorMessages: [],
-            isValid: true,
-            },
+        name: 'description',
+        isRequired: true,
+        minLength: 10,
+        maxLength: 5000,
+        errorMessages: [],
+        isValid: true,
+        },
+        'body': {
+        name: 'body',
+        isRequired: true,
+        minLength: 50,
+        maxLength: undefined,
+        errorMessages: [],
+        isValid: true,
+        },
+        'tags': {
+        name: 'tags',
+        isRequired: false,
+        minLength: 3,
+        maxLength: 12,
+        errorMessages: [],
+        isValid: true,
+        },
 }
 
 export  function validate(validator: TFieldValidator, value: string | Date | number | undefined | string[]): boolean {
                 // Alle vorherigen Fehler zurücksetzen
                 validator.errorMessages = [];
                 validator.isValid = true;
-                if (!value && validator.isRequired) {
-                    validator.errorMessages.push('Es darf nicht Null sein!');
-                }
+
                 //check if value is an array of strings first
                 if (value && Array.isArray(value)) {
                     const valueAsArray = value as string[];
                     for (let i = 0; i < valueAsArray.length; i++) {
-                        const valueAsString = valueAsArray[i];
-                        validator.isValid = runValidations(validator, valueAsString);
+                        const arrayValue = valueAsArray[i];
+                        validator.isValid = runValidations(validator, arrayValue);
                     }
-                } else if (value) {
-                    const valueAsString = value as string;
-                    validator.isValid = runValidations(validator, valueAsString);
+                } else {
+                    validator.isValid = runValidations(validator, value);
                 }
                 return validator.isValid;
 
             }
             
-function runValidations(validator: TFieldValidator, valueAsString: string): boolean {
+function runValidations(validator: TFieldValidator, value: string | Date | number | undefined): boolean {
+        if (validator.isRequired) {
+            if (!value || value.toString().length < 1) {
+                validator.errorMessages.push(`${validator.name} can not be empty`);
+            }
+        }
+
+        const valueAsString = value!.toString();
+
         if (validator.minLength && valueAsString.length < validator.minLength) {
-            validator.errorMessages.push('Es muss mindestens 3 Zeichen lang sein!');
+            validator.errorMessages.push(`${validator.name} must have at least ${validator.minLength} characters!`);
         }
         if (validator.maxLength && valueAsString.length > validator.maxLength) {
-            validator.errorMessages.push('Es darf hochstens 28 Zeichen lang sein!');
+            validator.errorMessages.push(`${validator.name} can have at most ${validator.maxLength} characters!`);
         }
         if (validator.requiredRegExp && !valueAsString.match(validator.requiredRegExp)) {
-            validator.errorMessages.push(`The value ${valueAsString} is not allowed, ${validator.requiredRegExpDescription}` );
+            validator.errorMessages.push(`'${valueAsString}' is not allowed, ${validator.requiredRegExpDescription}` );
         }
         if (validator.unallowedRegExp && valueAsString.match(validator.unallowedRegExp)) {
-            validator.errorMessages.push(`The value ${valueAsString} is not allowed, ${validator.unallowedRegExpDescription}` );
+            validator.errorMessages.push(`'${valueAsString}' is not allowed, ${validator.unallowedRegExpDescription}` );
         }
         return validator.errorMessages.length < 1;
 }

@@ -5,7 +5,8 @@ import FieldsetForm from "../Forms/FieldsetForm";
 import { useAuth } from "../../context/AuthContext";
 import { postArtikel, putArtikel } from "../../services/article.services";
 import { TApiError } from "../../utils/react-helpers";
-import { checkFormErrors, FormChecker } from "../../utils/form-helpers";
+import { artikelValidators, validate } from "../../utils/form-helpers";
+import useAuthFormContext from "../../context/AuthFormContext";
 
 type TArtikelForm = {
     id: string | null, 
@@ -22,6 +23,7 @@ const emptyForm: TArtikelForm = {
     body: "", 
     tags: [],
 }
+
 const noErrors: {[key:string]: string[]} = { title: [], description: [], body: [], tags: [] }
 
 export default function ArtikelEditorForm() {
@@ -32,6 +34,7 @@ export default function ArtikelEditorForm() {
     const [ errorMessageForm, setErrorMessageForm ] = useState<string>('');
     const [ fieldErrorMessages, setFieldErrorMessages ] = useState<{[key:string]: string[]}>(noErrors);
     const { headers, isAuth, loggedUser } = useAuth();
+    const { setAuthFormContext } = useAuthFormContext();
 
     useEffect(() => {
         if (!slug) return;
@@ -40,23 +43,30 @@ export default function ArtikelEditorForm() {
     const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
         const name = e.currentTarget.name;
         const value = e.currentTarget.value;
+        setFieldErrorMessages((prev) => ({...prev, [name]:[]}))
         setForm((prev) => ({...prev, [name]: value}))
     }
     const handleSubmit = (e: MouseEvent<HTMLFormElement> ) => {
         e.preventDefault();
         if (!isAuth || !headers || !loggedUser) {
-            console.log("ee")
-            // window.alert('Du musst gelogt sein!');
-            // navigate('/dashboard');
+            setAuthFormContext((prev) => ({...prev, visible: true }));
+            return;
         } 
         //checkErrors/
-        setFieldErrorMessages(noErrors);
-        const formChecker: FormChecker = checkFormErrors({ title, description, body, tags });
-        if (!formChecker.isValid) {
-            setFieldErrorMessages(formChecker.fieldErrorMessages);
+
+        let validForm = true;
+        let newErrorMessages: {[key:string]: string[]} = { title: [], description: [], body: [], tags: [] };
+        for (const [fieldName, fieldValue] of Object.entries({ title, description, body, tags })) {
+            const validator = artikelValidators[fieldName];
+            const isValid = validate(validator, fieldValue);
+            if (!isValid) {
+                validForm = false;
+                newErrorMessages[fieldName] = validator.errorMessages;
+            }
+        }
+        if (!validForm) {
+            setFieldErrorMessages(newErrorMessages);
             return;
-        } else {
-            setFieldErrorMessages(noErrors);
         }
         //request
         if (!slug) {
@@ -81,7 +91,7 @@ export default function ArtikelEditorForm() {
             });
         }
     }
-    return (<div className="form-wrapper">
+    return (
             <form className="form" onSubmit={handleSubmit}>
                 { errorMessageForm.length > 0 && <p>{errorMessageForm}</p>}
                 <FieldsetForm 
@@ -116,7 +126,7 @@ export default function ArtikelEditorForm() {
                 onChange={handleChange}
                 errorMessages={fieldErrorMessages.tags}
                 />
-                <button className="btn btn-primary">submit</button>
+                <button type="submit" className="btn btn-primary">submit</button>
             </form>
-        </div>)
+        )
 }

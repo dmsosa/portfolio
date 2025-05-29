@@ -1,70 +1,7 @@
 
-import Card, { TCardParagraph } from "../components/CV/Card";
-import CardView from "../components/CV/CardView";
+import Card, { cards } from "../components/CV/Card";
+import CardView, { cardsViews } from "../components/CV/CardView";
 import CVHero from "../components/CV/CVHero";
-
-type TCard = {
-    svg: string;
-    title: string;
-    text: string;
-    paragraphs: TCardParagraph[];
-}
-type TCardView = {
-    title: string;
-    text: string;
-    href: string;
-}
-const cards: TCard[] = [
-    {
-        svg: 'moon',
-        title: 'Designer',
-        text: 'I value simple content structure, clean design patterns, and thoughtful interactions.',
-        paragraphs: [{
-            subtitle: 'Tools I use:',
-            content: 'Figma, Canva, Adobe Photoshop, Illustrator'
-        }]
-    },
-        {
-        svg: 'moon',
-        title: 'Frontend Developer',
-        text: 'I like to code things from scratch, and enjoy bringing ideas to life in the browser.',
-        paragraphs: [{
-            subtitle: 'Tools I use:',
-            content: 'Figma, Canva, Adobe Photoshop, Illustrator'
-        }]
-    }
-    ,     {
-        svg: 'moon',
-        title: 'Learner',
-        text: 'I genuinely care about people, and enjoy helping them work on their craft.',
-        paragraphs: [{
-            subtitle: 'Tools I use:',
-            content: 'Figma, Canva, Adobe Photoshop, Illustrator'
-        }]
-    }
-]
-const cardsViews: TCardView[] = [
-    {
-        title: 'The Chosen',
-        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
-        href: 'https://dmsosa.github.io/jadassa-page'
-    },
-    {
-        title: 'React AIO',
-        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
-        href: 'https://dmsosa.github.io/jadassa-page'
-    },
-    {
-        title: 'Realworld Blog',
-        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
-        href: 'https://dmsosa.github.io/jadassa-page'    
-    },
-    {
-        title: 'Quinta El Renacer',
-        text: 'High-end, custom residential renovaters serving Fraser Valley homeowners.',
-        href: 'https://dmsosa.github.io/jadassa-page'    
-    },
-]
 
 
 export default function CV() {

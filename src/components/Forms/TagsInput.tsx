@@ -65,34 +65,32 @@ export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { ta
             parentHandler(tagsArray.concat(arrayToAdd));
             setTagInput('');
             setMessage(`you can add ${remainingSpace} more tags.`)
-        }  else return;
-        // else if (e.key === "Backspace") {
-        //     if (tagInput.length === 0 ) {
-        //         if (tagsAnzahl >= 10) return;
-        //         const filteredTags = tags.slice(0, tags.length-1);
-        //         parentHandler(filteredTags);
-        //         setTagsAnzahl(tagsAnzahl + 1);
-        //         if (tagsAnzahl > 1) {
-        //             setMessage(`you can add ${tagsAnzahl} more tags.`);
-        //         } else {
-        //             setMessage(`you can add up to ${tagsAnzahl} tags.`);
-        //         }
-        //     }
-        
+        } else if (e.key === "Backspace") {
+            if (tagInput.length === 0 ) {
+                if (remainingTags >= 10) return;
+                const filteredTags = tagsArray.slice(0, tagsArray.length-1);
+                parentHandler(filteredTags);
+                if (remainingTags > 1) {
+                    setMessage(`you can add ${remainingTags} more tags.`);
+                } else {
+                    setMessage(`you can add up to ${remainingTags} tags.`);
+                }
+            }
+        else return;
     }
-    // const handleClick = (e: MouseEvent<HTMLDivElement> ) => {
-    //     if (tagsAnzahl >= 10) return;
-    //     const box = e.currentTarget;
-    //     const value = box.querySelector('span')?.innerText;
-    //     const filteredTags = tags.filter((tag) => tag != value);
-    //     parentHandler(filteredTags);
-    //     setTagsAnzahl((prev) => prev + 1);
-    //     if (tagsAnzahl > 1) {
-    //         setMessage(`you can add ${tagsAnzahl} more tags.`);
-    //     } else {
-    //         setMessage(`you can add up to ${tagsAnzahl} tags.`);
-    //     }
-    // }
+    }
+    const handleClick = (e: MouseEvent<HTMLDivElement> ) => {
+        if (remainingTags >= tagsLimit) return;
+        const box = e.currentTarget;
+        const value = box.querySelector('span')?.innerText;
+        const filteredTags = tagsArray.filter((tag) => tag != value);
+        parentHandler(filteredTags);
+        if (remainingTags + 1 > 1) {
+            setMessage(`you can add ${remainingTags} more tags.`);
+        } else {
+            setMessage(`you can add up to ${remainingTags} tags.`);
+        }
+    }
     const handleRemoveAll = () => {
         if (tagsArrayLength >= 10) return;
         parentHandler([]);
@@ -108,7 +106,7 @@ export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { ta
                 <p>{message}</p>
             </div>
             <ul className="tag-input-inner">
-                {tagsArray.map((tag) => <div key={tag} className="tag-box container-3" ><span>{tag}</span><IoMdClose/></div>)}
+                {tagsArray.map((tag) => <div key={tag} className="tag-box container-3" ><span onClick={handleClick}>{tag}</span><IoMdClose/></div>)}
                 <input className="tag-input border-bottom-primary" type="text" name="tags" id="tags" value={tagInput}  onChange={handleTagChange} onKeyDown={handleKeydown}/>
             </ul>
             <button className="btn btn-secondary" onClick={handleRemoveAll}>Remove All</button>

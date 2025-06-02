@@ -53,7 +53,7 @@ export const cards: TCard[] = [
 ]
 
 export default function Card({ svg, title, text, paragraphs }: { svg: string, title: string, text: string, paragraphs: TCardParagraph[]}) {
-    return <div className="card">
+    return <div className="card border">
                     <div>
                         {svgs[svg]}
                     </div>

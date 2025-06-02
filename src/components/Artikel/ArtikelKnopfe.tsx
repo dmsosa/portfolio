@@ -16,7 +16,7 @@ function ArtikelKnopfe({ author, loggedUser, updateParentData  } : { author: TBe
         :
         <div className="d-flex justify-content-between align-items-center">
             <a href="#">Follow</a>
-            <FollowKnopf isFollowing={author.isFollowing} username={author.username} updateParentData={handleFollow} />
+            <FollowKnopf isFollowing={author.isFollowing} username={author.username} handleFollow={handleFollow} />
         </div>
     
 };

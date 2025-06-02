@@ -17790,7 +17790,7 @@ footer {
 }
 @media only screen and (min-width: 1024px) {
   .hero-bg {
-    background-size: 70%;
+    background-size: 85%;
     background-position: 0% -3.25rem;
   }
   .hero-bg::before {
@@ -17800,7 +17800,7 @@ footer {
     height: 100%;
     width: 30%;
     background: linear-gradient(to right, transparent 10%, black 30%);
-    right: 10%;
+    right: 0%;
   }
 }
 .project-card {
@@ -18994,7 +18994,7 @@ footer {
 }
 
 .w-3 {
-  width: 3rem;
+  width: 2.5rem;
 }
 
 .w-4 {

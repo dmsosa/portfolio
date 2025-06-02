@@ -31,6 +31,36 @@ export const loginValidators: {[key: string]: TFieldValidator} = {
                 isValid: true,
                 },
 }
+export const signUpValidators: {[key: string]: TFieldValidator} = {
+            'username': {
+                name: 'usrename',
+                isRequired: true,
+                minLength: 4,
+                maxLength: 15,
+                unallowedRegExp: new RegExp(/^(?![_.])[a-zA-Z0-9._]+(?<![_.])$/),
+                unallowedRegExpDescription: 'no _ or . at the beginning or at the end',
+                errorMessages: [],
+                isValid: true,
+            },
+            'email': {
+                name: 'email',
+                isRequired: true,
+                minLength: 4,
+                maxLength: undefined,
+                errorMessages: [],
+                isValid: true,
+                },
+            'password': {
+                name: 'password',
+                isRequired: true,
+                minLength: 4,
+                maxLength: 28,
+                requiredRegExp: new RegExp(/[\^'"|*&/`~ *]+/),
+                requiredRegExpDescription: `At least one special character: [#?!@$%^&*-]+^'"/*\`|, No empty spaces, At least one uppercase letter, At least one lowercase letter, At least a digit`,
+                errorMessages: [],
+                isValid: true,
+                },
+}
 
 
 export const artikelValidators: {[key: string]: TFieldValidator} = {
@@ -68,21 +98,14 @@ export const artikelValidators: {[key: string]: TFieldValidator} = {
         },
 }
 
-export  function validate(validator: TFieldValidator, value: string | Date | number | undefined | string[]): boolean {
+export  function validate(validator: TFieldValidator, value: string | Date | number | undefined): boolean {
                 // Alle vorherigen Fehler zurücksetzen
                 validator.errorMessages = [];
                 validator.isValid = true;
 
                 //check if value is an array of strings first
-                if (value && Array.isArray(value)) {
-                    const valueAsArray = value as string[];
-                    for (let i = 0; i < valueAsArray.length; i++) {
-                        const arrayValue = valueAsArray[i];
-                        validator.isValid = runValidations(validator, arrayValue);
-                    }
-                } else {
-                    validator.isValid = runValidations(validator, value);
-                }
+                validator.isValid = runValidations(validator, value);
+
                 return validator.isValid;
 
             }

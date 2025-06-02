@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import FieldsetForm from "./FieldsetForm";
 import { TFormMessage } from "../../data/types";
+import { signUpValidators, validate } from "../../utils/form-helpers";
 
 
 const noErrors: {[key:string]: string[]} = { username: [], email: [], password: [], }
@@ -24,6 +25,22 @@ export default function SignUpForm() {
     }
     const handleSubmit = (e: MouseEvent<HTMLFormElement> ) => {
         e.preventDefault();
+
+        let validForm = true;
+        let newErrorMessages: {[key:string]: string[]} = { username: [], email: [], password: [] };
+        for (const [fieldName, fieldValue] of Object.entries({ username, email, password})) {
+            const validator = signUpValidators[fieldName];
+            const isValid = validate(validator, fieldValue);
+            if (!isValid) {
+                validForm = false;
+                newErrorMessages[fieldName] = validator.errorMessages;
+            }
+        }
+        if (!validForm) {
+            setFieldErrorMessages(newErrorMessages);
+            return;
+        }
+
         loginBenutzer({ email, password })
         .then((loggedStatus) => {
             setFormMessage({ isError: false, message: 'You created an account!'})

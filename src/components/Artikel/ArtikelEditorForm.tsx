@@ -62,7 +62,7 @@ export default function ArtikelEditorForm() {
 
         let validForm = true;
         let newErrorMessages: {[key:string]: string[]} = { title: [], description: [], body: [], tags: [] };
-        for (const [fieldName, fieldValue] of Object.entries({ title, description, body, tags })) {
+        for (const [fieldName, fieldValue] of Object.entries({ title, description, body })) {
             const validator = artikelValidators[fieldName];
             const isValid = validate(validator, fieldValue);
             if (!isValid) {

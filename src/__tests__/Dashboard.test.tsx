@@ -1,11 +1,10 @@
 import { render, screen } from "@testing-library/react"
-import { benutzerArray } from "../data/artikel.data"
 import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
-import Avatar from "../components/Widgets/Avatar";
 
 import { BrowserRouter } from "react-router-dom";
+import {  defaultBenutzer } from "../data/artikel.data";
 
-let user = benutzerArray[0];
+let user = defaultBenutzer;
 describe('Avatar testen', () => {
     it('sollte gestreckt sein', () => {
         render(

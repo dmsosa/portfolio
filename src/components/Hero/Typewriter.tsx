@@ -11,7 +11,7 @@ function Typewriter({ messages, delay } : {
     const [ messageIndex, setMessageIndex ] = useState<number>(0);
 
     useEffect(() => {
-        let timeout: number | undefined;
+        let timeout: NodeJS.Timeout | undefined;
         let currentMessage: string | undefined = messages[messageIndex] ;
 
         if (currentMessage === undefined) {

@@ -8,7 +8,7 @@ import { FaRegCommentDots } from "react-icons/fa";
 
 export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel, children: ReactNode }) {
 
-        return (<div className="p-2 mb-3 border-container bg-second">
+        return (<div className="p-2 mb-3 border bg-second">
                     <div className="position-relative">
                         <Avatar bild={artikel.author.image} username={artikel.author.username} expanded />
                     </div>

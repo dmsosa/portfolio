@@ -8,7 +8,6 @@ import BrandLogo from "../Widgets/BrandLogo";
 
 function FormModal() {
     const { visible, flipped, authFormMessage, setAuthFormContext } = useAuthFormContext();
-
     const visibility = visible ? 'visible opacity-1' : '';
     const innerTopPosition = visible ? 'top-0':'';
     const flip = flipped ? 'flipped' : '';
@@ -21,7 +20,7 @@ function FormModal() {
     }
     return (
         <div className={`form-modal ${visibility}`}>
-            <div className={`form-modal-inner
+            <div className={`form-modal-inner bg-2
             container-secondary border-container  ${flip}  ${innerTopPosition}`}>
                 <div className="front-face  pt-5 px-5">
                      <button className="btn btn-transparent position-absolute top-1 left-1 fs-5 p-0 color-inherit z-index-2 over-secondary bg-danger" onClick={handleClose}><IoClose /></button>
@@ -35,7 +34,7 @@ function FormModal() {
                     </div>
                 </div>
                 <div className="back-face  pt-5 px-5">
-                     <button className="btn btn-transparent position-absolute top-1 left-1 fs-5 p-0 color-inherit z-index-2 over-secondary bg-danger" onClick={handleClose}><IoClose /></button>
+                    <button className="btn btn-transparent position-absolute top-1 left-1 fs-5 p-0 color-inherit z-index-2 over-secondary bg-danger" onClick={handleClose}><IoClose /></button>
                     <button className="btn btn-transparent position-absolute top-1 right-1 fs-5 color-inherit z-index-2 over-primary" onClick={handleFlip}><FaExchangeAlt /></button>
                     <div className="d-flex flex-column justify-content-center align-items-center">
                         <p className="text-center w-80 ">{authFormMessage}</p>

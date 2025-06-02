@@ -59,7 +59,7 @@ export async function postArtikel({ headers, title, description, body, tags } : 
     title: string, 
     description: string, 
     body: string, 
-    tags: string[]
+    tags: string
  }): Promise<TArtikel> {
     try {
         console.log({ headers, title, description, body, tags })
@@ -81,7 +81,7 @@ export async function putArtikel({ headers, slug, title, description, body, tags
     title: string, 
     description: string, 
     body: string, 
-    tags: string[]
+    tags: string
  }): Promise<TArtikel> {
     try {
         const res = await instance.request({

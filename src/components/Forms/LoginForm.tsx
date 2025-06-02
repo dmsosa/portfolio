@@ -3,16 +3,18 @@ import { loginBenutzer } from "../../services/benutzer.services";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import FieldsetForm from "./FieldsetForm";
 import { useNavigate } from "react-router-dom";
+import { TFormMessage } from "../../data/types";
 
 type TLoginForm = {
     email: string,
     password: string,
 }
+
 export default function LoginForm() {
 
     const navigate = useNavigate();
     const [ { email, password}, setForm ] = useState<TLoginForm>({ email: "", password: ""});
-    const [ errorMessage, setErrorMessage ] = useState<string>('');
+    const [ formMessage, setFormMessage ] = useState<TFormMessage>({ isError: true, message: ''});
     const [ viewPassword, setViewPassword ] = useState<boolean>(false);
 
 
@@ -26,19 +28,21 @@ export default function LoginForm() {
         e.preventDefault();
         loginBenutzer({ email, password })
         .then((loggedStatus) => {
+            setFormMessage({ isError: false, message: 'Welcome back!'})
             localStorage.setItem('loggedStatus', JSON.stringify(loggedStatus));
             console.log(loggedStatus);
             navigate('/');
+            window.location.reload();
         })
         .catch((error: Error) => {
             console.log(error);
-            setErrorMessage(error.message);
+            setFormMessage({ isError: true, message: error.message});
         });
 
     }
     return (
         <form onSubmit={handleSubmit} className="form">
-            <p className={`form-error ${errorMessage.length > 1 && 'visible'}`}>{errorMessage}</p>
+            <p className={`${formMessage.isError ? 'form-error':'form-message'} ${formMessage.message.length > 1 && 'visible'}`}>{formMessage.message}</p>
             <FieldsetForm
                 name="email"
                 labelText="Email-Addresse"

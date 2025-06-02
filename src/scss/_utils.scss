@@ -1,3 +1,14 @@
+
+.container-1 {
+    background-color: $dark;
+}
+.container-2 {
+    background-color: $dark2;
+}
+.container-3 {
+    background-color: $dark3;
+}
+
 .opacity-1 {
     opacity: 1 !important;
 }
@@ -6,6 +17,25 @@
 }
 .translateY-0 {
     transform: translateY(0) !important;
+}
+.border-bottom-primary {
+    border-bottom: 0.125rem $primary solid !important;
+}
+.h-fit {
+    max-height: fit-content !important;
+}
+.h-0 {
+    max-height: 0 !important;
+}
+.transition-visibility {
+    transition: visibility 0.2s ease;
+}
+.transition-height {
+    transition: max-height 0.2s ease;
+}
+
+.list-style-none {
+    list-style: none !important;
 }
 .h1 {
     font-size: 3.15rem;
@@ -47,8 +77,8 @@
 .gap-3 {
     gap: 1.5rem;
 }
-.border-container {
-    border: solid $light 0.125rem;
+.border-1 {
+    border: solid 0.125rem;
 }
 .is-bottom {
     margin-bottom: -1rem;
@@ -164,8 +194,27 @@ index-1 {
 .h-70vw {
     height: 70vw;
 }
-.container-secondary {
+.bg-1 {
+    background-color: rgba(var(--rgb-primary), 1);
+}
+.bg-2 {
     background-color: $dark2;
+}
+.bg-3 {
+    background-color: $dark3;
+}
+.bg-1-opacity-1 {
+    background-color: rgba($rgb-dark, 1);
+}
+.bg-1-hover-opacity-1 {
+    background-color: rgba($rgb-dark, 0.5);
+    transition: background-color 0.2s ease;
+    &:hover {
+        background-color: rgba($rgb-dark, 1);
+    }
+}
+.bg-1-opacity-5 {
+    background-color: $dark;
 }
 .color-inherit {
     color: inherit;
@@ -201,6 +250,12 @@ index-1 {
 }
 .w-4 {
     width: 4rem;
+}
+.color-danger {
+    color: $danger !important; 
+}
+.shake {
+    animation: shake 0.2s 2 ease-in;
 }
 
 @media only screen and (min-width: 768px) {

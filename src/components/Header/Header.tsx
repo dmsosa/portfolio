@@ -5,6 +5,7 @@ import useHeaderScroll from "../../hooks/useHeaderScroll";
 
 import { useRef } from "react";
 import BrandLogo from "../Widgets/BrandLogo";
+import DropdownMenuMobile from "./DropdownMenuMobile";
 
 function Header() {
     const location = useLocation();
@@ -17,6 +18,7 @@ function Header() {
         <header id="header" className="header" ref={headerRef}>
             <SidebarToggler role='opener' />
             {isDashboard ? <EndpunktHeaderToggler endpunkte={['artikel', 'benutzer']}/> : <BrandLogo />}
+            <DropdownMenuMobile/>
             <div className="progress-bar"></div>
         </header>
         

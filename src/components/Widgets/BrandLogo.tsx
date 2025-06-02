@@ -1,6 +1,6 @@
 
 import whiteLogo from "../../assets/img/logo.png";
-function BrandLogo({ klazz, column=false, expanded=false } : { klazz: string, column?: boolean, expanded?: boolean }) {
+function BrandLogo({ klazz, column=false, expanded=false } : { klazz?: string, column?: boolean, expanded?: boolean }) {
     const dir = column ? 'flex-column':'flex-row';
     const spanMargin = column ? 'mt-0':'ms-2';
     return (

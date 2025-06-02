@@ -3,6 +3,7 @@ import { loginBenutzer } from "../../services/benutzer.services";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import FieldsetForm from "./FieldsetForm";
+import { TFormMessage } from "../../data/types";
 
 
 const noErrors: {[key:string]: string[]} = { username: [], email: [], password: [], }
@@ -13,7 +14,7 @@ export default function SignUpForm() {
     const [ viewPassword, setViewPassword ] = useState<boolean>(false);
     const  navigate  = useNavigate();
     //Errors
-    const [ errorMessageForm, setErrorMessageForm ] = useState<string>('');
+    const [ formMessage, setFormMessage ] = useState<TFormMessage>({ isError: true, message: ''});
     const [ fieldErrorMessages, setFieldErrorMessages ] = useState<{[key:string]: string[]}>(noErrors);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
@@ -25,18 +26,20 @@ export default function SignUpForm() {
         e.preventDefault();
         loginBenutzer({ email, password })
         .then((loggedStatus) => {
+            setFormMessage({ isError: false, message: 'You created an account!'})
             localStorage.setItem('loggedStatus', JSON.stringify(loggedStatus));
-            navigate('/dashboard');
+            navigate('/');
+            window.location.reload();
         })
         .catch((error: Error) => {
             console.log(error);
-            setErrorMessageForm(error.message);
+            setFormMessage({ isError: true, message: error.message});
         });
 
     }
     return (
         <form onSubmit={handleSubmit} className="form modal-form-front">
-            <p className={`form-error ${errorMessageForm.length > 1 && 'visible'}`}>{errorMessageForm}</p>
+            <p className={`${formMessage.isError ? 'form-error':'form-message'} ${formMessage.message.length > 1 && 'visible'}`}>{formMessage.message}</p>
             <FieldsetForm
             type="text"
             name="username"

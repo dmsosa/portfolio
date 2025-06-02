@@ -1,20 +1,41 @@
-import LinkList, { TLinkObject } from "../Widgets/LinkList";
-import { FaHome, FaUserTie } from "react-icons/fa";
+import LinksListe, { TLinkObject } from "../Widgets/LinksListe";
+import { FaGamepad, FaHome, FaUserAstronaut, FaUserTie } from "react-icons/fa";
 import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
+import { useAuth } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const mainLinks: TLinkObject[] = [
-    { title: 'Home', href: '/', icon: <FaHome />    },
-    { title: 'Dashboard', href: '/dashboard', icon: <GiAbstract031/> },
-    { title: 'Artikeln', href: '/dashboard/artikeln', icon: <Gi3dGlasses /> },
-    { title: 'CV', href: '/dashboard/cv', icon: <FaUserTie /> },
-]; 
 
 function NavMobile() {
+    const { isAuth, loggedUser } = useAuth();
+    const [links, setLinks] = useState<TLinkObject[]>([])
+    useEffect(() => {
+        if (isAuth) {
+                    const loggedInLinks = [
+                        { title: 'Home', to: '/', icon: <FaHome />    },
+                        { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
+                        { title: 'Artikeln', to: '/dashboard/editor', icon: <Gi3dGlasses /> },
+                        { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
+                        { title: 'Profile', to: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
+                    ]; 
+                    setLinks(loggedInLinks);
+                }
+                else {
+                    const notLoggedLinks: TLinkObject[] = [
+                        { title: 'Home', to: '/', icon: <FaHome />    },
+                        { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
+                        { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
+                        { title: 'Spiele', to: '/dashboard/cv', icon: <FaGamepad /> },
+                    ]; 
+        
+                    setLinks(notLoggedLinks);
+                }
+    }, [isAuth, loggedUser])
     return (
-        <nav className="nav-mobile">
-            <div className="sidebar-content">
-                <LinkList links={mainLinks} expanded={false}/>
-            </div>
+        <nav className="nav-mobile bg-1-hover-opacity-1">
+            <LinksListe links={links} expanded={false} clazz="h-100 fs-2">
+                { isAuth ? <Link to={`/dashboard/profile/${loggedUser?.username}`}><FaUserAstronaut /></Link>: <button className="btn btn-primary">Log In</button>}
+            </LinksListe>
         </nav>
     );
 }

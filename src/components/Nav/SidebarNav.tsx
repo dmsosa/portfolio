@@ -1,7 +1,7 @@
 import SidebarNavHeader from "./SidebarNavHeader";
 import { FaGithub, FaHome, FaLinkedin, FaUserAstronaut, FaUserTie, FaVoicemail, FaYoutube } from "react-icons/fa";
 import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
-import LinkList, { TLinkObject } from "../Widgets/LinkList";
+import LinksListe, { TLinkObject } from "../Widgets/LinksListe";
 import { useSidebarContext } from "../../context/SidebarContext";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
@@ -38,8 +38,8 @@ function SidebarNav() {
                 { title: 'Home', to: '/', icon: <FaHome />    },
                 { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
                 { title: 'Artikeln', to: '/dashboard/editor', icon: <Gi3dGlasses /> },
-                { title: 'Profile', to: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
                 { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
+                { title: 'Profile', to: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
             ]; 
             setLinks(loggedInLinks);
         }
@@ -56,18 +56,18 @@ function SidebarNav() {
     return (
         <nav id="sidebar-nav" className="sidebar-nav">
             <div className="nav-listener" onMouseEnter={handleEnter} onMouseLeave={handleLeave}></div>
-            <div className="sidebar-content" aria-expanded={expandedLeft} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-                <SidebarNavHeader/>
-                <hr className="w-100"></hr>
-                <div className="d-flex justify-content-start align-items-center flex-column mh-60">
-                    <LinkList links={links} expanded column/>
-                    <button className="btn btn-primary">Sign In</button>
+            <div className="sidebar-content align-self-start" aria-expanded={expandedLeft} onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+                <div className="div">
+                    <SidebarNavHeader/>
+                    <LinksListe links={links} expanded column fullWidth>
+                        <button className="btn btn-primary align-self-start">Sign In</button>
+                    </LinksListe>
                 </div>
-                <hr className="w-100"></hr>
-                <div className="sidebar-footer">
-                    <LinkList links={footerLinks}/>
+                <div className="border-top pt-3">
+                    <LinksListe links={footerLinks}/>
                 </div>
             </div>
+            
         </nav>
     );
 }

@@ -1,4 +1,5 @@
 .nav-mobile {
+    cursor: pointer;
     z-index: 1000;
     display: block;
     position: fixed;
@@ -7,11 +8,6 @@
     right: 0;
     height: 3.3rem;
     width: 100%;
-    background-color: #11111165;
-    transition: background-color 0.4s ease-in-out;
-    &:hover {
-        background-color: #111;
-    }
     .sidebar-content {
         position: relative;
         display: flex;
@@ -31,6 +27,7 @@
     width: var(--nav-width);
     transition: width 0.4s;
     z-index: 3;
+        border-color: $primary;
 }
 
 .nav-listener {
@@ -68,21 +65,30 @@
     }
 }
 .sidebar-header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .sidebar-toggler {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
 }
 .sidebar-toggler {
     display: none;
-    width: 2.5rem;
-    height: 2.5rem;
-    line-height: 0;
+    position: absolute;
+    top: 0.25rem;
+    left: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
     padding: 0.25rem;
     background-color: transparent;
     transition: background-color 0.4s;
     border: none;
     border-radius: 15px;
     align-self: center;
+    z-index: 3;
     &:hover {
         background-color: #33333375;
     }
@@ -122,6 +128,7 @@
         }
     }
 }
+
 .sidebar-toggler[data-role='closer'] {
     svg {
         stroke: #fff;

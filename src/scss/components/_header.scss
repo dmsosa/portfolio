@@ -4,30 +4,15 @@
 }
 
 .header {
+    position: fixed;
     width: var(--main-width);
     padding: 0;
-    position: fixed;
-    display: flex;
-    font-size: 1.35rem;
     height: 3rem;
-    transform: none;
-    transition: transform 0.5s ease-in;
     transform: translateY(0);
-    transition: transform 0.4s;
+    transition: transform 0.2s ease;
     box-shadow: 10px 0px 5px #111;
     z-index: 10;
     backdrop-filter: blur(0.5rem);
-    .brand-logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 2.4rem;
-        height: 100%;
-        display: block;
-        img {
-            max-width: 100%;
-        }
-    }
 }
 .progress-bar {
     position: absolute;
@@ -58,6 +43,7 @@
     }
 }
 .endpunkt-header-toggler {
+    z-index: 1;
     padding: 0;
     margin: 0;
     flex: 1 1 100%;
@@ -90,10 +76,60 @@
     }
 }
 
-
 .hero-bilder {
     width: 100%;
     max-width: 35rem;
+}
+.header-dropdown-toggler {
+    z-index: 2;
+    position: absolute;
+    top: 0.25rem;
+    right: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    outline: none;
+    padding: 0.25rem;
+    margin: 0;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    &:hover {
+        background-color: shade-color($primary, 20%);
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+        stroke-width: 3rem;
+        path#dropdown-path-1 {
+            d: path('M 100.062 98.047 L 400 100');
+        }
+        path#dropdown-path-2 {
+            d: path('M 99.269 246.379 L 400 250');
+        }
+        path#dropdown-path-3 {
+            d: path('M 100.855 398.677 L 400 400');
+        }
+        &:hover {
+        path#dropdown-path-1 {
+            d: path('M 100 450 L 400 100');
+        }
+        path#dropdown-path-2 {
+            d: path('M 100 279.694 L 100 280.142');
+        }
+        path#dropdown-path-3 {
+            d: path('M 100 100 L 400 450');
+        }
+        }
+    }
+}
+.header-dropdown {
+    overflow: hidden;
+    height: 0;
+    width: 100vw;
+    transition: height 0.2s ease;
+    &.show {
+        height: 10rem;
+    }
 }
 
 

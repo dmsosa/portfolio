@@ -10,12 +10,13 @@ export type TLinkObject = {
 }
 
 
-function LinkList({ links, expanded=false, column=false } : { links: TLinkObject[], expanded?: boolean, column?: boolean }) {
+function LinksListe({ links, expanded=false, column=false, fullWidth=false, clazz, children } : { links: TLinkObject[], expanded?: boolean, column?: boolean, fullWidth?: boolean, clazz?: string, children?: ReactNode }) {
+    const dir = column ? 'flex-column gap-1':'flex-row gap-2';
     return (
-        <ul className={`link-list px-2 ${column ? 'flex-column gap-1':'flex-row gap-2'}`}>
+        <ul className={`nav-links ${dir} ${clazz ? clazz : ''}`}>
             {links.map((link) => 
                 (
-                <li key={link.title}>
+                <li key={link.title} className={fullWidth ? 'w-100':''}>
                     <Link className={`link ${column ? 'justify-content-start':'justify-content-center'}`} to={link.to} state={link.state ? link.state : null} aria-expanded={expanded}>
                         {link.icon}
                         <span>{link.title}</span>
@@ -23,7 +24,8 @@ function LinkList({ links, expanded=false, column=false } : { links: TLinkObject
                 </li>
                 )
             )}
+            { children }
         </ul>
     );
 }
-export default LinkList;
+export default LinksListe;

@@ -10,6 +10,7 @@
     opacity: 0;
     display: block;
     transition: opacity 0.2s ease, visibility 0.2s ease;
+    backdrop-filter: brightness(50%);
 }
 .form-modal-inner {
     position: absolute;
@@ -48,7 +49,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $dark2;
     border: solid 0.125rem;
     border-color: $light;
     padding: 1.2rem 0.75rem;
@@ -76,7 +76,7 @@
         }
         .error-message {
             display: block;
-            margin-top: 0.25rem;
+            margin-top: 0.15rem;
         }
         label {
             position: absolute;
@@ -127,5 +127,49 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+    .form-error {
+        color: $danger;
+    }
+    .form-message {
+        color: $primary;
+    }
+}
+.tag-input-wrapper {
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+.tag-input-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    .tag-box {
+        padding: 0.15rem 0.25rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 0.5rem;
+        color: inherit;
+        position: relative;
+        transition: background-color 0.2s ease;
+        max-width: fit-content;
+        &:hover {
+            cursor: pointer;
+            background-color: $dark2;
+            color: $warning;
+        }
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+    input.tag-input {
+        display: inline;
+        color: inherit;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        flex: 1;
+        padding: 0.15rem 0.25rem;
     }
 }

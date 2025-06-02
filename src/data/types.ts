@@ -38,3 +38,8 @@ export interface TLoggedBenutzer {
     createdAt: Date;
     updatedAt: Date;
 }
+
+export type TFormMessage = {
+    isError: boolean,
+    message: string,
+}

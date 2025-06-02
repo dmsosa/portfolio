@@ -7,8 +7,9 @@ import { postArtikel, putArtikel } from "../../services/article.services";
 import { TApiError } from "../../utils/react-helpers";
 import { artikelValidators, validate } from "../../utils/form-helpers";
 import useAuthFormContext from "../../context/AuthFormContext";
+import TagsInput from "../Forms/TagsInput";
 
-type TArtikelForm = {
+export type TArtikelForm = {
     id: string | null, 
     title: string, 
     description: string, 
@@ -21,16 +22,17 @@ const emptyForm: TArtikelForm = {
     title: "", 
     description: "", 
     body: "", 
-    tags: [],
+    tags: ['react', 'typescript', 'github'],
 }
 
-const noErrors: {[key:string]: string[]} = { title: [], description: [], body: [], tags: [] }
+const noErrors: {[key:string]: string[]} = { title: [], description: [], body: [] }
 
 export default function ArtikelEditorForm() {
     const { state } = useLocation();
     const { slug } = useParams();
     const navigate = useNavigate();
     const [ { title, description, body, tags }, setForm ] = useState<TArtikelForm>(state || emptyForm );
+
     const [ errorMessageForm, setErrorMessageForm ] = useState<string>('');
     const [ fieldErrorMessages, setFieldErrorMessages ] = useState<{[key:string]: string[]}>(noErrors);
     const { headers, isAuth, loggedUser } = useAuth();
@@ -40,11 +42,15 @@ export default function ArtikelEditorForm() {
         if (!slug) return;
 
     }, []);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
         const name = e.currentTarget.name;
         const value = e.currentTarget.value;
         setFieldErrorMessages((prev) => ({...prev, [name]:[]}))
         setForm((prev) => ({...prev, [name]: value}))
+    }
+    const handleTagChange = (tagsArray: string[]) => {
+        setForm((prev) => ({...prev, tags: tagsArray}));
     }
     const handleSubmit = (e: MouseEvent<HTMLFormElement> ) => {
         e.preventDefault();
@@ -70,7 +76,7 @@ export default function ArtikelEditorForm() {
         }
         //request
         if (!slug) {
-            postArtikel({ headers: headers!, title, description, body, tags })
+            postArtikel({ headers: headers!, title, description, body, tags: tags.join(",")  })
             .then((artikel) => {
                 navigate(`/artikel/${artikel.slug}`)
             })
@@ -81,7 +87,7 @@ export default function ArtikelEditorForm() {
             //handleError
             //go zum ArtikelSeite
         } else {
-            putArtikel({ headers: headers!, slug, title, description, body, tags })
+            putArtikel({ headers: headers!, slug, title, description, body, tags: tags.join(",") })
             .then((artikel) => {
                 navigate(`/artikel/${artikel.slug}`)
             })
@@ -118,14 +124,7 @@ export default function ArtikelEditorForm() {
                 onChange={handleChange}
                 errorMessages={fieldErrorMessages.body}
                 />
-                <FieldsetForm 
-                name="tags"
-                type="text"
-                labelText="Tags"
-                value={tags}
-                onChange={handleChange}
-                errorMessages={fieldErrorMessages.tags}
-                />
+                <TagsInput tagsArray={tags} parentHandler={handleTagChange} tagsLimit={10}/>
                 <button type="submit" className="btn btn-primary">submit</button>
             </form>
         )

@@ -13,19 +13,19 @@ function NavMobile() {
         if (isAuth) {
                     const loggedInLinks = [
                         { title: 'Home', to: '/', icon: <FaHome />    },
-                        { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
-                        { title: 'Artikeln', to: '/dashboard/editor', icon: <Gi3dGlasses /> },
-                        { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
-                        { title: 'Profile', to: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
+                        { title: 'Dashboard', to: '/', icon: <GiAbstract031/> },
+                        { title: 'Artikeln', to: '/editor', icon: <Gi3dGlasses /> },
+                        { title: 'CV', to: '/cv', icon: <FaUserTie /> },
+                        { title: 'Profile', to: `/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
                     ]; 
                     setLinks(loggedInLinks);
                 }
                 else {
                     const notLoggedLinks: TLinkObject[] = [
                         { title: 'Home', to: '/', icon: <FaHome />    },
-                        { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
-                        { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
-                        { title: 'Spiele', to: '/dashboard/cv', icon: <FaGamepad /> },
+                        { title: 'Dashboard', to: '/dashboard', icon: <GiAbstract031/> },
+                        { title: 'CV', to: '/cv', icon: <FaUserTie /> },
+                        { title: 'Spiele', to: '/cv', icon: <FaGamepad /> },
                     ]; 
         
                     setLinks(notLoggedLinks);

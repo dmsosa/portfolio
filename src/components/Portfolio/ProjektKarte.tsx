@@ -52,7 +52,7 @@ function ProjektKarte({ index, repo, title, image, description, createdAt, updat
       window.location.href = repo
     }
     return (
-            <div key={title} id={`card-${index}`} className="project-card border" onMouseOver={handleOver} onClick={() => { handleClick(repo)}}>
+            <div key={title} id={`card-${index}`} className="project-card bg-2 border" onMouseOver={handleOver} onClick={() => { handleClick(repo)}}>
                 {index === 1 && <Click />}
                 <div className="project-card--header">
                     <h4>{title}</h4>

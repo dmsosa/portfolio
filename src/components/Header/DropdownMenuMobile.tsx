@@ -65,7 +65,7 @@ function DropdownDiv({ show } : { show:boolean }) {
                 <div>
                     <LinksListe links={links} column expanded fullWidth/>
                 </div>
-                <div className="border-top pt-1 pb-2 fs-4">
+                <div className="border-top-dark pt-1 pb-2 fs-4">
                     <SocialLinks clazz="w-100 h-100 justify-content-center"/>
                 </div>
             </div>        

@@ -41,7 +41,7 @@ function UberMich() {
                     textToRight={index % 2 === 0}
                     >
                         <Link to={content.href} className="d-block position-relative" onMouseOver={handleOver}>
-                            {content.svg}
+                            <div className="w-50 mx-auto">{content.svg}</div>
                             { index === 1 && <PointerTwo />}
                         </Link>
                     </TextImageContent>

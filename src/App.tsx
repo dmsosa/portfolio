@@ -24,8 +24,6 @@ export type TThemeContext = {
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null);
-
-
   useGSAP(() => {
     if (!mainRef.current) return;
     const tl = gsap.timeline({
@@ -66,7 +64,7 @@ function App() {
         <FormModal />
         <main ref={mainRef}>
           <Header />
-          <div className="main-content"> {/*Displayed als grid*/}
+          <div id="main-content" className="main-content"> {/*Displayed als grid*/}
               <Outlet />
           </div>
           <Footer />

@@ -5,7 +5,6 @@ import { useAuth } from "../context/AuthContext";
 import { useEndpunkt } from "../context/EndpunktContext";
 import useBenutzer from "../hooks/useBenutzer";
 import BenutzerArray from "../components/Benutzer/BenutzerArray";
-import Card from "../components/Dashboard/Card";
 import ArtikelArray from "../components/Artikel/ArtikelArray";
 
 
@@ -17,16 +16,19 @@ export default function Dashboard() {
     
     const {  loadingBenutzer, benutzerAnzahl, benutzerArray, setBenutzerDatei, setOffsetBenutzer }  = useBenutzer({ endpunkt: 'global' });
 
-    return <div className="content">
+    return <div className="content px-3">
                 { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <BenutzerForms/>}
-                <EndpunktToggler endpunkte={['global', 'feed']}/>
                 <div className="row pb-5">
-                    <div className="d-flex justify-content-center align-items-center flex-wrap w-100 gap-3">
-                        <Card title="Total Artikeln" anzahl={artikelnAnzahl} />
-                        <Card title="Total Benutzer" anzahl={benutzerAnzahl} />
-                    </div>
-                    
+                    <div className="d-flex justify-content-center align-items-center w-80 mx-auto gap-3">
+                        <div className="d-flex justify-content-center align-items-center border border-width-2 bg-2 p-3 h-100">
+                            <h4>Total Artikeln</h4><span className="fs-3 align-self-center">{artikelnAnzahl}</span> 
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center border border-width-2 bg-2 p-3 h-100">
+                            <h4>Total Benutzer</h4><span className="fs-3 align-self-center">{benutzerAnzahl}</span> 
+                        </div>
+                    </div>        
                 </div>
+                <EndpunktToggler endpunkte={['global', 'feed']}/>
                 <div className="row">
                 { entity === 'artikel' ? 
                 <ArtikelArray loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />

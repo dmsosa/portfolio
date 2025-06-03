@@ -18,8 +18,21 @@
 .translateY-0 {
     transform: translateY(0) !important;
 }
+.border-dark {
+    border-color: $dark !important;
+}
+.border-top-dark {
+    border-top: 0.125rem $dark solid !important;;
+}
+.border-top-primary {
+    border-top: 0.125rem $primary solid !important;;
+}
 .border-bottom-primary {
     border-bottom: 0.125rem $primary solid !important;
+}
+
+.border-width-2 {
+    border-width: 0.5rem !important;
 }
 .h-fit {
     max-height: fit-content !important;
@@ -113,11 +126,17 @@
 .w-1 {
     width: 1rem;
 }
+.w-135 {
+    width: 1.35rem;
+}
 .w-2 {
     width: 2rem;
 }
-.w-3 {
+.w-25 {
     width: 2.5rem;
+}
+.w-3 {
+    width: 3rem;
 }
 .w-4 {
     width: 4rem;
@@ -128,6 +147,12 @@
 .w-6 {
     width: 6rem;
 }
+.h-135 {
+    height: 1.35rem;
+}
+.rotate-90 {
+    rotate: 90deg;
+}
 .h-150 {
     height: 150px;
 }
@@ -137,11 +162,14 @@
 .top-0 {
     top: 0;
 }
+.top-05 {
+    top: 0.5rem;
+}
 .top-1 {
-    top: 5%;
+    top: 1rem;
 }
 .top-2 {
-    top: 20%;
+    top: 2rem;
 }
 .right-0 {
     right: 0.5rem;
@@ -216,8 +244,14 @@ index-1 {
 .bg-1-opacity-5 {
     background-color: $dark;
 }
+.bg-000 {
+    background-color: #000;
+}
 .color-inherit {
     color: inherit;
+}
+.color-light {
+    color: $light !important;
 }
 .z-index-2 {
     z-index: 2;

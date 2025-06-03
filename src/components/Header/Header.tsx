@@ -16,6 +16,7 @@ function Header() {
 
     return (
         <header id="header" className="header" ref={headerRef}>
+            <a href="#header" className="hidden w-0 position-absolute top-0 left-0"></a>
             <SidebarToggler role='opener' />
             {isDashboard ? <EndpunktHeaderToggler endpunkte={['artikel', 'benutzer']}/> : <BrandLogo />}
             <DropdownMenuMobile/>

@@ -4,7 +4,7 @@ import logo from "../../assets/img/logo.png";
 export default function FormWrapper({ titel, untertitel, linkMessage, onClick, children } : 
     { titel: string, untertitel: string, linkMessage: string, onClick: () => void, children: ReactNode | ReactNode[] }) {
     return (
-        <div className="form-wrapper bg-2 mb-3">
+        <div className="border border-width-2 d-flex justify-content-center align-items-center flex-column w-80 mx-auto p-3 bg-2 mb-3">
             <div className="d-flex flex-column justify-content-center align-items-center">
                 <img src={logo} alt="Logo" className="logo mb-3" />
                 <h3 className="mb-0">{titel}</h3>

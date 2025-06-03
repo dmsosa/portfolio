@@ -8,17 +8,17 @@ function Hero() {
 
     return (
         <div ref={sectionRef} className="content hero">
-                <div className="hero-bg">
+                <div className="hero-bg bg-000">
                 </div>
                 <div className="hero-text">
-                        <h1 className="h1 fw-bold drop-shadow-1 mb-3">
+                        <h1 className="h1 fw-bold drop-shadow-1 mb-3 color-light">
                             <span className="split d-flex">
                                 <span className="line">Front</span>
                                 <span className="line ms-2">+</span>
                                 <span className="line ms-2">End</span>
                             </span>
                         </h1>
-                        <h5 className="h5 fw-bold drop-shadow-1">
+                        <h5 className="h5 fw-bold drop-shadow-1 color-light">
                             <span className="line">That's what I do</span>
                             <span className="line">.</span>
                         </h5>

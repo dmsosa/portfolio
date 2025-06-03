@@ -83,15 +83,11 @@ html {
 }
 
 body, #app {
-    background-color: $dark;
-    color: $light;
-    stroke: $light;
-    fill: $light;
-    border-color: $primary;
     height: 100vh;
     overflow: hidden;
     position: relative;
     font-family: 'HerculesPixel', sans-serif;
+ 
 }
 .app-wrapper {
     display: block;
@@ -120,6 +116,8 @@ main {
 .main-content {
     display: block;
     transition: grid-template-columns 0.4s;
+    background-color: inherit;
+    color: inherit;
 }
 .content {
     grid-column: 2 / 3;
@@ -199,8 +197,8 @@ ul.icon-ul {
 
 
   
-@include themable("theme-light", $theme-light);
-@include themable("theme-dark", $theme-dark);
+@include runThemes("theme-light", $theme-light);
+@include runThemes("theme-dark", $theme-dark);
 
 
 //Theme toggler 
@@ -517,7 +515,6 @@ ul.pagination {
     padding: 0.5rem;
     cursor: pointer;
     border: solid 0.125rem;
-    border-color: $light;
     background-color: transparent;
     transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, ;
     &:not(:first-child) {
@@ -554,3 +551,8 @@ ul.pagination {
         max-width: none;
     }
 }
+
+
+
+
+

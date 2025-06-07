@@ -1,65 +1,111 @@
 # What is this? ![readmeLogo](https://github.com/user-attachments/assets/952cd8c9-7c15-41b7-9da0-a83186991296)
-> Answer: This is a React + TypeScript + Vite project, in which I created my personal portfolio and also added blog codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://realworld.io/) spec and API.
+> Answer: I wanted to make my own portfolio, but doing the typical static single-page website for me was kind of boring... so I decided to add blog codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://realworld.io/) spec and API.
 
 This project was created to demonstrate a fully fledged fullstack application built with **React / Vite + TypeScript / Node.js / MongoDB** including CRUD operations, authentication, routing, pagination, and more.
 
-This README provides the minimal steps to get this working in your machine.
-
-1. Clone the repo
-
-> **React / Vite + SWC / Express.js / Sequelize / PostgreSQL codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://realworld.io/) spec and API.**
-
-This codebase was created to demonstrate a fully fledged fullstack application built with **React / Vite + SWC / Express.js / Sequelize / PostgreSQL** including CRUD operations, authentication, routing, pagination, and more.
-
-**[Demo app](https://conduit-realworld-example-app.fly.dev/)&nbsp;&nbsp;|&nbsp;&nbsp;[With Create React App](https://github.com/TonyMckes/conduit-realworld-example-app/tree/create-react-app)&nbsp;&nbsp;|&nbsp;&nbsp;[Other RealWorld Example Apps](https://codebase.show/projects/realworld?category=fullstack)**
-
-> For more information on how to this works keep reading this repo!
-
----
 
 ## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This README will help you install and run the project on your local machine for development and testing.
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Before you run the project, make sure that you have the following tools and software installed on your computer:
 
-- Configure the top-level `parserOptions` property like this:
+- Text editor/IDE (e.g., VS Code, Sublime Text, Atom)
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/en/download/) `v18.11.0+`
+- [NPM](https://www.npmjs.com/) (usually included with Node.js)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+
+To install the project on your computer, follow these steps:
+
+1. Clone the repository to your local machine.
+
+   ```bash
+   git clone https://github.com/dmsosa/portfolio.git
+   ```
+
+2. Navigate to the project directory.
+
+   ```bash
+   cd portfolio
+   ```
+
+3. Install project dependencies by running the command:
+
+   ```bash
+   npm install
+   ```
+
+4. You're ready to go with the frontend side of the app, which will provide static data when no backend is available, you can run it with:
+
+```bash
+npm run dev
+```
+5. If you want to use also the backend, you will need to clone its repository.
+
+   ```bash
+   cd portfolio-backend
+   ```
+   and then
+   
+   ```bash
+   git clone https://github.com/dmsosa/portfolio-backend.git
+   ```
+
+   The backend of the app needs some environmental variables to:
+   a. Connect to database,
+   b. provide JWT Secrets,
+   c. define admin user (this will just define name and password to create a dummy ADMIN user in the Database).
+
+6. Create a `.env` file in the root directory of the project
+   
+7. Add the required environment variables as specified in the [`.env.example`](backend/.env.example) file
+
+### Usage
+
+If you want to load some initial data in the DB, run:
+   ```bash
+   npm run seed
+   ```
+#### Development Server
+
+To run the project, follow these steps:
+
+1. Start the development server by executing the command:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Open a web browser and navigate to:
+   - Home page should be available at [`http://localhost:3000/`](http://localhost:3000).
+   - API endpoints should be available at [`http://localhost:3001/api`](http://localhost:3001/api).
+
+#### Running Tests
+
+To run tests, simply run the following command:
+
+```bash
+npm run test
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### Production
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+The following command will build the production version of the app:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run start
 ```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [RealWorld](https://realworld.io/)
+- [RealWorld (GitHub)](https://github.com/gothinkster/realworld)
+- [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)

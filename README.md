@@ -1,4 +1,5 @@
-# What is this? 
+# What is this? ![readmeLogo](https://github.com/user-attachments/assets/952cd8c9-7c15-41b7-9da0-a83186991296)
+
 ## Answer: This is a React + TypeScript + Vite project, in which I created my personal portfolio and also added blog functionality to allow users to register and read my articles.
 
 This README provides the minimal steps to get this working in your machine.

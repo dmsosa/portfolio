@@ -24,3 +24,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#cache files
+*.tsbuildinfo
+*.tsbuildinfo
+package-lock.json

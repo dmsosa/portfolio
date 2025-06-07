@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": ["./node_modules", "./node_modules/@types", "./node_modules/@testing-library"],
-    "types": ["node", "vitest/globals", "react", "jest-dom", "jsdom"]
+    "types": ["node", "vitest/globals", "react", "jest-dom", "jsdom"],
   },
-  "include": ["src", "src/__tests__", "setup.ts"]
+  "include": ["src", "src/__tests__", "config/setup.ts"]
 }

@@ -8,7 +8,9 @@
 .container-3 {
     background-color: $dark3;
 }
-
+.overflow-hidden {
+    overflow: hidden !important;
+}
 .opacity-1 {
     opacity: 1 !important;
 }
@@ -23,6 +25,15 @@
 }
 .border-top-dark {
     border-top: 0.125rem $dark solid !important;;
+}
+.border-top-bg1 {
+    border-color: $dark transparent transparent transparent !important;;
+    &::before {
+            border-color: $dark transparent transparent transparent !important;;
+    }
+    &::after {
+            border-color: $dark transparent transparent transparent !important;;
+    }
 }
 .border-top-primary {
     border-top: 0.125rem $primary solid !important;;
@@ -147,11 +158,17 @@
 .w-6 {
     width: 6rem;
 }
+.w-fit {
+    width: fit-content;
+}
 .h-135 {
     height: 1.35rem;
 }
 .rotate-90 {
     rotate: 90deg;
+}
+.h-150 {
+    height: 100px;
 }
 .h-150 {
     height: 150px;
@@ -302,5 +319,7 @@ index-1 {
     .order-md-2 {
         order: 2;
     }
-
+    .w-md-80 {
+        width: 80% !important;
+    }
 }

@@ -2,10 +2,11 @@ import { ChangeEvent, KeyboardEvent, MouseEvent, useState } from "react";
 import { MdNewLabel } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 
-export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { tagsArray: string[], parentHandler: (tags: string[]) => void, tagsLimit: number } ) {
+export default function TagsInput({ tagsArray, parentHandler } : { tagsArray: string[], parentHandler: (tags: string[]) => void } ) {
 
     //Input Logik
     const [ tagInput, setTagInput ] = useState<string>('');
+    const tagsLimit = 10;
     const handleTagChange = (e: ChangeEvent<HTMLInputElement> ) => {
         const inputElement = e.currentTarget;
         if (inputElement.classList.contains('color-danger') || inputElement.classList.contains('shake')) {
@@ -24,47 +25,63 @@ export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { ta
 
 
     //Add Tags Logik
-    const addTag = (tag: string, arrayToAdd: string[], inputParent: HTMLInputElement): boolean => {
-        if (tag.length < 3) {
-            inputParent.classList.add('color-danger');
-            inputParent.classList.add('shake');
-            setMessage('each tag must have at least 3 characters!');
-            return false;
+    const addFromArray = (inputArray: string[], inputElement: HTMLInputElement) => {
+        const inputArrayClone = [...inputArray];
+        let errorMessage = '';
+        const arrayToConcatenate: string[] = [];
+        let spaces = remainingTags;
+        for (let i = 0; i < inputArray.length; i++) {
+            const value = inputArray[i];
+            errorMessage = addTag(value, arrayToConcatenate, inputElement, spaces);
+            if (errorMessage.length > 1) {
+                break;
             } else {
-                arrayToAdd.push(tag);
-                return true;
+                spaces--;
+                inputArrayClone.splice(i, 1);
+            };
+        }
+        parentHandler(tagsArray.concat(arrayToConcatenate));
+        let message = spaces > 0 ? `you can add ${spaces} more tags!` :`tag limit reached!`;
+        setMessage(errorMessage.length > 1 ?  errorMessage : message);
+        setTagInput(inputArrayClone.join(','));
+    }
+    const addTag = (tag: string, arrayToConcatenate: string[], inputElement: HTMLInputElement, spaces: number): string => {
+            if (spaces === 0) {
+                inputElement.classList.add('color-danger');
+                inputElement.classList.add('shake');
+                return `You can not add more than ${tagsLimit} tags!`;
+            } else if (tag.length < 3) {
+                inputElement.classList.add('color-danger');
+                inputElement.classList.add('shake');
+                return 'each tag must have at least 3 characters!';
+            } else if (tagsArray.includes(tag)) {
+                inputElement.classList.add('color-danger');
+                inputElement.classList.add('shake');
+                return `the tag ${tag} is already selected!`;
+            } else if (arrayToConcatenate.includes(tag)) {
+                inputElement.classList.add('color-danger');
+                inputElement.classList.add('shake');
+                return `the same tag: '${tag}' can not be added more than once!`;
+            } else {
+                arrayToConcatenate.push(tag.trim());
+                console.log('added')
+                return '';
             }
     }
     const handleKeydown = (e: KeyboardEvent<HTMLInputElement> ) => {
-        const inputParent = e.currentTarget;
+        const inputElement = e.currentTarget;
         if (e.key === "Enter") {
             e.preventDefault();
-
-            const currentInput = inputParent.value as string;
-            const valueArray = currentInput.split(',');
-
-            if (valueArray.length < 1) return;
-
-            const arrayToAdd: string[] = [];
-            let remainingSpace = remainingTags;
-
-            for (let i = 0; i < valueArray.length; i++) {
-                if (remainingSpace === 0) {
-                    inputParent.classList.add('color-danger');
-                    inputParent.classList.add('shake');
+            if (remainingTags === 0) {
+                    inputElement.classList.add('color-danger');
+                    inputElement.classList.add('shake');
                     setMessage(`You can not add more than ${tagsLimit} tags!`);
                     return;
-                };
-                const val = valueArray[i];
-                const added = addTag(val, arrayToAdd, inputParent);
-                if (added) {
-                    remainingSpace--;
-                } else return;
-            }
+            };
+            const inputArray = tagInput.split(',');
+            if (inputArray.length < 1) return;
+            addFromArray(inputArray, inputElement);
 
-            parentHandler(tagsArray.concat(arrayToAdd));
-            setTagInput('');
-            setMessage(`you can add ${remainingSpace} more tags.`)
         } else if (e.key === "Backspace") {
             if (tagInput.length === 0 ) {
                 if (remainingTags >= 10) return;
@@ -82,8 +99,9 @@ export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { ta
     const handleClick = (e: MouseEvent<HTMLDivElement> ) => {
         if (remainingTags >= tagsLimit) return;
         const box = e.currentTarget;
-        const value = box.querySelector('span')?.innerText;
+        const value = box.innerText;
         const filteredTags = tagsArray.filter((tag) => tag != value);
+
         parentHandler(filteredTags);
         if (remainingTags + 1 > 1) {
             setMessage(`you can add ${remainingTags} more tags.`);
@@ -91,8 +109,22 @@ export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { ta
             setMessage(`you can add up to ${remainingTags} tags.`);
         }
     }
-    const handleRemoveAll = () => {
-        if (tagsArrayLength >= 10) return;
+    const handleAddButton = (e: MouseEvent<HTMLButtonElement> ) => {
+        const inputElement = document.getElementById("tags") as HTMLInputElement;
+        e.preventDefault();
+        if (remainingTags === 0) {
+                inputElement.classList.add('color-danger');
+                inputElement.classList.add('shake');
+                setMessage(`You can not add more than ${tagsLimit} tags!`);
+                return;
+        };
+        const inputArray = tagInput.split(',');
+        if (inputArray.length < 1) return;
+        addFromArray(inputArray, inputElement);
+    }
+    const handleRemoveAll = (e: MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        if (tagsArrayLength === 0) return;
         parentHandler([]);
         setMessage(`you can add up to ${tagsLimit} tags.`);
     }
@@ -109,7 +141,10 @@ export default function TagsInput({ tagsArray, parentHandler, tagsLimit } : { ta
                 {tagsArray.map((tag) => <div key={tag} className="tag-box container-3" ><span onClick={handleClick}>{tag}</span><IoMdClose/></div>)}
                 <input className="tag-input border-bottom-primary" type="text" name="tags" id="tags" value={tagInput}  onChange={handleTagChange} onKeyDown={handleKeydown}/>
             </ul>
-            <button className="btn btn-secondary" onClick={handleRemoveAll}>Remove All</button>
+            <div className="d-flex justify-content-start align-items-center gap-2">
+                <button className="btn btn-primary" onClick={handleAddButton}>Add</button>
+                <button className="btn btn-secondary" onClick={handleRemoveAll}>Remove All</button>
+            </div>
         </div>
     )
 }

@@ -6,11 +6,14 @@ import { useEndpunkt } from "../context/EndpunktContext";
 import useBenutzer from "../hooks/useBenutzer";
 import BenutzerArray from "../components/Benutzer/BenutzerArray";
 import ArtikelArray from "../components/Artikel/ArtikelArray";
+import TagsInput from "../components/Forms/TagsInput";
+import { useTags } from "../context/TagsContext";
 
 
 export default function Dashboard() {
     const { isAuth, loggedUser } = useAuth();
     const { entity } = useEndpunkt();
+    const { tags, setTags } = useTags();
     // const [currentPage, setCurrentPage ] = useState(0);
     const {  loadingArtikeln, artikelnAnzahl, artikeln, setArtikelnDatei, setOffsetArtikeln }  = useArtikeln({endpunkt: 'global' });
     
@@ -29,6 +32,7 @@ export default function Dashboard() {
                     </div>        
                 </div>
                 <EndpunktToggler endpunkte={['global', 'feed']}/>
+                <TagsInput tagsArray={tags} parentHandler={(t: string[]) => console.log(t)}/>
                 <div className="row">
                 { entity === 'artikel' ? 
                 <ArtikelArray loading={loadingArtikeln} array={artikeln} setArrayData={setArtikelnDatei} artikelAnzahl={artikelnAnzahl} setOffset={setOffsetArtikeln} />

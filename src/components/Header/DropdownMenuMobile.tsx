@@ -74,7 +74,7 @@ function DropdownDiv({ show } : { show:boolean }) {
 function DropdownMenuMobile() {
     //Dropdown Logik
     const [ show, setShow ] = useState(false);
-    return <div className="d-block d-md-none">
+    return <div className="d-block">
         <DropdownBtn show={show} setShow={setShow} />
         <DropdownDiv show={show}/>
     </div>

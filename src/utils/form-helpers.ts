@@ -97,6 +97,23 @@ export const artikelValidators: {[key: string]: TFieldValidator} = {
         isValid: true,
         },
 }
+export const kontakFormValidators: {[key: string]: TFieldValidator} = {
+        'email': {
+            name: 'email',
+            isRequired: true,
+            errorMessages: [],
+            isValid: true,
+        },
+        'message': {
+        name: 'message',
+        isRequired: true,
+        minLength: 10,
+        maxLength: 5000,
+        errorMessages: [],
+        isValid: true,
+        },
+        
+}
 
 export  function validate(validator: TFieldValidator, value: string | Date | number | undefined): boolean {
                 // Alle vorherigen Fehler zurücksetzen

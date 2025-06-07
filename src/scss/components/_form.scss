@@ -51,7 +51,11 @@
         position: relative;
         width: 100%;
         margin: 0 auto;
-        margin-bottom: 1.8rem;
+        background-color: inherit;
+        margin-bottom: 0rem;
+        &:not(:last-of-type) {
+            margin-bottom: 1.2rem;
+        }
         &:last-child {
             margin-bottom: 0;
         }
@@ -70,14 +74,14 @@
         label {
             position: absolute;
             top: 0.5rem;
-            left: 1rem;
+            left: 0.5rem;
             color: inherit;
             font-weight: bold;
             transition: all 0.2s ease-in-out;
             font-size: 1rem;
             cursor: text;
         }
-        input {
+        input, textarea {
             width: 100%;
             padding: .5rem .75rem;
             border-radius: 10px;
@@ -97,10 +101,10 @@
             &:active + label,
             &:not(:placeholder-shown) + label {
                 top: -1rem;
-                left: 0.85rem;
+                left: 0.35rem;
                 font-size: 0.85rem;
-                background-color: $dark2;
-                padding: 0.1rem 0.5rem;
+                background-color: inherit;
+                padding: 0.1rem 0.55rem;
                 border-radius: 5px;
             }
         }
@@ -163,3 +167,50 @@
     }
 }
 
+.copy-input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    input,.btn {
+        z-index: 2;
+    }
+    .btn {
+    flex: 1 1 30%;
+    }
+    input {
+        background-color: transparent;
+        color: inherit;
+        border: none;
+        height: 100%;
+        flex: 1 1 70%;
+        padding-left: 0.5rem;
+    }
+    .copy-input-modal {
+        position: absolute;
+        top: -100%;
+        right: 0;
+        padding: 0.75rem;
+        transition: opacity 0.2s ease;
+        opacity: 0;
+        translate: 0% -80%;
+        rotate: 0deg;
+        &[aria-hidden='false'] {
+            opacity: 1;
+        }
+        &::before {
+            position: absolute;
+            content: "";
+            right: 10%;
+            bottom: 0;
+            translate: 0% 100%;
+            border: solid 0.5rem;
+            border-color: transparent transparent transparent transparent;
+            width: 0;
+            height: 0;
+            z-index: -1;
+        }
+    }
+
+}

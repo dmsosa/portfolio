@@ -15,6 +15,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { AuthFormContextProvider } from './context/AuthFormContext'
 import FormModal from './components/Forms/FormModal'
+import { TagsContextProvider } from './context/TagsContext'
 
 
 export type TThemeContext = {
@@ -56,6 +57,7 @@ function App() {
       <AuthContextProvider>
       <ThemeProvider>
       <EndpunktContextProvider>
+      <TagsContextProvider>
       <SidebarContextProvider>
       <AuthFormContextProvider>
         <ThemeToggler/>
@@ -71,6 +73,7 @@ function App() {
         </main>
       </AuthFormContextProvider>
       </SidebarContextProvider>      
+      </TagsContextProvider>
       </EndpunktContextProvider>
       </ThemeProvider>
       </AuthContextProvider>

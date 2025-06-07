@@ -17506,17 +17506,24 @@ progress {
 
 .header-dropdown {
   overflow: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
   height: 0;
   width: 100vw;
   transition: height 0.2s ease;
+  box-shadow: 0px 0px 15px #111, 0px 0px 7px #111;
 }
 .header-dropdown.show {
   height: 10rem;
 }
 
-@keyframes cursor {
-  50% {
-    opacity: 0.1;
+@media only screen and (min-width: 768px) {
+  .header-dropdown {
+    width: 50vw;
+    top: 100%;
+    right: 0;
+    left: auto;
   }
 }
 .nav-mobile {
@@ -17694,13 +17701,6 @@ progress {
     display: block;
   }
 }
-footer {
-  position: relative;
-  background-color: #053142;
-  width: 100%;
-  padding: 2.6rem 1.85rem;
-}
-
 .footer-nav {
   position: absolute;
   top: -4rem;
@@ -17714,6 +17714,11 @@ footer {
   align-items: center;
   width: 100%;
   height: 4rem;
+}
+
+#contact-message {
+  overflow: hidden;
+  height: 115px;
 }
 
 #et {
@@ -18157,7 +18162,11 @@ footer {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 1.8rem;
+  background-color: inherit;
+  margin-bottom: 0rem;
+}
+.form .fieldset:not(:last-of-type) {
+  margin-bottom: 1.2rem;
 }
 .form .fieldset:last-child {
   margin-bottom: 0;
@@ -18177,14 +18186,14 @@ footer {
 .form .fieldset label {
   position: absolute;
   top: 0.5rem;
-  left: 1rem;
+  left: 0.5rem;
   color: inherit;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
   font-size: 1rem;
   cursor: text;
 }
-.form .fieldset input {
+.form .fieldset input, .form .fieldset textarea {
   width: 100%;
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
@@ -18196,17 +18205,17 @@ footer {
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
 }
-.form .fieldset input:focus, .form .fieldset input:active, .form .fieldset input:hover, .form .fieldset input:autofill, .form .fieldset input:-webkit-autofill {
+.form .fieldset input:focus, .form .fieldset input:active, .form .fieldset input:hover, .form .fieldset input:autofill, .form .fieldset input:-webkit-autofill, .form .fieldset textarea:focus, .form .fieldset textarea:active, .form .fieldset textarea:hover, .form .fieldset textarea:autofill, .form .fieldset textarea:-webkit-autofill {
   border: none;
   outline: none;
   outline: solid 0.25rem;
 }
-.form .fieldset input:focus + label, .form .fieldset input:active + label, .form .fieldset input:not(:placeholder-shown) + label {
+.form .fieldset input:focus + label, .form .fieldset input:active + label, .form .fieldset input:not(:placeholder-shown) + label, .form .fieldset textarea:focus + label, .form .fieldset textarea:active + label, .form .fieldset textarea:not(:placeholder-shown) + label {
   top: -1rem;
-  left: 0.85rem;
+  left: 0.35rem;
   font-size: 0.85rem;
-  background-color: #053142;
-  padding: 0.1rem 0.5rem;
+  background-color: inherit;
+  padding: 0.1rem 0.55rem;
   border-radius: 5px;
 }
 .form .fieldset .input--eye {
@@ -18265,6 +18274,53 @@ footer {
   outline: none;
   flex: 1;
   padding: 0.15rem 0.25rem;
+}
+
+.copy-input {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+.copy-input input, .copy-input .btn {
+  z-index: 2;
+}
+.copy-input .btn {
+  flex: 1 1 30%;
+}
+.copy-input input {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  height: 100%;
+  flex: 1 1 70%;
+  padding-left: 0.5rem;
+}
+.copy-input .copy-input-modal {
+  position: absolute;
+  top: -100%;
+  right: 0;
+  padding: 0.75rem;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+  translate: 0% -80%;
+  rotate: 0deg;
+}
+.copy-input .copy-input-modal[aria-hidden=false] {
+  opacity: 1;
+}
+.copy-input .copy-input-modal::before {
+  position: absolute;
+  content: "";
+  right: 10%;
+  bottom: 0;
+  translate: 0% 100%;
+  border: solid 0.5rem;
+  border-color: transparent transparent transparent transparent;
+  width: 0;
+  height: 0;
+  z-index: -1;
 }
 
 .phamton {
@@ -18842,6 +18898,10 @@ footer {
   background-color: #0b4c67;
 }
 
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
 .opacity-1 {
   opacity: 1 !important;
 }
@@ -18860,6 +18920,16 @@ footer {
 
 .border-top-dark {
   border-top: 0.125rem #04212d solid !important;
+}
+
+.border-top-bg1 {
+  border-color: #04212d transparent transparent transparent !important;
+}
+.border-top-bg1::before {
+  border-color: #04212d transparent transparent transparent !important;
+}
+.border-top-bg1::after {
+  border-color: #04212d transparent transparent transparent !important;
 }
 
 .border-top-primary {
@@ -19020,12 +19090,20 @@ footer {
   width: 6rem;
 }
 
+.w-fit {
+  width: fit-content;
+}
+
 .h-135 {
   height: 1.35rem;
 }
 
 .rotate-90 {
   rotate: 90deg;
+}
+
+.h-150 {
+  height: 100px;
 }
 
 .h-150 {
@@ -19212,6 +19290,9 @@ index-1 {
   .order-md-2 {
     order: 2;
   }
+  .w-md-80 {
+    width: 80% !important;
+  }
 }
 @keyframes bounce {
   25% {
@@ -19259,6 +19340,29 @@ index-1 {
     translate: 0;
   }
 }
+@keyframes shakeRotating {
+  0% {
+    rotate: -10deg;
+  }
+  25% {
+    rotate: 10deg;
+  }
+  50% {
+    rotate: 5deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+@keyframes cursor {
+  50% {
+    opacity: 0.1;
+  }
+}
+.shake-rotating {
+  animation: shakeRotating 2s 1 ease forwards;
+}
+
 :root {
   --rgb-primary: 245, 200, 200;
   --nav-width: 250px;

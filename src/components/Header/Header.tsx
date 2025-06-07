@@ -17,8 +17,10 @@ function Header() {
     return (
         <header id="header" className="header" ref={headerRef}>
             <a href="#header" className="hidden w-0 position-absolute top-0 left-0"></a>
-            <SidebarToggler role='opener' />
-            {isDashboard ? <EndpunktHeaderToggler endpunkte={['artikel', 'benutzer']}/> : <BrandLogo />}
+            <div className="d-flex justify-content-center align-items-center h-100">
+                <SidebarToggler role='opener' />
+                {isDashboard ? <EndpunktHeaderToggler endpunkte={['artikel', 'benutzer']}/> : <BrandLogo />}
+            </div>
             <DropdownMenuMobile/>
             <div className="progress-bar"></div>
         </header>

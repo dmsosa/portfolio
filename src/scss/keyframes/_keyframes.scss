@@ -51,3 +51,25 @@
         translate: 0;
     }
  }
+  @keyframes shakeRotating {
+    0% {
+        rotate: -10deg;
+    }
+    25% {
+        rotate: 10deg;
+    }
+    50% {
+        rotate: 5deg;
+    }
+    100% {
+        rotate: 0deg;
+    }
+ }
+@keyframes cursor {
+    50% {
+        opacity: 0.1;
+    }
+}
+ .shake-rotating {
+    animation: shakeRotating 2s 1 ease forwards;
+ }

@@ -43,7 +43,7 @@ export default function ArtikelEditorForm() {
 
     }, []);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>  ) => {
         const name = e.currentTarget.name;
         const value = e.currentTarget.value;
         setFieldErrorMessages((prev) => ({...prev, [name]:[]}))
@@ -101,6 +101,7 @@ export default function ArtikelEditorForm() {
             <form className="form" onSubmit={handleSubmit}>
                 { errorMessageForm.length > 0 && <p>{errorMessageForm}</p>}
                 <FieldsetForm 
+                id="editor-title"
                 name="title"
                 type="text"
                 labelText="Title"
@@ -108,7 +109,8 @@ export default function ArtikelEditorForm() {
                 onChange={handleChange}
                 errorMessages={fieldErrorMessages.title}
                 />
-                <FieldsetForm 
+                <FieldsetForm
+                id="editor-description" 
                 name="description"
                 type="text"
                 labelText="Description"
@@ -117,6 +119,7 @@ export default function ArtikelEditorForm() {
                 errorMessages={fieldErrorMessages.description}
                 />
                 <FieldsetForm 
+                id="editor-body" 
                 name="body"
                 type="text"
                 labelText="Content"
@@ -124,7 +127,7 @@ export default function ArtikelEditorForm() {
                 onChange={handleChange}
                 errorMessages={fieldErrorMessages.body}
                 />
-                <TagsInput tagsArray={tags} parentHandler={handleTagChange} tagsLimit={10}/>
+                <TagsInput tagsArray={tags} parentHandler={handleTagChange}/>
                 <button type="submit" className="btn btn-primary">submit</button>
             </form>
         )

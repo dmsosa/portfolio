@@ -1,6 +1,7 @@
 # What is this? ![readmeLogo](https://github.com/user-attachments/assets/952cd8c9-7c15-41b7-9da0-a83186991296)
+> Answer: This is a React + TypeScript + Vite project, in which I created my personal portfolio and also added blog codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://realworld.io/) spec and API.
 
-## Answer: This is a React + TypeScript + Vite project, in which I created my personal portfolio and also added blog functionality to allow users to register and read my articles.
+This project was created to demonstrate a fully fledged fullstack application built with **React / Vite + TypeScript / Node.js / MongoDB** including CRUD operations, authentication, routing, pagination, and more.
 
 This README provides the minimal steps to get this working in your machine.
 
@@ -12,7 +13,7 @@ This codebase was created to demonstrate a fully fledged fullstack application b
 
 **[Demo app](https://conduit-realworld-example-app.fly.dev/)&nbsp;&nbsp;|&nbsp;&nbsp;[With Create React App](https://github.com/TonyMckes/conduit-realworld-example-app/tree/create-react-app)&nbsp;&nbsp;|&nbsp;&nbsp;[Other RealWorld Example Apps](https://codebase.show/projects/realworld?category=fullstack)**
 
-> For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+> For more information on how to this works keep reading this repo!
 
 ---
 

@@ -17,7 +17,7 @@ function Header() {
     return (
         <header id="header" className="header" ref={headerRef}>
             <a href="#header" className="hidden w-0 position-absolute top-0 left-0"></a>
-            <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="d-flex justify-content-start align-items-center h-100">
                 <SidebarToggler role='opener' />
                 {isDashboard ? <EndpunktHeaderToggler endpunkte={['artikel', 'benutzer']}/> : <BrandLogo />}
             </div>

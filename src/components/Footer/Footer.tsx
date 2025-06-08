@@ -18,9 +18,9 @@ export default function Footer() {
     return (
         <footer className="position-relative w-100 ">
             <FooterNav/>
-            <div className="container">
+            <div>
                 <div className="row row-cols-md-2 bg-2 p-5">
-                    <div className="col col-12">
+                    <div className="d-flex align-items-center justify-content-center flex-column">
                         <h2 className="h2 text-epic">
                             Want to work with me?
                         </h2>

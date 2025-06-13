@@ -21,16 +21,15 @@ export default function Dashboard() {
 
     return <div className="content px-3">
                 { isAuth ? <h1>Hallo {loggedUser?.username}</h1> : <BenutzerForms/>}
-                <div className="row pb-5">
-                    <div className="d-flex justify-content-center align-items-center w-80 mx-auto gap-3">
-                        <div className="d-flex justify-content-center align-items-center border border-width-2 bg-2 p-3 h-100">
-                            <h4>Total Artikeln</h4><span className="fs-3 align-self-center">{artikelnAnzahl}</span> 
-                        </div>
-                        <div className="d-flex justify-content-center align-items-center border border-width-2 bg-2 p-3 h-100">
-                            <h4>Total Benutzer</h4><span className="fs-3 align-self-center">{benutzerAnzahl}</span> 
-                        </div>
-                    </div>        
-                </div>
+                <div className="d-flex justify-content-center align-items-center gap-2
+                mt-2 mb-3">
+                    <div className="border border-width-2 bg-2 py-1 px-2 h-100">
+                        <span className="align-self-center">Total Artikeln: {artikelnAnzahl}</span> 
+                    </div>
+                    <div className="border border-width-2 bg-2 py-1 px-2 h-100">
+                        <span className="align-self-center">Total Benutzer: {benutzerAnzahl}</span> 
+                    </div>
+                </div>        
                 <EndpunktToggler endpunkte={['global', 'feed']}/>
                 <TagsInput tagsArray={tags} parentHandler={(t: string[]) => console.log(t)}/>
                 <div className="row">

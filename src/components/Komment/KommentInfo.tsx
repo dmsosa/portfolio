@@ -34,7 +34,7 @@ export default function KommentInfo({ id, username, bild, updatedAt, body, komme
     }
 
     return ( 
-        <div className="border-container p-2 mb-3 bg-second">
+        <div className="border p-2 mb-3 bg-second">
             <div className="d-flex justify-content-center align-items-center position-relative">
                 <Avatar username={username} bild={bild} expanded={true}>
                     <span>verified {updatedAt.toISOString()}</span>

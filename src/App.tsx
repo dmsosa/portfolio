@@ -1,6 +1,5 @@
 import './assets/css/styles.css'
 
-import ThemeToggler from './components/Widgets/Toggler/ThemeToggler'
 import { useRef } from 'react'
 import { SidebarContextProvider } from './context/SidebarContext'
 import { ThemeProvider } from './context/ThemeContext'
@@ -60,7 +59,6 @@ function App() {
       <TagsContextProvider>
       <SidebarContextProvider>
       <AuthFormContextProvider>
-        <ThemeToggler/>
         <SidebarNav/>
         <NavMobile />
         <FormModal />

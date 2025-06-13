@@ -1,22 +1,16 @@
+import { FaMoon, FaSun } from "react-icons/fa";
 import { useThemeContext } from "../../../context/ThemeContext";
 
-function ThemeToggler() {
+export default function ThemeToggler() {
     const { theme, setTheme } = useThemeContext();
-
-    const handleClick = () => {
-        if (theme === "light") {
-            setTheme("dark");
+    return <div className={`theme-toggler ${theme === 'dark' ? '': 'active'}`} onClick={() => {
+        if (theme === 'dark') {
+            setTheme('light');
         } else {
-            setTheme("light");
+            setTheme('dark');
         }
-    }
-
-    return (
-        <button className={`theme-toggler ${theme === "light" ? "dark":"light"}`} onClick={handleClick}>
-            <i className="bi bi-circle-half"></i>
-        </button>
-        
-    )
+    }}>
+            <FaSun className="sun"/>
+            <FaMoon className="moon"/>
+    </div>
 }
-
-export default ThemeToggler;

@@ -1,12 +1,13 @@
 $theme-light: (
     bg: $light,
     bg2: $light2,
+    bg3: $light3,
     border: $dark3,
     color: $dark,
     bg-1-hover-opacity-1: rgba($rgb-light3, 0.8),
     "header": (
         bg: rgba($rgb-light3, 0.8),
-        fill: $light,
-        stroke: $light
+        fill: $green-800,
+        stroke: $green-800
     )
 );

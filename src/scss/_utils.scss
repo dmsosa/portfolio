@@ -309,6 +309,24 @@ index-1 {
     animation: shake 0.2s 2 ease-in;
 }
 
+@media only screen and (min-width: 576px) {
+    .order-sm-0 {
+        order: 0;
+    }
+    .order-msmd-1 {
+        order: 1;
+    }
+    .order-sm-2 {
+        order: 2;
+    }
+    .w-sm-80 {
+        width: 80% !important;
+    }
+    .w-sm-100 {
+        width: 100% !important;
+    }
+    
+}
 @media only screen and (min-width: 768px) {
     .order-md-0 {
         order: 0;
@@ -322,4 +340,8 @@ index-1 {
     .w-md-80 {
         width: 80% !important;
     }
+    .w-md-100 {
+        width: 100% !important;
+    }
+    
 }

@@ -1,5 +1,5 @@
 import SidebarNavHeader from "./SidebarNavHeader";
-import { FaGithub, FaHome, FaLinkedin, FaUserAstronaut, FaUserTie, FaVoicemail, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaHome, FaInstagram, FaLinkedin, FaUserAstronaut, FaUserTie, FaYoutube } from "react-icons/fa";
 import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
 import LinksListe, { TLinkObject } from "../Widgets/LinksListe";
 import { useSidebarContext } from "../../context/SidebarContext";
@@ -8,11 +8,10 @@ import { useEffect, useState } from "react";
 
 
 const footerLinks: TLinkObject[] = [
-    { title: 'Email', to: 'mailto:dmsosa21@outlook.com', icon: <FaVoicemail />    },
+    { title: 'Instagram', to: 'https://www.instagram.com/duvi_official/', icon: <FaInstagram />    },
     { title: 'GitHub', to: 'https://github.com/dmsosa/', icon: <FaGithub/> },
     { title: 'LinkedIn', to: 'https://www.linkedin.com/in/durian-sosa-807147241/', icon: <FaLinkedin /> },
     { title: 'YouTube', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
-    { title: 'Home', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
 ]; 
 function SidebarNav() {
     const { expandedLeft } = useSidebarContext();

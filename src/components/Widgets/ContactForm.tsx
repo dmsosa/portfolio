@@ -1,7 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import FieldsetForm from "../Forms/FieldsetForm";
-import SvgListe from "./Svg/SvgListe";
-import CopyEmail from "../Footer/CopyEmail";
 
 export default function ContactForm() {
     const [{ email, message }, setForm ] = useState({ email: '', message: '' });
@@ -18,8 +16,6 @@ export default function ContactForm() {
         console.log(email, message)
     }
     return (
-        <div>
-            <h5 className="text-center mb-2">option 1</h5>
             <form className="form mb-4 w-100 w-md-80 mx-auto">
                 <FieldsetForm 
                 id="contact-email"
@@ -44,14 +40,6 @@ export default function ContactForm() {
                 errorMessages={fieldErrorMessages['message']}
                 />
                 <button type="submit" className="btn btn-primary w-50 mx-auto">Send</button>
-            </form>
-            <div className="w-100 w-md-80 mx-auto">
-                <h5 className="text-center mb-2">option 2</h5>
-                <CopyEmail />
-                <a href="mailto:dmsosa21@outlook.com" className="w-100 mx-auto p-1 text-decoration-none bg-primary d-block text-center btn fw-bold mb-3">send me your message</a>
-                <SvgListe icons={["wsp", "email", "github"]} />
-            </div>
-        </div>
-        
+            </form>        
     )
 }

@@ -129,7 +129,7 @@ export default function TagsInput({ tagsArray, parentHandler } : { tagsArray: st
         setMessage(`you can add up to ${tagsLimit} tags.`);
     }
     return (
-        <div className="tag-input-wrapper border-container container-2">
+        <div className="tag-input-wrapper border-container bg-2 border border-width-2">
             <div>
                 <div className="d-flex justify-content-start align-items-center gap-2">
                     <MdNewLabel/>

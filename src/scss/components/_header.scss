@@ -127,12 +127,14 @@
     position: absolute;
     top: 100%;
     left: 0;
-    height: 0;
+    max-height: 0;
     width: 100vw;
-    transition: height 0.2s ease;
+    height: fit-content;
+    transition: max-height 0.4s ease;
     box-shadow: 0px 0px 15px #111, 0px 0px 7px #111;
     &.show {
-        height: 10rem;
+        max-height: 100rem;
+            transition: max-height 0.4s ease;
     }
 }
 

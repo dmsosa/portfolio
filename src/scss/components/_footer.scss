@@ -16,20 +16,3 @@
     overflow: hidden;
     height: 115px;
 }
-#et {
-    width: 250px;
-    margin: 0 auto;
-    path {
-        fill: $primary;
-        stroke-dasharray: 5777px;
-        stroke-dashoffset: 0;
-        transition: fill 0.2s ease;
-    }
-    &:hover {
-        cursor: pointer;
-        path {
-            fill: $primary;
-            stroke-dashoffset: 5777px;
-        }
-    }
-}

@@ -1,9 +1,9 @@
 import { MouseEvent, useEffect, useState } from "react";
-import { FaHome, FaUserAstronaut, FaUserTie } from "react-icons/fa";
+import { FaGithub, FaHome, FaInstagram, FaLinkedin, FaUserAstronaut, FaUserTie, FaYoutube } from "react-icons/fa";
 import LinksListe, { TLinkObject } from "../Widgets/LinksListe";
 import { useAuth } from "../../context/AuthContext";
 import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
-import SocialLinks from "../Widgets/SocialLinks";
+import ThemeToggler from "../Widgets/Toggler/ThemeToggler";
 
 
 function DropdownBtn({ show, setShow } : { show:boolean, setShow: React.Dispatch<React.SetStateAction<boolean>> }) {
@@ -38,6 +38,12 @@ function DropdownDiv({ show } : { show:boolean }) {
     //Links logik
     const { isAuth, loggedUser } = useAuth();
     const [ links, setLinks ] = useState<TLinkObject[]>([]);
+    const footerLinks: TLinkObject[] = [
+        { title: 'Instagram', to: 'https://www.instagram.com/duvi_official/', icon: <FaInstagram />    },
+        { title: 'GitHub', to: 'https://github.com/dmsosa/', icon: <FaGithub/> },
+        { title: 'LinkedIn', to: 'https://www.linkedin.com/in/durian-sosa-807147241/', icon: <FaLinkedin /> },
+        { title: 'YouTube', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
+    ]; 
     //useEffect
     useEffect(() => {
         if (isAuth) {
@@ -62,11 +68,12 @@ function DropdownDiv({ show } : { show:boolean }) {
     }, [isAuth, loggedUser]);
     return (
             <div id="header-dropdown" className={`header-dropdown ${show ? "show":""} bg-2 `}>
-                <div>
+                <div className="p-2 pb-4">
                     <LinksListe links={links} column expanded fullWidth/>
+                    <ThemeToggler />
                 </div>
                 <div className="border-top-dark pt-1 pb-2 fs-4">
-                    <SocialLinks clazz="w-100 h-100 justify-content-center"/>
+                    <LinksListe links={footerLinks} clazz="w-100 h-100 justify-content-center"/>
                 </div>
             </div>        
     )

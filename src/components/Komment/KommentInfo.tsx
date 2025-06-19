@@ -5,6 +5,7 @@ import { TKommentDatei } from "../../hooks/useKomment";
 import Avatar from "../Widgets/Avatar";
 import KommentInput from "./KommentInput";
 import { useParams } from "react-router-dom";
+import { dateToString } from "../../utils/react-helpers";
 
 export default function KommentInfo({ id, username, bild, updatedAt, body, kommentArray, setParentData } :  { id: string, username: string ,  bild:string, updatedAt: Date, body:string, kommentArray: TKomment[], setParentData:  React.Dispatch<React.SetStateAction<TKommentDatei>>}) {
     
@@ -34,34 +35,33 @@ export default function KommentInfo({ id, username, bild, updatedAt, body, komme
     }
 
     return ( 
-        <div className="border p-2 mb-3 bg-second">
-            <div className="d-flex justify-content-center align-items-center position-relative">
+        <div className="border p-2 px-3 mb-3 bg-2">
+            <div className="d-flex justify-content-between align-items-center position-relative">
                 <Avatar username={username} bild={bild} expanded={true}>
-                    <span>verified {updatedAt.toISOString()}</span>
+                    <span className="position-absolute bottom-0 left-25">verified</span>
                 </Avatar>
-                <span className="position-absolute top-1 right-1">updated at</span>
+                <span className="position-absolute top-0 right-0 fs-7">{`updated at: ${dateToString(updatedAt)}`}</span>
+            </div>
+            <div>
                 { edit ? 
-                <KommentInput kommentId={id} slug={slug} author={username} body={body} setParentData={handleEdit}/> 
+                    <KommentInput kommentId={id} slug={slug} author={username} body={body} setParentData={handleEdit}/> 
                 : 
-                <div>
-                    <p>{body}</p>
-                </div>
+                    <textarea className="bg-1 p-2 my-2 w-100 border color-inherit textarea-fixed" rows={5} value={body} readOnly></textarea>
                 }
-                <div className="d-flex justify-content-center align-items-center ">
+            </div>
+            <div className="d-flex justify-content-end align-items-center gap-3">
                 { loggedUser?.username === username ? 
                     <>
                         <button className="btn btn-info" onClick={() => setEdit(true)}>Edit</button>
-                        <button className="btn btn-secondary" onClick={handleFollow}>View</button>
                         <button className="btn btn-danger" onClick={handleRemove}>Remove</button>
 
                     </>
                     :
                     <>
-                        <button className="btn btn-info" onClick={() => setEdit(true)}>Edit</button>
-                        <button className="btn btn-danger" onClick={handleLike}>Like</button>
+                        <button className="btn btn-info" onClick={handleLike}>Like</button>
+                        <button className="btn btn-danger" onClick={handleFollow}>Follow</button>
                     </>
                 }
-                </div>
             </div>
         </div>
     )

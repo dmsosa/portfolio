@@ -5,7 +5,7 @@ function Avatar({ bild, username, state, expanded=false, vertical=false, childre
 
 
     return (
-        <Link className={vertical ? 'link avatar avatar--vertical':'link avatar'} to={`/dashboard/profile/${username}`} state={state}>
+        <Link className={vertical ? 'link avatar avatar--vertical':'link avatar'} to={`/profile/${username}`} state={state}>
             <img src={bild} alt={`${username}'s profile image`} />
             {expanded && <span>{username}</span>}
             {children}

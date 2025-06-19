@@ -9,6 +9,7 @@ import CV from './routes/CV.tsx';
 import Profile from './routes/Profile.tsx';
 import NotFound from './routes/NotFound.tsx';
 import ArtikelEditor from './routes/ArtikelEditor.tsx';
+import Settings from './routes/Settings.tsx';
 
 createRoot(document.getElementById('app')!).render(
   <StrictMode>
@@ -22,6 +23,7 @@ createRoot(document.getElementById('app')!).render(
           <Route path='/profile/:username' element={<Profile />}></Route>
           <Route path='/cv' element={<CV />}></Route>
           <Route path='/editor' element={<ArtikelEditor />}></Route>
+          <Route path='/settings' element={<Settings />}></Route>
         </Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>

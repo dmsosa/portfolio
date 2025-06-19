@@ -18150,7 +18150,7 @@ progress {
   margin-bottom: 0rem;
 }
 .form .fieldset:not(:last-of-type) {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.54rem;
 }
 .form .fieldset:last-child {
   margin-bottom: 0;
@@ -18169,6 +18169,7 @@ progress {
 }
 .form .fieldset label {
   position: absolute;
+  z-index: 1;
   top: 0.5rem;
   left: 0.5rem;
   color: inherit;
@@ -18181,7 +18182,6 @@ progress {
   width: 100%;
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
-  background-color: transparent;
   color: inherit;
   outline: solid 0.25rem;
   outline-color: inherit;
@@ -18198,9 +18198,10 @@ progress {
   top: -1rem;
   left: 0.35rem;
   font-size: 0.85rem;
-  background-color: inherit;
   padding: 0.1rem 0.55rem;
   border-radius: 5px;
+  background-color: inherit;
+  z-index: 1;
 }
 .form .fieldset .input--eye {
   position: absolute;
@@ -18307,6 +18308,14 @@ progress {
   z-index: -1;
 }
 
+.textarea-fixed {
+  resize: none;
+}
+.textarea-fixed:focus, .textarea-fixed:active, .textarea-fixed:hover {
+  user-select: none;
+  outline: unset;
+}
+
 .phamton {
   position: absolute;
   overflow: hidden;
@@ -18344,8 +18353,10 @@ progress {
   height: 2rem;
   position: relative;
   overflow: hidden;
-  margin-bottom: 0.5rem;
-  border-radius: 10px;
+}
+
+.rounded-1 {
+  border-radius: 15px;
 }
 
 .phamton-line {
@@ -18928,6 +18939,10 @@ progress {
   border-width: 0.5rem !important;
 }
 
+.h-500 {
+  height: 500px;
+}
+
 .h-fit {
   max-height: fit-content !important;
 }
@@ -19128,6 +19143,22 @@ progress {
 
 .left-1 {
   left: 1rem;
+}
+
+.left-125 {
+  left: 1.25rem;
+}
+
+.left-2 {
+  left: 2rem;
+}
+
+.left-225 {
+  left: 2.25rem;
+}
+
+.left-25 {
+  left: 2.5rem;
 }
 
 .bottom-0 {
@@ -19433,15 +19464,6 @@ main {
   padding-bottom: 8rem;
 }
 
-.entity-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: start;
-  min-height: 400px;
-}
-
 .no-scroll {
   overflow: hidden !important;
 }
@@ -19734,6 +19756,7 @@ body.theme-dark .page-item {
 }
 
 .avatar {
+  position: relative;
   display: flex;
   justify-content: start;
   align-items: start;
@@ -19924,6 +19947,7 @@ ul.pagination {
   }
   .main-content .content.hero, .content-full-width, .main-content {
     grid-column: 1/4;
+    width: 100%;
     max-width: none;
   }
 }

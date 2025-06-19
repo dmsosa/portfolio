@@ -2,29 +2,32 @@ export function ArtikelInfoPhamton() {
     //if author, remove und edit knopf
     //if not: follow und fav knopf
     //slug
-        return (<div className="position relative mb-3 position-relative rounded bg-dark2 pt-5 px-0">
-                    <div className="d-flex justify-content-start align-items-center">
-                        <div className="phamton phamton-circle w-3 h-3 mx-3"></div>
-                        <div className="div">
-                            <div className="phamton phamton-square w-6 h-2"></div>
-                            <div className="phamton phamton-square w-6 h-1"></div>
+        return (<div className="position-relative bg-2 border mb-3">
+                    {/* CreatedAt */}
+                    <div className="phamton phamton-square position-absolute top-05 right-0 w-6 h-1 rounded-1"></div>
+                    {/* Avatar + Buttons */}
+                    <div className="d-flex justify-content-start align-items-center w-100 px-2 mt-4">
+                        <div className="d-flex justify-content-center align-items-start">
+                            <div className="phamton phamton-circle w-3 h-3"></div>
+                            <div className="phamton phamton-square w-3 h-1 rounded-1 ms-1"></div>
                         </div>
-                        <div className="d-flex justify-content-start align-items-center ms-5 flex-column flex-md-row">
-                            <div className="phamton phamton-square-round w-3 h-2 h-2"></div>
-                            <div className="phamton phamton-square-round w-3 h-2 ms-md-3"></div>
+                        <div className="d-flex justify-content-center align-items-center gap-1 ms-auto">
+                            <div className="phamton phamton-square w-3 h-2 rounded-1"></div>
+                            <div className="phamton phamton-square w-3 h-2 rounded-1"></div>
                         </div>
                     </div>
-                    <div className="phamton phamton-square h-2 w-6 ms-5"></div>
-                    <div className="phamton phamton-square h-6 w-75 ms-5"></div>
-                    <div className="phamton phamton-line w-75 h-1 mx-auto"></div>
-                    <div className="d-flex justify-content-start align-items-center mt-1 w-75 ms-5">
+                    {/* Description + Body */}
+                    <div className="px-2 w-100 mt-1">
+                        <div className="phamton phamton-square h-2 mb-1"></div>
+                        <div className="phamton phamton-square h-6"></div>
+                    </div>
+                    {/* Buttons */}
+                    <div className="d-flex justify-content-start align-items-center px-2 mt-1 w-100 border">
                         <div className="phamton phamton-square w-3"></div>
                         <div className="phamton phamton-square w-3 ms-3"></div>
                         <div className="phamton phamton-square w-3 ms-3"></div>
                         <div className="phamton phamton-square w-3 ms-3"></div>
-                        <div className="phamton phamton-square w-3 ms-3"></div>
                     </div>
-                    <div className="phamton phamton-square position-absolute top-1 right-1 w-6 h-1"></div>
                 </div>
     )
 }
@@ -32,23 +35,22 @@ export function BenutzerInfoPhamton() {
     //if author, remove und edit knopf
     //if not: follow und fav knopf
     //slug
-        return (<div className="position relative mb-3 position-relative rounded bg-dark2 py-3 px-0">
-                    <div className="d-flex justify-content-start align-items-center">
-                        <div className="phamton phamton-circle w-3 h-3 mx-3"></div>
-                        <div className="div">
-                            <div className="phamton phamton-square w-6 h-2"></div>
-                            <div className="phamton phamton-square w-6 h-1"></div>
-                        </div>
-                        <div className="d-flex justify-content-start align-items-center ms-5">
-                            <div className="phamton phamton-square-round w-3 "></div>
-                        </div>
+        return (<div className="position-relative bg-2 border mb-3">
+                    {/* CreatedAt */}
+                    <div className="phamton phamton-square position-absolute top-05 right-0 w-6 h-1 rounded-1"></div>
+                    {/* Avatar + Buttons */}
+                    <div className="d-flex justify-content-start align-items-start px-2 mb-1 mt-4 w-100">
+                        <div className="phamton phamton-circle w-3 h-3"></div>
+                        <div className="phamton phamton-square w-3 h-1 rounded-1 ms-1"></div>
                     </div>
-                    <div className="phamton phamton-line w-75 h-1 ms-5 mt-3"></div>
-                    <div className="phamton phamton-square w-75 h-6 ms-5"></div>
-                    <div className="d-flex justify-content-start align-items-center mt-1 w-75 ms-5">
-                        <div className="phamton phamton-square w-6"></div>
-                        <div className="phamton phamton-square w-6 ms-3"></div>
-                        <div className="phamton phamton-square w-6 ms-3"></div>
+                    {/* Description + Body */}
+                    <div className="px-2 w-100 mt-1">
+                        <div className="phamton phamton-square h-2 mb-1"></div>
+                    </div>
+                    {/* Buttons */}
+                    <div className="d-flex justify-content-end align-items-center px-2 mt-1 w-100 border">
+                        <div className="phamton phamton-square w-3"></div>
+                        <div className="phamton phamton-square w-3 ms-3"></div>
                     </div>
                 </div>
     )
@@ -57,24 +59,30 @@ export function KommentInfoPhamton() {
     //if author, remove und edit knopf
     //if not: follow und fav knopf
     //slug
-        return (<div className="position relative mb-3 position-relative rounded bg-dark2 py-3 px-0">
-            <div className="d-flex justify-content-start align-items-center">
-                <div className="phamton phamton-circle w-4 h-4 mx-3"></div>
-                <div className="div">
-                    <div className="phamton phamton-square w-6 h-2"></div>
-                    <div className="phamton phamton-square w-6 h-1"></div>
+        return (<div className="position-relative bg-2 border mb-3">
+                    {/* CreatedAt */}
+                    <div className="phamton phamton-square position-absolute top-05 right-0 w-6 h-1 rounded-1"></div>
+                    {/* Avatar + Buttons */}
+                    <div className="d-flex justify-content-start align-items-center w-100 px-2 mt-4">
+                        <div className="d-flex justify-content-center align-items-start">
+                            <div className="phamton phamton-circle w-3 h-3"></div>
+                            <div className="phamton phamton-square w-3 h-1 rounded-1 ms-1"></div>
+                        </div>
+                        <div className="d-flex justify-content-center align-items-center gap-1 ms-auto">
+                            <div className="phamton phamton-square w-3 h-2 rounded-1"></div>
+                            <div className="phamton phamton-square w-3 h-2 rounded-1"></div>
+                        </div>
+                    </div>
+                    {/* Description + Body */}
+                    <div className="px-2 w-100 mt-1">
+                        <div className="phamton phamton-square h-6"></div>
+                    </div>
+                    {/* Buttons */}
+                    <div className="d-flex justify-content-end align-items-center px-2 mt-1 w-100 border">
+                        <div className="phamton phamton-square w-3"></div>
+                        <div className="phamton phamton-square w-3 ms-3"></div>
+                    </div>
                 </div>
-            </div>
-            <div className="phamton phamton-line w-75 h-1 ms-5"></div>
-            <div className="phamton phamton-line w-75 h-1 ms-5"></div>
-            <div className="phamton phamton-line w-75 h-1 ms-5"></div>
-            <div className="d-flex justify-content-start align-items-center mt-1 w-75 ms-5">
-                <div className="phamton phamton-square w-6"></div>
-                <div className="phamton phamton-square w-6 ms-3"></div>
-                <div className="phamton phamton-square w-6 ms-3"></div>
-            </div>
-            <div className="phamton phamton-square position-absolute top-1 right-1 w-3 h-1"></div>
-        </div>
     )
 }
 export function PaginationPhamton() {
@@ -82,12 +90,13 @@ export function PaginationPhamton() {
     //if not: follow und fav knopf
     //slug
         return (
-            <div className="d-flex justify-content-start align-items-center mt-1 w-75 mx-auto">
-                <div className="phamton phamton-square w-4"></div>
-                <div className="phamton phamton-square w-4 ms-3"></div>
-                <div className="phamton phamton-square w-4 ms-3"></div>
-                <div className="phamton phamton-square w-4 ms-3"></div>
-                <div className="phamton phamton-square w-4 ms-3"></div>
+            <div className="d-flex justify-content-center align-items-center mt-1 w-100">
+                <div className="phamton phamton-square w-2 rounded-1"></div>
+                <div className="phamton phamton-square w-2 ms-3 rounded-1"></div>
+                <div className="phamton phamton-square w-2 ms-3 rounded-1"></div>
+                <div className="phamton phamton-square w-2 ms-3 rounded-1"></div>
+                <div className="phamton phamton-square w-2 ms-3 rounded-1"></div>
+                <div className="phamton phamton-square w-2 ms-3 rounded-1"></div>
             </div>
     )
 }
@@ -96,9 +105,9 @@ export function ArtikelArrayPhamton() {
     //if not: follow und fav knopf
     //slug
         return (<div>
-            <BenutzerInfoPhamton/>
             <ArtikelInfoPhamton/>
-            <KommentInfoPhamton/>
+            <ArtikelInfoPhamton/>
+            <ArtikelInfoPhamton/>
             <PaginationPhamton/>
         </div>)
 }
@@ -114,35 +123,32 @@ export function BenutzerArrayPhamton() {
         </div>)
 }
 export function KommentArrayPhamton() {
-    //if author, remove und edit knopf
-    //if not: follow und fav knopf
-    //slug
         return (<div>
-            <ArtikelInfoPhamton/>
-            <BenutzerInfoPhamton/>
+            <KommentInfoPhamton/>
+            <KommentInfoPhamton/>
             <KommentInfoPhamton/>
             <PaginationPhamton/>
         </div>)
 }
 
 export function PhamtonBg() {
-    return (<div className="content entity-content px-2">
+    return (<div className="content content-full-width h-500 d-flex position-relative d-flex justify-content-end align-items-end">
                 <div className="phamton phamton-bg"></div>
                 <PhamtonAvatar/>
             </div>)
 }
 export function PhamtonAvatar() {
     return (
-        <div className="d-flex justify-content-center align-items-center position-relative rounded bg-dark2 p-2 align-self-end w-md-50 ms-md-5 me-md-auto">
-                    <div className="phamton phamton-circle w-3 h-3 mx-3"></div>
-                    <div className="div">
-                        <div className="phamton phamton-square w-4 h-2"></div>
-                        <div className="phamton phamton-square w-4 h-1"></div>
+        <div className="d-flex justify-content-start align-items-center position-relative bg-2 py-2 px-4 w-100">
+                    <div className="phamton phamton-circle w-3 h-3"></div>
+                    <div className="div ms-1">
+                        <div className="phamton phamton-square w-4 h-2 rounded-1 mb-1"></div>
+                        <div className="phamton phamton-square w-4 h-1 rounded-1"></div>
                     </div>
 
-                    <div className="d-flex justify-content-start align-items-center ms-5 flex-column flex-md-row">
-                        <div className="phamton phamton-square-round w-4"></div>
-                        <div className="phamton phamton-square-round w-4  ms-md-3"></div>
+                    <div className="d-flex justify-content-start align-items-center ms-auto gap-1">
+                        <div className="phamton phamton-square-round w-3 rounded-1"></div>
+                        <div className="phamton phamton-square-round w-3 rounded-1"></div>
                     </div>
                 </div>
     )
@@ -159,10 +165,55 @@ export function PhamtonToggler() {
 
 export function PhamtonInput() {
     return (
-        <div className="d-flex align-items-center justify-content-start mt-3 bg-dark2 rounded w-75 ms-1 me-auto mb-2 py-2 px-2">
-            <div className="phamton phamton-square w-4 h-2"></div>
-            <div className="phamton phamton-square-round w-80 ms-3"></div>
-            <div className="phamton phamton-square-round w-6 ms-3"></div>
+        <div className="d-flex align-items-center justify-content-start mt-3 bg-2 border border-width-2 w-75 ms-0 me-auto mb-2 p-2">
+            <div className="phamton phamton-square w-4 h-2 rounded-1"></div>
+            <div className="phamton phamton-square-round w-80 ms-3 rounded-1"></div>
+            <div className="phamton phamton-square-round w-6 ms-3 rounded-1"></div>
         </div>
+    )
+}
+
+export function ArtikelPhamton() {
+    return (
+        <>
+            {/* PhamptonHeroSection */}
+            <PhamtonBg/>
+            {/* //////////////////////////////////////////// */}
+
+            
+            <div className="content w-100">
+            {/* PhamtonBodyDescriptionSection */}
+                <div className="phamton phamton-square w-80 h-6 mx-auto mt-2 rounded-1"></div>
+                <div className="phamton phamton-square w-80 mx-auto h-300 mt-3 rounded-1"></div>
+            {/* //////////////////////////////////////////// */}
+             {/* PhamtonKommentSection */}
+                <PhamtonInput/>
+                <KommentArrayPhamton/>
+            {/* //////////////////////////////////////////// */}
+            {/* PhamtonReadMoreSection */}
+                <PhamtonToggler/>
+                <ArtikelArrayPhamton/>
+            {/* //////////////////////////////////////////// */}
+            </div>
+        </>
+    )
+}
+export function ProfilePhamton() {
+    return (
+        <>
+            {/* PhamptonHeroSection */}
+            <PhamtonBg/>
+            {/* //////////////////////////////////////////// */}
+            <div className="content w-100">
+            {/* PhamtonBodyDescriptionSection */}
+                <div className="phamton phamton-square w-80 h-6 mx-auto mt-2 rounded-1"></div>
+                <div className="phamton phamton-square w-80 mx-auto h-300 mt-3 rounded-1"></div>
+            {/* //////////////////////////////////////////// */}
+            {/* PhamtonReadMoreSection */}
+                <PhamtonToggler/>
+                <ArtikelArrayPhamton/>
+            {/* //////////////////////////////////////////// */}
+            </div>
+        </>
     )
 }

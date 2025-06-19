@@ -1,7 +1,7 @@
 import mainbg from "../assets/img/mainbg.jpg"
 import { useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { ArtikelArrayPhamton, KommentArrayPhamton, PhamtonBg, PhamtonInput, PhamtonToggler } from "../components/Widgets/Phamton/Phamton";
+import { ArtikelPhamton } from "../components/Widgets/Phamton/Phamton";
 import Avatar from "../components/Widgets/Avatar";
 import ArtikelKnopf from "../components/Widgets/Knopfen/ArtikelKnopf";
 import KommentSection from "../components/Komment/KommentSection";
@@ -9,24 +9,30 @@ import { useEffect, useState } from "react";
 import { TArtikel, TBenutzer } from "../data/types";
 import { artikelObject } from "../data/artikel.data";
 import { getArtikel } from "../services/article.services";
+import useArtikeln from "../hooks/useArtikeln";
+import useBenutzer from "../hooks/useBenutzer";
+import { useEndpunkt } from "../context/EndpunktContext";
+import ArtikelArray from "../components/Artikel/ArtikelArray";
+import BenutzerArray from "../components/Benutzer/BenutzerArray";
 
+const defaultArtikel = artikelObject['arcu-et-pede-nunc-sed'];
 
 export default function Artikel() {
     //Artikel Daten
     const { slug } = useParams();
-    const [ artikel, setArtikel ] = useState<TArtikel>(artikelObject['arcu-et-pede-nunc-sed']);
+    const [ artikel, setArtikel ] = useState<TArtikel>(defaultArtikel);
     const [ loading, setLoading ] = useState<boolean>(false);
+    const { entity, endpunkt } = useEndpunkt();
     const { headers } = useAuth();
+
+    const limit = 3;
+
     useEffect(() => {
         if (!slug) return;
         setLoading(true);
         getArtikel({ headers: headers || {}, slug })
-        .then((artikelData) => {
-            setArtikel(artikelData);
-        })
-        .catch((error) => {
-            console.error('Error fetching artikel data', error);
-        })
+        .then((artikelData) => setArtikel(artikelData))
+        .catch(console.error)
         .finally(() => setLoading(false));
     }, [ slug, artikel])
 
@@ -37,14 +43,17 @@ export default function Artikel() {
     const handleFav = (artikel: TArtikel) => {
         setArtikel(artikel);
     }
-    // Artikeln und Benutzer Array
+    //Artikeln und Benutzer Array
+    const { loadingArtikeln, artikeln, artikelnAnzahl, setArtikelnDatei, setOffsetArtikeln } = useArtikeln({ endpunkt, limit});
+    const { loadingBenutzer, benutzerArray, benutzerAnzahl, setBenutzerDatei, setOffsetBenutzer } = useBenutzer( { endpunkt, limit });
 
     return loading 
-        ? <ArtikelPhampton />
+        ? <ArtikelPhamton />
         : 
         (
             <>
-            <div className="content entity-content content-full-width">
+            {/* ArtikelHeroSection */}
+            <div className="content position-relative d-flex flex-column align-items-center justify-content-end h-500 content-full-width px-5">
                 <div className="main-bg index-1">
                     <img src={mainbg} alt={`artikeln Hintergrund`} />
                 </div>
@@ -55,44 +64,30 @@ export default function Artikel() {
                     </div>
                 </div>
             </div>
-            <div className="content py-6">
+            {/* //////////////////////////////////////////// */}
+            {/* ArtikelTitleBodyDescriptionSection */}
+            <div className="content py-4">
                 <div >
                     <h1 className="text-center">{artikel.title}</h1>
                     <p className="text-center">{artikel.description}</p>
                     <p className="text-center">{artikel.body}</p>
                 </div>
-                <KommentSection />
-                <div>
-                    <h1>Read more</h1>
-                    <KommentArrayPhamton/>
-                </div>
             </div>
+            {/* //////////////////////////////////////////// */}
+            {/* ArtikelKommentSection */}
+            <KommentSection />
+            {/* //////////////////////////////////////////// */}
+            <div className="content">
+                <h3>Keep reading</h3>
+                { entity === 'artikel' ?
+                <ArtikelArray loading={loadingArtikeln} array={artikeln} artikelAnzahl={artikelnAnzahl} setArrayData={setArtikelnDatei} limit={limit} setOffset={setOffsetArtikeln} />
+                    :
+                <BenutzerArray loading={loadingBenutzer} array={benutzerArray} benutzerAnzahl={benutzerAnzahl} setArrayData={setBenutzerDatei} limit={limit} setOffset={setOffsetBenutzer}/>
+                }
+            </div>
+            {/* //////////////////////////////////////////// */}
             </>
         )
         
 }
 
-function ArtikelPhampton() {
-    return (
-        <>
-            <PhamtonBg/>
-            <div className="content py-6 px-2 p-md-0">
-                <div className="phamton phamton-square w-75 h-6 ms-1"></div>
-                <div className="phamton phamton-square w-80 mx-auto h-500 mt-3"></div>
-                <div className="d-flex justify-content-start align-items-center mt-1">
-                    <div className="phamton phamton-square w-6"></div>
-                    <div className="phamton phamton-square w-6 ms-3"></div>
-                    <div className="phamton phamton-square w-6 ms-3"></div>
-                    <div className="phamton phamton-square w-6 ms-3"></div>
-                    <div className="phamton phamton-square w-6 ms-3"></div>
-                </div>
-                <PhamtonToggler/>
-                <ArtikelArrayPhamton/>
-                <PhamtonInput/>
-                <KommentArrayPhamton/>
-            </div>
-        </>
-        
-
-    )
-}

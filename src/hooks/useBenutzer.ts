@@ -9,15 +9,15 @@ export type TBenutzerDatei = {
     benutzerArray: TBenutzer[],
 }
 
-export default function useBenutzer({ endpunkt, username } : {
+export default function useBenutzer({ endpunkt, username, limit=6 } : {
     endpunkt: 'global' | 'feed' | 'author' | 'favorite' | 'followers';
     username?: string | undefined, 
+    limit?: number,
 }) {
-    const [ { benutzerAnzahl, benutzerArray }, setBenutzerDatei ] = useState<TBenutzerDatei>({ benutzerAnzahl: 0, benutzerArray: []});
+    const [ { benutzerAnzahl, benutzerArray }, setBenutzerDatei ] = useState<TBenutzerDatei>({ benutzerAnzahl: benutzerStaticArray.length, benutzerArray: benutzerStaticArray.slice(0, limit)});
     const [ loadingBenutzer, setLoading ] = useState< boolean >(false);
     const [ offset, setOffsetBenutzer ] = useState<number>(0);
     const { headers } = useAuth();
-    const limit = 3;
     useEffect(() => {
         getAllBenutzer({ headers, endpunkt, username, limit, offset})
         .then((benutzerDatei) => {
@@ -25,7 +25,6 @@ export default function useBenutzer({ endpunkt, username } : {
         })
         .catch((error) => {
             console.log('Fehler bei Abrufen den Benutzer:', error);
-            setBenutzerDatei({ benutzerAnzahl:  benutzerStaticArray.length, benutzerArray: benutzerStaticArray });
         })
 
         .finally(() => setLoading(false));

@@ -12,7 +12,7 @@ export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel,
                     <div className="position-relative">
                         <Avatar bild={artikel.author.image} username={artikel.author.username} expanded />
                     </div>
-                    <Link  to={`/dashboard/artikel/${artikel.slug}`} className="text-decoration-none link">
+                    <Link  to={`/artikel/${artikel.slug}`} className="text-decoration-none link">
                         <h3>{artikel.title}</h3>
                         <p>{artikel.body.slice(0, 300)}</p>
                     </Link>
@@ -26,11 +26,11 @@ export default function ArtikelInfo({ artikel, children } : { artikel: TArtikel,
                     <hr></hr>
                     <div className="d-flex justify-content-between align-items-center">
                         {children}
-                        <Link to={`/dashboard/artikel/${artikel.slug}`}><FaRegCommentDots className="me-2"/>
+                        <Link to={`/artikel/${artikel.slug}`}><FaRegCommentDots className="me-2"/>
                         {artikel.commentsCount}
                         </Link>
 
-                        <Link to={`/dashboard/artikel/${artikel.slug}`}><AiOutlineRead/></Link>
+                        <Link to={`/artikel/${artikel.slug}`}><AiOutlineRead/></Link>
                     </div>
                 </div>)
         

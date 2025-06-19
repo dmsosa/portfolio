@@ -5,14 +5,14 @@ const instance = axios.create({
     baseURL: 'http://localhost:3000/api',
     timeout: 1000,
   });
-export async function getArtikeln({ headers, endpunkt, username, tags, offset, limit=3 } : 
+export async function getArtikeln({ headers, endpunkt, username, tags, offset=0, limit=3 } : 
     { 
         headers: Record<string, string>,
         endpunkt: 'global' | 'feed' | 'favorite' | 'author' | 'followers',
         username?: string | undefined, 
         tags?: string,
-        offset: number,
-        limit: number,
+        offset?: number,
+        limit?: number,
     }) {
     try {
         const searchParams = new URLSearchParams();
@@ -44,14 +44,17 @@ export async function getArtikel({ headers, slug } : {
 }) : Promise<TArtikel> {
     try {
         const url = `/artikel/${slug}`;
-        const res = await axios.get(url, {
+        const res = await instance.get(url, {
             headers
         });
-        
-        return res.data;
+        const data = await res.data;
+        if (typeof data === 'string' || data ) {
+            throw new Error(`Fehler bei Anrufen von Artikel bei Slug: ${res.statusText} : ${res.status}`)
+        } else {
+            return data;
+        }
     } catch (error) {
-        console.error(error);
-        throw (error);
+        throw error;
     }
 } 
 export async function postArtikel({ headers, title, description, body, tags } : { 

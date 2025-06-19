@@ -62,8 +62,9 @@ export function getCookie(cname: string){
     }
     return ""; 
 }
-
+//Parse Date
 export function dateToString(date: Date) {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' } as const;
     return new Intl.DateTimeFormat('de-DE', options).format(new Date(date));
 }
+

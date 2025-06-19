@@ -13,17 +13,17 @@ export default function FooterNav() {
         switch (href) {
             case '/home': {
                 setPrev('/dashboard');
-                setNext('/dashboard/cv');
+                setNext('/cv');
                 break;
             };
             case '/artikel': {
                 setPrev('/dashboard');
-                setNext('/dashboard/profile');
+                setNext('/profile');
                 break;
             };
             case '/profile': {
                 setPrev('/dashboard');
-                setNext('/dashboard/artikel');
+                setNext('/artikel');
                 break;
             };
             case '/cv': {
@@ -33,12 +33,12 @@ export default function FooterNav() {
             };
             case '/editor': {
                 setPrev('/dashboard');
-                setNext('/dashboard/settings');
+                setNext('/settings');
                 break;
             };
             case '/settings': {
                 setPrev('/dashboard');
-                setNext('/dashboard/cv');
+                setNext('/cv');
                 break;
             };
         }
@@ -50,23 +50,23 @@ export default function FooterNav() {
                 break;
             };
             case '/artikel': {
-                window.location.href = '/dashboard/artikel';
+                window.location.href = '/artikel';
                 break;
             };
             case '/profile': {
-                window.location.href = '/dashboard/profile';
+                window.location.href = '/profile';
                 break;
             };
             case '/cv': {
-                window.location.href = '/dashboard/cv';
+                window.location.href = '/cv';
                 break;
             };
             case '/editor': {
-                window.location.href = '/dashboard/editor';
+                window.location.href = '/editor';
                 break;
             };
             case '/settings': {
-                window.location.href = '/dashboard/settings';
+                window.location.href = '/settings';
                 break;
             };
             default : {

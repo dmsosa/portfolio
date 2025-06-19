@@ -23,7 +23,7 @@ function Portfolio() {
     //     })
     // }, { scope: sectionRef })
     return (
-            <div className="d-flex flex-column flex-sm-row flex-wrap gap-4 justify-content-center align-items-center">
+            <div ref={sectionRef} className="d-flex flex-column flex-sm-row flex-wrap gap-4 justify-content-center align-items-center">
                 {projectsArray.map((project, index) => {
                     return (
                         <ProjektKarte

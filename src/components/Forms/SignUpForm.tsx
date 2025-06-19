@@ -18,7 +18,7 @@ export default function SignUpForm() {
     const [ formMessage, setFormMessage ] = useState<TFormMessage>({ isError: true, message: ''});
     const [ fieldErrorMessages, setFieldErrorMessages ] = useState<{[key:string]: string[]}>(noErrors);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> ) => {
         const name = e.target.name;
         const val = e.target.value;
         setForm((prev) => ({ ...prev, [name]:val }))
@@ -58,6 +58,7 @@ export default function SignUpForm() {
         <form onSubmit={handleSubmit} className="form modal-form-front">
             <p className={`${formMessage.isError ? 'form-error':'form-message'} ${formMessage.message.length > 1 && 'visible'}`}>{formMessage.message}</p>
             <FieldsetForm
+            id="register-username"
             type="text"
             name="username"
             labelText="Username"
@@ -67,6 +68,7 @@ export default function SignUpForm() {
             errorMessages={fieldErrorMessages['username']}
             ></FieldsetForm>
             <FieldsetForm
+            id="register-email"
             type="email"
             name="email"
             labelText="Email Addresse"
@@ -76,6 +78,7 @@ export default function SignUpForm() {
             errorMessages={fieldErrorMessages['email']}
             ></FieldsetForm>
             <FieldsetForm
+            id="register-password"
             type="password"
             name="password"
             labelText="Passwort"

@@ -19,7 +19,7 @@ export default function LoginForm() {
 
 
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement> ) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> ) => {
         const name = e.target.name;
         const val = e.target.value;
         setForm((prev) => ({ ...prev, [name]:val }))
@@ -44,6 +44,7 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit} className="form">
             <p className={`${formMessage.isError ? 'form-error':'form-message'} ${formMessage.message.length > 1 && 'visible'}`}>{formMessage.message}</p>
             <FieldsetForm
+                id="login-email"
                 name="email"
                 labelText="Email-Addresse"
                 type="email"
@@ -53,6 +54,7 @@ export default function LoginForm() {
                 errorMessages={[]}
             ></FieldsetForm>
             <FieldsetForm
+                id="login-password"
                 name="password"
                 labelText="Passwort"
                 required

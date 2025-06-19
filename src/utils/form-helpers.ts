@@ -97,6 +97,48 @@ export const artikelValidators: {[key: string]: TFieldValidator} = {
         isValid: true,
         },
 }
+export const settingsValidators: {[key: string]: TFieldValidator} = {
+        'username': {
+            name: 'title',
+            isRequired: true,
+            minLength: 6,
+            maxLength: 28,
+            errorMessages: [],
+            isValid: true,
+        },
+        'email': {
+        name: 'description',
+        isRequired: true,
+        minLength: 10,
+        maxLength: 5000,
+        errorMessages: [],
+        isValid: true,
+        },
+        'password': {
+        name: 'body',
+        isRequired: true,
+        minLength: 50,
+        maxLength: undefined,
+        errorMessages: [],
+        isValid: true,
+        },
+        'bio': {
+        name: 'bio',
+        isRequired: true,
+        minLength: 10,
+        maxLength: 555,
+        errorMessages: [],
+        isValid: true,
+        },
+        'image': {
+        name: 'image',
+        isRequired: true,
+        requiredRegExp: new RegExp('(http:|https:)+[^\s]+[\w]'),
+        requiredRegExpDescription: 'the image must be a valid URL',
+        errorMessages: [],
+        isValid: true,
+        },
+}
 export const kontakFormValidators: {[key: string]: TFieldValidator} = {
         'email': {
             name: 'email',
@@ -120,7 +162,6 @@ export  function validate(validator: TFieldValidator, value: string | Date | num
                 validator.errorMessages = [];
                 validator.isValid = true;
 
-                //check if value is an array of strings first
                 validator.isValid = runValidations(validator, value);
 
                 return validator.isValid;

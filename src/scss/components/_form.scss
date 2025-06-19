@@ -54,7 +54,7 @@
         background-color: inherit;
         margin-bottom: 0rem;
         &:not(:last-of-type) {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.54rem;
         }
         &:last-child {
             margin-bottom: 0;
@@ -73,6 +73,7 @@
         }
         label {
             position: absolute;
+            z-index: 1;
             top: 0.5rem;
             left: 0.5rem;
             color: inherit;
@@ -85,7 +86,6 @@
             width: 100%;
             padding: .5rem .75rem;
             border-radius: 10px;
-            background-color: transparent;
             color: inherit;
             outline: solid 0.25rem;
             outline-color: inherit;
@@ -103,9 +103,10 @@
                 top: -1rem;
                 left: 0.35rem;
                 font-size: 0.85rem;
-                background-color: inherit;
                 padding: 0.1rem 0.55rem;
                 border-radius: 5px;
+                background-color: inherit;
+                z-index: 1;
             }
         }
         .input--eye {
@@ -213,4 +214,12 @@
         }
     }
 
+}
+
+.textarea-fixed {
+    resize: none;
+    &:focus,&:active,&:hover {
+        user-select: none;
+        outline: unset;
+    }
 }

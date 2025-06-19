@@ -4,10 +4,8 @@ import BenutzerInfo from "./BenutzerInfo";
 import ArrayPagination from "../Widgets/ArrayPagination";
 import BenutzerKnopf from "../Widgets/Knopfen/BenutzerKnopf";
 
-export default function BenutzerArray({ loading, array, setArrayData, benutzerAnzahl, setOffset }: { loading: boolean, array: TBenutzer[], setArrayData: React.Dispatch<React.SetStateAction<TBenutzerDatei>>, benutzerAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
-    
-    const pageAnzahl = Math.ceil(benutzerAnzahl/3);   
-    const handleFollow = (benutzer: TBenutzer) => {
+export default function BenutzerArray({ loading, array, setArrayData, benutzerAnzahl, limit, setOffset }: { loading: boolean, array: TBenutzer[], setArrayData: React.Dispatch<React.SetStateAction<TBenutzerDatei>>, benutzerAnzahl: number, limit: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
+        const handleFollow = (benutzer: TBenutzer) => {
         const updatedArray = array.map((b) =>
             b.username === benutzer.username ? { ...b, isFollowing: benutzer.isFollowing }  : b,
         );
@@ -37,7 +35,7 @@ export default function BenutzerArray({ loading, array, setArrayData, benutzerAn
                 </BenutzerInfo>
                 )
             }
-            <ArrayPagination loading={loading} pageAnzahl={pageAnzahl} setOffset={setOffset} />
+            <ArrayPagination loading={loading} pageAnzahl={Math.ceil(benutzerAnzahl/limit)} setOffset={setOffset} />
         </div>
     )
 }

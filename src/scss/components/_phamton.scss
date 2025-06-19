@@ -34,8 +34,10 @@
     height: 2rem;
     position: relative;
     overflow: hidden;
-    margin-bottom: 0.5rem;
-    border-radius: 10px;
+
+}
+.rounded-1 {
+    border-radius: 15px;
 }
 .phamton-line {
     max-height: 0.25rem;

@@ -5,9 +5,8 @@ import ArtikelInfo, {  KeinArtikel } from "./ArtikelInfo";
 import { ArtikelArrayPhamton } from "../Widgets/Phamton/Phamton";
 import ArtikelKnopf from "../Widgets/Knopfen/ArtikelKnopf";
 
-export default function ArtikelArray({ loading, array, setArrayData, artikelAnzahl, setOffset }: { loading: boolean, array: TArtikel[], setArrayData: React.Dispatch<React.SetStateAction<TArtikelnDatei>>, artikelAnzahl: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
+export default function ArtikelArray({ loading, array, setArrayData, artikelAnzahl, limit, setOffset }: { loading: boolean, array: TArtikel[], setArrayData: React.Dispatch<React.SetStateAction<TArtikelnDatei>>, artikelAnzahl: number, limit: number, setOffset: React.Dispatch<React.SetStateAction<number>>}) {
 
-    const pageAnzahl = Math.ceil(artikelAnzahl/3);
     //Karte mit Knopf
     const handleFollow = (benutzer: TBenutzer) => {
         const items = [...array];
@@ -50,7 +49,7 @@ export default function ArtikelArray({ loading, array, setArrayData, artikelAnza
                             <ArtikelKnopf artikel={art} handleFollow={handleFollow} handleFav={handleFav}/>
                         </ArtikelInfo>
                         )}
-            <ArrayPagination loading={loading} pageAnzahl={pageAnzahl} setOffset={setOffset} />
+            <ArrayPagination loading={loading} pageAnzahl={Math.ceil(artikelAnzahl/limit)} setOffset={setOffset} />
         </div>
         
     )

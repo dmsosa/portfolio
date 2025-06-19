@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 
 function Hero() {
@@ -22,7 +23,7 @@ function Hero() {
                             <span className="line">That's what I do</span>
                             <span className="line">.</span>
                         </h5>
-                        <button className="btn btn-primary fw-bold px-4 py-2 mt-3">Get started</button>
+                        <Link role="button" className="btn btn-primary fw-bold px-4 py-2 mt-3" to="/dashboard">Get started</Link>
                 </div>
         </div>
     )

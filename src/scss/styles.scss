@@ -130,14 +130,6 @@ main {
         padding-bottom: 8rem;
     }
 }
-.entity-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: start;
-    min-height: 400px;
-}
 .no-scroll {
     overflow: hidden !important;
 }
@@ -382,6 +374,7 @@ ul.icon-ul {
     }
 }
 .avatar {
+    position: relative;
     display: flex;
     justify-content: start;
     align-items:start;
@@ -579,6 +572,7 @@ ul.pagination {
     }
     .main-content .content.hero, .content-full-width, .main-content {
         grid-column: 1 / 4;
+        width: 100%;
         max-width: none;
     }
 }

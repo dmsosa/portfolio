@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 // import { TBenutzer } from "../data/types";
 // import boy from "../assets/img/boy.png";
 import BenutzerInfo from "../components/Benutzer/BenutzerInfo";
-import ArtikelListe from "../components/Artikel/ArtikelArray";
+import ArtikelArray from "../components/Artikel/ArtikelArray";
 import useArtikeln from "../hooks/useArtikeln";
 import EndpunktToggler from "../components/Widgets/Toggler/EndpunktToggler";
 import { useEndpunkt } from "../context/EndpunktContext";
@@ -14,6 +14,7 @@ import { TBenutzer } from "../data/types";
 import { getProfile } from "../services/benutzer.services";
 import { benutzerStaticArray, defaultBenutzer } from "../data/artikel.data";
 import BenutzerKnopf from "../components/Widgets/Knopfen/BenutzerKnopf";
+import { ProfilePhamton } from "../components/Widgets/Phamton/Phamton";
 
 
 export default function Profile() {
@@ -26,6 +27,7 @@ export default function Profile() {
     const [ loading, setLoading ] = useState< boolean >(false);
     const { headers } = useAuth();
     
+    const limit = 3;
     
     useEffect(() => {
         if (!username) return;
@@ -43,16 +45,16 @@ export default function Profile() {
     //ProfilHandling
     const handleFollow = (benutzer: TBenutzer) => {
         setProfile(benutzer);
-    }
+    }   
 
 
     //Artikeln und Benutzer Array
-    const { loadingArtikeln, artikeln, artikelnAnzahl, setArtikelnDatei, setOffsetArtikeln } = useArtikeln({ endpunkt });
-    const { loadingBenutzer, benutzerArray, benutzerAnzahl, setBenutzerDatei, setOffsetBenutzer } = useBenutzer( { endpunkt });
+    const { loadingArtikeln, artikeln, artikelnAnzahl, setArtikelnDatei, setOffsetArtikeln } = useArtikeln({ endpunkt, limit});
+    const { loadingBenutzer, benutzerArray, benutzerAnzahl, setBenutzerDatei, setOffsetBenutzer } = useBenutzer( { endpunkt, limit });
     
 
     return loading ?
-        <div>Loading</div> 
+        <ProfilePhamton/>
         :
         <>
             <div className="content content-full-width position-relative h-70vw bg-dark2">
@@ -70,12 +72,11 @@ export default function Profile() {
                         <span className="line">Keep reading!</span>
                     </h2>
                     { entity === 'artikel' ?
-                    <ArtikelListe loading={loadingArtikeln} array={artikeln} artikelAnzahl={artikelnAnzahl} setArrayData={setArtikelnDatei} setOffset={setOffsetArtikeln} />
+                    <ArtikelArray loading={loadingArtikeln} array={artikeln} artikelAnzahl={artikelnAnzahl} setArrayData={setArtikelnDatei} limit={limit} setOffset={setOffsetArtikeln} />
                         :
-                    <BenutzerArray loading={loadingBenutzer} array={benutzerArray} benutzerAnzahl={benutzerAnzahl} setArrayData={setBenutzerDatei} setOffset={setOffsetBenutzer}/>
-                }
+                    <BenutzerArray loading={loadingBenutzer} array={benutzerArray} benutzerAnzahl={benutzerAnzahl} setArrayData={setBenutzerDatei} limit={limit} setOffset={setOffsetBenutzer}/>
+                    }
                 </div>
             </div>
-        </>
-    
+        </> 
 }

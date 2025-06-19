@@ -9,7 +9,7 @@ import { useAuth } from "../../../context/AuthContext";
 export default function ArtikelKnopf({  artikel, handleFollow, handleFav } : { artikel: TArtikel, handleFollow: (benutzer: TBenutzer) => void, handleFav: (artikel: TArtikel) => void }) {
     const { loggedUser } = useAuth();
 
-    return loggedUser && loggedUser.username === artikel.author.username ? 
+    return loggedUser.username === artikel.author.username ? 
             <>
                 <Link className='link' to={'/dashboard/editor'} state={{...artikel}}><FaEdit/></Link>
                 <RemoveKnopf slug={artikel.slug} />

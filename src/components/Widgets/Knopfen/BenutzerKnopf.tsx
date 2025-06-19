@@ -10,13 +10,12 @@ export default function BenutzerKnopf({ benutzer, handleFollow } : { benutzer: T
 
     return loggedUser && loggedUser.username === benutzer.username ? 
             <div className="d-flex justify-content-between align-items-center gap-3">
-                <Link className='link' to={'/dashboard/editor'}><FaEdit/></Link>
-                <Link className="link" to={'/dashboard/settings/'} state={{...loggedUser}}><FaGear/></Link>
+                <Link className='link' to={'/editor'}><FaEdit/></Link>
+                <Link className="link" to={'/settings'} state={{...loggedUser}}><FaGear/></Link>
             </div>    
             :
             <div className="d-flex justify-content-between align-items-center gap-3" >
                 <FollowKnopf username={benutzer.username} isFollowing={benutzer.isFollowing} handleFollow={handleFollow}/>
-                <Link className='link' to={`/dashboard/profile/${benutzer.username}`}><FaSwatchbook/></Link>
-
+                <Link className='link' to={`/profile/${benutzer.username}`}><FaSwatchbook/></Link>
             </div>
 }

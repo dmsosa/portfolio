@@ -1,4 +1,4 @@
-import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, SetStateAction, useContext, useState } from "react";
 
 export type TEndpunktStatus = {
     entity: 'artikel' | 'benutzer';
@@ -21,9 +21,6 @@ export function useEndpunkt() {
 }
 export function EndpunktContextProvider({ children }: { children: ReactNode | ReactNode[] }) {
     const [{ entity, endpunkt }, setEndpunktStatus ] = useState<TEndpunktStatus>({ entity: 'artikel', endpunkt: 'global'});
-    useEffect(() => {
-        console.log(entity, endpunkt)
-    })
     return (
         <EndpunktContext.Provider value={{  entity, endpunkt, setEndpunktStatus }}>
                 {children}

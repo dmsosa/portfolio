@@ -14,11 +14,11 @@ export default function FieldsetForm({ id, name, type, labelText, value, onChang
     cols?: number
  }) {
     return (
-        <fieldset className={`fieldset ${errorMessages.length > 0 && 'fieldset-error'} ${value && errorMessages.length < 1 && 'fieldset-valid'}`}>
+        <fieldset className={`fieldset bg-1 ${errorMessages.length > 0 && 'fieldset-error'} ${value && errorMessages.length < 1 && 'fieldset-valid'}`}>
             { type === 'textarea' ? 
-            <textarea id={id} name={name} placeholder="" value={value} required={required} onChange={onChange} rows={rows} cols={cols}></textarea>
+            <textarea className="bg-transparent" id={id} name={name} placeholder="" value={value} required={required} onChange={onChange} rows={rows} cols={cols}></textarea>
             :
-            <input id={id} name={name} type={type} placeholder="" value={value} required={required} onChange={onChange}/>
+            <input className="bg-transparent" id={id} name={name} type={type} placeholder="" value={value} required={required} onChange={onChange}/>
             }
             
             <label htmlFor={'editor-' + name}>{labelText}</label>

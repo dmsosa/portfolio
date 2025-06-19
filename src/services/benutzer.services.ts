@@ -3,11 +3,11 @@ import { TBenutzer, TLoggedBenutzer } from "../data/types";
 import { TBenutzerDatei } from "../hooks/useBenutzer";
 import { defaultLoggedBenutzer } from "../data/artikel.data";
 import { TAuthStatus } from "../context/AuthContext";
+import { TSettingsForm } from "../components/Forms/SettingsForm";
 
 const instance = axios.create({
     baseURL: 'http://localhost:3000/api/benutzer',
     timeout: 1000,
-
 })
 
 
@@ -96,6 +96,20 @@ export async function getProfile({headers, username } : { headers?: Record<strin
         return benutzerData;
     } catch (error) {
           console.error(error);
+        throw error;
+    }
+}
+export async function putBenutzer({headers, prevUsername, form, } : { headers: Record<string, string>, prevUsername: string, form: TSettingsForm }): Promise<TBenutzer> {
+    try {
+        const { username, email, bio, image } = form;
+        const res = await instance.put(`/${prevUsername}`, { username, email, bio, image }, {
+            headers: headers,
+        })
+        const benutzerData: TBenutzer = await res.data;
+        console.log('put', benutzerData)
+        return benutzerData;
+    } catch (error) {
+        console.error(error);
         throw error;
     }
 }

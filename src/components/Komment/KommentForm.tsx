@@ -2,8 +2,8 @@ import { useState } from "react";
 
 export default function KommentForm({ id, body } : { id?: string, body: string }) {
     const [ value, setValue ] = useState(body ? body : 'try to leave a comment!');
-return <form >
-        <fieldset className={`fieldset`}>
+return <form onSubmit={() => { setValue('')}}>
+        <fieldset className={`fieldset`} id={id}>
             <textarea name="body" id="komment-body" value={value}></textarea>
             <label htmlFor="komment-body">Write a comment</label>
         </fieldset>

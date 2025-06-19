@@ -16,7 +16,7 @@ export default function ContactForm() {
         console.log(email, message)
     }
     return (
-            <form className="form mb-4 w-100 w-md-80 mx-auto">
+            <form className="form mb-4 w-100 w-md-80 mx-auto" onSubmit={handleSubmit}>
                 <FieldsetForm 
                 id="contact-email"
                 name="email"

@@ -93,7 +93,7 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: ubuntu, sans-serif;
+  --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -19057,6 +19057,10 @@ progress {
   height: 6rem;
 }
 
+.h-100vh {
+  height: 100vh;
+}
+
 .w-1 {
   width: 1rem;
 }
@@ -19185,6 +19189,10 @@ index-1 {
   flex-basis: 50%;
 }
 
+.basis-100 {
+  flex-basis: 100%;
+}
+
 .grow-1 {
   flex-grow: 1;
 }
@@ -19207,6 +19215,10 @@ index-1 {
 
 .fs-small {
   font-size: 0.5rem !important;
+}
+
+.fs-big {
+  font-size: 6.75rem !important;
 }
 
 .h-70vw {

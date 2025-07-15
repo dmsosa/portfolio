@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
+import './assets/css/styles.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './routes/Home.tsx';
 import Artikel from './routes/Artikel.tsx';
@@ -13,7 +14,6 @@ import Settings from './routes/Settings.tsx';
 
 createRoot(document.getElementById('app')!).render(
   <StrictMode>
-          
     <BrowserRouter>
       <Routes>
         <Route element={<App/>}>
@@ -24,8 +24,8 @@ createRoot(document.getElementById('app')!).render(
           <Route path='/cv' element={<CV />}></Route>
           <Route path='/editor' element={<ArtikelEditor />}></Route>
           <Route path='/settings' element={<Settings />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Route>
-        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

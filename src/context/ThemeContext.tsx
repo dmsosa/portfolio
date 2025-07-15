@@ -18,7 +18,6 @@ export function ThemeProvider({ children }: { children: ReactNode | ReactNode[] 
         for (let i = 0; i < body.classList.length ; i ++) {
             let klass = body.classList[i];
             if (klass.indexOf("theme-") == 0) {
-                console.log(klass)
                 body.classList.remove(klass);
             } else continue;
         }

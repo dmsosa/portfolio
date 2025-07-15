@@ -4,11 +4,13 @@ import { Gi3dGlasses, GiAbstract031 } from "react-icons/gi";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAuthFormContext from "../../context/AuthFormContext";
 
 
 function NavMobile() {
     const { isAuth, loggedUser } = useAuth();
     const [links, setLinks] = useState<TLinkObject[]>([])
+    const { setAuthFormContext } = useAuthFormContext();
     useEffect(() => {
         if (isAuth) {
                     const loggedInLinks = [
@@ -34,7 +36,14 @@ function NavMobile() {
     return (
         <nav className="nav-mobile bg-1-hover-opacity-1">
             <LinksListe links={links} expanded={false} clazz="h-100 fs-2">
-                { isAuth ? <Link to={`/dashboard/profile/${loggedUser?.username}`}><FaUserAstronaut /></Link>: <button className="btn btn-primary">Log In</button>}
+                { isAuth ? 
+                <Link to={`/dashboard/profile/${loggedUser?.username}`}><FaUserAstronaut /></Link>
+                : 
+                <button className="btn btn-primary align-self-start"
+                    onClick={() => 
+                        setAuthFormContext((prev) => ({...prev, visible: true, flipped: true}))
+                    }
+                >Sign In</button>}
             </LinksListe>
         </nav>
     );

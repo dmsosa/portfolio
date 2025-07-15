@@ -14,6 +14,7 @@ const noErrors: {[key:string]: string[]} = { username: [], email: [], bio: [], p
 
 export default function SettingsForm() {
     const { isAuth, loggedUser, headers } = useAuth();
+    console.log(putBenutzer, headers, isAuth)
     const [ form, setForm ] = useState<TSettingsForm>({
         username: loggedUser.username,
         email: loggedUser.email,
@@ -55,7 +56,6 @@ export default function SettingsForm() {
            name="username"
            value={username}
            onChange={handleChange}
-           required
            errorMessages={fieldsetErrors['username']}
            ></FieldsetForm>  
             <FieldsetForm
@@ -65,7 +65,6 @@ export default function SettingsForm() {
            name="email"
            value={email}
            onChange={handleChange}
-           required
            errorMessages={fieldsetErrors['email']}
            ></FieldsetForm>  
             <FieldsetForm
@@ -75,7 +74,6 @@ export default function SettingsForm() {
            name="bio"
            value={bio}
            onChange={handleChange}
-           required
            errorMessages={fieldsetErrors['bio']}
            ></FieldsetForm>  
             <FieldsetForm
@@ -85,7 +83,6 @@ export default function SettingsForm() {
            name="image"
            value={image}
            onChange={handleChange}
-           required
            errorMessages={fieldsetErrors['image']}
            ></FieldsetForm>  
            <div className="d-flex justify-content-start align-items-center gap-2 w-100 mt-3">

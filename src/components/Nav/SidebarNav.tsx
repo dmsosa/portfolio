@@ -5,6 +5,7 @@ import LinksListe, { TLinkObject } from "../Widgets/LinksListe";
 import { useSidebarContext } from "../../context/SidebarContext";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
+import useAuthFormContext from "../../context/AuthFormContext";
 
 
 const footerLinks: TLinkObject[] = [
@@ -16,6 +17,8 @@ const footerLinks: TLinkObject[] = [
 function SidebarNav() {
     const { expandedLeft } = useSidebarContext();
     const { isAuth, loggedUser } = useAuth();
+    const { setAuthFormContext } = useAuthFormContext();
+
     const [ links, setLinks ] = useState<TLinkObject[]>([]);
     const handleEnter = () => {
         const sidebarContent = document.querySelector('.sidebar-content');
@@ -59,8 +62,13 @@ function SidebarNav() {
                 <div className="div">
                     <SidebarNavHeader/>
                     <LinksListe links={links} expanded column fullWidth>
-                        <button className="btn btn-primary align-self-start">Sign In</button>
+                        
                     </LinksListe>
+                    <button className="btn btn-primary align-self-start"
+                    onClick={() => 
+                        setAuthFormContext((prev) => ({...prev, visible: true, flipped: true}))
+                    }
+                    >Sign In</button>
                 </div>
                 <div className="border-top pt-3">
                     <LinksListe links={footerLinks}/>

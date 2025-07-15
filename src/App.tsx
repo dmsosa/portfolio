@@ -1,4 +1,3 @@
-import './assets/css/styles.css'
 
 import { useRef } from 'react'
 import { SidebarContextProvider } from './context/SidebarContext'

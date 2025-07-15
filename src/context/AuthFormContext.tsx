@@ -21,8 +21,9 @@ export default function useAuthFormContext() {
         return authFormContext;
 }
 export function AuthFormContextProvider({ children }: { children: ReactNode[] | ReactNode }) {
-    const [{ visible, flipped, authFormMessage }, setAuthFormContext ] = useState<TAuthFormStatus>({visible: true, flipped: false, authFormMessage: 'Make sure you get started first!'});
+    const [{ visible, flipped, authFormMessage }, setAuthFormContext ] = useState<TAuthFormStatus>({visible: false, flipped: false, authFormMessage: 'Make sure you get started first!'});
     return (<FormContext.Provider value={{visible, flipped, authFormMessage, setAuthFormContext}}>
                 {children}
             </FormContext.Provider>)
 }
+

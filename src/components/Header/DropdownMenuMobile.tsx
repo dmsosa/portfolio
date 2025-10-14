@@ -34,42 +34,27 @@ function DropdownBtn({ show, setShow } : { show:boolean, setShow: React.Dispatch
     )
 }
 
+const defaultLinks: TLinkObject[] = [
+    { title: 'Home', to: '/', icon: <FaHome />    },
+    { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
+    { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
+]; 
+const footerLinks: TLinkObject[] = [
+    { title: 'Instagram', to: 'https://www.instagram.com/duvi_official/', icon: <FaInstagram />    },
+    { title: 'GitHub', to: 'https://github.com/dmsosa/', icon: <FaGithub/> },
+    { title: 'LinkedIn', to: 'https://www.linkedin.com/in/durian-sosa-807147241/', icon: <FaLinkedin /> },
+    { title: 'YouTube', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
+]; 
+
 function DropdownDiv({ show } : { show:boolean }) {
     //Links logik
-    const { isAuth, loggedUser } = useAuth();
-    const [ links, setLinks ] = useState<TLinkObject[]>([]);
-    const footerLinks: TLinkObject[] = [
-        { title: 'Instagram', to: 'https://www.instagram.com/duvi_official/', icon: <FaInstagram />    },
-        { title: 'GitHub', to: 'https://github.com/dmsosa/', icon: <FaGithub/> },
-        { title: 'LinkedIn', to: 'https://www.linkedin.com/in/durian-sosa-807147241/', icon: <FaLinkedin /> },
-        { title: 'YouTube', to: 'https://www.youtube.com/@EinfachDev', icon: <FaYoutube /> },
-    ]; 
-    //useEffect
-    useEffect(() => {
-        if (isAuth) {
-            const loggedInLinks = [
-                { title: 'Home', to: '/', icon: <FaHome />    },
-                { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
-                { title: 'Artikeln', to: '/dashboard/editor', icon: <Gi3dGlasses /> },
-                { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
-                { title: 'Profile', to: `/dashboard/profile/${loggedUser?.username}`, icon: <FaUserAstronaut /> },
-            ]; 
-            setLinks(loggedInLinks);
-        }
-        else {
-            const notLoggedLinks: TLinkObject[] = [
-                { title: 'Home', to: '/', icon: <FaHome />    },
-                { title: 'Dashboard', to: '/dashboard/', icon: <GiAbstract031/> },
-                { title: 'CV', to: '/dashboard/cv', icon: <FaUserTie /> },
-            ]; 
 
-            setLinks(notLoggedLinks);
-        }
-    }, [isAuth, loggedUser]);
+
+
     return (
             <div id="header-dropdown" className={`header-dropdown ${show ? "show":""} bg-2 `}>
                 <div className="p-2 pb-4">
-                    <LinksListe links={links} column expanded fullWidth/>
+                    <LinksListe links={defaultLinks} column expanded fullWidth/>
                     <ThemeToggler />
                 </div>
                 <div className="border-top-dark pt-1 pb-2 fs-4">
